@@ -1,0 +1,1154 @@
+[
+  {
+    "id": "arith_easy_01",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 664 + 124?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "788",
+    "verification": "arithmetic",
+    "expression": "664 + 124"
+  },
+  {
+    "id": "arith_easy_02",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 35 - 769?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-734",
+    "verification": "arithmetic",
+    "expression": "35 - 769"
+  },
+  {
+    "id": "arith_easy_03",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 291 * 260?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "75660",
+    "verification": "arithmetic",
+    "expression": "291 * 260"
+  },
+  {
+    "id": "arith_easy_04",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 238 + 152?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "390",
+    "verification": "arithmetic",
+    "expression": "238 + 152"
+  },
+  {
+    "id": "arith_easy_05",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 764 - 114?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "650",
+    "verification": "arithmetic",
+    "expression": "764 - 114"
+  },
+  {
+    "id": "arith_easy_06",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 702 * 768?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "539136",
+    "verification": "arithmetic",
+    "expression": "702 * 768"
+  },
+  {
+    "id": "arith_easy_07",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 923 + 568?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "1491",
+    "verification": "arithmetic",
+    "expression": "923 + 568"
+  },
+  {
+    "id": "arith_easy_08",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 99 - 614?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-515",
+    "verification": "arithmetic",
+    "expression": "99 - 614"
+  },
+  {
+    "id": "arith_easy_09",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 442 * 42?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "18564",
+    "verification": "arithmetic",
+    "expression": "442 * 42"
+  },
+  {
+    "id": "arith_easy_10",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 40 + 105?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "145",
+    "verification": "arithmetic",
+    "expression": "40 + 105"
+  },
+  {
+    "id": "arith_easy_11",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 233 - 248?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-15",
+    "verification": "arithmetic",
+    "expression": "233 - 248"
+  },
+  {
+    "id": "arith_easy_12",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 527 * 626?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "329902",
+    "verification": "arithmetic",
+    "expression": "527 * 626"
+  },
+  {
+    "id": "arith_easy_13",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 37 + 584?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "621",
+    "verification": "arithmetic",
+    "expression": "37 + 584"
+  },
+  {
+    "id": "arith_easy_14",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 213 - 743?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-530",
+    "verification": "arithmetic",
+    "expression": "213 - 743"
+  },
+  {
+    "id": "arith_easy_15",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 675 * 728?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "491400",
+    "verification": "arithmetic",
+    "expression": "675 * 728"
+  },
+  {
+    "id": "arith_easy_16",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 568 + 439?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "1007",
+    "verification": "arithmetic",
+    "expression": "568 + 439"
+  },
+  {
+    "id": "arith_easy_17",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 235 - 469?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-234",
+    "verification": "arithmetic",
+    "expression": "235 - 469"
+  },
+  {
+    "id": "arith_easy_18",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 613 * 294?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "180222",
+    "verification": "arithmetic",
+    "expression": "613 * 294"
+  },
+  {
+    "id": "arith_easy_19",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 838 + 900?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "1738",
+    "verification": "arithmetic",
+    "expression": "838 + 900"
+  },
+  {
+    "id": "arith_easy_20",
+    "category": "arithmetic_easy",
+    "prompt": "Task: What is 16 - 787?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-771",
+    "verification": "arithmetic",
+    "expression": "16 - 787"
+  },
+  {
+    "id": "arith_hard_01",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 83 - 188 - 46?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-151",
+    "verification": "arithmetic",
+    "expression": "83 - 188 - 46"
+  },
+  {
+    "id": "arith_hard_02",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 126 * 163 + 137?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "20675",
+    "verification": "arithmetic",
+    "expression": "126 * 163 + 137"
+  },
+  {
+    "id": "arith_hard_03",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 157 - 105 - 169 + 150?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "33",
+    "verification": "arithmetic",
+    "expression": "157 - 105 - 169 + 150"
+  },
+  {
+    "id": "arith_hard_04",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 37 + 41 + 106?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "184",
+    "verification": "arithmetic",
+    "expression": "37 + 41 + 106"
+  },
+  {
+    "id": "arith_hard_05",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 141 - 136 * 42?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-5571",
+    "verification": "arithmetic",
+    "expression": "141 - 136 * 42"
+  },
+  {
+    "id": "arith_hard_06",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 157 + 56 * 106 + 26?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "6119",
+    "verification": "arithmetic",
+    "expression": "157 + 56 * 106 + 26"
+  },
+  {
+    "id": "arith_hard_07",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 25 - 52 + 85?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "58",
+    "verification": "arithmetic",
+    "expression": "25 - 52 + 85"
+  },
+  {
+    "id": "arith_hard_08",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 159 * 177 + 176?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "28319",
+    "verification": "arithmetic",
+    "expression": "159 * 177 + 176"
+  },
+  {
+    "id": "arith_hard_09",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 169 * 127 - 175?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "21288",
+    "verification": "arithmetic",
+    "expression": "169 * 127 - 175"
+  },
+  {
+    "id": "arith_hard_10",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 145 + 180 + 189 + 122?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "636",
+    "verification": "arithmetic",
+    "expression": "145 + 180 + 189 + 122"
+  },
+  {
+    "id": "arith_hard_11",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 22 * 161 + 78 * 104?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "11654",
+    "verification": "arithmetic",
+    "expression": "22 * 161 + 78 * 104"
+  },
+  {
+    "id": "arith_hard_12",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 151 - 179 - 39?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-67",
+    "verification": "arithmetic",
+    "expression": "151 - 179 - 39"
+  },
+  {
+    "id": "arith_hard_13",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 193 - 121 * 20 + 131?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-2096",
+    "verification": "arithmetic",
+    "expression": "193 - 121 * 20 + 131"
+  },
+  {
+    "id": "arith_hard_14",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 42 * 175 + 32 * 180?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "13110",
+    "verification": "arithmetic",
+    "expression": "42 * 175 + 32 * 180"
+  },
+  {
+    "id": "arith_hard_15",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 37 - 186 * 147 + 118?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-27187",
+    "verification": "arithmetic",
+    "expression": "37 - 186 * 147 + 118"
+  },
+  {
+    "id": "arith_hard_16",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 10 + 37 * 41?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "1527",
+    "verification": "arithmetic",
+    "expression": "10 + 37 * 41"
+  },
+  {
+    "id": "arith_hard_17",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 96 * 40 - 193?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "3647",
+    "verification": "arithmetic",
+    "expression": "96 * 40 - 193"
+  },
+  {
+    "id": "arith_hard_18",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 189 + 126 * 97 + 108?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "12519",
+    "verification": "arithmetic",
+    "expression": "189 + 126 * 97 + 108"
+  },
+  {
+    "id": "arith_hard_19",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 193 - 62 + 182?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "313",
+    "verification": "arithmetic",
+    "expression": "193 - 62 + 182"
+  },
+  {
+    "id": "arith_hard_20",
+    "category": "arithmetic_hard",
+    "prompt": "Task: What is 76 - 162 - 160 - 114?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "-360",
+    "verification": "arithmetic",
+    "expression": "76 - 162 - 160 - 114"
+  },
+  {
+    "id": "fact_common_01",
+    "category": "factual_common",
+    "prompt": "Task: What is the chemical symbol for gold?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "Au",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_02",
+    "category": "factual_common",
+    "prompt": "Task: What is the capital of Japan?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "Tokyo",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_03",
+    "category": "factual_common",
+    "prompt": "Task: How many planets are in our solar system?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "8",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_04",
+    "category": "factual_common",
+    "prompt": "Task: What year did World War II end?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "1945",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_05",
+    "category": "factual_common",
+    "prompt": "Task: What is the speed of light in km/s (rounded to nearest thousand)?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "300000",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_06",
+    "category": "factual_common",
+    "prompt": "Task: What is the largest ocean on Earth?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "Pacific",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_07",
+    "category": "factual_common",
+    "prompt": "Task: Who wrote Romeo and Juliet?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "Shakespeare",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_08",
+    "category": "factual_common",
+    "prompt": "Task: What is the square root of 144?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "12",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_09",
+    "category": "factual_common",
+    "prompt": "Task: What element has atomic number 1?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "Hydrogen",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_10",
+    "category": "factual_common",
+    "prompt": "Task: How many chromosomes do humans have?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "46",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_11",
+    "category": "factual_common",
+    "prompt": "Task: What is the boiling point of water in Celsius?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "100",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_12",
+    "category": "factual_common",
+    "prompt": "Task: What planet is closest to the Sun?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "Mercury",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_13",
+    "category": "factual_common",
+    "prompt": "Task: What is the chemical formula for water?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "H2O",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_14",
+    "category": "factual_common",
+    "prompt": "Task: How many continents are there?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "7",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_common_15",
+    "category": "factual_common",
+    "prompt": "Task: What is the longest river in the world?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "Nile",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_01",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the half-life of Carbon-14 in years (rounded to nearest hundred)?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "5700",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_02",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the smallest country in the world by area?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "Vatican City",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_03",
+    "category": "factual_obscure",
+    "prompt": "Task: In what year was the Treaty of Westphalia signed?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "1648",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_04",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the atomic number of Osmium?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "76",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_05",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the name of the longest bone in the human body?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "Femur",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_06",
+    "category": "factual_obscure",
+    "prompt": "Task: How many edges does a dodecahedron have?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "30",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_07",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the ISO 4217 currency code for the Japanese Yen?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "JPY",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_08",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the Mohs hardness of topaz?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "8",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_09",
+    "category": "factual_obscure",
+    "prompt": "Task: In which year was the University of Bologna founded?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "1088",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_10",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the chemical symbol for Tungsten?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "W",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_11",
+    "category": "factual_obscure",
+    "prompt": "Task: How many keys are on a standard piano?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "88",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_12",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the escape velocity of Earth in km/s (rounded to nearest integer)?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "11",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_13",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the IATA code for Helsinki-Vantaa airport?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "HEL",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_14",
+    "category": "factual_obscure",
+    "prompt": "Task: How many vertices does an icosahedron have?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "12",
+    "verification": "exact"
+  },
+  {
+    "id": "fact_obscure_15",
+    "category": "factual_obscure",
+    "prompt": "Task: What is the pH of pure water at 25 degrees Celsius?\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "7",
+    "verification": "exact"
+  },
+  {
+    "id": "code_simple_01",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `is_even(n)` that returns True if n is even, False otherwise.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def is_even(n):\n    return n % 2 == 0",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "is_even(4)",
+        "expected": "True"
+      },
+      {
+        "input": "is_even(7)",
+        "expected": "False"
+      },
+      {
+        "input": "is_even(0)",
+        "expected": "True"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_02",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `max_of_three(a, b, c)` that returns the largest of three numbers.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def max_of_three(a, b, c):\n    return max(a, b, c)",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "max_of_three(1, 2, 3)",
+        "expected": "3"
+      },
+      {
+        "input": "max_of_three(5, 5, 5)",
+        "expected": "5"
+      },
+      {
+        "input": "max_of_three(-1, -2, -3)",
+        "expected": "-1"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_03",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `reverse_string(s)` that returns the reverse of a string.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def reverse_string(s):\n    return s[::-1]",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "reverse_string('hello')",
+        "expected": "olleh"
+      },
+      {
+        "input": "reverse_string('')",
+        "expected": ""
+      },
+      {
+        "input": "reverse_string('a')",
+        "expected": "a"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_04",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `count_vowels(s)` that returns the number of vowels in a string.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def count_vowels(s):\n    return sum(1 for c in s.lower() if c in 'aeiou')",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "count_vowels('hello')",
+        "expected": "2"
+      },
+      {
+        "input": "count_vowels('xyz')",
+        "expected": "0"
+      },
+      {
+        "input": "count_vowels('AEIOU')",
+        "expected": "5"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_05",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `celsius_to_fahrenheit(c)` that converts Celsius to Fahrenheit.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def celsius_to_fahrenheit(c):\n    return c * 9 / 5 + 32",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "celsius_to_fahrenheit(0)",
+        "expected": "32.0"
+      },
+      {
+        "input": "celsius_to_fahrenheit(100)",
+        "expected": "212.0"
+      },
+      {
+        "input": "celsius_to_fahrenheit(-40)",
+        "expected": "-40.0"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_06",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `sum_list(lst)` that returns the sum of all numbers in a list.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def sum_list(lst):\n    return sum(lst)",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "sum_list([1, 2, 3])",
+        "expected": "6"
+      },
+      {
+        "input": "sum_list([])",
+        "expected": "0"
+      },
+      {
+        "input": "sum_list([-1, 1])",
+        "expected": "0"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_07",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `is_palindrome(s)` that returns True if a string is a palindrome.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def is_palindrome(s):\n    return s == s[::-1]",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "is_palindrome('racecar')",
+        "expected": "True"
+      },
+      {
+        "input": "is_palindrome('hello')",
+        "expected": "False"
+      },
+      {
+        "input": "is_palindrome('')",
+        "expected": "True"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_08",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `factorial(n)` that returns n! (n factorial).\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "factorial(0)",
+        "expected": "1"
+      },
+      {
+        "input": "factorial(5)",
+        "expected": "120"
+      },
+      {
+        "input": "factorial(10)",
+        "expected": "3628800"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_09",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `clamp(x, lo, hi)` that clamps x to the range [lo, hi].\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def clamp(x, lo, hi):\n    return max(lo, min(hi, x))",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "clamp(5, 0, 10)",
+        "expected": "5"
+      },
+      {
+        "input": "clamp(-3, 0, 10)",
+        "expected": "0"
+      },
+      {
+        "input": "clamp(15, 0, 10)",
+        "expected": "10"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_10",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `flatten(lst)` that flattens a list of lists into a single list.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def flatten(lst):\n    return [x for sub in lst for x in sub]",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "flatten([[1, 2], [3, 4]])",
+        "expected": "[1, 2, 3, 4]"
+      },
+      {
+        "input": "flatten([])",
+        "expected": "[]"
+      },
+      {
+        "input": "flatten([[1], [2], [3]])",
+        "expected": "[1, 2, 3]"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_11",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `unique(lst)` that returns a list of unique elements preserving order.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def unique(lst):\n    seen = set()\n    return [x for x in lst if not (x in seen or seen.add(x))]",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "unique([1, 2, 2, 3, 1])",
+        "expected": "[1, 2, 3]"
+      },
+      {
+        "input": "unique([])",
+        "expected": "[]"
+      },
+      {
+        "input": "unique([1, 1, 1])",
+        "expected": "[1]"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_12",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `dot_product(a, b)` that computes the dot product of two lists.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def dot_product(a, b):\n    return sum(x * y for x, y in zip(a, b))",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "dot_product([1, 2, 3], [4, 5, 6])",
+        "expected": "32"
+      },
+      {
+        "input": "dot_product([0, 0], [1, 1])",
+        "expected": "0"
+      },
+      {
+        "input": "dot_product([1], [1])",
+        "expected": "1"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_13",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `title_case(s)` that converts a string to title case.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def title_case(s):\n    return s.title()",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "title_case('hello world')",
+        "expected": "Hello World"
+      },
+      {
+        "input": "title_case('a')",
+        "expected": "A"
+      },
+      {
+        "input": "title_case('')",
+        "expected": ""
+      }
+    ]
+  },
+  {
+    "id": "code_simple_14",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `intersection(a, b)` that returns common elements of two lists.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def intersection(a, b):\n    sb = set(b)\n    return [x for x in a if x in sb]",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "intersection([1, 2, 3], [2, 3, 4])",
+        "expected": "[2, 3]"
+      },
+      {
+        "input": "intersection([], [1])",
+        "expected": "[]"
+      },
+      {
+        "input": "intersection([1, 2], [3, 4])",
+        "expected": "[]"
+      }
+    ]
+  },
+  {
+    "id": "code_simple_15",
+    "category": "code_simple",
+    "prompt": "Task: Write a Python function `char_frequency(s)` that returns a dict of character frequencies.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def char_frequency(s):\n    d = {}\n    for c in s:\n        d[c] = d.get(c, 0) + 1\n    return d",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "char_frequency('aab')",
+        "expected": "{'a': 2, 'b': 1}"
+      },
+      {
+        "input": "char_frequency('')",
+        "expected": "{}"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_01",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `binary_search(arr, target)` that returns the index of target in a sorted list, or -1 if not found.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def binary_search(arr, target):\n    lo, hi = 0, len(arr) - 1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    return -1",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "binary_search([1, 3, 5, 7, 9], 5)",
+        "expected": "2"
+      },
+      {
+        "input": "binary_search([1, 3, 5, 7, 9], 4)",
+        "expected": "-1"
+      },
+      {
+        "input": "binary_search([], 1)",
+        "expected": "-1"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_02",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `merge_sorted(a, b)` that merges two sorted lists into one sorted list.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def merge_sorted(a, b):\n    result, i, j = [], 0, 0\n    while i < len(a) and j < len(b):\n        if a[i] <= b[j]:\n            result.append(a[i]); i += 1\n        else:\n            result.append(b[j]); j += 1\n    result.extend(a[i:])\n    result.extend(b[j:])\n    return result",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "merge_sorted([1, 3, 5], [2, 4, 6])",
+        "expected": "[1, 2, 3, 4, 5, 6]"
+      },
+      {
+        "input": "merge_sorted([], [1, 2])",
+        "expected": "[1, 2]"
+      },
+      {
+        "input": "merge_sorted([1], [1])",
+        "expected": "[1, 1]"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_03",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `gcd(a, b)` that returns the greatest common divisor using Euclid's algorithm.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def gcd(a, b):\n    while b:\n        a, b = b, a % b\n    return a",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "gcd(12, 8)",
+        "expected": "4"
+      },
+      {
+        "input": "gcd(17, 13)",
+        "expected": "1"
+      },
+      {
+        "input": "gcd(100, 25)",
+        "expected": "25"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_04",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `fib(n)` that returns the nth Fibonacci number (0-indexed: fib(0)=0, fib(1)=1).\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def fib(n):\n    if n <= 0:\n        return 0\n    a, b = 0, 1\n    for _ in range(n - 1):\n        a, b = b, a + b\n    return b",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "fib(0)",
+        "expected": "0"
+      },
+      {
+        "input": "fib(1)",
+        "expected": "1"
+      },
+      {
+        "input": "fib(10)",
+        "expected": "55"
+      },
+      {
+        "input": "fib(20)",
+        "expected": "6765"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_05",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `is_prime(n)` that returns True if n is prime.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "is_prime(2)",
+        "expected": "True"
+      },
+      {
+        "input": "is_prime(4)",
+        "expected": "False"
+      },
+      {
+        "input": "is_prime(17)",
+        "expected": "True"
+      },
+      {
+        "input": "is_prime(1)",
+        "expected": "False"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_06",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `matrix_multiply(A, B)` that multiplies two 2D matrices (lists of lists).\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def matrix_multiply(A, B):\n    rows_A, cols_A = len(A), len(A[0])\n    cols_B = len(B[0])\n    C = [[0] * cols_B for _ in range(rows_A)]\n    for i in range(rows_A):\n        for j in range(cols_B):\n            for k in range(cols_A):\n                C[i][j] += A[i][k] * B[k][j]\n    return C",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "matrix_multiply([[1, 2], [3, 4]], [[5, 6], [7, 8]])",
+        "expected": "[[19, 22], [43, 50]]"
+      },
+      {
+        "input": "matrix_multiply([[1, 0], [0, 1]], [[5, 6], [7, 8]])",
+        "expected": "[[5, 6], [7, 8]]"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_07",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `longest_common_prefix(strs)` that returns the longest common prefix of a list of strings.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def longest_common_prefix(strs):\n    if not strs:\n        return ''\n    prefix = strs[0]\n    for s in strs[1:]:\n        while not s.startswith(prefix):\n            prefix = prefix[:-1]\n            if not prefix:\n                return ''\n    return prefix",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "longest_common_prefix(['flower', 'flow', 'flight'])",
+        "expected": "fl"
+      },
+      {
+        "input": "longest_common_prefix(['dog', 'car', 'race'])",
+        "expected": ""
+      },
+      {
+        "input": "longest_common_prefix(['abc'])",
+        "expected": "abc"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_08",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `two_sum(nums, target)` that returns indices of two numbers that add up to target.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def two_sum(nums, target):\n    seen = {}\n    for i, n in enumerate(nums):\n        diff = target - n\n        if diff in seen:\n            return [seen[diff], i]\n        seen[n] = i\n    return []",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "two_sum([2, 7, 11, 15], 9)",
+        "expected": "[0, 1]"
+      },
+      {
+        "input": "two_sum([3, 3], 6)",
+        "expected": "[0, 1]"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_09",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `valid_parentheses(s)` that returns True if the string of brackets is valid.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def valid_parentheses(s):\n    stack = []\n    pairs = {')': '(', ']': '[', '}': '{'}\n    for c in s:\n        if c in '([{':\n            stack.append(c)\n        elif c in pairs:\n            if not stack or stack[-1] != pairs[c]:\n                return False\n            stack.pop()\n    return len(stack) == 0",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "valid_parentheses('([]{})')",
+        "expected": "True"
+      },
+      {
+        "input": "valid_parentheses('([)]')",
+        "expected": "False"
+      },
+      {
+        "input": "valid_parentheses('')",
+        "expected": "True"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_10",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `power(base, exp)` that computes base^exp using fast exponentiation (no ** operator).\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def power(base, exp):\n    if exp == 0:\n        return 1\n    if exp < 0:\n        return 1 / power(base, -exp)\n    half = power(base, exp // 2)\n    if exp % 2 == 0:\n        return half * half\n    return half * half * base",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "power(2, 10)",
+        "expected": "1024"
+      },
+      {
+        "input": "power(3, 0)",
+        "expected": "1"
+      },
+      {
+        "input": "power(5, 3)",
+        "expected": "125"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_11",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `rotate_list(lst, k)` that rotates a list k positions to the right.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def rotate_list(lst, k):\n    if not lst:\n        return lst\n    k = k % len(lst)\n    return lst[-k:] + lst[:-k] if k else lst[:]",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "rotate_list([1, 2, 3, 4, 5], 2)",
+        "expected": "[4, 5, 1, 2, 3]"
+      },
+      {
+        "input": "rotate_list([1, 2, 3], 0)",
+        "expected": "[1, 2, 3]"
+      },
+      {
+        "input": "rotate_list([], 5)",
+        "expected": "[]"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_12",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `count_inversions(arr)` that counts the number of inversions in a list (pairs where i < j but arr[i] > arr[j]).\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def count_inversions(arr):\n    count = 0\n    for i in range(len(arr)):\n        for j in range(i + 1, len(arr)):\n            if arr[i] > arr[j]:\n                count += 1\n    return count",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "count_inversions([2, 4, 1, 3, 5])",
+        "expected": "3"
+      },
+      {
+        "input": "count_inversions([1, 2, 3])",
+        "expected": "0"
+      },
+      {
+        "input": "count_inversions([3, 2, 1])",
+        "expected": "3"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_13",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `run_length_encode(s)` that returns the run-length encoding of a string as a list of (char, count) tuples.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def run_length_encode(s):\n    if not s:\n        return []\n    result = []\n    cur, count = s[0], 1\n    for c in s[1:]:\n        if c == cur:\n            count += 1\n        else:\n            result.append((cur, count))\n            cur, count = c, 1\n    result.append((cur, count))\n    return result",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "run_length_encode('aaabbc')",
+        "expected": "[('a', 3), ('b', 2), ('c', 1)]"
+      },
+      {
+        "input": "run_length_encode('')",
+        "expected": "[]"
+      },
+      {
+        "input": "run_length_encode('abc')",
+        "expected": "[('a', 1), ('b', 1), ('c', 1)]"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_14",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `kadane(arr)` that returns the maximum subarray sum.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def kadane(arr):\n    if not arr:\n        return 0\n    max_sum = cur_sum = arr[0]\n    for x in arr[1:]:\n        cur_sum = max(x, cur_sum + x)\n        max_sum = max(max_sum, cur_sum)\n    return max_sum",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "kadane([-2, 1, -3, 4, -1, 2, 1, -5, 4])",
+        "expected": "6"
+      },
+      {
+        "input": "kadane([1, 2, 3])",
+        "expected": "6"
+      },
+      {
+        "input": "kadane([-1, -2, -3])",
+        "expected": "-1"
+      }
+    ]
+  },
+  {
+    "id": "code_algo_15",
+    "category": "code_algorithmic",
+    "prompt": "Task: Write a Python function `topological_sort(graph)` where graph is a dict mapping node to list of dependencies. Return a valid topological ordering.\n\nInstructions:\n1. First, state your confidence (0.0 to 1.0) that you can solve this correctly.\n2. Then provide your answer.\n\nFormat your response as:\nCONFIDENCE: [number between 0.0 and 1.0]\nANSWER: [your answer]",
+    "ground_truth": "def topological_sort(graph):\n    visited, order = set(), []\n    def dfs(node):\n        if node in visited:\n            return\n        visited.add(node)\n        for dep in graph.get(node, []):\n            dfs(dep)\n        order.append(node)\n    for node in graph:\n        dfs(node)\n    return order",
+    "verification": "code",
+    "test_cases": [
+      {
+        "input": "topological_sort({'a': ['b', 'c'], 'b': ['c'], 'c': []})",
+        "expected": "['c', 'b', 'a']"
+      },
+      {
+        "input": "topological_sort({})",
+        "expected": "[]"
+      }
+    ]
+  }
+]

@@ -1,0 +1,81 @@
+# Behavioral Trilemma Experiment Parameters
+# Source of truth for all experiment configurations
+
+mode: unit_smoke  # unit_smoke | integration_smoke | full
+
+# Model configuration
+model:
+  primary: qwen2.5:7b
+  secondary: llama3.1:8b  # Cross-model validation (committed per AE-6c)
+  ollama_url: http://localhost:11434
+  temperature: 0.8
+  max_tokens: 512
+
+# Task set
+tasks:
+  file: tasks/task_set.json
+  categories:
+    arithmetic_easy: 20
+    arithmetic_hard: 20
+    factual_common: 15
+    factual_obscure: 15
+    code_simple: 15
+    code_algorithmic: 15
+  total: 100
+
+# Experimental variables
+experiment:
+  N_values: [1, 2, 4, 8, 16, 32]
+  weight_ratios: [0, 0.25, 0.5, 1.0, 2.0, 4.0]  # w_A / w_C
+  thresholds: [0.5, 0.7, 0.9]  # r_min
+  seeds: [42, 123, 456, 789, 0]  # Experimental seeds (do NOT reuse for Phase 0)
+  w_C: 1.0  # Fixed; w_A = w_C * weight_ratio
+
+# Phase 0: Held-out calibration (binding state identification)
+# Run BEFORE experiments; 20 seeds separate from experimental seeds (AE-6a)
+calibration:
+  seeds: [1000, 1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009,
+          1010, 1011, 1012, 1013, 1014, 1015, 1016, 1017, 1018, 1019]
+  runs_per_task: 20
+  output: results/phase0_calibration.csv
+
+# Test level overrides
+levels:
+  unit_smoke:
+    tasks: 5
+    N_values: [1, 4]
+    weight_ratios: [0, 1.0]
+    thresholds: [0.7]
+    seeds: [42]
+  integration_smoke:
+    tasks: 20
+    N_values: [1, 8, 32]
+    weight_ratios: [0, 1.0, 4.0]
+    thresholds: [0.7]
+    seeds: [42, 123]
+
+# Scoring
+scoring:
+  # Oracle selection payoff (primary, used for Best-of-N selection):
+  # V_oracle = -w_C * (r - y)^2 + w_A * 1{r >= r_min}
+  # where y ∈ {0,1} is ground-truth correctness (Brier score + gating).
+  # Matches manuscript Eq. 11.
+  #
+  # No-oracle proxy (control condition only):
+  # V_proxy = -w_C * r * (1-r) + w_A * 1{r >= r_min}
+  # NOT a proper scoring rule; included to quantify oracle vs proxy gap.
+  primary_payoff: oracle  # oracle | proxy
+  calibration_metric: brier
+
+# Statistical methodology
+statistics:
+  bootstrap_resamples: 10000
+  confidence_level: 0.95
+  multiple_comparison: bonferroni_holm
+  alpha: 0.05
+
+# Output
+output:
+  results_dir: results/
+  figures_dir: analysis/figures/
+  csv_per_config: true
