@@ -9,8 +9,8 @@ the composite payoff from the theory.
 ## 2. Why Best-of-N (not prompting)
 
 Prompting-based experiments conflate instruction-following with objective
-optimization. A JMLR-5 reviewer correctly noted: "prompt steering is a weak
-proxy for training-objective manipulation."
+optimization. Prompt steering is a weak proxy for training-objective
+manipulation.
 
 Best-of-N IS a formal optimization:
 - Generate N completions, each with confidence r_i and answer a_i

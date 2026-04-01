@@ -1,6 +1,7 @@
 # Behavioral Credibility Trilemma: Empirical Validation
 
-Experiment code for the Best-of-N trilemma manifestation experiment (JMLR Paper A1).
+Experiment code for empirical validation of the Behavioral Credibility Trilemma
+via Best-of-N selection.
 
 ## Overview
 
@@ -15,13 +16,13 @@ selection as a formal optimization mechanism:
 
 ```bash
 # Unit smoke (seconds)
-python -m scripts.run_experiment --mode unit_smoke
+python -m scripts.run --mode unit_smoke
 
 # Integration smoke (minutes)
-python -m scripts.run_experiment --mode integration_smoke
+python -m scripts.run --mode integration_smoke
 
 # Full experiment (~14 hours)
-python -m scripts.run_experiment --mode full
+python -m scripts.run --mode full
 ```
 
 ## Structure
@@ -39,7 +40,7 @@ notes/            # Experiment design notes and decisions
 ## Models
 
 - **Primary:** Qwen-2.5-7B via Ollama (local, free, reproducible)
-- **Secondary:** Llama-3-8B or Mistral-7B for cross-model validation
+- **Secondary:** Llama-3.1-8B via Ollama for cross-model validation
 
 ## Dependencies
 
