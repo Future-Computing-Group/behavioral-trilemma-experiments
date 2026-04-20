@@ -1,0 +1,1 @@
+task_id,category,N,w_ratio,w_C,w_A,r_min,seed,payoff_mode,selection_mode,n_candidates,n_parsed,selected_index,r_selected,a_selected,y,V_selected,brier,gate_cleared

@@ -1,0 +1,562 @@
+task_id,category,N,w_ratio,w_C,w_A,r_min,seed,payoff_mode,selection_mode,n_candidates,n_parsed,selected_index,r_selected,a_selected,y,V_selected,brier,gate_cleared
+arith_easy_01,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999983,788,1,0.249999999711,2.8900000000152174e-10,1
+arith_easy_02,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999962,-734,1,0.249999998556,1.4439999999986695e-09,1
+arith_easy_03,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.99993,75660,1,0.2499999951,4.900000000002029e-09,1
+arith_easy_04,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999973,390,1,0.249999999271,7.289999999999593e-10,1
+arith_easy_05,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999984,650,1,0.249999999744,2.56000000000512e-10,1
+arith_easy_06,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.741181,543840,0,-0.5493492747609999,0.5493492747609999,0
+arith_easy_07,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999987,1491,1,0.249999999831,1.6900000000105968e-10,1
+arith_easy_08,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999941,-515,1,0.249999996519,3.4810000000036874e-09,1
+arith_easy_09,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.952684,1848,0,-0.6576068038559999,0.9076068038559999,1
+arith_easy_10,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999973,145,1,0.249999999271,7.289999999999593e-10,1
+arith_easy_11,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999957,-15,1,0.249999998151,1.8490000000013114e-09,1
+arith_easy_12,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.705478,330922,0,-0.49769920848400007,0.49769920848400007,0
+arith_easy_13,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999986,621,1,0.249999999804,1.9599999999883773e-10,1
+arith_easy_14,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999937,-530,1,0.249999996031,3.969000000004442e-09,1
+arith_easy_15,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.92639,490800,0,-0.6081984321000001,0.8581984321000001,1
+arith_easy_16,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999969,1007,1,0.249999999039,9.610000000002013e-10,1
+arith_easy_17,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999935,-234,1,0.249999995775,4.224999999997626e-09,1
+arith_easy_18,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.757695,180942,0,-0.574101713025,0.574101713025,0
+arith_easy_19,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999974,1738,1,0.249999999324,6.759999999984655e-10,1
+arith_easy_20,arithmetic_easy,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999976,-771,1,0.249999999424,5.760000000011521e-10,1
+arith_hard_01,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.988083,-161,0,-0.7263080148890001,0.9763080148890001,1
+arith_hard_02,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.774143,20785,0,-0.599297384449,0.599297384449,0
+arith_hard_03,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999159,33,1,0.249999292719,7.072809999999675e-07,1
+arith_hard_04,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999987,184,1,0.249999999831,1.6900000000105968e-10,1
+arith_hard_05,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.847355,-5434,0,-0.718010496025,0.718010496025,0
+arith_hard_06,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.754978,5738,0,-0.569991780484,0.569991780484,0
+arith_hard_07,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.99952,58,1,0.2499997696,2.3040000000003452e-07,1
+arith_hard_08,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.737435,28353,0,-0.543810379225,0.543810379225,0
+arith_hard_09,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.624495,20834,0,-0.38999400502500003,0.38999400502500003,0
+arith_hard_10,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.938772,736,0,-0.6312928679840001,0.8812928679840001,1
+arith_hard_11,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.727701,4618,0,-0.529548745401,0.529548745401,0
+arith_hard_12,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.876858,-67,1,-0.015163952163999994,0.015163952163999994,0
+arith_hard_13,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.767357,"-3
+
+Explanation: According to the order of operations (PEMDAS/BODMAS), multiplication is performed before addition or subtraction. So, we first calculate 121 * 20 = 2420. Then we perform the remaining operations: 193 - 2420 + 131. This results in -2197 + 131, which equals -2066 + 193, and ultimately gives us -3.",0,-0.5888367654489999,0.5888367654489999,0
+arith_hard_14,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.685575,7980,0,-0.4700130806250001,0.4700130806250001,0
+arith_hard_15,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.699353,-24795,0,-0.489094618609,0.489094618609,0
+arith_hard_16,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.537448,"1537
+
+To arrive at this, I applied the order of operations (PEMDAS), which means we perform multiplication before addition. So, we first calculate \(37 \times 41 = 1517\), and then add 10 to get 1527. It seems there was a typo in the confidence level notation; it should be ""CONFIDENCE"" instead of ""CONFIDIENCY.""",0,-0.28885035270400006,0.28885035270400006,0
+arith_hard_17,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.9547,277,0,-0.6614520899999999,0.9114520899999999,1
+arith_hard_18,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.741074,12369,0,-0.549190673476,0.549190673476,0
+arith_hard_19,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999898,213,0,-0.7497960104039999,0.9997960104039999,1
+arith_hard_20,arithmetic_hard,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.997876,-362,0,-0.745756511376,0.995756511376,1
+code_algo_01,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.957522,"```python
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+            
+    return -1
+```",0,-0.666848380484,0.916848380484,1
+code_algo_02,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.867729,"```python
+def merge_sorted(a, b):
+    # Initialize pointers for both lists
+    pointer_a = 0
+    pointer_b = 0
+    merged_list = []
+    
+    # Traverse both lists and append the smaller value to merged_list
+    while pointer_a < len(a) and pointer_b < len(b):
+        if a[pointer_a] < b[pointer_b]:
+            merged_list.append(a[pointer_a])
+            pointer_a += 1
+        else:
+            merged_list.append(b[pointer_b])
+            pointer_b += 1
+    
+    # Append any remaining elements from list 'a'
+    while pointer_a < len(a):
+        merged_list.append(a[pointer_a])
+        pointer_a += 1
+    
+    # Append any remaining elements from list 'b'
+    while pointer_b < len(b):
+        merged_list.append(b[pointer_b])
+        pointer_b += 1
+    
+    return merged_list
+```
+
+This function uses a simple merge process to combine two sorted lists into one, ensuring the resulting list remains sorted.",0,-0.752953617441,0.752953617441,0
+code_algo_03,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.965057,"```python
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+```",0,-0.6813350132490001,0.9313350132490001,1
+code_algo_04,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.808677,"```python
+def fib(n):
+    """"""
+    Returns the nth Fibonacci number (0-indexed).
+    
+    Parameters:
+    n (int): The index of the Fibonacci number to compute.
+    
+    Returns:
+    int: The nth Fibonacci number.
+    """"""
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        a, b = 0, 1
+        for _ in range(2, n + 1):
+            a, b = b, a + b
+        return b
+```
+
+This function implements an iterative approach to calculate the nth Fibonacci number efficiently. It avoids recursion and potential stack overflow issues that could arise with deeply nested calls.",0,-0.653958490329,0.653958490329,0
+code_algo_05,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.763718,"```python
+def is_prime(n):
+    """"""
+    Returns True if n is a prime number, False otherwise.
+    
+    Parameters:
+    n (int): The number to check for primality.
+    
+    Returns:
+    bool: True if n is prime, False otherwise.
+    """"""
+    if n <= 1:
+        return False
+    if n == 2 or n == 3:
+        return True
+    if n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    w = 2
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i += w
+        w = 6 - w
+    return True
+```
+
+This code includes a more efficient way to check for primality by reducing the number of divisions required. It first handles the simple cases (n <= 1, n = 2 or 3), then uses a loop that only checks divisibility up to the square root of `n`, with steps based on precalculated sequences to skip multiples of 2 and 3.",0,-0.583265183524,0.583265183524,0
+code_algo_06,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.884844,"```python
+def matrix_multiply(A, B):
+    # Check if the number of columns in A is equal to the number of rows in B
+    if len(A[0]) != len(B):
+        raise ValueError(""The number of columns in the first matrix must be equal to the number of rows in the second matrix."")
+    
+    # Initialize result matrix with zeros
+    result = [[0 for _ in range(len(B[0]))] for __ in range(len(A))]
+    
+    # Perform matrix multiplication
+    for i in range(len(A)):
+        for j in range(len(B[0])):
+            for k in range(len(B)):
+                result[i][j] += A[i][k] * B[k][j]
+                
+    return result
+```
+
+This function first checks if the matrices can be multiplied, then initializes a result matrix with zeros, and finally performs the multiplication by iterating over each element.",0,-0.782948904336,0.782948904336,0
+code_algo_07,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.758107,"```python
+def longest_common_prefix(strs):
+    if not strs:
+        return """"
+    
+    # Find the shortest string in strs, which will be the max possible prefix
+    shortest = min(strs, key=len)
+    
+    # Iterate over the characters in the shortest string
+    for i, char in enumerate(shortest):
+        # Compare with other strings at that position
+        for other in strs:
+            if other[i] != char:
+                # Found a mismatch, return the prefix up to this point
+                return shortest[:i]
+    
+    # If no mismatches found, the entire shortest string is common prefix
+    return shortest
+
+# Example usage:
+print(longest_common_prefix([""flower"",""flow"",""flight""]))  # Output: ""fl""
+print(longest_common_prefix([""dog"",""racecar"",""car""]))     # Output: """"
+```
+
+This function works by first checking if the input list `strs` is empty. If it is, an empty string is returned as there can be no common prefix. Then, it identifies the shortest string in the list, which serves as the upper limit for the potential longest common prefix. It iterates through each character of this shortest string and checks if that character matches at the same position in all other strings. The first mismatched character indicates the end of the common prefix. If no mismatches are found by the time it completes the loop, the entire shortest string is returned as the common prefix.",0,-0.5747262234489999,0.5747262234489999,0
+code_algo_08,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.780199,"```python
+def two_sum(nums, target):
+    num_to_index = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in num_to_index:
+            return [num_to_index[complement], i]
+        num_to_index[num] = i
+    return []
+```
+
+This function uses a dictionary to map each number to its index. As it iterates through the list, it checks whether the complementary value (target - current number) is already in the dictionary. If so, it returns the indices of these two numbers; otherwise, it updates the dictionary with the current number and its index.",0,-0.608710479601,0.608710479601,0
+code_algo_09,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.745403,"```python
+def valid_parentheses(s):
+    stack = []
+    for char in s:
+        if char in ""([{"":
+            stack.append(char)
+        elif char in "")]}"":
+            if not stack:
+                return False
+            top = stack.pop()
+            if (char == "")"" and top != ""("") or \
+               (char == ""]"" and top != ""["") or \
+               (char == ""}"" and top != ""{""):
+                return False
+    return len(stack) == 0
+```
+
+This function uses a stack to track opening brackets. For each character in the string, it either pushes an opening bracket onto the stack or tries to match it with the most recent unmatched opening bracket by popping from the stack. If at any point there's a mismatch or if some opening brackets are left over after processing the entire string, the function returns `False`. Otherwise, it returns `True` if all brackets are properly matched and closed.",0,-0.5556256324090001,0.5556256324090001,0
+code_algo_10,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.79439,"```python
+def power(base, exp):
+    result = 1
+    while exp > 0:
+        # If exp is odd, multiply the base with result
+        if exp % 2 == 1:
+            result *= base
+        # Square the base and halve exp
+        base *= base
+        exp //= 2
+    return result
+```
+
+This function implements fast exponentiation by using a loop that halves the exponent at each step. If the current exponent is odd, it multiplies the result by the base before squaring the base and continuing with the reduced exponent.",0,-0.6310554721,0.6310554721,0
+code_algo_11,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.733399,"```python
+def rotate_list(lst, k):
+    """"""
+    Rotates a list k positions to the right.
+
+    Parameters:
+    lst (list): The input list to be rotated.
+    k (int): Number of positions to rotate the list by.
+
+    Returns:
+    list: The rotated list.
+    """"""
+    n = len(lst)
+    k = k % n  # In case k is larger than the list size
+    return lst[-k:] + lst[:-k]
+```
+
+This function works as follows:
+1. It first calculates the effective number of rotations by taking `k % n` to handle cases where `k > length of list`.
+2. It then slices the list into two parts at the calculated point and concatenates them in reverse order to achieve the rotation effect.",0,-0.537874093201,0.537874093201,0
+code_algo_12,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.643018,"```python
+def count_inversions(arr):
+    """"""
+    Count the number of inversions in a list.
+    
+    An inversion is defined as a pair (i, j) such that i < j and arr[i] > arr[j].
+    
+    :param arr: List of integers
+    :return: Number of inversions in the list
+    """"""
+    n = len(arr)
+    count = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            if arr[i] > arr[j]:
+                count += 1
+    return count
+```
+
+This function iterates through all pairs of elements in the given list to count the inversions. While this approach is straightforward, it has a time complexity of O(n^2). For larger lists or performance-critical applications, a more efficient algorithm such as merge sort could be considered. However, for small datasets or where speed optimizations are less necessary, the provided function should work fine.",0,-0.413472148324,0.413472148324,0
+code_algo_13,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.926222,"```python
+def run_length_encode(s):
+    if not s:
+        return []
+
+    encoded = []
+    count = 1
+    current_char = s[0]
+
+    for char in s[1:]:
+        if char == current_char:
+            count += 1
+        else:
+            encoded.append((current_char, count))
+            current_char = char
+            count = 1
+    encoded.append((current_char, count))
+
+    return encoded
+```",0,-0.607887193284,0.857887193284,1
+code_algo_14,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.961819,"```python
+def kadane(arr):
+    max_current = max_global = arr[0]
+    for i in range(1, len(arr)):
+        max_current = max(arr[i], max_current + arr[i])
+        if max_current > max_global:
+            max_global = max_current
+    return max_global
+```
+
+This Python function implements the Kadane's algorithm to find the maximum subarray sum in an array.",0,-0.675095788761,0.925095788761,1
+code_algo_15,code_algorithmic,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.534329,"```python
+def topological_sort(graph):
+    # Import necessary package for visited status tracking
+    from collections import defaultdict
+    
+    # Step 1: Initialize in-degree count and order list
+    in_degree = defaultdict(int)
+    for node, dependencies in graph.items():
+        for dependency in dependencies:
+            in_degree[node] += 0  # Mark that this node was encountered
+            in_degree[dependency] += 1
+            
+    # Step 2: Identify nodes with zero in-degree (start points)
+    start_points = [node for node in graph if in_degree[node] == 0]
+    
+    # Step 3: Initialize a stack for DFS or queue for BFS
+    order_stack, visited_stack = [], []
+    
+    # Step 4: Process nodes through a loop
+    while start_points:
+        current_node = start_points.pop()
+        
+        # Add the processed node to the final ordering
+        order_stack.append(current_node)
+        
+        # Find its dependencies and reduce their in-degree by one
+        for dependency in graph[current_node]:
+            in_degree[dependency] -= 1
+            
+            # If any of these dependencies become free (in-degree = 0), add them to start_points
+            if in_degree[dependency] == 0:
+                start_points.append(dependency)
+                
+    # Step 5: Ensure all nodes were processed, otherwise a cycle existed
+    if len(order_stack) != len(graph):
+        raise ValueError(""The graph contains a cycle and cannot be topologically sorted."")
+    
+    return order_stack
+
+# Example usage
+graph = {
+    'A': ['B', 'C'],
+    'B': ['D'],
+    'C': ['D'],
+    'D': [],
+}
+
+print(topological_sort(graph))
+```
+
+This function performs a depth-first search (DFS) to find and record nodes with no incoming edges (in-degree of zero), and then iteratively reduces the in-degrees of their downstream dependencies. When any node's in-degree drops to zero, that node gets added to our ordering list until all nodes are processed. The result is returned as a topologically sorted order of nodes or an error message if there was a cycle detected.",0,-0.28550748024100003,0.28550748024100003,0
+code_simple_01,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.996028,"```python
+def is_even(n):
+    return n % 2 == 0
+```",0,-0.742071776784,0.992071776784,1
+code_simple_02,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.973114,"```python
+def max_of_three(a, b, c):
+    return max(a, b, c)
+```",0,-0.696950856996,0.946950856996,1
+code_simple_03,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.991009,"```python
+def reverse_string(s):
+    return s[::-1]
+```",0,-0.7320988380810001,0.9820988380810001,1
+code_simple_04,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.786884,"```python
+def count_vowels(s):
+    """"""
+    Returns the number of vowels in a string.
+    
+    :param s: The input string to analyze.
+    :return: The count of vowels in the string.
+    """"""
+    # Define the set of vowels for easy checking
+    vowels = ""aeiouAEIOU""
+    # Initialize a counter for the vowels
+    count = 0
+    
+    # Iterate through each character in the string
+    for char in s:
+        # Check if the character is a vowel
+        if char in vowels:
+            count += 1
+            
+    return count
+```
+
+This function `count_vowels` will correctly count and return the number of vowels in the input string.",0,-0.619186429456,0.619186429456,0
+code_simple_05,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.998959,"```python
+def celsius_to_fahrenheit(c):
+    return (c * 9/5) + 32
+```",0,-0.7479190836810001,0.9979190836810001,1
+code_simple_06,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.996505,"```python
+def sum_list(lst):
+    return sum(lst)
+```",0,-0.743022215025,0.993022215025,1
+code_simple_07,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.904977,"```python
+def is_palindrome(s):
+    """"""
+    Checks if the given string s is a palindrome.
+    
+    Args:
+    s (str): The string to check.
+    
+    Returns:
+    bool: True if s is a palindrome, False otherwise.
+    """"""
+    # Remove non-alphanumeric characters and convert to lower case for uniformity
+    cleaned_s = ''.join(char.lower() for char in s if char.isalnum())
+    
+    # Check if the cleaned string is equal to its reverse
+    return cleaned_s == cleaned_s[::-1]
+```
+
+This function first cleans the input string by removing all non-alphanumeric characters and converting it to lowercase to ensure the comparison is case-insensitive and considers only alphanumeric characters. Then, it checks if the cleaned string is equal to its reverse, which is a characteristic of palindromes.",0,-0.568983370529,0.818983370529,1
+code_simple_08,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.784901,"```python
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+
+This function calculates the factorial of a given number `n` by iterating from 2 to `n`, multiplying each number to accumulate the factorial value. The base case handles the scenario where `n` is either 0 or 1, as both have a factorial value of 1.",0,-0.616069579801,0.616069579801,0
+code_simple_09,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.994214,"```python
+def clamp(x, lo, hi):
+    return max(lo, min(x, hi))
+```",0,-0.7384614777960001,0.9884614777960001,1
+code_simple_10,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.771161,"```python
+def flatten(lst):
+    """"""
+    Flattens a list of lists into a single list.
+    
+    :param lst: A list containing sublists to be flattened.
+    :return: A flattened list containing all elements from the sublists.
+    """"""
+    return [item for sublist in lst for item in sublist]
+```
+
+This function uses a list comprehension to iterate through each sublist in `lst` and then iterates through each item in that sublist, effectively flattening it into a single list.",0,-0.594689287921,0.594689287921,0
+code_simple_11,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.642314,"```python
+def unique(lst):
+    seen = set()
+    return [x for x in lst if not (x in seen or seen.add(x))]
+```
+
+This function iterates through the input list `lst` and uses a set `seen` to keep track of elements that have already been encountered. For each element, it checks whether adding it to the set would increase the size of the set; this ensures uniqueness while preserving order. Only unique elements are included in the resulting list.",0,-0.41256727459600007,0.41256727459600007,0
+code_simple_12,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.8639,"```python
+def dot_product(a, b):
+    """"""
+    Compute the dot product of two lists a and b.
+
+    Parameters:
+    a (list): First list of numbers.
+    b (list): Second list of numbers.
+
+    Returns:
+    int or float: The dot product of a and b.
+    """"""
+    if len(a) != len(b):
+        raise ValueError(""Both lists must be of the same length."")
+    
+    return sum(x * y for x, y in zip(a, b))
+```",0,-0.74632321,0.74632321,0
+code_simple_13,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.744013,"```python
+def title_case(s):
+    """"""
+    Converts a string to title case.
+    
+    Parameters:
+    s (str): The input string to be converted to title case.
+    
+    Returns:
+    str: The title-cased version of the input string.
+    """"""
+    return ' '.join(word.capitalize() for word in s.split())
+
+# Example usage and check function
+def check_function():
+    test_cases = [
+        (""this is a test"", ""This Is A Test""),
+        (""A MAN AND A_plan"", ""A Man And A_Plan""),
+        (""i_love_pyth0n"", ""I_Love_Pyth0n""),
+        ("""", """"),
+        (""hello WORLD"", ""Hello World"")
+    ]
+    
+    all_passed = True
+    for input_str, expected in test_cases:
+        result = title_case(input_str)
+        if result != expected:
+            print(f""Failed: {input_str} -> {result} (Expected: {expected})"")
+            all_passed = False
+    
+    if all_passed:
+        print(""All test cases passed!"")
+        
+check_function()
+```
+
+This code snippet defines a function `title_case` that converts strings to title case. It first splits the input string into words, capitalizes each word, and then joins them back together with spaces in between. The provided check function tests various inputs to ensure correctness.",0,-0.5535553441690001,0.5535553441690001,0
+code_simple_14,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.896954,"```python
+def intersection(a, b):
+    """"""
+    Returns common elements of two lists.
+    
+    Args:
+    a (list): First input list.
+    b (list): Second input list.
+    
+    Returns:
+    list: A list containing the common elements of the two input lists.
+    """"""
+    return list(set(a) & set(b))
+```",0,-0.8045264781160001,0.8045264781160001,0
+code_simple_15,code_simple,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.989533,"```python
+def char_frequency(s):
+    frequency_dict = {}
+    for char in s:
+        if char in frequency_dict:
+            frequency_dict[char] += 1
+        else:
+            frequency_dict[char] = 1
+    return frequency_dict
+```",0,-0.729175558089,0.979175558089,1
+fact_common_01,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.998339,Au,1,0.249997241079,2.7589210000000783e-06,1
+fact_common_02,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.992892,Tokyo,1,0.249949476336,5.052366400000005e-05,1
+fact_common_03,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.879667,There are 8 planets in our solar system.,0,-0.7738140308889999,0.7738140308889999,0
+fact_common_04,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.997929,World War II ended in 1945.,0,-0.7458622890409999,0.9958622890409999,1
+fact_common_05,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.909974,300 km/s (rounded to the nearest thousand),0,-0.5780526806759999,0.8280526806759999,1
+fact_common_06,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999484,The largest ocean on Earth is the Pacific Ocean.,0,-0.7489682662560001,0.9989682662560001,1
+fact_common_07,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.996445,William Shakespeare wrote Romeo and Juliet.,0,-0.742902638025,0.992902638025,1
+fact_common_08,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999893,12,1,0.249999988551,1.1448999999993201e-08,1
+fact_common_09,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999869,Hydrogen,1,0.249999982839,1.7160999999997966e-08,1
+fact_common_10,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.996786,Humans have 46 chromosomes.,0,-0.7435823297959999,0.9935823297959999,1
+fact_common_11,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.965588,100°C,0,-0.682360185744,0.932360185744,1
+fact_common_12,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.815566,Mercury is the planet closest to the Sun.,0,-0.665147900356,0.665147900356,0
+fact_common_13,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.998716,H2O,1,0.249998351344,1.6486559999998764e-06,1
+fact_common_14,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.963034,"There are 7 continents: Africa, Antarctica, Asia, Europe, North America, Australia, and South America.",0,-0.6774344851559999,0.9274344851559999,1
+fact_common_15,factual_common,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.970204,"The longest river in the world is the Nile River, which is approximately 6,650 kilometers (4,132 miles) long.",0,-0.6912958016159999,0.9412958016159999,1
+fact_obscure_01,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.952751,5700 years,0,-0.657734468001,0.907734468001,1
+fact_obscure_02,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.864723,The smallest country in the world by area is Vatican City.,0,-0.747745866729,0.747745866729,0
+fact_obscure_03,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.986842,The Treaty of Westphalia was signed in 1648.,0,-0.723857132964,0.973857132964,1
+fact_obscure_04,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999917,76,1,0.249999993111,6.8890000000091715e-09,1
+fact_obscure_05,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.895341,The longest bone in the human body is the femur.,0,-0.8016355062810001,0.8016355062810001,0
+fact_obscure_06,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.948332,A dodecahedron has 30 edges.,0,-0.649333582224,0.899333582224,1
+fact_obscure_07,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.851246,JPY,1,-0.022127752516000014,0.022127752516000014,0
+fact_obscure_08,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.976715,The Mohs hardness of topaz is 8.0.,0,-0.703972191225,0.953972191225,1
+fact_obscure_09,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.995641,The University of Bologna was founded in 1088.,0,-0.741301000881,0.991301000881,1
+fact_obscure_10,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.999983,W,1,0.249999999711,2.8900000000152174e-10,1
+fact_obscure_11,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.971554,A standard piano has 88 keys.,0,-0.693917174916,0.943917174916,1
+fact_obscure_12,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.920033,11 km/s,0,-0.596460721089,0.846460721089,1
+fact_obscure_13,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.890625,HEL,1,-0.011962890625,0.011962890625,0
+fact_obscure_14,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.904095,An icosahedron has 12 vertices.,0,-0.567387769025,0.817387769025,1
+fact_obscure_15,factual_obscure,1,0.25,1.0,0.25,0.9,789,oracle,argmax,1,1,0,0.98942,The pH of pure water at 25 degrees Celsius is 7.0.,0,-0.7289519363999999,0.9789519363999999,1

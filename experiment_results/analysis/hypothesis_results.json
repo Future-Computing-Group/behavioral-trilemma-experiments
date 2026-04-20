@@ -1,0 +1,113 @@
+{
+  "H1": {
+    "statistic": -3.5659213768258864,
+    "p_value": 0.9997198315315172,
+    "effect_size": -0.35659213768258863,
+    "ci_lo": -0.12113,
+    "ci_hi": -0.037313750000000014,
+    "mean_diff": -0.07590499999999999,
+    "n": 100
+  },
+  "H2": {
+    "slope": 0.0,
+    "p_value": 1.0,
+    "r_squared": 0.0,
+    "intercept": 0.9761111111111112,
+    "ci_lo": 0.0,
+    "ci_hi": 0.0
+  },
+  "H3": {
+    "violations": 0,
+    "total_tests": 60,
+    "violation_rate": 0.0,
+    "convex": true
+  },
+  "H4": {
+    "0.5": {
+      "p_base": 0.0,
+      "p_treat": 0.0,
+      "diff": 0.0,
+      "z": 0.0,
+      "p_value": 1.0,
+      "n_base": 2112,
+      "n_treat": 1775
+    },
+    "0.7": {
+      "p_base": 0.0,
+      "p_treat": 0.0,
+      "diff": 0.0,
+      "z": 0.0,
+      "p_value": 1.0,
+      "n_base": 2142,
+      "n_treat": 1800
+    },
+    "0.9": {
+      "p_base": 1.0,
+      "p_treat": 1.0,
+      "diff": 0.0,
+      "z": 0.0,
+      "p_value": 1.0,
+      "n_base": 2202,
+      "n_treat": 1850
+    }
+  },
+  "H5": {
+    "mean_bind": 0.9761111111111112,
+    "mean_nonbind": 0.01428571428571429,
+    "ratio": 68.32777777777775,
+    "statistic": 495.6589901039323,
+    "p_value": 0.0,
+    "effect_size": 12.746973768644018,
+    "ci_lo": 0.9589563492063492,
+    "ci_hi": 0.9646335978835978,
+    "n_bind": 5400,
+    "n_nonbind": 2100
+  },
+  "H6": {
+    "statistic": -3.565921376825887,
+    "p_value": 0.0002801684684827563,
+    "effect_size": 0.3565921376825887,
+    "ci_lo": -0.12113,
+    "ci_hi": -0.037313750000000014,
+    "mean_diff": -0.075905,
+    "n": 100
+  },
+  "correction": {
+    "H1": {
+      "rank": 4,
+      "original_p": 0.9997198315315172,
+      "adjusted_p": 1.0,
+      "rejected": false
+    },
+    "H2": {
+      "rank": 5,
+      "original_p": 1.0,
+      "adjusted_p": 1.0,
+      "rejected": false
+    },
+    "H3": {
+      "rank": 1,
+      "original_p": 0.0,
+      "adjusted_p": 0.0,
+      "rejected": true
+    },
+    "H4": {
+      "rank": 6,
+      "original_p": 1.0,
+      "adjusted_p": 1.0,
+      "rejected": false
+    },
+    "H5": {
+      "rank": 2,
+      "original_p": 0.0,
+      "adjusted_p": 0.0,
+      "rejected": true
+    },
+    "H6": {
+      "rank": 3,
+      "original_p": 0.0002801684684827563,
+      "adjusted_p": 0.0011206738739310252,
+      "rejected": true
+    }
+  }
+}

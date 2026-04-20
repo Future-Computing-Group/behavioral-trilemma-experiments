@@ -1,0 +1,15 @@
+{
+  "model": "qwen2.5:7b",
+  "n_max": 32,
+  "temperature": 0.8,
+  "max_tokens": 512,
+  "task_count": 100,
+  "seeds": [
+    42,
+    123,
+    456,
+    789,
+    0
+  ],
+  "generated_at": "2026-04-15 23:17:17"
+}
