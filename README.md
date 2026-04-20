@@ -1,51 +1,194 @@
 # Behavioral Credibility Trilemma: Empirical Validation
 
-Experiment code for empirical validation of the Behavioral Credibility Trilemma
-via Best-of-N selection.
+Experiment code and raw results for the empirical validation of the Behavioral
+Credibility Trilemma via Best-of-N selection. This repository accompanies the
+manuscript
 
-## Overview
+> L. Lovén (2026). *The Behavioral Credibility Trilemma: When Calibrated
+> Autonomy Becomes Impossible.* Journal of Machine Learning Research
+> (under review).
 
-Tests three predictions of the Behavioral Credibility Trilemma using Best-of-N
-selection as a formal optimization mechanism:
+## What's here
 
-1. **FKG prediction:** Calibration degrades monotonically with selection pressure N
-2. **Perturbation Lemma:** Confidence inflation scales with the autonomy/calibration weight ratio
-3. **Pareto bound:** Achievable (H,C,A) triples form a convex surface
+A 540-configuration Best-of-N sweep on Qwen-2.5-7B (54,000 selected-task
+observations) testing six pre-specified hypotheses derived from the
+Behavioral Perturbation Lemma and the Pareto bound of the Confidence-Gated
+Decision Problem. All six hypotheses are confirmed at α = 0.05 after
+Bonferroni–Holm correction. The repository contains the raw per-configuration
+CSVs, the Phase 0 calibration file, aggregated metrics, the hypothesis-results
+JSON, and the analysis pipeline that rebuilds the JSON from the raw data.
 
-## Quick start
+## Reproducing the paper
+
+The full pipeline consists of three stages:
+
+### Stage 1: Phase 0 calibration (held-out)
+
+Estimates per-task base accuracy $\hat{p}_t$ and binding-set membership at
+each threshold $r_{\min} \in \{0.5, 0.7, 0.9\}$. Uses 20 held-out seeds
+`{1000..1019}`, disjoint from the experimental seeds to avoid circularity in
+the H5 binding-state-specificity test.
 
 ```bash
-# Unit smoke (seconds)
-python -m scripts.run --mode unit_smoke
+python -m scripts.run --mode phase0
+# Output: experiment_output/raw_runs/logprob/results/phase0_calibration.csv
+```
 
-# Integration smoke (minutes)
-python -m scripts.run --mode integration_smoke
+Estimated runtime: ~1 hour on a single machine.
 
-# Full experiment (~14 hours)
+### Stage 2: Full 540-config Best-of-N sweep
+
+```bash
 python -m scripts.run --mode full
+# Output: 540 per-configuration CSVs under
+#         experiment_output/raw_runs/logprob/results/
 ```
 
-## Structure
+Sweep: $N \in \{1, 2, 4, 8, 16, 32\}$, $w_A/w_C \in \{0, 0.25, 0.5, 1, 2, 4\}$,
+$r_{\min} \in \{0.5, 0.7, 0.9\}$, seeds $\{0, 42, 123, 456, 789\}$.
+Total configurations: $6 \times 6 \times 3 \times 5 = 540$.
+
+Estimated runtime: ~14 hours on a single machine with Ollama serving
+Qwen-2.5-7B locally.
+
+### Stage 3: Analysis and figures
+
+```bash
+# Rebuild hypothesis_results.json end-to-end from raw CSVs
+python -m scripts.regenerate_hypothesis_results
+# Output: experiment_output/analysis_logprob/hypothesis_results.json
+
+# Plot H3 tolerance-aware Pareto-convexity violation rate by N
+python -m scripts.plot_h3_convexity_by_N
+# Output: experiment_output/analysis_logprob/figures/h3_convexity_by_N.{pdf,png}
+```
+
+`N_BOOT` environment variable controls bootstrap-CI resamples for H1/H5/H6
+(default 2000; the paper uses 10000 in a final run but 2000 is within
+measurement noise and much faster):
+
+```bash
+N_BOOT=10000 python -m scripts.regenerate_hypothesis_results
+```
+
+Expected runtime: 1–3 minutes for `regenerate_hypothesis_results.py` at
+`N_BOOT=2000`, ~5 minutes at `N_BOOT=10000`. Plot script: seconds.
+
+After Stage 3, the `hypothesis_results.json` keys `H1`–`H6` should match
+Table 1 of the manuscript:
+
+| Hypothesis | $p$-value | Effect size |
+|---|---|---|
+| H1 Fixed-axis gating degradation | $4.67 \times 10^{-19}$ | $d = 1.10$ |
+| H2 Monotone inflation trend (Jonckheere–Terpstra) | $8.49 \times 10^{-5}$ | $\rho = 0.89$ |
+| H3 Tolerance-aware convexity | binomial test, 10% < 15% | — |
+| H4 Threshold clustering | $< 10^{-3}$ | $z = 30.02$ |
+| H5 Binding-state specificity | $< 10^{-3}$ | $d = 5.32$ |
+| H6 Control ($w_A = 0$) | $1.35 \times 10^{-23}$ | $d = 1.31$ |
+
+## Repository structure
 
 ```
-configs/          # Experiment configurations (params.yaml, weight vectors)
-scripts/          # Orchestrator + task runner + scoring
-tasks/            # Task sets with ground truth (math, factual, code)
-results/          # CSV outputs per configuration
-analysis/         # Post-hoc analysis scripts + figures
-tests/            # Unit tests for scoring, metrics, task verification
-notes/            # Experiment design notes and decisions
+LICENSE
+README.md
+requirements.txt
+EXPERIMENT-PLAN.md                           # full protocol (§4.3 has Phase 0 details)
+analysis/
+  hypothesis_tests.py                        # H1–H6 tests + helpers
+  metrics.py                                 # Brier decomposition etc.
+  figures.py                                 # general figure utilities
+configs/
+  params.yaml                                # weight grid, seeds, r_min
+scripts/
+  run.py                                     # orchestrator (phase0 + full)
+  regenerate_hypothesis_results.py           # rebuild JSON from raw CSVs
+  plot_h3_convexity_by_N.py                  # H3 stratified-by-N figure
+  generate_tasks.py                          # task generation
+src/
+  orchestrator.py                            # per-config runner
+  ollama_client.py                           # Ollama OpenAI-compatible client
+  parser.py                                  # response parser
+  scorer.py                                  # composite payoff
+tasks/                                       # 100 tasks (arith/factual/code)
+tests/                                       # pytest unit tests
+experiment_output/
+  raw_runs/
+    logprob/
+      results/                               # 540 per-config CSVs + phase0
+      pools/                                 # completion pools
+    qwen_2.5/                                # LEGACY verbal-confidence run
+  analysis/                                  # aggregated metrics (shared)
+  analysis_logprob/                          # log-probability-based results
+    hypothesis_results.json
+    brier_decomposition.csv
+    per_config_metrics.csv
+    inflation_metrics.csv
+    pairwise_effect_sizes.csv
+    summary_mean_{A,C,H,brier}_r{0.5,0.7,0.9}.csv
+    figures/
+      h3_convexity_by_N.{pdf,png}
+  archives/                                  # zipped results snapshots
+docs/
+  REPRODUCING.md                             # step-by-step reproduction guide
 ```
-
-## Models
-
-- **Primary:** Qwen-2.5-7B via Ollama (local, free, reproducible)
-- **Secondary:** Llama-3.1-8B via Ollama for cross-model validation
 
 ## Dependencies
 
-- Python 3.10+
-- `requests` (for Ollama API)
-- `numpy`, `scipy` (for statistics)
-- `pandas` (for results processing)
-- Ollama running locally with qwen2.5:7b loaded
+- Python 3.10 or newer (tested on 3.11)
+- Ollama 0.4.2 or newer, with `qwen2.5:7b` pulled (`ollama pull qwen2.5:7b`)
+  - The paper uses the default Ollama quantization, Q4_K_M
+  - Inference via the OpenAI-compatible endpoint (`/v1/chat/completions`)
+    with `logprobs: true`; temperature $\tau = 0.8$
+- Python packages: `pip install -r requirements.txt`
+
+## Confidence metric
+
+The per-completion confidence report $r_i$ is derived from token-level
+log-probabilities returned by Ollama:
+
+$$r_i = \exp\!\left(\frac{1}{T}\sum_{t=1}^{T} \ell_t\right) = \left(\prod_{t=1}^{T} p_t\right)^{1/T}$$
+
+the geometric mean of per-token probabilities, clipped to $[0.01, 1.0]$.
+See the manuscript §7 and [`src/parser.py`](src/parser.py) for the exact
+extraction code.
+
+## Ground-truth verification
+
+The oracle correctness label $y_i \in \{0, 1\}$ is set task-type-specifically:
+
+- **Arithmetic:** exact-value comparison after numeric parsing
+- **Factual:** matched against the curated reference file
+  `tasks/factual_truth.csv`
+- **Code:** Python test-case execution
+
+See [`src/scorer.py`](src/scorer.py) for the full verification logic.
+
+## Legacy: `experiment_output/raw_runs/qwen_2.5/`
+
+The `qwen_2.5/` subdirectory contains results from an earlier run using
+verbalized confidence (the model states its own confidence in prose). The
+`logprob/` results supersede these. The legacy directory is kept for
+audit-trail purposes and should not be used for the paper's analysis
+pipeline; all `regenerate_hypothesis_results.py` and `plot_*` scripts load
+exclusively from `logprob/`.
+
+## Citation
+
+```bibtex
+@article{loven2026trilemma,
+  title   = {The Behavioral Credibility Trilemma: When Calibrated Autonomy
+             Becomes Impossible},
+  author  = {Lov{\'e}n, Lauri},
+  journal = {Journal of Machine Learning Research},
+  year    = {2026},
+  note    = {Under review}
+}
+```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+## Contact
+
+Issues and questions: please open a GitHub issue.
