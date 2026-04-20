@@ -1,0 +1,115 @@
+"""Regenerate hypothesis_results.json from raw logprob CSVs.
+
+Reads all per-config raw CSVs under
+  experiment_output/raw_runs/logprob/results/
+plus phase0_calibration.csv, assembles them into a single dataframe, and
+calls run_all_tests from analysis.hypothesis_tests.
+
+Writes the updated JSON to
+  experiment_output/analysis_logprob/hypothesis_results.json
+
+Usage:
+    python -m scripts.regenerate_hypothesis_results
+"""
+from __future__ import annotations
+
+import glob
+import json
+import os
+import pathlib
+import sys
+
+import pandas as pd
+
+_ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(_ROOT / "experiment_output"))
+
+from analysis.hypothesis_tests import run_all_tests  # type: ignore  # noqa: E402
+
+
+RAW_DIR = _ROOT / "experiment_output" / "raw_runs" / "logprob" / "results"
+OUT_PATH = _ROOT / "experiment_output" / "analysis_logprob" / "hypothesis_results.json"
+
+
+def load_phase0(results_dir: pathlib.Path) -> tuple[dict, dict]:
+    phase0 = pd.read_csv(results_dir / "phase0_calibration.csv")
+    p_hat = {row.task_id: float(row.p_hat) for row in phase0.itertuples(index=False)}
+    binding = {
+        0.5: set(phase0.loc[phase0["binding_0.5"] == 1, "task_id"]),
+        0.7: set(phase0.loc[phase0["binding_0.7"] == 1, "task_id"]),
+        0.9: set(phase0.loc[phase0["binding_0.9"] == 1, "task_id"]),
+    }
+    return p_hat, binding
+
+
+def load_dataframe(results_dir: pathlib.Path) -> pd.DataFrame:
+    pattern = str(results_dir / "qwen2.5_7b_*.csv")
+    files = sorted(glob.glob(pattern))
+    if not files:
+        raise SystemExit(f"No raw CSVs matched {pattern}")
+    frames = [pd.read_csv(f) for f in files]
+    df = pd.concat(frames, ignore_index=True)
+    return df
+
+
+def main() -> None:
+    p_hat, binding = load_phase0(RAW_DIR)
+    df = load_dataframe(RAW_DIR)
+    print(f"Loaded {len(df):,} rows, {df['task_id'].nunique()} tasks, "
+          f"N={sorted(df['N'].unique())}, "
+          f"w_ratio={sorted(df['w_ratio'].unique())}, "
+          f"r_min={sorted(df['r_min'].unique())}, "
+          f"seeds={sorted(df['seed'].unique())}")
+
+    n_boot = int(os.environ.get("N_BOOT", "2000"))
+    print(f"Running hypothesis tests with n_boot={n_boot}...")
+    results = run_all_tests(df, binding_tasks=binding, p_hat=p_hat, n_boot=n_boot)
+
+    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with open(OUT_PATH, "w") as f:
+        json.dump(results, f, indent=2, default=str)
+    print(f"Wrote {OUT_PATH}")
+
+    # One-line summary of final decisions
+    def decision(key: str, pval: float, extra: str = "") -> str:
+        status = "PASS" if pval < 0.05 else "FAIL"
+        return f"  {key}: {status} (p={pval:.2e}) {extra}"
+
+    final = {k: results[k] for k in ("H1", "H2", "H3", "H4", "H5", "H6")}
+    print("\n=== FINAL (theory-aligned) decisions ===")
+    print(decision("H1", final["H1"]["p_value"],
+                   f"t={final['H1']['statistic']:.2f}, d={final['H1']['effect_size']:.2f}"))
+    print(decision("H2", final["H2"]["p_value"],
+                   f"z={final['H2']['z']:.2f}, rho={final['H2']['rho']:.2f}"))
+    rate = final["H3"]["violation_rate"]
+    ci_hi = final["H3"]["ci_hi"]
+    met = final["H3"]["criterion_met"]
+    print(f"  H3: {'PASS' if met else 'FAIL'} rate={rate:.2%} vs 15%, "
+          f"CI upper {ci_hi:.3f}")
+    print(decision("H4", final["H4"]["p_value"],
+                   f"z={final['H4']['z']:.2f}"))
+    print(decision("H5", final["H5"]["p_value"],
+                   f"d={final['H5']['effect_size']:.2f}"))
+    print(decision("H6", final["H6"]["p_value"],
+                   f"d={final['H6']['effect_size']:.2f}"))
+
+    supp = results["paper_h2_spearman"]
+    print("\n=== Supplementary: manuscript's original H2 spec (Spearman BS vs N) ===")
+    print(f"  rho={supp['rho']:.3f}, p={supp['p_value']:.2e} "
+          f"(two-sided Spearman across {supp['n_points']} (N,w_ratio) cells)")
+    print("  Interpretation: rho<0 => BS decreases with N, so the manuscript's "
+          "original 'monotone degradation' H2 (rho>0) is rejected by the same data.")
+
+    trend = results["H3_convexity_by_N"]["trend"]
+    by_N = results["H3_convexity_by_N"]["by_N"]
+    print("\n=== H3 asymptotic trend: violation rate by N ===")
+    for _, row in sorted(by_N.items()):
+        print(f"  N={row['N']:>3}: {row['violations']:>2}/{row['total_tests']:>2} "
+              f"= {row['violation_rate']:.1%} "
+              f"(95% CI [{row['ci_lo']:.3f}, {row['ci_hi']:.3f}])")
+    print(f"  Spearman(N, rate) = {trend['spearman_rho']:.3f}, "
+          f"p_two-sided={trend['p_value_two_sided']:.3f}")
+
+
+if __name__ == "__main__":
+    main()
