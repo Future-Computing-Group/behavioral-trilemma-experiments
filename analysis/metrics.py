@@ -24,6 +24,21 @@ def load_results(results_dir: pathlib.Path) -> pd.DataFrame:
     return pd.concat(frames, ignore_index=True)
 
 
+def load_phase0(phase0_path: pathlib.Path) -> tuple[dict[str, float], dict[float, set[str]]]:
+    phase0_path = pathlib.Path(phase0_path)
+    df = pd.read_csv(phase0_path)
+
+    p_hat = dict(zip(df["task_id"], df["p_hat"].astype(float)))
+
+    binding_sets: dict[float, set[str]] = {}
+    for col in df.columns:
+        if col.startswith("binding_"):
+            r_min = float(col.replace("binding_", ""))
+            binding_sets[r_min] = set(df.loc[df[col] == 1, "task_id"])
+
+    return p_hat, binding_sets
+
+
 def compute_per_config_metrics(df: pd.DataFrame) -> pd.DataFrame:
     """Compute aggregate metrics per configuration (N, w_ratio, r_min, seed).
 
