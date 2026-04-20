@@ -1,5 +1,0 @@
-{
-  "analysis_command": "python scripts/run_analysis.py --results-dir expirement_results/logprob/results --output-dir analysis_logprob --n-boot 10000",
-  "tables_command": "python scripts/generate_latex_tables.py --analysis-dir analysis_logprob --output-dir reports/tables_logprob",
-  "notes": "No new model-generation run; this is a reconciliation analysis snapshot from existing experimental data."
-}
