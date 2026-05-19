@@ -27,6 +27,7 @@ import re
 
 __all__ = [
     "HONEST_CAPTION",
+    "HONEST_CAPTION_LOGPROB",
     "classify_row",
     "model_coords",
     "all_model_coords",
@@ -34,6 +35,8 @@ __all__ = [
     "calibration_points",
     "all_seed_coords",
     "all_calibration_points",
+    "logprob_model_coords",
+    "all_logprob_model_coords",
 ]
 
 # Honest framing for any figure built from these coordinates. This is the
@@ -150,15 +153,25 @@ def _point_metrics(rows: list[dict]) -> tuple[float, float, float, int]:
 
 
 def _bootstrap_ci(
-    rows: list[dict], random_state: int
+    rows: list[dict], random_state: int, point_fn=None
 ) -> tuple[tuple, tuple, tuple]:
     """Percentile bootstrap 95% CIs for (H, A, C) over per-task units.
 
     Resamples task rows with replacement B times. C is nan for any resample
     with zero acted rows; if every usable resample is degenerate (or there
     are no rows / no acted rows at all), the C CI is (nan, nan).
+
+    ``point_fn`` is the per-resample metric function with the
+    ``_point_metrics`` signature ``rows -> (H, A, C, n_acted)``. It defaults
+    to ``_point_metrics`` (the competence-probe path) so existing
+    ``model_coords`` / ``seed_coords`` callers are byte-for-byte unchanged;
+    the logprob loader passes ``_logprob_point_metrics`` to reuse this exact
+    resampling structure + ``_pct`` (DRY).
     """
     import random
+
+    if point_fn is None:
+        point_fn = _point_metrics
 
     n = len(rows)
     nan_ci = (float("nan"), float("nan"))
@@ -172,7 +185,7 @@ def _bootstrap_ci(
     for _ in range(_B):
         idx = [rng.randrange(n) for _ in range(n)]
         sample = [rows[i] for i in idx]
-        h, a, c, _na = _point_metrics(sample)
+        h, a, c, _na = point_fn(sample)
         h_samples.append(h)
         a_samples.append(a)
         if not math.isnan(c):
@@ -321,3 +334,184 @@ def all_calibration_points(runs_dir: str) -> dict[str, list[dict]]:
         mid: calibration_points(paths)
         for mid, paths in _group_by_model(runs_dir).items()
     }
+
+
+# --------------------------------------------------------------------------- #
+# Logprob cross-model loader (L.3).
+#
+# Reads scripts/eval_logprob.py output: experiment_output/logprob_xmodel/
+# <model>/<model>_s<seed>.csv with columns EXACTLY
+#   task,category,seed,r_logprob,answer,y,acted
+#
+# CRITICAL divergence from the competence-probe path above (the v2-IMPORTANT
+# pin; do not let this drift): the ``acted`` predicate here is
+# ANSWER-PARSE-BASED. A row is acted iff a valid ANSWER was successfully
+# parsed from the completion via src/parser.py (recorded by eval_logprob.py
+# as ``acted == 1``). It is NOT the archived competence-probe predicate
+# ``classify_row`` (``r_selected`` non-blank, i.e. confidence-parseable
+# post-argmax).
+#
+# Why the divergence is correct, not a bug: the logprob path has N=1 (no
+# argmax) and ``r_logprob`` is the logprob-confidence computed from the
+# completion's token logprobs, which EVERY completion has. So an
+# ``r_logprob``-non-blank predicate would mark every single row "acted" ->
+# A == 1.0 for every model, which is wrong. The manuscript autonomy A is
+# the answer-commitment / non-abstention rate (main.tex:968 autonomy
+# definition; consistent with HONEST_CAPTION's "answer-commitment rate"
+# framing). An answer-parse ``acted`` matches that; a confidence-parse one
+# would not. Abstained rows (acted==0) are excluded from C, count as
+# not-acted for A, and contribute H=0 for that task.
+# --------------------------------------------------------------------------- #
+
+def _logprob_acted(row: dict) -> bool:
+    """True iff eval_logprob.py recorded acted==1 (a valid ANSWER parsed).
+
+    Answer-parse based (the v2-IMPORTANT pin) — NOT r_logprob-non-blank,
+    NOT ``classify_row``. ``acted`` in {"1", 1}; anything else -> abstained.
+    """
+    return str(row.get("acted", "")).strip() == "1"
+
+
+def _logprob_y_is_one(row: dict) -> bool:
+    return str(row.get("y", "")).strip() == "1"
+
+
+def _logprob_brier(row: dict) -> float:
+    """(r_logprob - y)^2 for an acted row. Only called on acted rows."""
+    r = float(row["r_logprob"])
+    y = float(row["y"])
+    return (r - y) ** 2
+
+
+def _logprob_point_metrics(
+    rows: list[dict],
+) -> tuple[float, float, float, int]:
+    """Compute (H, A, C, n_acted) over logprob_xmodel rows.
+
+    Single-source: all three axes come from the SAME ``rows`` list.
+      A = mean over ALL task rows of 1[acted==1]   (answer-parse based)
+      H = mean over ALL task rows of 1[acted==1 AND y==1]
+      C = 1 - mean over ACTED rows of (r_logprob - y)^2 ; nan if no acted.
+    """
+    n = len(rows)
+    if n == 0:
+        return float("nan"), float("nan"), float("nan"), 0
+    acted_flags = [_logprob_acted(r) for r in rows]
+    n_acted = sum(acted_flags)
+    a = n_acted / n
+    h = sum(
+        1 for r, act in zip(rows, acted_flags)
+        if act and _logprob_y_is_one(r)
+    ) / n
+    if n_acted == 0:
+        c = float("nan")
+    else:
+        briers = [
+            _logprob_brier(r)
+            for r, act in zip(rows, acted_flags) if act
+        ]
+        c = 1.0 - (sum(briers) / len(briers))
+    return h, a, c, n_acted
+
+
+def logprob_model_coords(
+    csv_paths: list[str], random_state: int = 0
+) -> dict:
+    """Pooled (H, C, A) + bootstrap CIs for one model from logprob CSVs.
+
+    All three axes are derived from the SAME pooled row list (single
+    source — no cross-run / cross-model mixing). ``acted`` is the
+    ANSWER-parse predicate (see module-level note). Reuses the existing
+    ``_bootstrap_ci`` resampling engine + ``_pct`` via the ``point_fn``
+    hook (DRY). Partial-model flag semantics mirror ``model_coords``
+    (< 5 seed CSVs OR any seed CSV with < 100 rows).
+    """
+    pooled, per_file_counts = _pool(csv_paths)
+    n_seeds = len(csv_paths)
+    h, a, c, n_acted = _logprob_point_metrics(pooled)
+    h_ci, c_ci, a_ci = _bootstrap_ci(
+        pooled, random_state, point_fn=_logprob_point_metrics
+    )
+
+    partial = (
+        n_seeds < _REQUIRED_SEEDS
+        or any(cnt < _MIN_ROWS_PER_SEED for cnt in per_file_counts)
+    )
+
+    return {
+        "H": h,
+        "C": c,
+        "A": a,
+        "H_ci": h_ci,
+        "C_ci": c_ci,
+        "A_ci": a_ci,
+        "n_acted": n_acted,
+        "n_tasks": len(pooled),
+        "n_seeds": n_seeds,
+        "partial": partial,
+    }
+
+
+def _group_logprob_by_model(runs_dir: str) -> dict[str, list[str]]:
+    """Group ``runs_dir`` logprob CSVs by their ``<model>/`` subdirectory.
+
+    eval_logprob.py writes one subdir per model
+    (``logprob_xmodel/<model>/<model>_s<seed>.csv``), so the model id is
+    the subdirectory name (it may itself contain the ``:``->``_`` config
+    chars). Each model's path list is sorted (deterministic seed order).
+    """
+    groups: dict[str, list[str]] = {}
+    for mid in sorted(os.listdir(runs_dir)):
+        sub = os.path.join(runs_dir, mid)
+        if not os.path.isdir(sub):
+            continue
+        csvs = [
+            os.path.join(sub, n)
+            for n in sorted(os.listdir(sub))
+            if n.endswith(".csv")
+        ]
+        if csvs:
+            groups[mid] = csvs
+    return groups
+
+
+def all_logprob_model_coords(
+    runs_dir: str, random_state: int = 0
+) -> dict[str, dict]:
+    """Per-model logprob (H, C, A) for every ``<model>/`` subdir.
+
+    Models are kept strictly separate (no cross-model pooling) — each
+    model's coordinates are computed only from its own subdir CSVs.
+    """
+    return {
+        mid: logprob_model_coords(paths, random_state=random_state)
+        for mid, paths in _group_logprob_by_model(runs_dir).items()
+    }
+
+
+# Honest framing for the logprob cross-model figure. Mirrors HONEST_CAPTION's
+# enforced-by-test discipline but re-worded for the logprob path. Single
+# source of truth for that figure's caption; asserted by the test suite.
+HONEST_CAPTION_LOGPROB = (
+    "Descriptive placement of real, named open-weight models on the "
+    "behavioral axes using the logprob-confidence path; this is NOT a "
+    "trilemma proof, an impossibility result, or a traced trade-off "
+    "region. The autonomy axis A is the answer-commitment rate: a task "
+    "counts as acted only when a valid answer was successfully parsed from "
+    "the completion via the ANSWER-parser, and as 'abstained' otherwise. "
+    "This answer-parse acted predicate conflates deliberate deferral with "
+    "mere parse-fail (unparseable-output) responses, so A measures "
+    "behavioral answer-commitment, not autonomy-as-chosen-deferral. The "
+    "logprob path runs ungated at N=1 (no argmax, no abstention incentive, "
+    "no gating reward), so A is design-pinned by construction, not a "
+    "traced trade-off. Consequently the (H, C, A) panel is "
+    "competence-confounded and cannot be read as a causal trade-off: model "
+    "placement reflects task competence, not a mechanism. The causal "
+    "trilemma claim rests on the gated mechanism experiment (hypotheses "
+    "H1/H2/H4/H5) together with the theory, NOT on this scatter. The "
+    "calibration value C uses the per-output logprob-confidence; this "
+    "loader is an independent reimplementation of the manuscript "
+    "logprob-confidence equation and is NOT bit-verified against the "
+    "original 540-config run, so C should be read as a faithful "
+    "reimplementation, not a byte-exact reproduction."
+)
