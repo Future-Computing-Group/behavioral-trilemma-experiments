@@ -430,3 +430,13 @@ def test_honest_caption_exists_and_is_honest():
 
     # causal claim belongs to the mechanism experiment
     assert "mechanism" in low
+
+    # A construct-validity caveat: A_action conflates deliberate deferral
+    # with unparseable-output failure (both -> "abstained").
+    assert ("defer" in low) or ("deferral" in low)
+    assert (
+        ("unparseable" in low)
+        or ("parse-fail" in low)
+        or ("parse fail" in low)
+        or ("parsing failure" in low)
+    )
