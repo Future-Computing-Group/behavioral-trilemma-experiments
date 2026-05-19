@@ -114,22 +114,42 @@ purely descriptive placement, not an impossibility/region trace.
 
 ## (H, C, A) ± 95% bootstrap CI per model
 
-<!-- NUMBERS PENDING L.4 REAL RUN: fill from analysis.model_points logprob loader on experiment_output/logprob_xmodel/ -->
-
 | model | H [95% CI] | C [95% CI] | A [95% CI] | n_acted | n_tasks | n_seeds | partial |
 |---|---|---|---|---|---|---|---|
-| _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ |
+| gemma2_9b | 0.398 [0.354, 0.440] | 0.556 [0.523, 0.588] | 0.996 [0.990, 1.000] | 498 | 500 | 5 | False |
+| mistral_7b-instruct-q4_K_M | 0.204 [0.168, 0.240] | 0.648 [0.617, 0.674] | 0.790 [0.754, 0.826] | 395 | 500 | 5 | False |
+| qwen2.5_7b | 0.294 [0.254, 0.334] | 0.437 [0.402, 0.471] | 1.000 [1.000, 1.000] | 500 | 500 | 5 | False |
 
-The table above is an **explicit placeholder**. No numbers have been
-invented. It will be filled from
+Numbers were filled from
 `analysis.model_points.all_logprob_model_coords` run on
-`experiment_output/logprob_xmodel/` once the L.4 real run completes
-(another process is generating that data; it was **not** touched by this
-work). Bootstrap config will be `random_state=0`, B = 2000, percentile
-2.5 / 97.5 (same engine as the competence path, reused via the
-`point_fn` hook). Partial models (< 5 seed CSVs or any seed CSV with
-< 100 rows) will be rendered faded/hollow with a "partial: N seeds" label
-and surfaced in `partial_models`, never silently averaged in as complete.
+`experiment_output/logprob_xmodel/` after the L.4 real run completed
+(3 models × 5 seeds × 100 tasks = 1500 task rows; every per-seed CSV
+verified at exactly 100 rows via `csv.DictReader`). Bootstrap config:
+`random_state=0`, B = 2000, percentile 2.5 / 97.5 (same engine as the
+competence path, reused via the `point_fn` hook). All three models are
+complete (5 seed CSVs each, 100 rows per CSV) so no partial-flag fading
+is applied; partial-model semantics remain available for future runs.
+
+Descriptively: the three models fall in distinct regions of the (H, C)
+plane. gemma2_9b has the highest helpfulness (H = 0.40) and an
+intermediate calibration value (C = 0.56), with A pinned at the top end
+(0.996). mistral_7b-instruct-q4_K_M has the lowest helpfulness
+(H = 0.20) but the highest calibration value (C = 0.65), and is the only
+model with appreciably sub-1.0 answer-commitment (A = 0.79, i.e. 105 of
+500 rows did not yield a parseable answer — these are parse-fails under
+the answer-parse `acted` predicate, not deliberate deferrals). qwen2.5_7b
+sits between the two on helpfulness (H = 0.29) and at the lowest
+calibration value (C = 0.44), with A = 1.00. Per the
+`HONEST_CAPTION_LOGPROB` caveats above, this is **descriptive
+cross-model placement under one common client/regime only** — it is not
+an impossibility, a trade-off region, a Pareto frontier, or a
+reproduction of any Table; mistral's lower A specifically reflects
+answer-parse failures, not a measured deferral mechanism.
+
+The rendered figure is at
+`./model-points-logprob-2026-05-19.png` (relative to this report) and
+also placed in the JMLR A1 manuscript figures directory as
+`figures/model-points-logprob-2026-05-19.png` (+ `.pdf`).
 
 ## Provenance
 
