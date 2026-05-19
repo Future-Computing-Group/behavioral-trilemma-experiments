@@ -25,7 +25,15 @@ import math
 import os
 import re
 
-__all__ = ["classify_row", "model_coords", "all_model_coords"]
+__all__ = [
+    "classify_row",
+    "model_coords",
+    "all_model_coords",
+    "seed_coords",
+    "calibration_points",
+    "all_seed_coords",
+    "all_calibration_points",
+]
 
 # Sentinels that count as "no action recorded" for r_selected.
 _BLANK_SENTINELS = {"", "nan", "none"}
@@ -43,6 +51,9 @@ _CI_HI_PCT = 97.5
 # id may itself contain underscores (e.g. mistral_7b-instruct-q4_K_M), so we
 # split on the config boundary, not on the first underscore.
 _CONFIG_SUFFIX_RE = re.compile(r"_N\d+_w.*$")
+
+# Filename -> seed: the trailing "_s<digits>" before the .csv extension.
+_SEED_SUFFIX_RE = re.compile(r"_s(\d+)(?:\.csv)?$")
 
 
 def classify_row(row: dict) -> str:
@@ -194,16 +205,87 @@ def _model_id_from_filename(filename: str) -> str:
     return _CONFIG_SUFFIX_RE.sub("", stem)
 
 
-def all_model_coords(runs_dir: str, random_state: int = 0) -> dict[str, dict]:
-    """Group CSVs in ``runs_dir`` by model-id prefix; coords per model."""
+def _seed_from_filename(filename: str) -> int:
+    """Parse the trailing ``_s<seed>`` integer from a probe CSV filename."""
+    m = _SEED_SUFFIX_RE.search(filename)
+    if m is None:
+        raise ValueError(f"no _s<seed> suffix in filename: {filename!r}")
+    return int(m.group(1))
+
+
+def _group_by_model(runs_dir: str) -> dict[str, list[str]]:
+    """Group ``runs_dir`` CSV paths by model-id prefix.
+
+    Shared by ``all_model_coords`` / ``all_seed_coords`` /
+    ``all_calibration_points`` so grouping stays DRY. Each model's path
+    list is sorted (so seed order is deterministic).
+    """
     groups: dict[str, list[str]] = {}
     for name in sorted(os.listdir(runs_dir)):
         if not name.endswith(".csv"):
             continue
         mid = _model_id_from_filename(name)
         groups.setdefault(mid, []).append(os.path.join(runs_dir, name))
+    return {mid: sorted(paths) for mid, paths in groups.items()}
 
+
+def all_model_coords(runs_dir: str, random_state: int = 0) -> dict[str, dict]:
+    """Group CSVs in ``runs_dir`` by model-id prefix; coords per model."""
     return {
-        mid: model_coords(sorted(paths), random_state=random_state)
-        for mid, paths in groups.items()
+        mid: model_coords(paths, random_state=random_state)
+        for mid, paths in _group_by_model(runs_dir).items()
+    }
+
+
+def seed_coords(csv_paths: list[str]) -> list[dict]:
+    """Per-seed (H, C, A) for one model — one entry per seed CSV, unpooled.
+
+    Uses the same ``_point_metrics`` definitions as ``model_coords`` but on
+    each seed's rows in isolation (so C is nan, fail-soft, for a seed with
+    zero acted rows). Entries are sorted by the seed integer parsed from
+    the ``_s<seed>.csv`` filename suffix.
+    """
+    out: list[dict] = []
+    for p in csv_paths:
+        rows = _read_rows(p)
+        h, a, c, n_acted = _point_metrics(rows)
+        out.append({
+            "seed": _seed_from_filename(os.path.basename(p)),
+            "H": h,
+            "C": c,
+            "A": a,
+            "n_acted": n_acted,
+            "n_tasks": len(rows),
+        })
+    out.sort(key=lambda e: e["seed"])
+    return out
+
+
+def calibration_points(csv_paths: list[str]) -> list[dict]:
+    """Pooled (r, y) for every ACTED output of one model.
+
+    Abstained / parse-fail rows are excluded. Order is deterministic:
+    input file order, then row order within each file.
+    """
+    pooled, _counts = _pool(csv_paths)
+    return [
+        {"r": float(row["r_selected"]), "y": int(row["y"])}
+        for row in pooled
+        if _is_acted(row)
+    ]
+
+
+def all_seed_coords(runs_dir: str) -> dict[str, list[dict]]:
+    """Group CSVs in ``runs_dir`` by model-id; per-seed coords per model."""
+    return {
+        mid: seed_coords(paths)
+        for mid, paths in _group_by_model(runs_dir).items()
+    }
+
+
+def all_calibration_points(runs_dir: str) -> dict[str, list[dict]]:
+    """Group CSVs in ``runs_dir`` by model-id; calibration points per model."""
+    return {
+        mid: calibration_points(paths)
+        for mid, paths in _group_by_model(runs_dir).items()
     }

@@ -10,7 +10,15 @@ import pathlib
 
 import pytest
 
-from analysis.model_points import classify_row, model_coords, all_model_coords
+from analysis.model_points import (
+    classify_row,
+    model_coords,
+    all_model_coords,
+    seed_coords,
+    calibration_points,
+    all_seed_coords,
+    all_calibration_points,
+)
 
 HEADER = [
     "task_id", "category", "N", "w_ratio", "w_C", "w_A", "r_min",
@@ -238,3 +246,155 @@ def test_pooling_concatenates_seed_rows(tmp_path):
     out = all_model_coords(str(runs), random_state=0)["po_7b"]
     assert out["n_tasks"] == 600  # 5 * 120
     assert out["n_acted"] == 10   # 5 * 2
+
+
+# ===== seed_coords / calibration_points (A.1b) ============================
+
+# ---- (a) per-seed coords, distinct & NOT the pooled value ----------------
+
+def test_seed_coords_per_seed_not_pooled(tmp_path):
+    # Seed 2000: 2 acted, both correct, briers 0.0 & 0.04 -> mean 0.02
+    #   A = 2/4 = 0.5 ; H = 2/4 = 0.5 ; C = 1 - 0.02 = 0.98
+    s0 = _pad([
+        _acted("1.0", "1", "0.0"),
+        _acted("0.8", "1", "0.04"),
+    ], 4)  # 2 acted + 2 abstained -> n_tasks 4
+    p0 = _write_csv(tmp_path / "tm_7b_N1_w0_r0.5_s2000.csv", s0)
+    # Seed 2001: 3 acted, 1 correct, briers 0.09, 1.0, 0.25 -> mean 1.34/3
+    #   A = 3/3 = 1.0 ; H = 1/3 ; C = 1 - 1.34/3
+    s1 = [
+        _acted("0.7", "1", "0.09"),   # correct
+        _acted("1.0", "0", "1.0"),    # wrong
+        _acted("0.5", "0", "0.25"),   # wrong
+    ]
+    p1 = _write_csv(tmp_path / "tm_7b_N1_w0_r0.5_s2001.csv", s1)
+
+    out = seed_coords([p1, p0])  # deliberately unsorted input
+    assert [e["seed"] for e in out] == [2000, 2001]  # sorted by seed
+
+    e0, e1 = out
+    assert e0["seed"] == 2000
+    assert e0["n_tasks"] == 4
+    assert e0["n_acted"] == 2
+    assert e0["A"] == pytest.approx(2 / 4)
+    assert e0["H"] == pytest.approx(2 / 4)
+    assert e0["C"] == pytest.approx(1 - (0.0 + 0.04) / 2)
+
+    assert e1["seed"] == 2001
+    assert e1["n_tasks"] == 3
+    assert e1["n_acted"] == 3
+    assert e1["A"] == pytest.approx(3 / 3)
+    assert e1["H"] == pytest.approx(1 / 3)
+    assert e1["C"] == pytest.approx(1 - (0.09 + 1.0 + 0.25) / 3)
+
+    # Per-seed values must NOT equal the pooled (model_coords) value.
+    pooled = model_coords([p0, p1])
+    assert e0["C"] != pytest.approx(pooled["C"])
+    assert e1["C"] != pytest.approx(pooled["C"])
+    assert e0["H"] != pytest.approx(pooled["H"]) or \
+        e1["H"] != pytest.approx(pooled["H"])
+
+
+# ---- (b) seed int parsed from _s2003.csv suffix --------------------------
+
+def test_seed_coords_parses_seed_2003(tmp_path):
+    p = _write_csv(
+        tmp_path / "tm_7b-instruct_N1_w0_r0.5_s2003.csv",
+        [_acted("0.9", "1", "0.01")],
+    )
+    out = seed_coords([p])
+    assert len(out) == 1
+    assert out[0]["seed"] == 2003
+    assert isinstance(out[0]["seed"], int)
+
+
+# ---- (c) a zero-acted seed -> C is nan, no exception, others unaffected ---
+
+def test_seed_coords_zero_acted_seed_C_nan(tmp_path):
+    good = _write_csv(
+        tmp_path / "zm_7b_N1_w0_r0.5_s2000.csv",
+        [_acted("0.9", "1", "0.01"), _acted("0.4", "0", "0.16")],
+    )
+    empty = _write_csv(
+        tmp_path / "zm_7b_N1_w0_r0.5_s2001.csv",
+        [_abstained(), _abstained(), _abstained()],
+    )
+    out = seed_coords([good, empty])
+    e_good, e_empty = out
+    assert e_empty["seed"] == 2001
+    assert e_empty["n_acted"] == 0
+    assert math.isnan(e_empty["C"])
+    assert e_empty["A"] == pytest.approx(0.0)
+    assert e_empty["H"] == pytest.approx(0.0)
+    # other seed is unaffected and has a real C
+    assert e_good["seed"] == 2000
+    assert e_good["n_acted"] == 2
+    assert not math.isnan(e_good["C"])
+    assert e_good["C"] == pytest.approx(1 - (0.01 + 0.16) / 2)
+
+
+# ---- (d) calibration_points: one (r,y) per acted row, excludes abstained -
+
+def test_calibration_points_one_per_acted_excludes_abstained(tmp_path):
+    rows_a = [
+        _acted("0.9", "1", "0.01"),
+        _abstained(),
+        _acted("0.3", "0", "0.09"),
+    ]
+    rows_b = [
+        _abstained(),
+        _acted("0.75", "1", "0.0625"),
+    ]
+    pa = _write_csv(tmp_path / "cm_7b_N1_w0_r0.5_s2000.csv", rows_a)
+    pb = _write_csv(tmp_path / "cm_7b_N1_w0_r0.5_s2001.csv", rows_b)
+
+    pts = calibration_points([pa, pb])
+    # 3 acted total (2 in a, 1 in b); abstained excluded
+    assert len(pts) == 3
+    pooled = model_coords([pa, pb])
+    assert len(pts) == pooled["n_acted"]
+
+    # deterministic order: file order, then row order
+    assert pts == [
+        {"r": 0.9, "y": 1},
+        {"r": 0.3, "y": 0},
+        {"r": 0.75, "y": 1},
+    ]
+    for pt in pts:
+        assert isinstance(pt["r"], float)
+        assert isinstance(pt["y"], int)
+
+
+# ---- (e) directory API groups underscore-heavy model ids -----------------
+
+def test_all_seed_and_calibration_group_underscored_ids(tmp_path):
+    runs = tmp_path / "_runs"
+    for s in (2000, 2001):
+        _write_csv(
+            runs / f"mistral_7b-instruct-q4_K_M_N1_w0_r0.5_s{s}.csv",
+            [_acted("0.9", "1", "0.01"), _abstained()],
+        )
+    for s in (2000, 2001):
+        _write_csv(
+            runs / f"qwen2.5_7b_N1_w0_r0.5_s{s}.csv",
+            [_acted("0.6", "0", "0.36")],
+        )
+
+    sc = all_seed_coords(str(runs))
+    assert set(sc) == {"mistral_7b-instruct-q4_K_M", "qwen2.5_7b"}
+    mistral = sc["mistral_7b-instruct-q4_K_M"]
+    assert [e["seed"] for e in mistral] == [2000, 2001]
+    assert mistral[0]["n_tasks"] == 2
+    assert mistral[0]["n_acted"] == 1
+
+    cp = all_calibration_points(str(runs))
+    assert set(cp) == {"mistral_7b-instruct-q4_K_M", "qwen2.5_7b"}
+    # mistral: 1 acted per seed * 2 seeds = 2 points
+    assert cp["mistral_7b-instruct-q4_K_M"] == [
+        {"r": 0.9, "y": 1},
+        {"r": 0.9, "y": 1},
+    ]
+    assert cp["qwen2.5_7b"] == [
+        {"r": 0.6, "y": 0},
+        {"r": 0.6, "y": 0},
+    ]
