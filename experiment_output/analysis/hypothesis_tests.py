@@ -51,6 +51,25 @@ def cohens_d_paired(diffs: np.ndarray) -> float:
     return float(diffs.mean() / sd)
 
 
+def clopper_pearson_ci(
+    k: int, n: int, confidence: float = 0.95
+) -> tuple[float, float]:
+    """Two-sided exact (Clopper-Pearson) binomial CI for k successes in n.
+
+    Use this for any *reported* proportion interval. A one-sided
+    ``binomtest(..., alternative="less").proportion_ci()`` returns a
+    degenerate interval with the lower bound pinned to 0.0 for every
+    input; that is a one-sided bound, not a 95% CI, and must not be
+    presented as one (the directional p-value is computed separately).
+    """
+    if n <= 0:
+        return (float("nan"), float("nan"))
+    alpha = 1.0 - confidence
+    lo = 0.0 if k <= 0 else float(stats.beta.ppf(alpha / 2.0, k, n - k + 1))
+    hi = 1.0 if k >= n else float(stats.beta.ppf(1.0 - alpha / 2.0, k + 1, n - k))
+    return (lo, hi)
+
+
 def bootstrap_ci(
     data: np.ndarray,
     statistic=np.mean,
@@ -956,9 +975,7 @@ def test_h3_convexity_by_N(df: pd.DataFrame, slack: float = 0.05) -> dict:
 
         if total_tests > 0:
             rate = violations / total_tests
-            binom = stats.binomtest(violations, total_tests, p=0.15, alternative="less")
-            ci = binom.proportion_ci(confidence_level=0.95, method="exact")
-            ci_lo, ci_hi = float(ci.low), float(ci.high)
+            ci_lo, ci_hi = clopper_pearson_ci(violations, total_tests, 0.95)
         else:
             rate = float("nan")
             ci_lo, ci_hi = float("nan"), float("nan")
@@ -1070,8 +1087,11 @@ def test_h3_prime_approx_convexity(
         }
 
     rate = violations / total_tests
+    # One-sided p-value is the legitimate directional test (H3 criterion:
+    # violation rate < tolerance). The *reported* 95% CI must be the
+    # two-sided Clopper-Pearson interval, not the one-sided binomtest CI.
     binom = stats.binomtest(violations, total_tests, p=tolerance, alternative="less")
-    ci = binom.proportion_ci(confidence_level=0.95, method="exact")
+    ci_lo, ci_hi = clopper_pearson_ci(violations, total_tests, 0.95)
 
     return {
         "violations": violations,
@@ -1080,9 +1100,9 @@ def test_h3_prime_approx_convexity(
         "tolerance": float(tolerance),
         "criterion_met": bool(rate < tolerance),
         "p_value": float(binom.pvalue),
-        "ci_lo": float(ci.low),
-        "ci_hi": float(ci.high),
-        "statistically_supported": bool(ci.high < tolerance),
+        "ci_lo": ci_lo,
+        "ci_hi": ci_hi,
+        "statistically_supported": bool(ci_hi < tolerance),
     }
 
 
