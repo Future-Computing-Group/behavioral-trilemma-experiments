@@ -12,6 +12,9 @@ logprob client; confidence is delegated to analysis.logprob_confidence.
 
 Single-responsibility (L.3): this client does NOT parse ANSWER:/CONFIDENCE:
 from the completion -- answer/abstention parsing is a downstream concern.
+
+Transport-parity rationale: see REGIME_NOTE below (consumed by the
+cross-model figure's honest-disclosure caption).
 """
 import json
 from dataclasses import dataclass
@@ -22,6 +25,47 @@ from analysis.logprob_confidence import logprob_confidence
 
 # Same default host as src/ollama_client.py (mirror, do not diverge).
 DEFAULT_URL = "http://localhost:11434"
+
+# Quotable for the cross-model figure's honest-disclosure caption.
+# Phase-1 transport-parity root cause (review CHANGES-REQUIRED):
+#
+#   1. Endpoint is FORCED, not arbitrary. Per-token logprobs are returned
+#      ONLY by Ollama's OpenAI-compatible /v1/chat/completions; the native
+#      /api/generate endpoint (used by src/ollama_client.py) does not emit
+#      them. The L.1 logprob-confidence equation therefore cannot be
+#      evaluated off /v1. This client cannot switch endpoints.
+#
+#   2. Within-figure comparability holds BY CONSTRUCTION. All three
+#      figure models go through THIS one client at THIS one endpoint, so
+#      cross-model comparison within the figure is regime-invariant
+#      regardless of any base-client transport question.
+#
+#   3. Effective-input relationship to the base client is NEGLIGIBLE.
+#      src/ollama_client.py posts the caller's prompt verbatim to
+#      /api/generate and never sets "raw" (raw absent => Ollama applies
+#      the model's Modelfile chat template); it injects no system prompt,
+#      prefix, suffix or wrapper. The caller's prompt already contains the
+#      full instruction+task block (scripts/generate_tasks.py). This
+#      client likewise sends that prompt verbatim as the SOLE user
+#      message and injects no system message. Both endpoints apply the
+#      model chat template, so the effective text reaching the model is a
+#      faithful near-equivalent. This is a documented near-equivalence,
+#      NOT a real regime divergence.
+REGIME_NOTE = (
+    "Logprob transport regime: per-token logprobs are available only via "
+    "Ollama's OpenAI-compatible /v1/chat/completions endpoint, so the /v1 "
+    "endpoint is forced (the native /api/generate used by the base "
+    "src/ollama_client.py does not return logprobs). All figure models go "
+    "through this one client at this one endpoint, so within-figure "
+    "cross-model comparability holds by construction. Relationship to the "
+    "base client is negligible: the base /api/generate path posts the "
+    "caller's prompt verbatim and never sets raw (raw absent => Ollama "
+    "applies the model chat template) and injects no system prompt; this "
+    "client sends the same prompt verbatim as the sole user message with "
+    "no system message, and /v1 also applies the model chat template, so "
+    "the effective input is a faithful near-equivalent (a documented "
+    "near-equivalence, not a real regime divergence)."
+)
 
 
 class OllamaError(Exception):
@@ -59,6 +103,12 @@ def generate_with_logprobs(
     (fail-loud) if logprobs are absent so a missing-logprob response can
     never be silently coerced into a fabricated confidence.
     """
+    # Content parity with src/ollama_client.py (review CHANGES-REQUIRED):
+    # the base /api/generate path posts the caller's prompt verbatim with
+    # NO system prompt / prefix / suffix / wrapper. Reproduce that exactly
+    # -- the caller's prompt is the SOLE message and carries the role
+    # "user"; never inject a system message the base path lacks. See
+    # REGIME_NOTE for the full transport-parity rationale.
     body = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],

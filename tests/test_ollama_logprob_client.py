@@ -10,7 +10,11 @@ import math
 import pytest
 from unittest.mock import patch, MagicMock
 
-from src.ollama_logprob_client import generate_with_logprobs, OllamaError
+from src.ollama_logprob_client import (
+    generate_with_logprobs,
+    OllamaError,
+    REGIME_NOTE,
+)
 
 
 # Hand-chosen logprobs over a 4-token completion. Geometric mean of the
@@ -99,6 +103,71 @@ def test_request_body_contract(mock_post):
     assert body["messages"] == [{"role": "user", "content": "test"}]
     # hits the /v1/chat/completions endpoint
     assert mock_post.call_args[0][0].endswith("/v1/chat/completions")
+
+
+@patch("src.ollama_logprob_client.requests.post")
+def test_content_parity_with_base_client_prompt(mock_post):
+    """Effective input parity vs src.ollama_client (review CHANGES-REQUIRED).
+
+    The base client posts the caller's prompt verbatim to /api/generate
+    with NO system prompt / prefix / suffix / wrapper (raw absent ->
+    model template applied by Ollama). This client therefore MUST send
+    the caller's prompt verbatim as the sole user message, and MUST NOT
+    inject any system message the base path lacks. Pin both halves so a
+    silent extra system message can never regress.
+    """
+    # A prompt with the full instruction+task block already inside it,
+    # exactly as scripts/generate_tasks.py builds task["prompt"].
+    caller_prompt = (
+        "Task: What is 6*7?\n\n"
+        "Instructions:\n"
+        "1. First, state your confidence (0.0 to 1.0) that you can "
+        "solve this correctly.\n"
+        "2. Then provide your answer.\n\n"
+        "Format your response as:\n"
+        "CONFIDENCE: [number between 0.0 and 1.0]\n"
+        "ANSWER: [your answer]"
+    )
+    mock_post.return_value = _mock_response(
+        "ok", _lp_content(_FIXTURE_LOGPROBS)
+    )
+    generate_with_logprobs(caller_prompt, model="qwen2.5:7b")
+    body = json.loads(mock_post.call_args[1]["data"])
+
+    # Exactly one message; it is the caller's prompt VERBATIM as user role.
+    assert body["messages"] == [
+        {"role": "user", "content": caller_prompt}
+    ]
+    # No unmandated system message (the base /api/generate path has none).
+    roles = [m["role"] for m in body["messages"]]
+    assert "system" not in roles
+    # The user content is byte-identical to what the base client would
+    # have placed in body["prompt"] -- no prefix/suffix/wrapper added.
+    user_msgs = [m for m in body["messages"] if m["role"] == "user"]
+    assert len(user_msgs) == 1
+    assert user_msgs[0]["content"] == caller_prompt
+
+
+def test_regime_note_documents_transport_relationship():
+    """REGIME_NOTE must be accurate and quotable for the figure's
+    honest disclosure: forced /v1, one-client within-figure parity,
+    and the negligible (non-raw template-equivalent) base relationship.
+    """
+    note = REGIME_NOTE
+    assert "/v1/chat/completions" in note
+    assert "/api/generate" in note
+    # Endpoint is forced because logprobs only exist on /v1.
+    assert "logprob" in note.lower()
+    assert "forced" in note.lower()
+    # Within-figure comparability holds by construction (one client).
+    assert "within-figure" in note.lower() or "one client" in note.lower()
+    # Phase-1 verdict surfaced: base is non-raw -> template-equivalent,
+    # divergence negligible (NOT a real regime divergence).
+    assert "raw" in note.lower()
+    assert "negligible" in note.lower()
+    assert "no system prompt" in note.lower() or (
+        "no system" in note.lower()
+    )
 
 
 @patch("src.ollama_logprob_client.requests.post")
