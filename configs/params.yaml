@@ -10,9 +10,10 @@ model:
   ollama_url: http://localhost:11434
   temperature: 0.8
   max_tokens: 512
-  mistral7b: mistral:7b-instruct
-  gemma2_9b: gemma2:9b
-  qwen14b: qwen2.5:14b
+  mistral7b: mistral:7b-instruct-q4_K_M   # installed tag; Q4_K_M (matches qwen2.5:7b quant)
+  gemma2_9b: gemma2:9b                     # NOT yet pulled (~5.4GB) — pull before probing
+  qwen14b: qwen2.5:14b                     # not installed; qwen32b used instead (already local)
+  qwen32b: qwen2.5:32b                     # installed (19.9GB); strong separation candidate
 
 # Task set
 tasks:
