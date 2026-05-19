@@ -26,6 +26,7 @@ import os
 import re
 
 __all__ = [
+    "HONEST_CAPTION",
     "classify_row",
     "model_coords",
     "all_model_coords",
@@ -34,6 +35,32 @@ __all__ = [
     "all_seed_coords",
     "all_calibration_points",
 ]
+
+# Honest framing for any figure built from these coordinates. This is the
+# single source of truth for the caption and is asserted by the test suite,
+# not left to authorial goodwill. It states, in order: what the figure IS
+# (descriptive placement of real named models), why the autonomy axis is
+# pinned (the probe ran ungated, so A is not a trade-off), what that means
+# for the (H,C,A) panel (competence-confounded), where the causal claim
+# actually rests (the mechanism experiment + theory, NOT this scatter),
+# and what the calibration panel genuinely shows.
+HONEST_CAPTION = (
+    "Descriptive placement of real, named open-weight models on the "
+    "behavioral axes; this is NOT a trilemma proof, an impossibility "
+    "result, or a traced trade-off region. The autonomy axis A is "
+    "approximately 1.0 for every model because the competence probe ran "
+    "ungated (no abstention incentive / no gating reward), so A is pinned "
+    "by construction and the apparent absence of an autonomy trade-off is "
+    "an artifact of the design, not evidence. Consequently the (H, C, A) "
+    "panel is competence-confounded and cannot be read as a causal "
+    "trade-off: model placement there reflects task competence, not a "
+    "mechanism. The causal trilemma claim rests on the gated mechanism "
+    "experiment (hypotheses H1/H2/H4/H5) together with the theory, not on "
+    "this scatter. What the calibration panel does show is each model's "
+    "per-output reliability structure (reported confidence r versus "
+    "realized correctness), i.e. the direction and magnitude of "
+    "per-model overconfidence."
+)
 
 # Sentinels that count as "no action recorded" for r_selected.
 _BLANK_SENTINELS = {"", "nan", "none"}

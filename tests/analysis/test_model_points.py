@@ -398,3 +398,35 @@ def test_all_seed_and_calibration_group_underscored_ids(tmp_path):
         {"r": 0.6, "y": 0},
         {"r": 0.6, "y": 0},
     ]
+
+
+# ===== A.2: HONEST_CAPTION constant (descriptive, not a trilemma proof) ====
+
+def test_honest_caption_exists_and_is_honest():
+    """The figure caption MUST be importable and MUST state the caveats:
+    descriptive (not a proof / region trace); A pinned because the probe is
+    ungated; the (H,C,A) panel is competence-confounded; the causal trilemma
+    claim rests on the mechanism experiment + theory."""
+    from analysis.model_points import HONEST_CAPTION
+
+    assert isinstance(HONEST_CAPTION, str)
+    assert HONEST_CAPTION.strip()
+    low = HONEST_CAPTION.lower()
+
+    # descriptive placement, not a proof / impossibility / region trace
+    assert "descriptive" in low
+    assert "not" in low
+    assert ("proof" in low) or ("impossib" in low) or ("region" in low)
+
+    # competence-confounded autonomy axis
+    assert "competence" in low
+
+    # A pinned because the probe ran ungated / no abstention incentive
+    assert (
+        ("ungated" in low)
+        or ("no abstention" in low)
+        or ("no gat" in low)
+    )
+
+    # causal claim belongs to the mechanism experiment
+    assert "mechanism" in low
