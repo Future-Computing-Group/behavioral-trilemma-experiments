@@ -15,3 +15,6 @@ experiment_output/**/*.csv
 experiment_output/**/*.json
 experiment_output/**/*.jsonl
 experiment_output/competence_probe/_runs/
+
+# Local campaign ops log (gitignored — internal, L51/L73)
+OPSLOG.md
