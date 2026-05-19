@@ -17,7 +17,7 @@ import pathlib
 
 import pytest
 
-from analysis.model_points import HONEST_CAPTION
+from analysis.model_points import HONEST_CAPTION, HONEST_CAPTION_LOGPROB
 
 HEADER = [
     "task_id", "category", "N", "w_ratio", "w_C", "w_A", "r_min",
@@ -166,3 +166,205 @@ def test_build_figure_uses_agg_backend(synthetic_runs, tmp_path):
 
     build_figure(str(synthetic_runs), str(tmp_path / "figures"))
     assert matplotlib.get_backend().lower() == "agg"
+
+
+# ===== L.5: logprob figure mode =========================================== #
+#
+# Additive: the competence-probe build_figure path above MUST stay green.
+# The new build_logprob_figure sources analysis.model_points' LOGPROB loader
+# (all_logprob_model_coords) over a synthetic logprob_xmodel/ tree, removes
+# BOTH burned-in on-figure caption boxes, and adds a theory-reference
+# corner/trade-off annotation. RED first: build_logprob_figure does not yet
+# exist.
+
+LOGPROB_HEADER = [
+    "task", "category", "seed", "r_logprob", "answer", "y", "acted",
+]
+
+
+def _write_logprob_csv(path: pathlib.Path, rows: list[dict]) -> str:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=LOGPROB_HEADER)
+        w.writeheader()
+        for i, r in enumerate(rows):
+            w.writerow({
+                "task": r.get("task", f"t{i:03d}"),
+                "category": r.get("category", "arithmetic_easy"),
+                "seed": r.get("seed", 2000),
+                "r_logprob": r.get("r_logprob", ""),
+                "answer": r.get("answer", ""),
+                "y": r.get("y", ""),
+                "acted": r.get("acted", 0),
+            })
+    return str(path)
+
+
+def _lp_row(task, r_logprob, answer, y, acted):
+    return {"task": task, "r_logprob": r_logprob, "answer": answer,
+            "y": y, "acted": acted}
+
+
+@pytest.fixture
+def synthetic_logprob_runs(tmp_path):
+    """Synthetic logprob_xmodel/<model>/<model>_s<seed>.csv tree.
+
+    Two models. ``lpA`` is complete (5 seeds, 120 rows each, some abstained
+    so A < 1 and the trade-off geometry is visible). ``lpB`` is partial
+    (2 seeds only). Schema = the canonical 7-col logprob schema.
+    """
+    runs = tmp_path / "logprob_xmodel"
+    block_a = (
+        [_lp_row("t", 0.9, "a", 1, 1)] * 50      # acted, correct
+        + [_lp_row("t", 0.3, "b", 0, 1)] * 40    # acted, incorrect
+        + [_lp_row("t", 0.5, "", "", 0)] * 30    # abstained (no answer)
+    )  # 120 rows, A = 90/120 = 0.75
+    for s in (1, 2, 3, 4, 5):
+        _write_logprob_csv(runs / "lpA" / f"lpA_s{s}.csv", list(block_a))
+    block_b = (
+        [_lp_row("t", 0.8, "a", 1, 1)] * 70
+        + [_lp_row("t", 0.6, "b", 0, 1)] * 50
+    )  # 120 rows, A = 1.0
+    for s in (1, 2):  # only 2 seeds -> partial
+        _write_logprob_csv(runs / "lpB" / f"lpB_s{s}.csv", list(block_b))
+    return runs
+
+
+def test_logprob_figure_sources_logprob_loader(
+    synthetic_logprob_runs, tmp_path, monkeypatch
+):
+    """build_logprob_figure MUST source coordinates from the LOGPROB loader
+    analysis.model_points.all_logprob_model_coords, not the competence
+    loader. We spy on the loader and assert it was invoked with the runs
+    dir, and that the returned per-model dict carries logprob coords."""
+    import scripts.plot_model_points as mod
+
+    calls = {}
+    real = mod.all_logprob_model_coords
+
+    def spy(runs_dir, *a, **kw):
+        calls["runs_dir"] = runs_dir
+        return real(runs_dir, *a, **kw)
+
+    monkeypatch.setattr(mod, "all_logprob_model_coords", spy)
+
+    out_dir = tmp_path / "figures"
+    result = mod.build_logprob_figure(
+        str(synthetic_logprob_runs), str(out_dir)
+    )
+    assert calls.get("runs_dir") == str(synthetic_logprob_runs)
+
+    models = result["models"]
+    assert set(models) == {"lpA", "lpB"}
+    # lpA: 90 acted / 120 -> A == 0.75 (proves the answer-parse loader,
+    # NOT a competence path that would mark every row acted).
+    assert models["lpA"]["A"] == pytest.approx(0.75)
+    assert models["lpB"]["A"] == pytest.approx(1.0)
+    assert models["lpB"]["partial"] is True
+    assert models["lpA"]["partial"] is False
+
+    png = out_dir / "model_points_logprob.png"
+    assert png.is_file() and png.stat().st_size > 0
+
+
+def test_logprob_figure_no_burned_in_caption_box(
+    synthetic_logprob_runs, tmp_path
+):
+    """BOTH on-figure caption boxes are removed in logprob mode. No Text
+    artist on the figure or any axes may contain the honest-caption
+    sentinel or the 'ungated probe' textbox phrase, and no Text artist
+    may be a large multi-sentence caption block (> 200 chars)."""
+    import scripts.plot_model_points as mod
+
+    fig, result = mod.build_logprob_figure(
+        str(synthetic_logprob_runs), str(tmp_path / "figures"),
+        return_figure=True,
+    )
+    try:
+        texts = list(fig.findobj(match=mod.plt.Text))
+        for t in texts:
+            s = t.get_text() or ""
+            low = s.lower()
+            # The competence-probe burned-in textbox phrasing.
+            assert "ungated probe" not in low, (
+                f"burned-in A-pinned textbox still present: {s!r}"
+            )
+            # The honest-caption sentinel must NOT be drawn on the figure.
+            assert "is not a trilemma proof" not in low and (
+                "not a trilemma proof" not in low
+            ), f"honest-caption box still burned into figure: {s!r}"
+            # No giant caption block burned in.
+            assert len(s) <= 200, (
+                f"large caption block burned into figure ({len(s)} chars): "
+                f"{s[:80]!r}"
+            )
+    finally:
+        mod.plt.close(fig)
+
+    # The caption text still travels with the result (for the report /
+    # LaTeX caption), it is just not drawn on the image.
+    assert result["caption"] == HONEST_CAPTION_LOGPROB
+
+
+def test_logprob_figure_has_theory_corner_annotation(
+    synthetic_logprob_runs, tmp_path
+):
+    """The placement panel MUST carry a theory-reference annotation marking
+    the infeasible joint-good corner (high H + high C + high A) and the
+    predicted trade-off direction. Asserted via a stable annotation
+    gid/text sentinel, NOT by pixels. It must be a descriptive annotation
+    (Annotation/Text), not a fabricated achievable-region patch."""
+    import scripts.plot_model_points as mod
+
+    fig, _result = mod.build_logprob_figure(
+        str(synthetic_logprob_runs), str(tmp_path / "figures"),
+        return_figure=True,
+    )
+    try:
+        objs = list(fig.findobj())
+        # Stable sentinel on the theory annotation artist(s).
+        gids = {getattr(o, "get_gid", lambda: None)() for o in objs}
+        assert "theory-corner" in gids, (
+            "theory-reference corner annotation artist missing "
+            f"(gids seen: {sorted(g for g in gids if g)})"
+        )
+        assert "theory-tradeoff" in gids, (
+            "theory trade-off direction annotation artist missing"
+        )
+        # Descriptive text, not a fabricated traced region: there must be
+        # a Text artist mentioning the infeasible joint-good corner.
+        joined = " ".join(
+            (t.get_text() or "").lower()
+            for t in fig.findobj(match=mod.plt.Text)
+        )
+        assert "infeasible" in joined or "joint-good" in joined or (
+            "joint good" in joined
+        ), "no descriptive label for the infeasible joint-good corner"
+    finally:
+        mod.plt.close(fig)
+
+
+def test_logprob_figure_uses_agg_backend(synthetic_logprob_runs, tmp_path):
+    """No-UI-tools rule still holds for the logprob path."""
+    import matplotlib
+
+    import scripts.plot_model_points as mod
+
+    mod.build_logprob_figure(
+        str(synthetic_logprob_runs), str(tmp_path / "figures")
+    )
+    assert matplotlib.get_backend().lower() == "agg"
+
+
+def test_competence_probe_path_unaffected(synthetic_runs, tmp_path):
+    """Regression guard: the original competence-probe build_figure must
+    still write its PDF+PNG and return the same dict shape after the
+    logprob mode is added (additive change, no regression)."""
+    from scripts.plot_model_points import build_figure
+
+    out_dir = tmp_path / "figures"
+    result = build_figure(str(synthetic_runs), str(out_dir))
+    assert (out_dir / "model_points.pdf").is_file()
+    assert (out_dir / "model_points.png").is_file()
+    assert set(result["models"]) == {"fakeA", "fakeB"}
+    assert result["caption"] == HONEST_CAPTION

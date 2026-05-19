@@ -1,0 +1,148 @@
+# Real models as points — logprob cross-model placement (2026-05-19)
+
+Source: `analysis.model_points` LOGPROB loader
+(`all_logprob_model_coords`, committed `7ee9415`) over
+`experiment_output/logprob_xmodel/<model>/<model>_s<seed>.csv`
+(7-col schema `task,category,seed,r_logprob,answer,y,acted`). Figure
+written by `scripts/plot_model_points.py` (mode `logprob`,
+`build_logprob_figure`) to
+`experiment_output/analysis_logprob/figures/model_points_logprob.{pdf,png}`.
+
+This is a **separate** report from `model-points-2026-05-19.md` (the
+competence-probe path); that report is not superseded or overwritten.
+
+## Honest framing (verbatim from `analysis.model_points.HONEST_CAPTION_LOGPROB`)
+
+> Descriptive placement of real, named open-weight models on the behavioral
+> axes using the logprob-confidence path; this is NOT a trilemma proof, an
+> impossibility result, or a traced trade-off region. The autonomy axis A is
+> the answer-commitment rate: a task counts as acted only when a valid
+> answer was successfully parsed from the completion via the ANSWER-parser,
+> and as 'abstained' otherwise. This answer-parse acted predicate conflates
+> deliberate deferral with mere parse-fail (unparseable-output) responses,
+> so A measures behavioral answer-commitment, not
+> autonomy-as-chosen-deferral. The logprob path runs ungated at N=1 (no
+> argmax, no abstention incentive, no gating reward), so A is design-pinned
+> by construction, not a traced trade-off. Consequently the (H, C, A) panel
+> is competence-confounded and cannot be read as a causal trade-off: model
+> placement reflects task competence, not a mechanism. The causal trilemma
+> claim rests on the gated mechanism experiment (hypotheses H1/H2/H4/H5)
+> together with the theory, NOT on this scatter. The calibration value C
+> uses the per-output logprob-confidence; this loader is an independent
+> reimplementation of the manuscript logprob-confidence equation and is NOT
+> bit-verified against the original 540-config run, so C should be read as a
+> faithful reimplementation, not a byte-exact reproduction.
+
+The caveats above are **not burned onto the figure image**. Both prior
+on-figure caption boxes (the `fig.text(...)` honest-caption block and the
+`_panel_placement` "A ≈ 1.0 (ungated probe)" textbox) have been removed; the
+disclosures live here and, later, in the LaTeX figure caption. The figure
+carries only a short descriptive title and a theory-reference annotation
+(see below).
+
+## What this figure is — and is NOT
+
+- It is a **descriptive placement** of named open-weight models on the
+  behavioral (H, C) plane with A encoded as marker size. It is **NOT** a
+  trilemma proof, **NOT** an impossibility result, and **NOT** a traced /
+  achievable trade-off region or Pareto frontier.
+- **A is the answer-commitment rate** computed via the ANSWER-parser
+  (`acted == 1` iff a valid answer was parsed from the completion). It
+  therefore **conflates deliberate deferral with parse-fail**
+  (unparseable-output) responses: a model that intentionally declines and a
+  model that emits an unparseable answer are both scored "abstained". A is
+  behavioral answer-commitment, not autonomy-as-chosen-deferral. (This is
+  the logprob-path wording of the construct-validity caveat; it reuses the
+  `HONEST_CAPTION_LOGPROB` text.)
+- **A is design-pinned, not a trade-off.** The logprob path runs **ungated
+  at N=1** (no argmax, no abstention incentive, no gating reward). Any
+  apparent (or absent) autonomy structure is an artifact of the design, not
+  evidence of a mechanism.
+- **(H, C, A) is competence-confounded.** A model sits higher on H/C because
+  it is more competent on these tasks, not because of an
+  autonomy/helpfulness/calibration mechanism. **The causal trilemma claim
+  rests on the gated mechanism experiment (H1/H2/H4/H5) together with the
+  theory, NOT on this scatter.**
+- **C is an independent reimplementation.** C is computed from the
+  per-output logprob-confidence using an independent reimplementation of the
+  manuscript logprob-confidence equation. It is **NOT bit-verified** against
+  the original 540-config run. Read C as a faithful reimplementation, not a
+  byte-exact reproduction.
+
+## Transport / template disclosure
+
+Per-token logprobs are available from Ollama **only** via the
+`/v1/chat/completions` endpoint, which applies the model's **chat
+template** to the prompt. The original archived run used Ollama's native
+`/api/generate` endpoint (no chat template). This figure therefore forces
+`/v1/chat/completions` because logprobs are otherwise unavailable. The
+forced endpoint is applied **uniformly to all figure models through one
+common client**, so the three points are comparable to each other **by
+construction** (one client, one regime, within-figure). This transport /
+template difference is part of the disclosed *figure ≠ Table* "different
+client + regime, by design" caveat — it is **not** a separate, unhandled
+confound.
+
+## qwen-2.5-7B: figure ≠ Table, BY DESIGN
+
+The figure's qwen-2.5-7B point comes from the **new client at the N=1
+*ungated* 100-task regime**. It will **NOT** numerically match the paper's
+qwen-7B H1–H6 / Table results, which come from the **540-config *gated*
+regime under the original client**. This mismatch is **intentional**:
+qwen-7B appears here as a **cross-model comparability anchor under one
+common client/regime**, not as a reproduction of the Table. This must be
+flagged in the eventual **A1 figure caption** and the **I3 appendix**:
+state explicitly that the figure's qwen-7B value is a within-figure anchor,
+not a Table reproduction, so no reader infers a numeric discrepancy where
+none is claimed.
+
+## Theory-reference geometry on the figure
+
+The placement panel carries a **descriptive theory-reference annotation**
+(no fabricated region/curve):
+
+- a star marker + label at the **infeasible joint-good corner** — high H +
+  high C + high A *simultaneously*, the trilemma's empty corner — labelled
+  as a theory reference, *not* data;
+- an arrow giving the **predicted trade-off direction** away from that
+  corner, where real points are expected to fall **if** the trilemma holds.
+
+These let a reader see where points would sit *if the trilemma did NOT
+hold* (the joint-good corner) versus where they actually fall, without
+drawing a traced achievable region or a fake Pareto frontier. This is
+purely descriptive placement, not an impossibility/region trace.
+
+## (H, C, A) ± 95% bootstrap CI per model
+
+<!-- NUMBERS PENDING L.4 REAL RUN: fill from analysis.model_points logprob loader on experiment_output/logprob_xmodel/ -->
+
+| model | H [95% CI] | C [95% CI] | A [95% CI] | n_acted | n_tasks | n_seeds | partial |
+|---|---|---|---|---|---|---|---|
+| _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ | _(pending)_ |
+
+The table above is an **explicit placeholder**. No numbers have been
+invented. It will be filled from
+`analysis.model_points.all_logprob_model_coords` run on
+`experiment_output/logprob_xmodel/` once the L.4 real run completes
+(another process is generating that data; it was **not** touched by this
+work). Bootstrap config will be `random_state=0`, B = 2000, percentile
+2.5 / 97.5 (same engine as the competence path, reused via the
+`point_fn` hook). Partial models (< 5 seed CSVs or any seed CSV with
+< 100 rows) will be rendered faded/hollow with a "partial: N seeds" label
+and surfaced in `partial_models`, never silently averaged in as complete.
+
+## Provenance
+
+- Code: `scripts/plot_model_points.py`, function `build_logprob_figure`
+  (Agg backend forced before pyplot import; I/O parameterised; no network,
+  no model calls). Both on-figure caption boxes removed.
+- Coordinates: `analysis.model_points.all_logprob_model_coords` at
+  `7ee9415` (answer-parse `acted` predicate; bootstrap reuses
+  `_bootstrap_ci` + `_pct` via the `point_fn` hook).
+- Caption SSoT: `analysis.model_points.HONEST_CAPTION_LOGPROB`
+  (enforced by `tests/analysis/test_logprob_xmodel_metrics.py::
+  test_honest_caption_logprob_caveats`).
+- Tests: `tests/analysis/test_model_points_figure.py` (logprob-mode
+  block: loader-sourced, no-burned-in-caption-box,
+  theory-corner-annotation-present, Agg backend, competence-path
+  regression guard).

@@ -42,7 +42,9 @@ if _REPO_ROOT not in sys.path:
 
 from analysis.model_points import (  # noqa: E402
     HONEST_CAPTION,
+    HONEST_CAPTION_LOGPROB,
     all_calibration_points,
+    all_logprob_model_coords,
     all_model_coords,
     all_seed_coords,
 )
@@ -59,13 +61,6 @@ REAL_FIGURES_DIR = os.path.join(
 _N_BINS = 10
 # A stable, color-blind-friendlier qualitative palette (matplotlib "tab10").
 _PALETTE = plt.get_cmap("tab10").colors
-
-
-def _wrap(text: str, width: int = 110) -> str:
-    """Soft-wrap the caption for the on-figure text box."""
-    import textwrap
-
-    return "\n".join(textwrap.wrap(text, width=width))
 
 
 def _reliability_bins(points: list[dict], n_bins: int = _N_BINS):
@@ -180,13 +175,8 @@ def _panel_placement(ax, coords, seeds, color_of, partial_models):
     ax.set_title("Panel 2 — (H, C) placement; A encoded as marker size")
     ax.grid(True, alpha=0.2)
     ax.legend(fontsize=7, loc="best", framealpha=0.9)
-    ax.text(
-        0.02, 0.02,
-        "A ≈ 1.0 (ungated probe) — autonomy axis pinned by "
-        "design,\nnot a traced trade-off region",
-        transform=ax.transAxes, fontsize=8, va="bottom", ha="left",
-        bbox=dict(boxstyle="round", fc="#fff3cd", ec="#cc9a00", alpha=0.9),
-    )
+    # The "A pinned because ungated" caveat is NOT burned onto the image
+    # any more; it lives in the analysis report / LaTeX caption.
 
 
 def build_figure(runs_dir: str, out_dir: str) -> dict:
@@ -222,18 +212,16 @@ def build_figure(runs_dir: str, out_dir: str) -> dict:
     _panel_calibration(ax1, calib, color_of)
     _panel_placement(ax2, coords, seeds, color_of, partial_models)
 
+    # The honest caption travels with the returned dict (it lives in the
+    # analysis report and later the LaTeX caption) and is deliberately NOT
+    # burned onto the image — caveats must not be baked into pixels.
     caption = HONEST_CAPTION
     fig.suptitle(
         "Real models as points — descriptive placement (NOT a "
         "trilemma proof)",
         fontsize=13, y=0.995,
     )
-    fig.text(
-        0.5, 0.005, _wrap(caption), ha="center", va="bottom", fontsize=7.5,
-        wrap=True,
-        bbox=dict(boxstyle="round", fc="#f0f0f0", ec="0.6", alpha=0.95),
-    )
-    fig.tight_layout(rect=(0, 0.16, 1, 0.95))
+    fig.tight_layout(rect=(0, 0.03, 1, 0.95))
 
     out_pdf = os.path.join(out_dir, "model_points.pdf")
     out_png = os.path.join(out_dir, "model_points.png")
@@ -264,8 +252,212 @@ def build_figure(runs_dir: str, out_dir: str) -> dict:
     }
 
 
+# --------------------------------------------------------------------------- #
+# L.5: logprob cross-model figure mode.
+#
+# Sources per-model (H, C, A) + bootstrap CIs from the LOGPROB loader
+# (analysis.model_points.all_logprob_model_coords reading
+# experiment_output/logprob_xmodel/<model>/<model>_s<seed>.csv). Additive:
+# the competence-probe build_figure path above is untouched.
+#
+# No on-figure caption box is drawn (neither the honest-caption block nor a
+# burned-in "A pinned" textbox) — those caveats live in the analysis report
+# and the LaTeX caption (HONEST_CAPTION_LOGPROB travels with the result).
+#
+# The placement panel carries a THEORY-REFERENCE annotation: a marker at the
+# infeasible joint-good corner (high H + high C + high A simultaneously — the
+# trilemma's empty corner) and an arrow showing the predicted trade-off
+# direction. This is a descriptive annotation (label + marker + arrow), NOT a
+# traced achievable region / fake Pareto frontier.
+# --------------------------------------------------------------------------- #
+
+# Where the real logprob figure reads from / writes to (driver only; tests
+# always pass their own tmp_path).
+REAL_LOGPROB_RUNS_DIR = os.path.join(
+    _REPO_ROOT, "experiment_output", "logprob_xmodel"
+)
+REAL_LOGPROB_FIGURES_DIR = os.path.join(
+    _REPO_ROOT, "experiment_output", "analysis_logprob", "figures"
+)
+
+
+def _annotate_theory_geometry(ax) -> None:
+    """Mark the infeasible joint-good corner + predicted trade-off direction.
+
+    Descriptive only: a single marker at the (high-H, high-C) joint-good
+    corner (A would also have to be high there — annotated in the label),
+    a text label calling it the infeasible / empty corner of the trilemma,
+    and an arrow giving the predicted trade-off direction away from it. No
+    region patch, no curve, no traced frontier is drawn (the achievable set
+    is NOT claimed here). Artists carry stable gids so tests can assert
+    presence without pixel inspection.
+    """
+    # Joint-good corner: top-right of the (H, C) plane. A would also have to
+    # be ~1 there simultaneously — that triple is the trilemma's empty
+    # corner. We mark it on the (H, C) axes the panel already uses.
+    corner = (0.98, 0.98)
+    star = ax.scatter(
+        [corner[0]], [corner[1]], marker="*", s=320,
+        facecolors="none", edgecolors="#b00020", linewidths=1.8,
+        zorder=6,
+    )
+    star.set_gid("theory-corner")
+    lbl = ax.annotate(
+        "infeasible joint-good corner\n(high H + high C + high A together —\n"
+        "the trilemma's empty corner; theory reference, not data)",
+        xy=corner, xytext=(-12, -10), textcoords="offset points",
+        fontsize=7, ha="right", va="top", color="#b00020", zorder=6,
+        annotation_clip=False,
+    )
+    lbl.set_gid("theory-corner")
+    # Predicted trade-off direction: an arrow pointing AWAY from the
+    # joint-good corner (where real points are expected to fall if the
+    # trilemma holds). Descriptive direction cue, not an achievable curve.
+    arrow = ax.annotate(
+        "predicted trade-off direction",
+        xy=(0.55, 0.55), xytext=(0.90, 0.90),
+        textcoords="data", xycoords="data",
+        fontsize=7, ha="center", va="center", color="#7a0016",
+        arrowprops=dict(arrowstyle="->", color="#7a0016", lw=1.4),
+        zorder=6, annotation_clip=False,
+    )
+    arrow.set_gid("theory-tradeoff")
+
+
+def build_logprob_figure(
+    runs_dir: str, out_dir: str, return_figure: bool = False
+):
+    """Build the logprob cross-model placement figure from ``runs_dir``.
+
+    Sources per-model (H, C, A) + bootstrap CIs from the LOGPROB loader
+    ``analysis.model_points.all_logprob_model_coords`` over
+    ``runs_dir`` = ``experiment_output/logprob_xmodel/`` layout
+    (``<model>/<model>_s<seed>.csv``). Writes ``model_points_logprob.pdf``
+    and ``model_points_logprob.png`` into ``out_dir`` and returns the result
+    dict (same shape as :func:`build_figure`, with
+    ``caption == HONEST_CAPTION_LOGPROB``). With ``return_figure=True`` the
+    open Figure is returned alongside the dict so tests can inspect text /
+    annotation artists (the caller must close it).
+
+    NO on-figure caption box is drawn: caveats live in the analysis report
+    and the LaTeX caption. The placement panel carries a theory-reference
+    corner + trade-off annotation (descriptive, not a traced region).
+    """
+    os.makedirs(out_dir, exist_ok=True)
+
+    coords = all_logprob_model_coords(runs_dir)
+    model_ids = sorted(coords)
+    color_of = {
+        mid: _PALETTE[i % len(_PALETTE)] for i, mid in enumerate(model_ids)
+    }
+    partial_models = [m for m in model_ids if coords[m]["partial"]]
+
+    fig, ax = plt.subplots(1, 1, figsize=(8.4, 7.0))
+
+    for mid in model_ids:
+        c = coords[mid]
+        color = color_of[mid]
+        is_partial = mid in partial_models
+        if c["H"] != c["H"] or c["C"] != c["C"]:  # nan guard
+            continue
+        a_val = c["A"] if c["A"] == c["A"] else 0.0
+        size = 60 + 240 * a_val  # A encoded as marker size (pinned-axis cue)
+        h_err = [[c["H"] - c["H_ci"][0]], [c["H_ci"][1] - c["H"]]]
+        c_err = [[c["C"] - c["C_ci"][0]], [c["C_ci"][1] - c["C"]]]
+        label = mid
+        if is_partial:
+            label = f"{mid} (partial: {c['n_seeds']} seeds)"
+        ax.errorbar(
+            c["H"], c["C"], xerr=h_err, yerr=c_err, fmt="o",
+            ms=0, ecolor=color, elinewidth=1.4, capsize=3, zorder=4,
+        )
+        ax.scatter(
+            [c["H"]], [c["C"]], s=size,
+            facecolors="none" if is_partial else color,
+            edgecolors=color,
+            linewidths=2.0 if is_partial else 1.0,
+            alpha=0.55 if is_partial else 0.95,
+            label=label, zorder=5,
+        )
+        ax.annotate(
+            f"A={a_val:.2f}", (c["H"], c["C"]),
+            textcoords="offset points", xytext=(7, 7), fontsize=7,
+            color=color,
+        )
+
+    _annotate_theory_geometry(ax)
+
+    ax.set_xlim(-0.02, 1.06)
+    ax.set_ylim(-0.02, 1.06)
+    ax.set_xlabel("H  (helpfulness = acted & correct rate)")
+    ax.set_ylabel("C  (calibration = 1 - mean logprob-Brier | acted)")
+    ax.set_title(
+        "Logprob cross-model placement — (H, C); A as marker size"
+    )
+    ax.grid(True, alpha=0.2)
+    if model_ids:
+        ax.legend(fontsize=7, loc="lower left", framealpha=0.9)
+
+    # Caption travels with the result (report / LaTeX), NOT burned in.
+    caption = HONEST_CAPTION_LOGPROB
+    # Short descriptive title only. The full "not a proof / impossibility /
+    # region" caveats are NOT drawn on the figure — they live verbatim in
+    # the analysis report and the LaTeX caption (HONEST_CAPTION_LOGPROB).
+    fig.suptitle(
+        "Real models as points (logprob path) — descriptive placement",
+        fontsize=12, y=0.985,
+    )
+    fig.tight_layout(rect=(0, 0.02, 1, 0.95))
+
+    out_pdf = os.path.join(out_dir, "model_points_logprob.pdf")
+    out_png = os.path.join(out_dir, "model_points_logprob.png")
+    fig.savefig(out_pdf)
+    fig.savefig(out_png, dpi=150)
+
+    result = {
+        "models": {
+            mid: {
+                "H": coords[mid]["H"],
+                "C": coords[mid]["C"],
+                "A": coords[mid]["A"],
+                "H_ci": coords[mid]["H_ci"],
+                "C_ci": coords[mid]["C_ci"],
+                "A_ci": coords[mid]["A_ci"],
+                "n_acted": coords[mid]["n_acted"],
+                "n_tasks": coords[mid]["n_tasks"],
+                "n_seeds": coords[mid]["n_seeds"],
+                "partial": coords[mid]["partial"],
+            }
+            for mid in model_ids
+        },
+        "partial_models": partial_models,
+        "caption": caption,
+        "out_pdf": out_pdf,
+        "out_png": out_png,
+    }
+    if return_figure:
+        return fig, result
+    plt.close(fig)
+    return result
+
+
 if __name__ == "__main__":
-    res = build_figure(REAL_RUNS_DIR, REAL_FIGURES_DIR)
+    import argparse
+
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument(
+        "--mode", choices=("competence", "logprob"), default="competence",
+        help="competence-probe figure (default) or logprob cross-model "
+        "figure",
+    )
+    args = ap.parse_args()
+
+    if args.mode == "logprob":
+        res = build_logprob_figure(
+            REAL_LOGPROB_RUNS_DIR, REAL_LOGPROB_FIGURES_DIR
+        )
+    else:
+        res = build_figure(REAL_RUNS_DIR, REAL_FIGURES_DIR)
     print(f"wrote {res['out_pdf']}")
     print(f"wrote {res['out_png']}")
     if res["partial_models"]:
