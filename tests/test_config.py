@@ -61,3 +61,14 @@ def test_calibration_seeds_separate(params_path):
     exp_seeds = set(cfg["experiment"]["seeds"])
     cal_seeds = set(cfg["calibration"]["seeds"])
     assert exp_seeds.isdisjoint(cal_seeds), "Calibration seeds must not overlap experimental seeds"
+
+
+def test_competence_probe_seeds_separate(params_path):
+    cfg = load_config(params_path)
+    exp_seeds = set(cfg["experiment"]["seeds"])
+    cal_seeds = set(cfg["calibration"]["seeds"])
+    probe_seeds = set(cfg["competence_probe"]["seeds"])
+    assert probe_seeds.isdisjoint(exp_seeds), "Competence-probe seeds must not overlap experimental seeds"
+    assert probe_seeds.isdisjoint(cal_seeds), "Competence-probe seeds must not overlap calibration seeds"
+    for key in ("mistral7b", "gemma2_9b", "qwen14b"):
+        assert key in cfg["model"], f"Model registry must include {key}"
