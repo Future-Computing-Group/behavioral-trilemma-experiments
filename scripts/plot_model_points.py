@@ -310,13 +310,16 @@ def _draw_model_trajectory(
     n_seeds: int,
 ):
     """Render one model's tau-trajectory: line + per-tau bubbles + label."""
-    # Filter out NaN points (e.g. tau=1.0 typically has C=nan); keep only
-    # contiguous well-defined (H, C) points for the line. The bubbles for
-    # nan-C points are skipped — there is no (H, C) location to draw.
+    # Filter NaN points AND low-n_acted points (e.g. deepseek at tau>=0.9
+    # has only ~1 acted row, producing a spurious C=1.0 spike). MIN_N_ACTED
+    # is a per-tau cell threshold; baseline (tau=0) for every model far
+    # exceeds it (smallest baseline is deepseek's ~192 acted of 500).
+    MIN_N_ACTED = 10
     pts = [
         (e["tau"], e["H"], e["C"], e["A"])
         for e in traj
         if e["H"] == e["H"] and e["C"] == e["C"]
+        and e.get("n_acted", 0) >= MIN_N_ACTED
     ]
     if not pts:
         return
