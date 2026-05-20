@@ -432,6 +432,29 @@ def build_logprob_figure(
         fontsize=12,
     )
 
+    # Bubble-size reference key (size -> A). Placed in the upper-right
+    # quadrant of the panel where no data sits (high-H + high-C is the
+    # rare joint-good corner). NOT labelled, so it does NOT appear in
+    # the model-color legend below.
+    _ref_x = 0.92
+    _ref_specs = [(0.92, 1.00), (0.85, 0.50), (0.78, 0.25)]
+    ax.text(
+        _ref_x, 0.985, "marker size",
+        fontsize=9, color="#555", ha="center", va="bottom",
+        transform=ax.transData,
+    )
+    for _y, _a in _ref_specs:
+        ax.scatter(
+            [_ref_x], [_y], s=_bubble_size(_a),
+            facecolors="none", edgecolors="#555", linewidths=1.0,
+            zorder=2,
+        )
+        ax.annotate(
+            f"A={_a:.2f}", xy=(_ref_x, _y),
+            xytext=(10, 0), textcoords="offset points",
+            fontsize=8, color="#555", va="center",
+        )
+
     # Single figure-level legend below the panel (one entry per model;
     # marker size in the legend stays uniform — A varies along each
     # trajectory and is no longer a per-model legend label).
