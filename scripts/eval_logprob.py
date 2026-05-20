@@ -35,14 +35,21 @@ Column semantics
   (see main.tex:968 autonomy definition; also consistent with
   ``analysis.model_points.HONEST_CAPTION``'s "answer-commitment rate"
   framing). Answer-parse ``acted`` matches that; confidence-parse would not.
-* ``y``         — 1 if the parsed answer equals the task's gold answer,
-  else 0. Computed via ``src.orchestrator._verify_answer`` (the SAME
-  correctness function the competence probe uses through
-  ``run_single_config``), so ``y`` is byte-for-byte schema-parity with the
-  existing competence-probe CSVs. Only meaningful for acted rows; for
-  abstained rows ``answer`` is empty so ``_verify_answer`` returns 0 and
-  ``y`` is written as 0 (the loader excludes abstained rows from C, counts
-  them as not-acted for A, and contributes H=0 for that task).
+* ``y``         — 1 if the parsed answer matches the task's gold answer
+  under the L.5 CHARITABLE verifier (``analysis.robust_verify``):
+  any-integer-match for arithmetic (after comma-strip), substring for
+  factual (case-insensitive), structural-exact for code. This is
+  DELIBERATELY different from the competence probe's
+  ``src.orchestrator._verify_answer`` (exact-match), which is still used
+  unchanged for the 540-config gated H1-H6 runs in the manuscript Tables.
+  The charitable semantics here are required because open-weight model
+  families (granite, phi, gemma2, mistral, yi, ...) frequently wrap the
+  answer in verbose prose, and the exact-match verifier would score those
+  as 0 even when the correct integer / token is present. Only meaningful
+  for acted rows; for abstained rows ``answer`` is empty so
+  ``robust_verify`` returns 0 and ``y`` is written as 0 (the loader
+  excludes abstained rows from C, counts them as not-acted for A, and
+  contributes H=0 for that task).
 
 This script is OPERATIONAL GLUE. Unit tests MUST mock
 ``generate_with_logprobs`` (no Ollama / no network). Real model runs are a
@@ -55,8 +62,8 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
 
+from analysis.robust_verify import robust_verify
 from src.ollama_logprob_client import generate_with_logprobs
-from src.orchestrator import _verify_answer
 from src.parser import parse_response
 from src.tasks import load_tasks
 
@@ -112,10 +119,13 @@ def run_eval(
         _r_ignored, answer = parse_response(comp.content)
         acted = 1 if answer is not None else 0
 
-        # y via the SAME correctness function the competence probe uses
-        # (src.orchestrator._verify_answer), for exact schema parity.
-        # _verify_answer(answer=None) -> 0, so abstained rows get y=0.
-        y = _verify_answer(task, answer)
+        # y via the L.5 robust (charitable) verifier so cross-model CSVs
+        # written by this script natively carry the charitable y semantics
+        # (any-integer-match for arithmetic; substring for factual; exact
+        # for code). The original src.orchestrator._verify_answer is still
+        # used by the 540-config gated H1-H6 run (backward compatibility).
+        # robust_verify(answer=None) -> 0, so abstained rows get y=0.
+        y = robust_verify(answer, task)
 
         rows.append({
             "task": task["id"],

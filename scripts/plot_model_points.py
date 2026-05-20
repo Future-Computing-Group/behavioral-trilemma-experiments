@@ -344,7 +344,14 @@ def build_logprob_figure(
     }
     partial_models = [m for m in model_ids if coords[m]["partial"]]
 
-    fig, ax = plt.subplots(1, 1, figsize=(7.6, 5.6), constrained_layout=True)
+    # L.5 figure design tweaks for better ink-to-signal ratio:
+    #  - smaller figsize so the figure renders compactly in a one-column
+    #    manuscript layout (was 7.6x5.6 -> 7.0x4.6);
+    #  - larger axis/tick/label fonts (~12pt) for readability at print size;
+    #  - smaller legend markers (markerscale=0.5) so the legend doesn't
+    #    visually overlap data points the way the prior 1.0-scale legend did;
+    #  - legend positioned outside the axes to free the data area.
+    fig, ax = plt.subplots(1, 1, figsize=(7.0, 4.6), constrained_layout=True)
 
     for mid in model_ids:
         c = coords[mid]
@@ -373,7 +380,7 @@ def build_logprob_figure(
         )
         ax.annotate(
             f"A={a_val:.2f}", (c["H"], c["C"]),
-            textcoords="offset points", xytext=(7, 7), fontsize=9,
+            textcoords="offset points", xytext=(7, 7), fontsize=10,
             color=color,
         )
 
@@ -381,14 +388,31 @@ def build_logprob_figure(
 
     ax.set_xlim(-0.02, 1.06)
     ax.set_ylim(-0.02, 1.06)
-    ax.set_xlabel("H  (helpfulness = acted & correct rate)")
-    ax.set_ylabel("C  (calibration = 1 - mean logprob-Brier | acted)")
-    ax.set_title(
-        "Logprob cross-model placement — (H, C); A as marker size"
+    ax.set_xlabel(
+        "H  (helpfulness = acted & correct rate)", fontsize=12,
     )
+    ax.set_ylabel(
+        "C  (calibration = 1 - mean logprob-Brier | acted)", fontsize=12,
+    )
+    ax.set_title(
+        "Logprob cross-model placement — (H, C); A as marker size",
+        fontsize=12,
+    )
+    ax.tick_params(axis="both", labelsize=11)
     ax.grid(True, alpha=0.2)
     if model_ids:
-        ax.legend(fontsize=9, loc="lower left", framealpha=0.9)
+        # Smaller legend markers + outside-axes placement so the legend
+        # doesn't overlap data points / theory-corner star. markerscale=0.5
+        # shrinks the A-encoded marker glyphs in the legend (data still
+        # sized by A on the axes). bbox_to_anchor=(1.02, 1) puts the legend
+        # just outside the right axis spine (constrained_layout absorbs it).
+        ax.legend(
+            fontsize=9, loc="upper left",
+            bbox_to_anchor=(1.02, 1.0),
+            markerscale=0.5, handlelength=1.0,
+            handletextpad=0.4, borderpad=0.4,
+            framealpha=0.9,
+        )
 
     # Caption travels with the result (report / LaTeX), NOT burned in.
     caption = HONEST_CAPTION_LOGPROB

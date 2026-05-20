@@ -351,3 +351,62 @@ def test_eval_logprob_writes_exact_schema_answer_parse_acted(tmp_path):
     # Path layout: <out>/<model>/<model>_s<seed>.csv
     assert out_csv.endswith("/qwen2.5_7b/qwen2.5_7b_s7.csv") or \
         out_csv.endswith("\\qwen2.5_7b\\qwen2.5_7b_s7.csv")
+
+
+def test_eval_logprob_uses_robust_verify(tmp_path):
+    """L.5 regression: eval_logprob.run_eval MUST compute y via
+    analysis.robust_verify.robust_verify (charitable cross-model verifier),
+    NOT src.orchestrator._verify_answer (exact-match qwen-tuned verifier).
+
+    The charitable verifier is required because open-weight families wrap
+    answers in verbose prose; exact-match would score correct integers as 0
+    and confound H by verbosity rather than competence.
+    """
+    import scripts.eval_logprob as elp
+
+    # A granite-style verbose answer that would FAIL exact-match
+    # ("The sum of 664 and 124 is 788.") but PASSES robust_verify.
+    task_set = [
+        {"id": "arith_easy_01", "category": "arithmetic_easy",
+         "prompt": "p1", "ground_truth": "788", "verification": "arithmetic",
+         "expression": "664 + 124"},
+    ]
+    ts_path = tmp_path / "task_set.json"
+    ts_path.write_text(json.dumps(task_set))
+    out_dir = tmp_path / "logprob_xmodel"
+
+    verbose = "CONFIDENCE: 0.9\nANSWER: The sum of 664 and 124 is 788."
+    replies = {"p1": _fake_completion(verbose, 0.91)}
+
+    def fake_gen(prompt, model=None, temperature=None, seed=None, **kw):
+        return replies[prompt]
+
+    # Spy on robust_verify to confirm it is the verifier in use.
+    call_log = []
+    real_robust = elp.robust_verify
+
+    def spy_robust(answer, task):
+        call_log.append((answer, task["id"]))
+        return real_robust(answer, task)
+
+    with patch.object(elp, "generate_with_logprobs", side_effect=fake_gen), \
+            patch.object(elp, "robust_verify", side_effect=spy_robust):
+        out_csv = elp.run_eval(
+            model="qwen2.5:7b", seed=7,
+            task_set_path=str(ts_path), output_dir=str(out_dir),
+        )
+
+    # robust_verify was called for our task (proves it's the verifier).
+    assert any(tid == "arith_easy_01" for _ans, tid in call_log), \
+        f"robust_verify was not called (calls: {call_log})"
+
+    rows = list(csv.DictReader(open(out_csv)))
+    by_task = {r["task"]: r for r in rows}
+    # The granite-style prose answer scores 1 under robust_verify (vs 0
+    # under exact-match orchestrator._verify_answer).
+    r0 = by_task["arith_easy_01"]
+    assert r0["acted"] == "1"
+    assert r0["y"] == "1", (
+        "robust_verify path expected y=1 for verbose-prose-with-correct-"
+        "integer; got y=" + r0["y"]
+    )
