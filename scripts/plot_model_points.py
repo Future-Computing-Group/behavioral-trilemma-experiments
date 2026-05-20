@@ -48,6 +48,10 @@ from analysis.model_points import (  # noqa: E402
     all_model_coords,
     all_seed_coords,
 )
+from analysis.tau_sweep import (  # noqa: E402
+    DEFAULT_TAUS,
+    all_logprob_tau_sweeps,
+)
 
 # Real input/output locations (only used by the __main__ driver; tests pass
 # their own tmp_path).
@@ -253,31 +257,35 @@ def build_figure(runs_dir: str, out_dir: str) -> dict:
 
 
 # --------------------------------------------------------------------------- #
-# L.5: logprob cross-model figure mode (3-panel pairwise redesign).
+# L.5: logprob cross-model figure mode (single-panel tau-trajectory design).
 #
 # Sources per-model (H, C, A) + bootstrap CIs from the LOGPROB loader
-# (analysis.model_points.all_logprob_model_coords reading
-# experiment_output/logprob_xmodel/<model>/<model>_s<seed>.csv). Additive:
+# (analysis.model_points.all_logprob_model_coords) and per-model tau-sweep
+# trajectories from analysis.tau_sweep.all_logprob_tau_sweeps. Additive:
 # the competence-probe build_figure path above is untouched.
+#
+# DESIGN (2026-05-20, post-3-panel revert): single-panel (H, C) scatter with
+# A encoded as marker size — back to the original template the manuscript
+# was written for. But instead of one bubble per model, each model is drawn
+# as a CONNECTED TRAJECTORY through (H_tau, C_tau) as tau sweeps from 0 to
+# 1: a thin line in the model's color through the per-tau points, with a
+# small bubble per tau point sized by A_tau (so the action-rate axis is
+# visible at every tau), and the tau=0 baseline rendered as the larger /
+# labeled anchor.
+#
+# Why a trajectory and not a single point: cross-model differences in the
+# starting position reflect COMPETENCE (which is confounded with the
+# trilemma claim and motivates the gated mechanism experiment). The
+# trajectory shape, however, is the within-model trade-off as the
+# autonomy-as-abstention knob is turned — same model, same tasks, only the
+# abstention rule moves — so the curve IS the competence-controlled
+# behavioral envelope. The corner-star / "joint-good" / -1-slope-boundary
+# framing of older drafts is permanently removed; the trilemma claim still
+# rests on the gated mechanism experiment (H1–H6) and the theory.
 #
 # No on-figure caption box is drawn (neither the honest-caption block nor a
 # burned-in "A pinned" textbox) — those caveats live in the analysis report
 # and the LaTeX caption (HONEST_CAPTION_LOGPROB travels with the result).
-#
-# WHY the prior corner-star / "joint-good" framing was removed (2026-05-20):
-# the rendered single-panel (H, C) scatter with a marked top-right
-# "infeasible joint-good corner" silently implied a trilemma-shaped achievable
-# boundary (a -1-slope frontier, axis-extreme specialization) that the actual
-# data does NOT show. What the data shows is a small competence-bounded
-# interior cluster of models: empty top-right is just as compatible with
-# "no model in this size class is competent enough" as with "trilemma forbids
-# it" — the scatter alone cannot distinguish those. Honest fix: render the
-# three pairwise scatters (H vs C, H vs A, C vs A) as a purely descriptive
-# cross-model placement, with the trilemma claim itself left to the gated
-# mechanism experiment (H1–H6) and the theory, as the LaTeX caption already
-# states. The 3-panel pairwise form also puts all three axes on equal footing
-# rather than silently dropping A from a 2D (H, C) projection, while avoiding
-# 3D scatter's known on-paper z-order / depth-perception issues.
 # --------------------------------------------------------------------------- #
 
 # Where the real logprob figure reads from / writes to (driver only; tests
@@ -290,107 +298,140 @@ REAL_LOGPROB_FIGURES_DIR = os.path.join(
 )
 
 
-def _plot_pairwise_panel(
-    ax, coords, model_ids, color_of, partial_models,
-    x_key: str, y_key: str, x_label: str, y_label: str,
-    uniform_s: int = 80,
-):
-    """Render one pairwise scatter panel (x_key vs y_key) with error bars.
+def _bubble_size(a_val: float) -> float:
+    """A-as-marker-size map. Small but visible at A=0, large at A=1."""
+    if a_val != a_val:  # nan guard
+        a_val = 0.0
+    return 40.0 + 240.0 * max(0.0, min(1.0, a_val))
 
-    Pure helper: same color/marker convention per model across panels,
-    partial models drawn hollow/faded. Per-panel auto-scaling via
-    ``ax.margins(0.08)`` lets the data show without forcing a [0, 1] frame.
-    """
-    for mid in model_ids:
-        c = coords[mid]
-        color = color_of[mid]
-        is_partial = mid in partial_models
-        xv, yv = c[x_key], c[y_key]
-        if xv != xv or yv != yv:  # nan guard
+
+def _draw_model_trajectory(
+    ax, mid: str, traj: list[dict], color, is_partial: bool,
+    n_seeds: int,
+):
+    """Render one model's tau-trajectory: line + per-tau bubbles + label."""
+    # Filter out NaN points (e.g. tau=1.0 typically has C=nan); keep only
+    # contiguous well-defined (H, C) points for the line. The bubbles for
+    # nan-C points are skipped — there is no (H, C) location to draw.
+    pts = [
+        (e["tau"], e["H"], e["C"], e["A"])
+        for e in traj
+        if e["H"] == e["H"] and e["C"] == e["C"]
+    ]
+    if not pts:
+        return
+    # Connecting line through the (H, C) points in tau order.
+    xs = [p[1] for p in pts]
+    ys = [p[2] for p in pts]
+    ax.plot(
+        xs, ys,
+        color=color, lw=1.4, alpha=0.55 if is_partial else 0.85,
+        zorder=3, solid_capstyle="round",
+        linestyle="--" if is_partial else "-",
+    )
+    # Per-tau bubbles sized by A_tau. tau=0 (baseline) is drawn last and
+    # larger, with the label, so it sits visually on top.
+    baseline = None
+    for tau, h, c, a in pts:
+        size = _bubble_size(a)
+        if tau == 0.0:
+            baseline = (h, c, a, size)
             continue
-        x_ci = c[f"{x_key}_ci"]
-        y_ci = c[f"{y_key}_ci"]
-        x_err = [[xv - x_ci[0]], [x_ci[1] - xv]]
-        y_err = [[yv - y_ci[0]], [y_ci[1] - yv]]
-        ax.errorbar(
-            xv, yv, xerr=x_err, yerr=y_err, fmt="o",
-            ms=0, ecolor=color, elinewidth=1.4, capsize=3, zorder=4,
-        )
         ax.scatter(
-            [xv], [yv], s=uniform_s,
+            [h], [c], s=size,
             facecolors="none" if is_partial else color,
             edgecolors=color,
-            linewidths=2.0 if is_partial else 1.0,
-            alpha=0.55 if is_partial else 0.95,
-            label=None,  # legend is built once for the whole figure
-            zorder=5,
+            linewidths=1.5 if is_partial else 1.0,
+            alpha=0.45 if is_partial else 0.75,
+            zorder=4,
         )
-    ax.set_xlabel(x_label, fontsize=11)
-    ax.set_ylabel(y_label, fontsize=11)
-    ax.tick_params(axis="both", labelsize=10)
-    ax.grid(True, alpha=0.2)
-    ax.margins(0.08)
+    if baseline is not None:
+        h, c, a, size = baseline
+        # Baseline (tau=0) anchor: same color, slightly larger ring.
+        label = (
+            f"{mid} (partial: {n_seeds} seeds)" if is_partial else mid
+        )
+        ax.scatter(
+            [h], [c], s=size * 1.25,
+            facecolors="none" if is_partial else color,
+            edgecolors=color,
+            linewidths=2.0 if is_partial else 1.4,
+            alpha=0.6 if is_partial else 0.95,
+            label=label, zorder=6,
+        )
 
 
 def build_logprob_figure(
-    runs_dir: str, out_dir: str, return_figure: bool = False
+    runs_dir: str, out_dir: str, return_figure: bool = False,
+    taus: list[float] | None = None,
 ):
-    """Build the 3-panel pairwise logprob placement figure from ``runs_dir``.
+    """Build the single-panel tau-trajectory logprob figure.
 
     Sources per-model (H, C, A) + bootstrap CIs from the LOGPROB loader
-    ``analysis.model_points.all_logprob_model_coords`` over
-    ``runs_dir`` = ``experiment_output/logprob_xmodel/`` layout
-    (``<model>/<model>_s<seed>.csv``). Writes ``model_points_logprob.pdf``
-    and ``model_points_logprob.png`` into ``out_dir`` and returns the result
-    dict (same shape as :func:`build_figure`, with
-    ``caption == HONEST_CAPTION_LOGPROB``). With ``return_figure=True`` the
-    open Figure is returned alongside the dict so tests can inspect text
-    artists (the caller must close it).
+    ``analysis.model_points.all_logprob_model_coords`` AND per-model
+    tau-sweep trajectories from
+    ``analysis.tau_sweep.all_logprob_tau_sweeps`` over the
+    ``experiment_output/logprob_xmodel/<model>/<model>_s<seed>.csv`` layout.
 
-    Layout: three pairwise scatter panels — (H vs C), (H vs A), (C vs A) —
-    with one color per model used consistently across panels and a single
-    shared legend below all three. NO corner-star, NO "joint-good" or
-    "infeasible" label on the figure; trilemma claim lives in H1–H6 + theory
-    (see module docstring above).
+    Writes ``model_points_logprob.pdf`` and ``model_points_logprob.png``
+    into ``out_dir``. Returns a dict with point estimates per model,
+    partial-model list, caption (== HONEST_CAPTION_LOGPROB), and file
+    paths. With ``return_figure=True`` the open Figure is also returned so
+    tests can inspect artists (caller must close it).
+
+    Layout: a SINGLE (H, C) panel. Marker size encodes A. Each model is a
+    connected tau-trajectory: thin line through (H_tau, C_tau) bubbles
+    sized by A_tau, with the tau=0 baseline drawn as the larger labeled
+    anchor. NO corner-star, NO "joint-good" / "infeasible" label, NO
+    directional arrow; trilemma claim lives in H1–H6 + theory (see module
+    docstring above).
     """
     os.makedirs(out_dir, exist_ok=True)
 
+    if taus is None:
+        taus = list(DEFAULT_TAUS)
+
     coords = all_logprob_model_coords(runs_dir)
+    trajectories = all_logprob_tau_sweeps(runs_dir, taus=taus)
     model_ids = sorted(coords)
     color_of = {
         mid: _PALETTE[i % len(_PALETTE)] for i, mid in enumerate(model_ids)
     }
     partial_models = [m for m in model_ids if coords[m]["partial"]]
 
-    # Slightly taller figure so the below-axes legend has room without
-    # colliding with per-panel x-axis labels. constrained_layout reserves
-    # space for the legend when it is attached to the Figure (not an Axes).
-    fig, axes = plt.subplots(
-        1, 3, figsize=(13.5, 5.2), constrained_layout=True,
+    fig, ax = plt.subplots(
+        1, 1, figsize=(8.0, 6.0), constrained_layout=True,
     )
 
-    _plot_pairwise_panel(
-        axes[0], coords, model_ids, color_of, partial_models,
-        x_key="H", y_key="C",
-        x_label="H  (acted & correct)",
-        y_label="C  (1 - mean Brier | acted)",
+    for mid in model_ids:
+        is_partial = mid in partial_models
+        traj = trajectories.get(mid, [])
+        _draw_model_trajectory(
+            ax, mid, traj, color_of[mid], is_partial,
+            n_seeds=coords[mid]["n_seeds"],
+        )
+
+    ax.set_xlabel(
+        "H  (helpfulness = acted & correct rate)", fontsize=11,
     )
-    _plot_pairwise_panel(
-        axes[1], coords, model_ids, color_of, partial_models,
-        x_key="H", y_key="A",
-        x_label="H  (acted & correct)",
-        y_label="A  (action rate)",
+    ax.set_ylabel(
+        "C  (calibration = 1 - mean Brier | acted)", fontsize=11,
     )
-    _plot_pairwise_panel(
-        axes[2], coords, model_ids, color_of, partial_models,
-        x_key="C", y_key="A",
-        x_label="C  (1 - mean Brier | acted)",
-        y_label="A  (action rate)",
+    ax.tick_params(axis="both", labelsize=10)
+    ax.grid(True, alpha=0.2)
+    ax.margins(0.08)
+
+    # Single neutral title — within-model trade-off framing, no trilemma
+    # rhetoric.
+    ax.set_title(
+        "Per-model tau-trajectories: competence-controlled within-model "
+        "trade-offs",
+        fontsize=12,
     )
 
-    # Build a SINGLE figure-level legend below all three panels. We
-    # construct proxy handles ourselves so the legend has one entry per
-    # model (panels each draw the model once but we don't want 3x repeats).
+    # Single figure-level legend below the panel (one entry per model;
+    # marker size in the legend stays uniform — A varies along each
+    # trajectory and is no longer a per-model legend label).
     if model_ids:
         from matplotlib.lines import Line2D
 
@@ -404,42 +445,28 @@ def build_logprob_figure(
                 f"{mid} (partial: {n_seeds} seeds)" if is_partial else mid
             )
             handles.append(Line2D(
-                [0], [0], marker="o", linestyle="",
+                [0], [0], marker="o", linestyle="-",
                 markerfacecolor="none" if is_partial else color,
-                markeredgecolor=color,
-                markeredgewidth=2.0 if is_partial else 1.0,
-                markersize=9, alpha=0.55 if is_partial else 0.95,
+                markeredgecolor=color, color=color,
+                markeredgewidth=2.0 if is_partial else 1.4,
+                markersize=8, alpha=0.6 if is_partial else 0.95,
             ))
             labels.append(label)
         n_models = len(model_ids)
-        # Pick ncol so labels fit cleanly below the 3-panel strip without
-        # clipping. 4 cols handles 8 entries as 4+4; falls back to 3 for
-        # very long labels if 4 don't pack.
         ncol = 4 if n_models > 6 else min(n_models, 3)
-        # ``loc="outside lower center"`` (matplotlib >= 3.6) cooperates with
-        # constrained_layout and reserves a strip below the panels, so the
-        # legend never collides with per-panel x-axis labels.
         fig.legend(
             handles, labels,
             loc="outside lower center",
             ncol=ncol, fontsize=9,
-            handlelength=1.0, handletextpad=0.5,
+            handlelength=2.0, handletextpad=0.5,
             columnspacing=1.5, framealpha=0.9,
         )
 
     # Caption travels with the result (report / LaTeX), NOT burned in.
     caption = HONEST_CAPTION_LOGPROB
-    # Single neutral suptitle: descriptive cross-model placement on all
-    # three axes. NO trilemma rhetoric — see module docstring for why.
-    fig.suptitle(
-        "Cross-model placement of open-weights instruct models on (H, C, A)",
-        fontsize=13,
-    )
 
     out_pdf = os.path.join(out_dir, "model_points_logprob.pdf")
     out_png = os.path.join(out_dir, "model_points_logprob.png")
-    # constrained_layout + ``loc="outside lower center"`` already reserves
-    # space for the legend; bbox_inches="tight" would re-crop and undo that.
     fig.savefig(out_pdf)
     fig.savefig(out_png, dpi=150)
 

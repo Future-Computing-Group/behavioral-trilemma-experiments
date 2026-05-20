@@ -306,13 +306,12 @@ def test_logprob_figure_no_burned_in_caption_box(
     assert result["caption"] == HONEST_CAPTION_LOGPROB
 
 
-def test_logprob_figure_has_three_panels(
+def test_logprob_figure_has_single_panel(
     synthetic_logprob_runs, tmp_path
 ):
-    """The redesigned logprob figure MUST be a 3-panel pairwise scatter:
-    panel 0 = H vs C, panel 1 = H vs A, panel 2 = C vs A. Asserted on the
-    Figure's axes count and per-axis x/y label text (not pixels) so the
-    pairwise structure cannot silently collapse back to a single panel."""
+    """The 2026-05-20 redesign reverts to a SINGLE (H, C) panel with A as
+    marker size and a per-model tau-trajectory. The 3-panel pairwise form
+    is permanently retired; this guard pins the panel count at 1."""
     import scripts.plot_model_points as mod
 
     fig, _result = mod.build_logprob_figure(
@@ -320,24 +319,63 @@ def test_logprob_figure_has_three_panels(
         return_figure=True,
     )
     try:
-        # Exactly three data-bearing axes (the suptitle / legend live on
-        # the figure, not as extra Axes objects).
-        assert len(fig.axes) == 3, (
-            f"expected 3 pairwise panels, got {len(fig.axes)}"
+        assert len(fig.axes) == 1, (
+            f"expected 1 (H, C) panel, got {len(fig.axes)}"
         )
-        labels = [
-            (ax.get_xlabel().lower(), ax.get_ylabel().lower())
-            for ax in fig.axes
+        ax = fig.axes[0]
+        assert ax.get_xlabel().lower().startswith("h "), ax.get_xlabel()
+        assert ax.get_ylabel().lower().startswith("c "), ax.get_ylabel()
+    finally:
+        mod.plt.close(fig)
+
+
+def test_logprob_figure_renders_tau_trajectories(
+    synthetic_logprob_runs, tmp_path
+):
+    """For each COMPLETE model the figure must contain a connected
+    multi-point line in the (H, C) panel — proof that the tau-trajectory
+    was drawn, not a single bubble.
+
+    We count Line2D artists on the single Axes that have >=2 finite
+    (x, y) data points (matplotlib's line marker proxies for legend
+    handles have 1 point or are not on the data Axes, so the >=2 rule
+    excludes them safely)."""
+    import math
+    import scripts.plot_model_points as mod
+    from matplotlib.lines import Line2D
+
+    fig, result = mod.build_logprob_figure(
+        str(synthetic_logprob_runs), str(tmp_path / "figures"),
+        return_figure=True,
+    )
+    try:
+        ax = fig.axes[0]
+        trajectory_lines = 0
+        for ln in ax.findobj(match=Line2D):
+            xs = ln.get_xdata()
+            ys = ln.get_ydata()
+            if len(xs) < 2:
+                continue
+            # Drop nan
+            finite = [
+                (x, y) for x, y in zip(xs, ys)
+                if x == x and y == y and not (
+                    isinstance(x, float) and math.isinf(x)
+                )
+            ]
+            if len(finite) >= 2:
+                trajectory_lines += 1
+        # At least one trajectory per non-partial model (the partial
+        # model may have only baseline-finite points depending on its
+        # tau-sweep, but the complete model MUST have a trajectory).
+        complete_models = [
+            mid for mid in result["models"]
+            if not result["models"][mid]["partial"]
         ]
-        # Panel 0: H (x) vs C (y).
-        assert labels[0][0].startswith("h "), labels
-        assert labels[0][1].startswith("c "), labels
-        # Panel 1: H (x) vs A (y).
-        assert labels[1][0].startswith("h "), labels
-        assert labels[1][1].startswith("a "), labels
-        # Panel 2: C (x) vs A (y).
-        assert labels[2][0].startswith("c "), labels
-        assert labels[2][1].startswith("a "), labels
+        assert trajectory_lines >= len(complete_models), (
+            f"expected >= {len(complete_models)} trajectory lines, "
+            f"found {trajectory_lines}"
+        )
     finally:
         mod.plt.close(fig)
 
