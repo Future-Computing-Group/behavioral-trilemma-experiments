@@ -432,27 +432,30 @@ def build_logprob_figure(
         fontsize=12,
     )
 
-    # Bubble-size reference key (size -> A). Placed in the upper-right
-    # quadrant of the panel where no data sits (high-H + high-C is the
-    # rare joint-good corner). NOT labelled, so it does NOT appear in
-    # the model-color legend below.
-    _ref_x = 0.92
-    _ref_specs = [(0.92, 1.00), (0.85, 0.50), (0.78, 0.25)]
+    # Bubble-size reference key. Positions are in AXES-FRACTION coords
+    # (transform=ax.transAxes) so they do NOT trigger axis-bound
+    # auto-expansion the way data-coord positions did. Placed in the
+    # lower-right band just above the model legend (legend bottom at
+    # y_frac~0.02, top at ~0.34 for a single-col 8-row fontsize=8).
+    # Far-right (x_frac=0.97) is clear of data; labels offset LEFT so
+    # they stay inside the panel.
+    _ref_xf = 0.97
+    _ref_specs = [(0.40, 0.25), (0.48, 0.50), (0.56, 1.00)]
     ax.text(
-        _ref_x, 0.985, "marker size",
-        fontsize=9, color="#555", ha="center", va="bottom",
-        transform=ax.transData,
+        _ref_xf, 0.62, "marker size",
+        fontsize=9, color="#555", ha="right", va="bottom",
+        transform=ax.transAxes,
     )
-    for _y, _a in _ref_specs:
+    for _yf, _a in _ref_specs:
         ax.scatter(
-            [_ref_x], [_y], s=_bubble_size(_a),
+            [_ref_xf], [_yf], s=_bubble_size(_a),
             facecolors="none", edgecolors="#555", linewidths=1.0,
-            zorder=2,
+            zorder=2, transform=ax.transAxes, clip_on=False,
         )
         ax.annotate(
-            f"A={_a:.2f}", xy=(_ref_x, _y),
-            xytext=(10, 0), textcoords="offset points",
-            fontsize=8, color="#555", va="center",
+            f"A={_a:.2f}", xy=(_ref_xf, _yf), xycoords=ax.transAxes,
+            xytext=(-15, 0), textcoords="offset points",
+            fontsize=8, color="#555", ha="right", va="center",
         )
 
     # Single figure-level legend below the panel (one entry per model;
@@ -478,14 +481,18 @@ def build_logprob_figure(
                 markersize=8, alpha=0.6 if is_partial else 0.95,
             ))
             labels.append(label)
-        n_models = len(model_ids)
-        ncol = 4 if n_models > 6 else min(n_models, 3)
-        fig.legend(
+        # Legend INSIDE panel at lower-right. Single column keeps the
+        # legend narrow (covers less horizontal space) so it does not
+        # occlude the data cluster around H~0.45, C~0.60–0.70 that
+        # spills into the lower-right area; slight transparency so any
+        # grazing trajectory bubble shows through. Avoids the wasted
+        # whitespace of an outside-the-panel legend.
+        ax.legend(
             handles, labels,
-            loc="outside lower center",
-            ncol=ncol, fontsize=9,
-            handlelength=2.0, handletextpad=0.5,
-            columnspacing=1.5, framealpha=0.9,
+            loc="lower right", bbox_to_anchor=(0.99, 0.02),
+            ncol=1, fontsize=8,
+            handlelength=1.4, handletextpad=0.4,
+            borderpad=0.4, framealpha=0.82,
         )
 
     # Caption travels with the result (report / LaTeX), NOT burned in.
