@@ -253,7 +253,7 @@ def build_figure(runs_dir: str, out_dir: str) -> dict:
 
 
 # --------------------------------------------------------------------------- #
-# L.5: logprob cross-model figure mode.
+# L.5: logprob cross-model figure mode (3-panel pairwise redesign).
 #
 # Sources per-model (H, C, A) + bootstrap CIs from the LOGPROB loader
 # (analysis.model_points.all_logprob_model_coords reading
@@ -264,12 +264,20 @@ def build_figure(runs_dir: str, out_dir: str) -> dict:
 # burned-in "A pinned" textbox) — those caveats live in the analysis report
 # and the LaTeX caption (HONEST_CAPTION_LOGPROB travels with the result).
 #
-# The placement panel carries a THEORY-REFERENCE annotation: a marker at the
-# infeasible joint-good corner (high H + high C + high A simultaneously — the
-# trilemma's empty corner). This is a descriptive corner-only annotation
-# (label + marker), NOT a traced achievable region / fake Pareto frontier.
-# No directional arrow is drawn: the trilemma is a non-attainability claim at
-# a point, not a directional prediction, so any slope would over-claim.
+# WHY the prior corner-star / "joint-good" framing was removed (2026-05-20):
+# the rendered single-panel (H, C) scatter with a marked top-right
+# "infeasible joint-good corner" silently implied a trilemma-shaped achievable
+# boundary (a -1-slope frontier, axis-extreme specialization) that the actual
+# data does NOT show. What the data shows is a small competence-bounded
+# interior cluster of models: empty top-right is just as compatible with
+# "no model in this size class is competent enough" as with "trilemma forbids
+# it" — the scatter alone cannot distinguish those. Honest fix: render the
+# three pairwise scatters (H vs C, H vs A, C vs A) as a purely descriptive
+# cross-model placement, with the trilemma claim itself left to the gated
+# mechanism experiment (H1–H6) and the theory, as the LaTeX caption already
+# states. The 3-panel pairwise form also puts all three axes on equal footing
+# rather than silently dropping A from a 2D (H, C) projection, while avoiding
+# 3D scatter's known on-paper z-order / depth-perception issues.
 # --------------------------------------------------------------------------- #
 
 # Where the real logprob figure reads from / writes to (driver only; tests
@@ -282,44 +290,52 @@ REAL_LOGPROB_FIGURES_DIR = os.path.join(
 )
 
 
-def _annotate_theory_geometry(ax) -> None:
-    """Mark the infeasible joint-good corner only.
+def _plot_pairwise_panel(
+    ax, coords, model_ids, color_of, partial_models,
+    x_key: str, y_key: str, x_label: str, y_label: str,
+    uniform_s: int = 80,
+):
+    """Render one pairwise scatter panel (x_key vs y_key) with error bars.
 
-    Descriptive only: a single marker at the (high-H, high-C) joint-good
-    corner (A would also have to be high there) and a single concise text
-    label, placed DIRECTLY adjacent to the star so it visually labels the
-    star and cannot be read as a phantom data point. The "theory reference,
-    not data" qualifier lives in the LaTeX caption, not on the figure. No
-    directional arrow is drawn: the trilemma is a non-attainability claim
-    at a point, not a directional prediction, so a slope label
-    ("predicted trade-off direction") would over-claim. Artists carry
-    stable gids so tests can assert presence without pixel inspection.
+    Pure helper: same color/marker convention per model across panels,
+    partial models drawn hollow/faded. Per-panel auto-scaling via
+    ``ax.margins(0.08)`` lets the data show without forcing a [0, 1] frame.
     """
-    # Joint-good corner: top-right of the (H, C) plane. A would also have to
-    # be ~1 there simultaneously — that triple is the trilemma's empty
-    # corner. We mark it on the (H, C) axes the panel already uses.
-    corner = (0.98, 0.98)
-    star = ax.scatter(
-        [corner[0]], [corner[1]], marker="*", s=360,
-        facecolors="none", edgecolors="#b00020", linewidths=1.8,
-        zorder=6,
-    )
-    star.set_gid("theory-corner")
-    # Label placed RIGHT next to the star (small pixel offset, no arrow),
-    # so it reads as labeling the star rather than as a phantom data point.
-    lbl = ax.annotate(
-        "infeasible joint-good corner",
-        xy=corner, xytext=(-6, -10), textcoords="offset points",
-        fontsize=9, ha="right", va="top", color="#b00020", zorder=6,
-        annotation_clip=False,
-    )
-    lbl.set_gid("theory-corner")
+    for mid in model_ids:
+        c = coords[mid]
+        color = color_of[mid]
+        is_partial = mid in partial_models
+        xv, yv = c[x_key], c[y_key]
+        if xv != xv or yv != yv:  # nan guard
+            continue
+        x_ci = c[f"{x_key}_ci"]
+        y_ci = c[f"{y_key}_ci"]
+        x_err = [[xv - x_ci[0]], [x_ci[1] - xv]]
+        y_err = [[yv - y_ci[0]], [y_ci[1] - yv]]
+        ax.errorbar(
+            xv, yv, xerr=x_err, yerr=y_err, fmt="o",
+            ms=0, ecolor=color, elinewidth=1.4, capsize=3, zorder=4,
+        )
+        ax.scatter(
+            [xv], [yv], s=uniform_s,
+            facecolors="none" if is_partial else color,
+            edgecolors=color,
+            linewidths=2.0 if is_partial else 1.0,
+            alpha=0.55 if is_partial else 0.95,
+            label=None,  # legend is built once for the whole figure
+            zorder=5,
+        )
+    ax.set_xlabel(x_label, fontsize=11)
+    ax.set_ylabel(y_label, fontsize=11)
+    ax.tick_params(axis="both", labelsize=10)
+    ax.grid(True, alpha=0.2)
+    ax.margins(0.08)
 
 
 def build_logprob_figure(
     runs_dir: str, out_dir: str, return_figure: bool = False
 ):
-    """Build the logprob cross-model placement figure from ``runs_dir``.
+    """Build the 3-panel pairwise logprob placement figure from ``runs_dir``.
 
     Sources per-model (H, C, A) + bootstrap CIs from the LOGPROB loader
     ``analysis.model_points.all_logprob_model_coords`` over
@@ -328,12 +344,14 @@ def build_logprob_figure(
     and ``model_points_logprob.png`` into ``out_dir`` and returns the result
     dict (same shape as :func:`build_figure`, with
     ``caption == HONEST_CAPTION_LOGPROB``). With ``return_figure=True`` the
-    open Figure is returned alongside the dict so tests can inspect text /
-    annotation artists (the caller must close it).
+    open Figure is returned alongside the dict so tests can inspect text
+    artists (the caller must close it).
 
-    NO on-figure caption box is drawn: caveats live in the analysis report
-    and the LaTeX caption. The placement panel carries a theory-reference
-    corner + trade-off annotation (descriptive, not a traced region).
+    Layout: three pairwise scatter panels — (H vs C), (H vs A), (C vs A) —
+    with one color per model used consistently across panels and a single
+    shared legend below all three. NO corner-star, NO "joint-good" or
+    "infeasible" label on the figure; trilemma claim lives in H1–H6 + theory
+    (see module docstring above).
     """
     os.makedirs(out_dir, exist_ok=True)
 
@@ -344,117 +362,84 @@ def build_logprob_figure(
     }
     partial_models = [m for m in model_ids if coords[m]["partial"]]
 
-    # L.5 figure-redesign (post-visual-inspection per L80). Six fixes:
-    #  (1) single takeaway-style title via fig.suptitle, no secondary
-    #      descriptive title (the prior stacked-titles caused left clipping);
-    #  (2) per-point "A=..." text annotations DROPPED — A is folded into the
-    #      legend label instead, eliminating on-panel text overlap;
-    #  (3) marker-size A-encoding DROPPED (5/7 models pinned ~1.0 so the
-    #      channel did not discriminate); uniform size for complete models,
-    #      hollow/faded for partial models keeps the partial-flag visible;
-    #  (4) y-axis autoscaled to actual data range (data clusters in
-    #      C in [0.4, 0.8]; prior 0..1 wasted ~40% empty space);
-    #  (5) corner-star label placed adjacent to the star (see
-    #      _annotate_theory_geometry, small offset, no phantom-point read);
-    #  (6) legend moved BELOW the panel as a horizontal strip; figure WIDTH
-    #      reduced so there is no right-side empty column.
-    fig, ax = plt.subplots(1, 1, figsize=(7.4, 5.6), constrained_layout=True)
-
-    # Uniform marker size for all models (was: size = 60 + 240 * A).
-    _UNIFORM_S = 90
-
-    # Track C-range across complete models for y-axis autoscale (fix 4).
-    c_values: list[float] = []
-
-    for mid in model_ids:
-        c = coords[mid]
-        color = color_of[mid]
-        is_partial = mid in partial_models
-        if c["H"] != c["H"] or c["C"] != c["C"]:  # nan guard
-            continue
-        a_val = c["A"] if c["A"] == c["A"] else 0.0
-        h_err = [[c["H"] - c["H_ci"][0]], [c["H_ci"][1] - c["H"]]]
-        c_err = [[c["C"] - c["C_ci"][0]], [c["C_ci"][1] - c["C"]]]
-        # Fold A into the legend label (fix 2): "<model>  (A=0.79)" or
-        # "<model> (partial: N seeds; A=...)" for partial models.
-        if is_partial:
-            label = f"{mid} (partial: {c['n_seeds']} seeds; A={a_val:.2f})"
-        else:
-            label = f"{mid}  (A={a_val:.2f})"
-        ax.errorbar(
-            c["H"], c["C"], xerr=h_err, yerr=c_err, fmt="o",
-            ms=0, ecolor=color, elinewidth=1.4, capsize=3, zorder=4,
-        )
-        ax.scatter(
-            [c["H"]], [c["C"]], s=_UNIFORM_S,
-            facecolors="none" if is_partial else color,
-            edgecolors=color,
-            linewidths=2.0 if is_partial else 1.0,
-            alpha=0.55 if is_partial else 0.95,
-            label=label, zorder=5,
-        )
-        # NOTE: per-point "A=..." text annotation REMOVED (fix 2).
-
-        # Track C for y-axis autoscale (include error-bar extent so CIs fit).
-        c_values.append(c["C"])
-        c_values.append(c["C_ci"][0])
-        c_values.append(c["C_ci"][1])
-
-    _annotate_theory_geometry(ax)
-
-    # x-axis kept full [0, 1] so the "no model at H~1" takeaway has the full
-    # range visible (and the corner star at (0.98, 0.98) is in-frame).
-    ax.set_xlim(-0.02, 1.06)
-    # y-axis autoscaled to data range with a small margin (fix 4). Always
-    # include the corner star (~0.98) so the theory reference stays visible.
-    if c_values:
-        c_lo = min(c_values + [0.98]) - 0.05
-        c_hi = max(c_values + [0.98]) + 0.05
-        # Guard against pathological tight ranges.
-        if c_hi - c_lo < 0.10:
-            mid = 0.5 * (c_lo + c_hi)
-            c_lo, c_hi = mid - 0.10, mid + 0.10
-        ax.set_ylim(c_lo, c_hi)
-    else:
-        ax.set_ylim(-0.02, 1.06)
-    ax.set_xlabel(
-        "H  (helpfulness = acted & correct rate)", fontsize=12,
+    # Slightly taller figure so the below-axes legend has room without
+    # colliding with per-panel x-axis labels. constrained_layout reserves
+    # space for the legend when it is attached to the Figure (not an Axes).
+    fig, axes = plt.subplots(
+        1, 3, figsize=(13.5, 5.2), constrained_layout=True,
     )
-    ax.set_ylabel(
-        "C  (calibration = 1 - mean logprob-Brier | acted)", fontsize=12,
+
+    _plot_pairwise_panel(
+        axes[0], coords, model_ids, color_of, partial_models,
+        x_key="H", y_key="C",
+        x_label="H  (acted & correct)",
+        y_label="C  (1 - mean Brier | acted)",
     )
-    # Per-panel descriptive title REMOVED (fix 1): only the takeaway
-    # suptitle is drawn so the two-titles-stacked clipping cannot recur.
-    ax.tick_params(axis="both", labelsize=11)
-    ax.grid(True, alpha=0.2)
+    _plot_pairwise_panel(
+        axes[1], coords, model_ids, color_of, partial_models,
+        x_key="H", y_key="A",
+        x_label="H  (acted & correct)",
+        y_label="A  (action rate)",
+    )
+    _plot_pairwise_panel(
+        axes[2], coords, model_ids, color_of, partial_models,
+        x_key="C", y_key="A",
+        x_label="C  (1 - mean Brier | acted)",
+        y_label="A  (action rate)",
+    )
+
+    # Build a SINGLE figure-level legend below all three panels. We
+    # construct proxy handles ourselves so the legend has one entry per
+    # model (panels each draw the model once but we don't want 3x repeats).
     if model_ids:
-        # Legend BELOW the panel as a horizontal strip (fix 6). ncol=3
-        # accommodates the long "mistral_7b-instruct-q4_K_M  (A=0.79)" entry
-        # without left/right clipping at the chosen figsize.
+        from matplotlib.lines import Line2D
+
+        handles = []
+        labels = []
+        for mid in model_ids:
+            is_partial = mid in partial_models
+            color = color_of[mid]
+            n_seeds = coords[mid]["n_seeds"]
+            label = (
+                f"{mid} (partial: {n_seeds} seeds)" if is_partial else mid
+            )
+            handles.append(Line2D(
+                [0], [0], marker="o", linestyle="",
+                markerfacecolor="none" if is_partial else color,
+                markeredgecolor=color,
+                markeredgewidth=2.0 if is_partial else 1.0,
+                markersize=9, alpha=0.55 if is_partial else 0.95,
+            ))
+            labels.append(label)
         n_models = len(model_ids)
-        ncol = min(n_models, 3)
-        ax.legend(
-            fontsize=8, loc="upper center",
-            bbox_to_anchor=(0.5, -0.12), ncol=ncol,
-            markerscale=0.9, handlelength=1.0,
-            handletextpad=0.5, borderpad=0.5,
-            columnspacing=1.5,
-            framealpha=0.9,
+        # Pick ncol so labels fit cleanly below the 3-panel strip without
+        # clipping. 4 cols handles 8 entries as 4+4; falls back to 3 for
+        # very long labels if 4 don't pack.
+        ncol = 4 if n_models > 6 else min(n_models, 3)
+        # ``loc="outside lower center"`` (matplotlib >= 3.6) cooperates with
+        # constrained_layout and reserves a strip below the panels, so the
+        # legend never collides with per-panel x-axis labels.
+        fig.legend(
+            handles, labels,
+            loc="outside lower center",
+            ncol=ncol, fontsize=9,
+            handlelength=1.0, handletextpad=0.5,
+            columnspacing=1.5, framealpha=0.9,
         )
 
     # Caption travels with the result (report / LaTeX), NOT burned in.
     caption = HONEST_CAPTION_LOGPROB
-    # SINGLE takeaway-style suptitle (fix 1). The descriptive details and
-    # all caveats live verbatim in the LaTeX caption (HONEST_CAPTION_LOGPROB)
-    # and the §exp-models paragraph.
+    # Single neutral suptitle: descriptive cross-model placement on all
+    # three axes. NO trilemma rhetoric — see module docstring for why.
     fig.suptitle(
-        "No open-weights model attains the joint-good corner",
+        "Cross-model placement of open-weights instruct models on (H, C, A)",
         fontsize=13,
     )
-    # constrained_layout handles padding; no tight_layout call needed.
 
     out_pdf = os.path.join(out_dir, "model_points_logprob.pdf")
     out_png = os.path.join(out_dir, "model_points_logprob.png")
+    # constrained_layout + ``loc="outside lower center"`` already reserves
+    # space for the legend; bbox_inches="tight" would re-crop and undo that.
     fig.savefig(out_pdf)
     fig.savefig(out_png, dpi=150)
 

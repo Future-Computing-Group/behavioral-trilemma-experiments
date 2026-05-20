@@ -306,14 +306,13 @@ def test_logprob_figure_no_burned_in_caption_box(
     assert result["caption"] == HONEST_CAPTION_LOGPROB
 
 
-def test_logprob_figure_has_theory_corner_annotation(
+def test_logprob_figure_has_three_panels(
     synthetic_logprob_runs, tmp_path
 ):
-    """The placement panel MUST carry a theory-reference annotation marking
-    the infeasible joint-good corner (high H + high C + high A). Asserted
-    via a stable annotation gid/text sentinel, NOT by pixels. It must be a
-    descriptive annotation (Annotation/Text), not a fabricated
-    achievable-region patch."""
+    """The redesigned logprob figure MUST be a 3-panel pairwise scatter:
+    panel 0 = H vs C, panel 1 = H vs A, panel 2 = C vs A. Asserted on the
+    Figure's axes count and per-axis x/y label text (not pixels) so the
+    pairwise structure cannot silently collapse back to a single panel."""
     import scripts.plot_model_points as mod
 
     fig, _result = mod.build_logprob_figure(
@@ -321,22 +320,64 @@ def test_logprob_figure_has_theory_corner_annotation(
         return_figure=True,
     )
     try:
-        objs = list(fig.findobj())
-        # Stable sentinel on the theory annotation artist(s).
-        gids = {getattr(o, "get_gid", lambda: None)() for o in objs}
-        assert "theory-corner" in gids, (
-            "theory-reference corner annotation artist missing "
-            f"(gids seen: {sorted(g for g in gids if g)})"
+        # Exactly three data-bearing axes (the suptitle / legend live on
+        # the figure, not as extra Axes objects).
+        assert len(fig.axes) == 3, (
+            f"expected 3 pairwise panels, got {len(fig.axes)}"
         )
-        # Descriptive text, not a fabricated traced region: there must be
-        # a Text artist mentioning the infeasible joint-good corner.
-        joined = " ".join(
+        labels = [
+            (ax.get_xlabel().lower(), ax.get_ylabel().lower())
+            for ax in fig.axes
+        ]
+        # Panel 0: H (x) vs C (y).
+        assert labels[0][0].startswith("h "), labels
+        assert labels[0][1].startswith("c "), labels
+        # Panel 1: H (x) vs A (y).
+        assert labels[1][0].startswith("h "), labels
+        assert labels[1][1].startswith("a "), labels
+        # Panel 2: C (x) vs A (y).
+        assert labels[2][0].startswith("c "), labels
+        assert labels[2][1].startswith("a "), labels
+    finally:
+        mod.plt.close(fig)
+
+
+def test_logprob_figure_no_corner_star_or_joint_good_label(
+    synthetic_logprob_runs, tmp_path
+):
+    """Affirmative-removal guard (closes the L60-style trap raised in the
+    L.5 review). The corner-star + 'joint-good corner' / 'infeasible'
+    annotations were dropped on 2026-05-20 because the scatter does not in
+    fact exhibit a trilemma-shaped achievable boundary; the empty top-right
+    is equally compatible with competence-confounding. No Text artist may
+    contain 'infeasible', 'joint-good', or 'joint good'; and no artist may
+    carry the gid 'theory-corner' or 'theory-tradeoff'."""
+    import scripts.plot_model_points as mod
+
+    fig, _result = mod.build_logprob_figure(
+        str(synthetic_logprob_runs), str(tmp_path / "figures"),
+        return_figure=True,
+    )
+    try:
+        texts = [
             (t.get_text() or "").lower()
             for t in fig.findobj(match=mod.plt.Text)
-        )
-        assert "infeasible" in joined or "joint-good" in joined or (
-            "joint good" in joined
-        ), "no descriptive label for the infeasible joint-good corner"
+        ]
+        joined = " ".join(texts)
+        for forbidden in ("infeasible", "joint-good", "joint good"):
+            assert forbidden not in joined, (
+                f"forbidden corner-star label fragment {forbidden!r} "
+                f"present in figure text: {texts}"
+            )
+        gids = {
+            getattr(o, "get_gid", lambda: None)()
+            for o in fig.findobj()
+        }
+        for forbidden_gid in ("theory-corner", "theory-tradeoff"):
+            assert forbidden_gid not in gids, (
+                f"forbidden artist gid {forbidden_gid!r} present "
+                f"(gids seen: {sorted(g for g in gids if g)})"
+            )
     finally:
         mod.plt.close(fig)
 
