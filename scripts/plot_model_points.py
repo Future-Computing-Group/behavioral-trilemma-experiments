@@ -266,9 +266,10 @@ def build_figure(runs_dir: str, out_dir: str) -> dict:
 #
 # The placement panel carries a THEORY-REFERENCE annotation: a marker at the
 # infeasible joint-good corner (high H + high C + high A simultaneously — the
-# trilemma's empty corner) and an arrow showing the predicted trade-off
-# direction. This is a descriptive annotation (label + marker + arrow), NOT a
-# traced achievable region / fake Pareto frontier.
+# trilemma's empty corner). This is a descriptive corner-only annotation
+# (label + marker), NOT a traced achievable region / fake Pareto frontier.
+# No directional arrow is drawn: the trilemma is a non-attainability claim at
+# a point, not a directional prediction, so any slope would over-claim.
 # --------------------------------------------------------------------------- #
 
 # Where the real logprob figure reads from / writes to (driver only; tests
@@ -282,15 +283,16 @@ REAL_LOGPROB_FIGURES_DIR = os.path.join(
 
 
 def _annotate_theory_geometry(ax) -> None:
-    """Mark the infeasible joint-good corner + predicted trade-off direction.
+    """Mark the infeasible joint-good corner only.
 
     Descriptive only: a single marker at the (high-H, high-C) joint-good
-    corner (A would also have to be high there), a single concise text
-    label calling it the infeasible joint-good corner of the trilemma, and
-    an arrow giving the predicted trade-off direction. The "theory
-    reference, not data" qualifier lives in the LaTeX caption, not on the
-    figure. Artists carry stable gids so tests can assert presence without
-    pixel inspection.
+    corner (A would also have to be high there) and a single concise text
+    label calling it the infeasible joint-good corner of the trilemma. The
+    "theory reference, not data" qualifier lives in the LaTeX caption, not
+    on the figure. No directional arrow is drawn: the trilemma is a
+    non-attainability claim at a point, not a directional prediction, so a
+    slope label ("predicted trade-off direction") would over-claim. Artists
+    carry stable gids so tests can assert presence without pixel inspection.
     """
     # Joint-good corner: top-right of the (H, C) plane. A would also have to
     # be ~1 there simultaneously — that triple is the trilemma's empty
@@ -312,18 +314,6 @@ def _annotate_theory_geometry(ax) -> None:
         annotation_clip=False,
     )
     lbl.set_gid("theory-corner")
-    # Predicted trade-off direction: an arrow pointing toward the
-    # joint-good corner from mid-panel. Placed well away from the corner
-    # label to prevent overlap; arrow text reads along the arrow.
-    arrow = ax.annotate(
-        "predicted trade-off direction",
-        xy=(0.92, 0.92), xytext=(0.62, 0.18),
-        textcoords="data", xycoords="data",
-        fontsize=10, ha="center", va="center", color="#7a0016",
-        arrowprops=dict(arrowstyle="->", color="#7a0016", lw=1.4),
-        zorder=6, annotation_clip=False,
-    )
-    arrow.set_gid("theory-tradeoff")
 
 
 def build_logprob_figure(

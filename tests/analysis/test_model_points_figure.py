@@ -310,10 +310,10 @@ def test_logprob_figure_has_theory_corner_annotation(
     synthetic_logprob_runs, tmp_path
 ):
     """The placement panel MUST carry a theory-reference annotation marking
-    the infeasible joint-good corner (high H + high C + high A) and the
-    predicted trade-off direction. Asserted via a stable annotation
-    gid/text sentinel, NOT by pixels. It must be a descriptive annotation
-    (Annotation/Text), not a fabricated achievable-region patch."""
+    the infeasible joint-good corner (high H + high C + high A). Asserted
+    via a stable annotation gid/text sentinel, NOT by pixels. It must be a
+    descriptive annotation (Annotation/Text), not a fabricated
+    achievable-region patch."""
     import scripts.plot_model_points as mod
 
     fig, _result = mod.build_logprob_figure(
@@ -328,9 +328,6 @@ def test_logprob_figure_has_theory_corner_annotation(
             "theory-reference corner annotation artist missing "
             f"(gids seen: {sorted(g for g in gids if g)})"
         )
-        assert "theory-tradeoff" in gids, (
-            "theory trade-off direction annotation artist missing"
-        )
         # Descriptive text, not a fabricated traced region: there must be
         # a Text artist mentioning the infeasible joint-good corner.
         joined = " ".join(
@@ -340,6 +337,46 @@ def test_logprob_figure_has_theory_corner_annotation(
         assert "infeasible" in joined or "joint-good" in joined or (
             "joint good" in joined
         ), "no descriptive label for the infeasible joint-good corner"
+    finally:
+        mod.plt.close(fig)
+
+
+def test_logprob_figure_no_unjustified_directional_arrow(
+    synthetic_logprob_runs, tmp_path
+):
+    """Affirmatively forbid the resurrection of a 'predicted trade-off
+    direction' label or any artist with gid ``theory-tradeoff``. The
+    trilemma is a non-attainability claim at a point, not a directional
+    prediction, so any directional arrow on the placement panel would
+    over-claim (closes the L60 figure-claim-chain gap raised in the L.5
+    review). Asserted across all Text artists (case-insensitive substring)
+    and across all artist gids."""
+    import scripts.plot_model_points as mod
+
+    fig, _result = mod.build_logprob_figure(
+        str(synthetic_logprob_runs), str(tmp_path / "figures"),
+        return_figure=True,
+    )
+    try:
+        objs = list(fig.findobj())
+        gids = {getattr(o, "get_gid", lambda: None)() for o in objs}
+        assert "theory-tradeoff" not in gids, (
+            "forbidden directional-arrow gid 'theory-tradeoff' present "
+            "(the slope has no theoretical basis; do not redraw it)"
+        )
+        texts = [
+            (t.get_text() or "").lower()
+            for t in fig.findobj(match=mod.plt.Text)
+        ]
+        joined = " ".join(texts)
+        assert "predicted trade-off direction" not in joined, (
+            "forbidden directional label 'predicted trade-off direction' "
+            f"present in figure text: {texts}"
+        )
+        # Also catch the en-dash / hyphen-collapsed variants.
+        assert "predicted tradeoff direction" not in joined, (
+            "forbidden directional label (hyphen-collapsed variant) present"
+        )
     finally:
         mod.plt.close(fig)
 
