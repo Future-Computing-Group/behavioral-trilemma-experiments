@@ -28,7 +28,6 @@ Pure analysis: no network, no model calls, no plotting, no argparse.
 """
 
 import csv
-import math
 import os
 
 __all__ = [

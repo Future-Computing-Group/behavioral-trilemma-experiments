@@ -12,6 +12,7 @@ notes/
 
 # Experiment data must not be tracked (L73 — no internal data in git)
 experiment_output/**/*.csv
+experiment_output/**/*.csv.orig
 experiment_output/**/*.json
 experiment_output/**/*.jsonl
 experiment_output/competence_probe/_runs/

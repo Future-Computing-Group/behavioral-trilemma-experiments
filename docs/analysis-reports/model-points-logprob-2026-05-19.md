@@ -96,21 +96,23 @@ state explicitly that the figure's qwen-7B value is a within-figure anchor,
 not a Table reproduction, so no reader infers a numeric discrepancy where
 none is claimed.
 
-## Theory-reference geometry on the figure
+## Figure layout — single-panel τ-trajectory scatter
 
-The placement panel carries a **descriptive theory-reference annotation**
-(no fabricated region/curve):
+The placement panel is a **single-panel (H, C) scatter** with one
+trajectory per model:
 
-- a star marker + label at the **infeasible joint-good corner** — high H +
-  high C + high A *simultaneously*, the trilemma's empty corner — labelled
-  as a theory reference, *not* data;
-- an arrow giving the **predicted trade-off direction** away from that
-  corner, where real points are expected to fall **if** the trilemma holds.
+- each model contributes a sequence of points across a τ-sweep
+  (calibration-threshold sweep); the **baseline** point sits at the
+  bottom-right end of the trajectory and points move **up-and-left** as τ
+  increases (higher calibration, lower helpfulness);
+- A (answer-commitment rate) is encoded as **marker size**;
+- segments with `n_acted < 10` are gated out of the rendering to suppress
+  small-sample spikes (commit `a92066c`);
+- 8 models appear in the figure (including the late-added
+  `command-r7b`).
 
-These let a reader see where points would sit *if the trilemma did NOT
-hold* (the joint-good corner) versus where they actually fall, without
-drawing a traced achievable region or a fake Pareto frontier. This is
-purely descriptive placement, not an impossibility/region trace.
+No corner star, no fabricated achievable region, and no fake Pareto
+frontier are drawn — this is purely descriptive within-figure placement.
 
 ## (H, C, A) ± 95% bootstrap CI per model
 
@@ -163,6 +165,15 @@ also placed in the JMLR A1 manuscript figures directory as
   (enforced by `tests/analysis/test_logprob_xmodel_metrics.py::
   test_honest_caption_logprob_caveats`).
 - Tests: `tests/analysis/test_model_points_figure.py` (logprob-mode
-  block: loader-sourced, no-burned-in-caption-box,
-  theory-corner-annotation-present, Agg backend, competence-path
-  regression guard).
+  block: loader-sourced, no-burned-in-caption-box, Agg backend,
+  competence-path regression guard).
+
+The figure's `y` column was reanalyzed in-place by
+`scripts/reanalyze_logprob_xmodel.py` using `analysis.robust_verify`
+(charitable cross-model answer extraction). `.csv.orig` backups
+preserve the pre-reanalysis state for the 6 originally-evaluated
+models. The 2 later-added models (`deepseek-llm:7b-chat` and
+`command-r7b`) were evaluated after `robust_verify` was already
+integrated into the eval-time path, so they used `robust_verify`
+natively and no `.csv.orig` backup was produced for them. This
+asymmetry is provenance, not a defect.

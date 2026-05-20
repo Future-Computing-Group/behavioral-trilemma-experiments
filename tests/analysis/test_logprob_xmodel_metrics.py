@@ -322,7 +322,8 @@ def test_eval_logprob_writes_exact_schema_answer_parse_acted(tmp_path):
             task_set_path=str(ts_path), output_dir=str(out_dir),
         )
 
-    rows = list(csv.DictReader(open(out_csv)))
+    with open(out_csv) as f:
+        rows = list(csv.DictReader(f))
     assert list(rows[0].keys()) == LOGPROB_HEADER  # EXACT 7-col schema
     assert len(rows) == 3
 
@@ -400,7 +401,8 @@ def test_eval_logprob_uses_robust_verify(tmp_path):
     assert any(tid == "arith_easy_01" for _ans, tid in call_log), \
         f"robust_verify was not called (calls: {call_log})"
 
-    rows = list(csv.DictReader(open(out_csv)))
+    with open(out_csv) as f:
+        rows = list(csv.DictReader(f))
     by_task = {r["task"]: r for r in rows}
     # The granite-style prose answer scores 1 under robust_verify (vs 0
     # under exact-match orchestrator._verify_answer).

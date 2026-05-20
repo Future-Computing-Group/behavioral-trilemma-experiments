@@ -18,7 +18,6 @@ component so the axis purely reflects "commitment-conditional competence".
 """
 
 import csv
-import math
 
 from analysis.model_points import (
     _bootstrap_ci,
