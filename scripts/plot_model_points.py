@@ -285,39 +285,41 @@ def _annotate_theory_geometry(ax) -> None:
     """Mark the infeasible joint-good corner + predicted trade-off direction.
 
     Descriptive only: a single marker at the (high-H, high-C) joint-good
-    corner (A would also have to be high there — annotated in the label),
-    a text label calling it the infeasible / empty corner of the trilemma,
-    and an arrow giving the predicted trade-off direction away from it. No
-    region patch, no curve, no traced frontier is drawn (the achievable set
-    is NOT claimed here). Artists carry stable gids so tests can assert
-    presence without pixel inspection.
+    corner (A would also have to be high there), a single concise text
+    label calling it the infeasible joint-good corner of the trilemma, and
+    an arrow giving the predicted trade-off direction. The "theory
+    reference, not data" qualifier lives in the LaTeX caption, not on the
+    figure. Artists carry stable gids so tests can assert presence without
+    pixel inspection.
     """
     # Joint-good corner: top-right of the (H, C) plane. A would also have to
     # be ~1 there simultaneously — that triple is the trilemma's empty
     # corner. We mark it on the (H, C) axes the panel already uses.
     corner = (0.98, 0.98)
     star = ax.scatter(
-        [corner[0]], [corner[1]], marker="*", s=320,
+        [corner[0]], [corner[1]], marker="*", s=360,
         facecolors="none", edgecolors="#b00020", linewidths=1.8,
         zorder=6,
     )
     star.set_gid("theory-corner")
+    # ONE concise consolidated label near the corner. The redundant
+    # "theory reference, not data" qualifier has been moved to the LaTeX
+    # caption to prevent text-overlap mashing seen at small fontsize.
     lbl = ax.annotate(
-        "infeasible joint-good corner\n(high H + high C + high A together —\n"
-        "the trilemma's empty corner; theory reference, not data)",
-        xy=corner, xytext=(-12, -10), textcoords="offset points",
-        fontsize=7, ha="right", va="top", color="#b00020", zorder=6,
+        "infeasible joint-good corner\n(theory, no model attains)",
+        xy=corner, xytext=(-14, -14), textcoords="offset points",
+        fontsize=10, ha="right", va="top", color="#b00020", zorder=6,
         annotation_clip=False,
     )
     lbl.set_gid("theory-corner")
-    # Predicted trade-off direction: an arrow pointing AWAY from the
-    # joint-good corner (where real points are expected to fall if the
-    # trilemma holds). Descriptive direction cue, not an achievable curve.
+    # Predicted trade-off direction: an arrow pointing toward the
+    # joint-good corner from mid-panel. Placed well away from the corner
+    # label to prevent overlap; arrow text reads along the arrow.
     arrow = ax.annotate(
         "predicted trade-off direction",
-        xy=(0.55, 0.55), xytext=(0.90, 0.90),
+        xy=(0.92, 0.92), xytext=(0.62, 0.18),
         textcoords="data", xycoords="data",
-        fontsize=7, ha="center", va="center", color="#7a0016",
+        fontsize=10, ha="center", va="center", color="#7a0016",
         arrowprops=dict(arrowstyle="->", color="#7a0016", lw=1.4),
         zorder=6, annotation_clip=False,
     )
@@ -352,7 +354,7 @@ def build_logprob_figure(
     }
     partial_models = [m for m in model_ids if coords[m]["partial"]]
 
-    fig, ax = plt.subplots(1, 1, figsize=(8.4, 7.0))
+    fig, ax = plt.subplots(1, 1, figsize=(7.6, 5.6), constrained_layout=True)
 
     for mid in model_ids:
         c = coords[mid]
@@ -381,7 +383,7 @@ def build_logprob_figure(
         )
         ax.annotate(
             f"A={a_val:.2f}", (c["H"], c["C"]),
-            textcoords="offset points", xytext=(7, 7), fontsize=7,
+            textcoords="offset points", xytext=(7, 7), fontsize=9,
             color=color,
         )
 
@@ -396,7 +398,7 @@ def build_logprob_figure(
     )
     ax.grid(True, alpha=0.2)
     if model_ids:
-        ax.legend(fontsize=7, loc="lower left", framealpha=0.9)
+        ax.legend(fontsize=9, loc="lower left", framealpha=0.9)
 
     # Caption travels with the result (report / LaTeX), NOT burned in.
     caption = HONEST_CAPTION_LOGPROB
@@ -405,9 +407,9 @@ def build_logprob_figure(
     # the analysis report and the LaTeX caption (HONEST_CAPTION_LOGPROB).
     fig.suptitle(
         "Real models as points (logprob path) — descriptive placement",
-        fontsize=12, y=0.985,
+        fontsize=12,
     )
-    fig.tight_layout(rect=(0, 0.02, 1, 0.95))
+    # constrained_layout handles padding; no tight_layout call needed.
 
     out_pdf = os.path.join(out_dir, "model_points_logprob.pdf")
     out_png = os.path.join(out_dir, "model_points_logprob.png")
