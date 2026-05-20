@@ -2,12 +2,14 @@
 import csv
 import pathlib
 import pytest
+import pandas as pd
 
 from analysis.metrics import (
     load_results,
     compute_per_config_metrics,
     compute_brier_decomposition,
 )
+from analysis.hypothesis_tests import run_all_tests
 
 
 @pytest.fixture
@@ -80,3 +82,68 @@ def test_brier_decomposition():
     bs = sum((r - y) ** 2 for r, y in zip(r_values, y_values)) / 4
     # Binned decomposition is approximate; tolerance reflects bin-boundary effects
     assert abs(decomp["reliability"] - decomp["resolution"] + decomp["uncertainty"] - bs) < 0.01
+
+
+def _first_existing(paths: list[pathlib.Path]) -> pathlib.Path:
+    for path in paths:
+        if path.exists():
+            return path
+    raise FileNotFoundError("No expected results directory found")
+
+
+def _load_phase0_simple(path: pathlib.Path) -> tuple[dict[str, float], dict[float, set[str]]]:
+    df = pd.read_csv(path)
+    p_hat = dict(zip(df["task_id"], df["p_hat"].astype(float)))
+    binding_sets: dict[float, set[str]] = {}
+    for col in df.columns:
+        if col.startswith("binding_"):
+            threshold = float(col.replace("binding_", ""))
+            binding_sets[threshold] = set(df.loc[df[col] == 1, "task_id"])
+    return p_hat, binding_sets
+
+
+def test_updated_hypotheses_on_logprob_results():
+    root = pathlib.Path(__file__).resolve().parent.parent
+    results_dir = _first_existing(
+        [
+            root / "experiment_output" / "raw_runs" / "logprob" / "results",
+            root / "experiment_results" / "raw_runs" / "logprob" / "results",
+            root / "puhti_output" / "results",
+        ]
+    )
+
+    phase0_path = results_dir / "phase0_calibration.csv"
+    if not phase0_path.exists():
+        pytest.skip("phase0_calibration.csv not found; cannot evaluate updated hypotheses.")
+
+    df = load_results(results_dir)
+    p_hat, binding_sets = _load_phase0_simple(phase0_path)
+
+    results = run_all_tests(
+        df,
+        binding_tasks=binding_sets,
+        p_hat=p_hat,
+        n_boot=1,
+    )
+
+
+    # H1 (updated): fixed-axis degradation at N=32 under higher autonomy weight.
+    assert results["H1"]["statistic"] > 0
+    assert results["H1"]["p_value"] < 0.05
+    assert results["H1"]["mean_diff"] > 0
+
+    # H2 (updated): monotone inflation trend across w_A/w_C.
+    assert results["H2"]["z"] > 0
+    assert results["H2"]["p_value"] < 0.05
+    assert results["H2"]["rho"] > 0
+
+    # H3 (updated): tolerance-aware convexity criterion.
+    assert results["H3"]["criterion_met"] is True
+    assert results["H3"]["violation_rate"] < results["H3"]["tolerance"]
+
+    # H4-H6 unchanged and should remain strongly supported.
+    assert results["H4"]["p_value"] < 0.05
+    assert results["H5"]["p_value"] < 0.05
+    assert results["H5"]["ratio"] > 2.0
+    assert results["H6"]["statistic"] < 0
+    assert results["H6"]["p_value"] < 0.05
