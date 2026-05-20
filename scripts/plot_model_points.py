@@ -423,6 +423,11 @@ def build_logprob_figure(
     ax.tick_params(axis="both", labelsize=10)
     ax.grid(True, alpha=0.2)
     ax.margins(0.08)
+    # Pin x-axis to [0, 1] so the empty H>0.62 right column is visible
+    # (the joint-good corner area the figure means to call out as
+    # empty), and so both legends can sit in that genuinely data-free
+    # column without overlapping any trajectory.
+    ax.set_xlim(-0.02, 1.02)
 
     # Single neutral title — within-model trade-off framing, no trilemma
     # rhetoric.
@@ -464,14 +469,30 @@ def build_logprob_figure(
     if model_ids:
         from matplotlib.lines import Line2D
 
+        # Short labels for the legend (the long Ollama tags like
+        # "mistral_7b-instruct-q4_K_M" expand the legend past the empty
+        # right column; the colon-separated short forms match how these
+        # models are referred to in the manuscript prose).
+        _SHORT = {
+            "command-r7b": "command-r7b",
+            "deepseek-llm_7b-chat": "deepseek-llm:7b",
+            "gemma2_9b": "gemma2:9b",
+            "granite3.1-dense_8b": "granite3.1:8b",
+            "mistral_7b-instruct-q4_K_M": "mistral:7b",
+            "phi3.5_latest": "phi3.5",
+            "qwen2.5_7b": "qwen2.5:7b",
+            "yi_9b": "yi:9b",
+        }
         handles = []
         labels = []
         for mid in model_ids:
             is_partial = mid in partial_models
             color = color_of[mid]
             n_seeds = coords[mid]["n_seeds"]
+            short = _SHORT.get(mid, mid)
             label = (
-                f"{mid} (partial: {n_seeds} seeds)" if is_partial else mid
+                f"{short} (partial: {n_seeds} seeds)"
+                if is_partial else short
             )
             handles.append(Line2D(
                 [0], [0], marker="o", linestyle="-",
