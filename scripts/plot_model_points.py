@@ -287,12 +287,13 @@ def _annotate_theory_geometry(ax) -> None:
 
     Descriptive only: a single marker at the (high-H, high-C) joint-good
     corner (A would also have to be high there) and a single concise text
-    label calling it the infeasible joint-good corner of the trilemma. The
-    "theory reference, not data" qualifier lives in the LaTeX caption, not
-    on the figure. No directional arrow is drawn: the trilemma is a
-    non-attainability claim at a point, not a directional prediction, so a
-    slope label ("predicted trade-off direction") would over-claim. Artists
-    carry stable gids so tests can assert presence without pixel inspection.
+    label, placed DIRECTLY adjacent to the star so it visually labels the
+    star and cannot be read as a phantom data point. The "theory reference,
+    not data" qualifier lives in the LaTeX caption, not on the figure. No
+    directional arrow is drawn: the trilemma is a non-attainability claim
+    at a point, not a directional prediction, so a slope label
+    ("predicted trade-off direction") would over-claim. Artists carry
+    stable gids so tests can assert presence without pixel inspection.
     """
     # Joint-good corner: top-right of the (H, C) plane. A would also have to
     # be ~1 there simultaneously — that triple is the trilemma's empty
@@ -304,13 +305,12 @@ def _annotate_theory_geometry(ax) -> None:
         zorder=6,
     )
     star.set_gid("theory-corner")
-    # ONE concise consolidated label near the corner. The redundant
-    # "theory reference, not data" qualifier has been moved to the LaTeX
-    # caption to prevent text-overlap mashing seen at small fontsize.
+    # Label placed RIGHT next to the star (small pixel offset, no arrow),
+    # so it reads as labeling the star rather than as a phantom data point.
     lbl = ax.annotate(
-        "infeasible joint-good corner\n(theory, no model attains)",
-        xy=corner, xytext=(-14, -14), textcoords="offset points",
-        fontsize=10, ha="right", va="top", color="#b00020", zorder=6,
+        "infeasible joint-good corner",
+        xy=corner, xytext=(-6, -10), textcoords="offset points",
+        fontsize=9, ha="right", va="top", color="#b00020", zorder=6,
         annotation_clip=False,
     )
     lbl.set_gid("theory-corner")
@@ -344,14 +344,27 @@ def build_logprob_figure(
     }
     partial_models = [m for m in model_ids if coords[m]["partial"]]
 
-    # L.5 figure design tweaks for better ink-to-signal ratio:
-    #  - smaller figsize so the figure renders compactly in a one-column
-    #    manuscript layout (was 7.6x5.6 -> 7.0x4.6);
-    #  - larger axis/tick/label fonts (~12pt) for readability at print size;
-    #  - smaller legend markers (markerscale=0.5) so the legend doesn't
-    #    visually overlap data points the way the prior 1.0-scale legend did;
-    #  - legend positioned outside the axes to free the data area.
-    fig, ax = plt.subplots(1, 1, figsize=(7.0, 4.6), constrained_layout=True)
+    # L.5 figure-redesign (post-visual-inspection per L80). Six fixes:
+    #  (1) single takeaway-style title via fig.suptitle, no secondary
+    #      descriptive title (the prior stacked-titles caused left clipping);
+    #  (2) per-point "A=..." text annotations DROPPED — A is folded into the
+    #      legend label instead, eliminating on-panel text overlap;
+    #  (3) marker-size A-encoding DROPPED (5/7 models pinned ~1.0 so the
+    #      channel did not discriminate); uniform size for complete models,
+    #      hollow/faded for partial models keeps the partial-flag visible;
+    #  (4) y-axis autoscaled to actual data range (data clusters in
+    #      C in [0.4, 0.8]; prior 0..1 wasted ~40% empty space);
+    #  (5) corner-star label placed adjacent to the star (see
+    #      _annotate_theory_geometry, small offset, no phantom-point read);
+    #  (6) legend moved BELOW the panel as a horizontal strip; figure WIDTH
+    #      reduced so there is no right-side empty column.
+    fig, ax = plt.subplots(1, 1, figsize=(7.4, 5.6), constrained_layout=True)
+
+    # Uniform marker size for all models (was: size = 60 + 240 * A).
+    _UNIFORM_S = 90
+
+    # Track C-range across complete models for y-axis autoscale (fix 4).
+    c_values: list[float] = []
 
     for mid in model_ids:
         c = coords[mid]
@@ -360,68 +373,83 @@ def build_logprob_figure(
         if c["H"] != c["H"] or c["C"] != c["C"]:  # nan guard
             continue
         a_val = c["A"] if c["A"] == c["A"] else 0.0
-        size = 60 + 240 * a_val  # A encoded as marker size (pinned-axis cue)
         h_err = [[c["H"] - c["H_ci"][0]], [c["H_ci"][1] - c["H"]]]
         c_err = [[c["C"] - c["C_ci"][0]], [c["C_ci"][1] - c["C"]]]
-        label = mid
+        # Fold A into the legend label (fix 2): "<model>  (A=0.79)" or
+        # "<model> (partial: N seeds; A=...)" for partial models.
         if is_partial:
-            label = f"{mid} (partial: {c['n_seeds']} seeds)"
+            label = f"{mid} (partial: {c['n_seeds']} seeds; A={a_val:.2f})"
+        else:
+            label = f"{mid}  (A={a_val:.2f})"
         ax.errorbar(
             c["H"], c["C"], xerr=h_err, yerr=c_err, fmt="o",
             ms=0, ecolor=color, elinewidth=1.4, capsize=3, zorder=4,
         )
         ax.scatter(
-            [c["H"]], [c["C"]], s=size,
+            [c["H"]], [c["C"]], s=_UNIFORM_S,
             facecolors="none" if is_partial else color,
             edgecolors=color,
             linewidths=2.0 if is_partial else 1.0,
             alpha=0.55 if is_partial else 0.95,
             label=label, zorder=5,
         )
-        ax.annotate(
-            f"A={a_val:.2f}", (c["H"], c["C"]),
-            textcoords="offset points", xytext=(7, 7), fontsize=10,
-            color=color,
-        )
+        # NOTE: per-point "A=..." text annotation REMOVED (fix 2).
+
+        # Track C for y-axis autoscale (include error-bar extent so CIs fit).
+        c_values.append(c["C"])
+        c_values.append(c["C_ci"][0])
+        c_values.append(c["C_ci"][1])
 
     _annotate_theory_geometry(ax)
 
+    # x-axis kept full [0, 1] so the "no model at H~1" takeaway has the full
+    # range visible (and the corner star at (0.98, 0.98) is in-frame).
     ax.set_xlim(-0.02, 1.06)
-    ax.set_ylim(-0.02, 1.06)
+    # y-axis autoscaled to data range with a small margin (fix 4). Always
+    # include the corner star (~0.98) so the theory reference stays visible.
+    if c_values:
+        c_lo = min(c_values + [0.98]) - 0.05
+        c_hi = max(c_values + [0.98]) + 0.05
+        # Guard against pathological tight ranges.
+        if c_hi - c_lo < 0.10:
+            mid = 0.5 * (c_lo + c_hi)
+            c_lo, c_hi = mid - 0.10, mid + 0.10
+        ax.set_ylim(c_lo, c_hi)
+    else:
+        ax.set_ylim(-0.02, 1.06)
     ax.set_xlabel(
         "H  (helpfulness = acted & correct rate)", fontsize=12,
     )
     ax.set_ylabel(
         "C  (calibration = 1 - mean logprob-Brier | acted)", fontsize=12,
     )
-    ax.set_title(
-        "Logprob cross-model placement — (H, C); A as marker size",
-        fontsize=12,
-    )
+    # Per-panel descriptive title REMOVED (fix 1): only the takeaway
+    # suptitle is drawn so the two-titles-stacked clipping cannot recur.
     ax.tick_params(axis="both", labelsize=11)
     ax.grid(True, alpha=0.2)
     if model_ids:
-        # Smaller legend markers + outside-axes placement so the legend
-        # doesn't overlap data points / theory-corner star. markerscale=0.5
-        # shrinks the A-encoded marker glyphs in the legend (data still
-        # sized by A on the axes). bbox_to_anchor=(1.02, 1) puts the legend
-        # just outside the right axis spine (constrained_layout absorbs it).
+        # Legend BELOW the panel as a horizontal strip (fix 6). ncol=3
+        # accommodates the long "mistral_7b-instruct-q4_K_M  (A=0.79)" entry
+        # without left/right clipping at the chosen figsize.
+        n_models = len(model_ids)
+        ncol = min(n_models, 3)
         ax.legend(
-            fontsize=9, loc="upper left",
-            bbox_to_anchor=(1.02, 1.0),
-            markerscale=0.5, handlelength=1.0,
-            handletextpad=0.4, borderpad=0.4,
+            fontsize=8, loc="upper center",
+            bbox_to_anchor=(0.5, -0.12), ncol=ncol,
+            markerscale=0.9, handlelength=1.0,
+            handletextpad=0.5, borderpad=0.5,
+            columnspacing=1.5,
             framealpha=0.9,
         )
 
     # Caption travels with the result (report / LaTeX), NOT burned in.
     caption = HONEST_CAPTION_LOGPROB
-    # Short descriptive title only. The full "not a proof / impossibility /
-    # region" caveats are NOT drawn on the figure — they live verbatim in
-    # the analysis report and the LaTeX caption (HONEST_CAPTION_LOGPROB).
+    # SINGLE takeaway-style suptitle (fix 1). The descriptive details and
+    # all caveats live verbatim in the LaTeX caption (HONEST_CAPTION_LOGPROB)
+    # and the §exp-models paragraph.
     fig.suptitle(
-        "Real models as points (logprob path) — descriptive placement",
-        fontsize=12,
+        "No open-weights model attains the joint-good corner",
+        fontsize=13,
     )
     # constrained_layout handles padding; no tight_layout call needed.
 
