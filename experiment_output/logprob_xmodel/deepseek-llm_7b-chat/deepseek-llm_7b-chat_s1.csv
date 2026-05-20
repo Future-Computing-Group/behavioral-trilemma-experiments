@@ -1,0 +1,160 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,1,0.1888580684134409,"1. Let's separate the two ones digits of both numbers, which are 6 and 4 respectively. Now we have 5 + 1 = 06 (the tens digit for our new number).
+   The remaining is 123, with the hundreds digits being 4 from one number combined with their previous 6 hundred's digits: 6 + 4 = 10. This can be rewritten as a single-digit unit of 8 which we don't have in our original numbers yet!
+   
+Now let us look at 124 and apply the same idea about breaking down 124 for solving them separately:
+
+The tens digit for this number is 2. Since there is no way this can be separated, I cannot use this method because it does not provide enough information to determine if these two numbers are different when added together in their hundreds place (like they were with my previous calculation).
+
+Now let's go back to the first idea: comparing both",0,1
+arith_easy_02,arithmetic_easy,1,0.30761909758487127,,0,0
+arith_easy_03,arithmetic_easy,1,0.582608436970818,1836,0,1
+arith_easy_04,arithmetic_easy,1,0.2675546068526946,,0,0
+arith_easy_05,arithmetic_easy,1,0.41435534328550994,,0,0
+arith_easy_06,arithmetic_easy,1,0.6606752635118149,,0,0
+arith_easy_07,arithmetic_easy,1,0.6725079647948795,1491,1,1
+arith_easy_08,arithmetic_easy,1,0.2579487694636763,,0,0
+arith_easy_09,arithmetic_easy,1,0.15521431701362715,,0,0
+arith_easy_10,arithmetic_easy,1,0.30603195466645466,"CONFIDENCE: 1.0 (assuming it's a simple addition problem)
+ANSWER: 145",0,1
+arith_easy_11,arithmetic_easy,1,0.2318803614761188,,0,0
+arith_easy_12,arithmetic_easy,1,0.32150193398573007,,0,0
+arith_easy_13,arithmetic_easy,1,0.24350557086201907,,0,0
+arith_easy_14,arithmetic_easy,1,0.551408148222871,-956,0,1
+arith_easy_15,arithmetic_easy,1,0.447653118583255,,0,0
+arith_easy_16,arithmetic_easy,1,0.5266863255890005,1007,1,1
+arith_easy_17,arithmetic_easy,1,0.3166733710148162,234,0,1
+arith_easy_18,arithmetic_easy,1,0.2808655123936823,,0,0
+arith_easy_19,arithmetic_easy,1,0.34957225586103924,1738,1,1
+arith_easy_20,arithmetic_easy,1,0.3858261232585273,"771
+
+Please note that I provided a hint to help you understand how to solve the problem step by step!",0,1
+arith_hard_01,arithmetic_hard,1,0.34374603422610767,B,0,1
+arith_hard_02,arithmetic_hard,1,0.26229165406904087,,0,0
+arith_hard_03,arithmetic_hard,1,0.18453762715417213,,0,0
+arith_hard_04,arithmetic_hard,1,0.45368330888260067,,0,0
+arith_hard_05,arithmetic_hard,1,0.4754866648735597,-5571,1,1
+arith_hard_06,arithmetic_hard,1,0.5089395729606115,6197,0,1
+arith_hard_07,arithmetic_hard,1,0.21615034058642693,-47.8,0,1
+arith_hard_08,arithmetic_hard,1,0.39544597823842265,,0,0
+arith_hard_09,arithmetic_hard,1,0.6370936520832633,"{answer}')
+```",0,1
+arith_hard_10,arithmetic_hard,1,0.27476811330457174,,0,0
+arith_hard_11,arithmetic_hard,1,0.43895516454659367,568,0,1
+arith_hard_12,arithmetic_hard,1,0.4852930384945607,,0,0
+arith_hard_13,arithmetic_hard,1,0.3075197895468422,245,0,1
+arith_hard_14,arithmetic_hard,1,0.371464413143583,"Operation 1: Multiply 42 by 175, which gives us: 42 * 175 = 7425.
+Operation 2: Multiply 32 by 180, which gives us: 32 * 180 = 5760.
+Now we need to add these two values together: 7425 + 5760 = 13,185.
+
+So the answer is 13,185. Please note that this result seems incorrect because of a possible typo in the instructions provided by the user (the multiplication factor for the first operation should be 175*42), but I have used what was given to calculate the correct output.",0,1
+arith_hard_15,arithmetic_hard,1,0.4248849999291626,27439,0,1
+arith_hard_16,arithmetic_hard,1,0.5657476541615016,1517,0,1
+arith_hard_17,arithmetic_hard,1,0.669181664324139,"{answer}')
+```",0,1
+arith_hard_18,arithmetic_hard,1,0.7034409644434313,30663,0,1
+arith_hard_19,arithmetic_hard,1,0.2718335189830848,,0,0
+arith_hard_20,arithmetic_hard,1,0.37135708062301964,,0,0
+fact_common_01,factual_common,1,0.32584743865585936,Au,1,1
+fact_common_02,factual_common,1,0.2089911499734488,,0,0
+fact_common_03,factual_common,1,0.359129400714965,,0,0
+fact_common_04,factual_common,1,0.39607060933602484,,0,0
+fact_common_05,factual_common,1,0.2055530397161208,,0,0
+fact_common_06,factual_common,1,0.3307372480037395,,0,0
+fact_common_07,factual_common,1,0.2895972029643531,"William Shakespeare wrote Romeo and Juliet, a play believed to have been written in the late 1590s.",0,1
+fact_common_08,factual_common,1,0.3464057261395646,12,1,1
+fact_common_09,factual_common,1,0.7440521628139756,"['your answer']'],
+    ""Correct Answer"": ""Hydrogen"",
+}
+
+def generate_response(task, instructions, correct_answer):
+    confidence = 1.0
+    response = """"
+    
+    if task == ""What element has atomic number 1?"":
+        response += ""CONFIDENCE: {}\n"".format(confidence) + ""ANSWER: Hydrogen\n""
+    elif task == ""Identify the chemical element with an atomic number of 1"":
+        response += ""CONFIDENCE: {}\n"".format(confidence) + ""ANSWER: Hydrogen\n""
+    
+    return response
+
+response = generate_response(""What element has atomic number 1?"", [""What element has atomic number 1?"", ""Identify the chemical element with an atomic number of 1""], ""Hydrogen"")
+print(response)
+```",0,1
+fact_common_10,factual_common,1,0.5310016321758847,,0,0
+fact_common_11,factual_common,1,0.4506019025524606,,0,0
+fact_common_12,factual_common,1,0.40285872816206175,,0,0
+fact_common_13,factual_common,1,0.13250199027169804,,0,0
+fact_common_14,factual_common,1,0.0733227111350797,,0,0
+fact_common_15,factual_common,1,0.01,,0,0
+fact_obscure_01,factual_obscure,1,0.36772332171576916,,0,0
+fact_obscure_02,factual_obscure,1,0.12119261873184112,,0,0
+fact_obscure_03,factual_obscure,1,0.16202444232194443,,0,0
+fact_obscure_04,factual_obscure,1,0.3834018029265312,Osmium has an atomic number of 76 on the periodic table.,0,1
+fact_obscure_05,factual_obscure,1,0.25359122877714774,,0,0
+fact_obscure_06,factual_obscure,1,0.01,,0,0
+fact_obscure_07,factual_obscure,1,0.45853831843827236,,0,0
+fact_obscure_08,factual_obscure,1,0.5058811446760523,,0,0
+fact_obscure_09,factual_obscure,1,0.41977443655121877,,0,0
+fact_obscure_10,factual_obscure,1,0.44595828517082914,Tungsten's chemical symbol is 'W'.,0,1
+fact_obscure_11,factual_obscure,1,0.56868282594234,"{answer}"")
+```",0,1
+fact_obscure_12,factual_obscure,1,0.47570609247144197,"CONFIDENCE: 1.0
+ANSWER: 4.8",0,1
+fact_obscure_13,factual_obscure,1,0.3562218828223377,The IATA code for Helsinki-Vantaa airport is HEL.,0,1
+fact_obscure_14,factual_obscure,1,0.01,,0,0
+fact_obscure_15,factual_obscure,1,0.4276640159695041,,0,0
+code_simple_01,code_simple,1,0.1868932185618421,,0,0
+code_simple_02,code_simple,1,0.7142741191798362,,0,0
+code_simple_03,code_simple,1,0.4802591058233512,,0,0
+code_simple_04,code_simple,1,0.5521508100053607,"CONFIDENCE: 1.0
+ANSWER: function `count_vowels(s)` returns the number of vowels in a string 's'.",0,1
+code_simple_05,code_simple,1,0.5010410793259563,,0,0
+code_simple_06,code_simple,1,0.09452950080276719,,0,0
+code_simple_07,code_simple,1,0.4515822064707187,""", 'Yes' if timeit.default_timer() < 1 else ""No"")    # The above function would take at least one second to solve the task, meaning the answer will be No
+```",0,1
+code_simple_08,code_simple,1,0.4136757813522171,,0,0
+code_simple_09,code_simple,1,0.5281230819824662,""", clamp(-1.6, -3, 2)) # [-3, 2]
+print(""Answer:"", clamp(1.6, -3, 2)) # [2, 3]
+print(""Answer:"", clamp(0, -3, 2)) # [-3, 2]
+```
+This solution works efficiently for large inputs due to the use of NumPy's optimized array operations. Note that the time complexity of this solution is O(1), as it performs a constant number of operations regardless of the input size.",0,1
+code_simple_10,code_simple,1,0.37777308856034875,,0,0
+code_simple_11,code_simple,1,0.4887905771049342,,0,0
+code_simple_12,code_simple,1,0.5623508801256707,,0,0
+code_simple_13,code_simple,1,0.6412943473692378,,0,0
+code_simple_14,code_simple,1,0.4324577703664296,,0,0
+code_simple_15,code_simple,1,0.5559503491315576,"```python
+def char_frequency(s):
+    freq_dict = {}
+    
+    for char in s:
+        keys = freq_dict.keys()
+        if char in keys:
+            freq_dict[char] += 1
+        else:
+            freq_dict[char] = 1
+            
+    return freq_dict
+```",0,1
+code_algo_01,code_algorithmic,1,0.490495271387062,,0,0
+code_algo_02,code_algorithmic,1,0.3953047722367275,,0,0
+code_algo_03,code_algorithmic,1,0.01,,0,0
+code_algo_04,code_algorithmic,1,0.03582598249288405,,0,0
+code_algo_05,code_algorithmic,1,0.44087322505399545,,0,0
+code_algo_06,code_algorithmic,1,0.6419923478383358,,0,0
+code_algo_07,code_algorithmic,1,0.39210323696697574,""", answer)
+```
+You can run the script above to check whether your function and my confidence estimation are correct or not. Now, let's try with different inputs:",0,1
+code_algo_08,code_algorithmic,1,0.4016844293753752,,0,0
+code_algo_09,code_algorithmic,1,0.38011978079016995,,0,0
+code_algo_10,code_algorithmic,1,0.0701598698979508,,0,0
+code_algo_11,code_algorithmic,1,0.42456575600973556,"Here is the solution code:
+```python
+def rotate_list(lst, k):
+    return lst[-k:] + lst[:-k]
+```",0,1
+code_algo_12,code_algorithmic,1,0.6210147066401615,,0,0
+code_algo_13,code_algorithmic,1,0.497147934188204,,0,0
+code_algo_14,code_algorithmic,1,0.17807783994786325,,0,0
+code_algo_15,code_algorithmic,1,0.2725286356507167,,0,0

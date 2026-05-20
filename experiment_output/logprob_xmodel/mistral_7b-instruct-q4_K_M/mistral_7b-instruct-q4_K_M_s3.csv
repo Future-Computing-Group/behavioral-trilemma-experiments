@@ -1,0 +1,165 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,3,0.9339516668497593,788,1,1
+arith_easy_02,arithmetic_easy,3,0.5922397173539191,-734,1,1
+arith_easy_03,arithmetic_easy,3,0.5707829842849509,,0,0
+arith_easy_04,arithmetic_easy,3,0.9532781244550121,390,1,1
+arith_easy_05,arithmetic_easy,3,0.8737579924225902,650,1,1
+arith_easy_06,arithmetic_easy,3,0.2879789942104298,551605856,0,1
+arith_easy_07,arithmetic_easy,3,0.9470743702501228,1491,1,1
+arith_easy_08,arithmetic_easy,3,0.552026823896639,-525,0,1
+arith_easy_09,arithmetic_easy,3,0.729601710155679,18204,0,1
+arith_easy_10,arithmetic_easy,3,0.9653742711316253,145,1,1
+arith_easy_11,arithmetic_easy,3,0.7776891753420639,-5,0,1
+arith_easy_12,arithmetic_easy,3,0.4872716879535249,,0,0
+arith_easy_13,arithmetic_easy,3,0.7633184876205729,619,0,1
+arith_easy_14,arithmetic_easy,3,0.6098960948508131,,0,0
+arith_easy_15,arithmetic_easy,3,0.5280720931648847,,0,0
+arith_easy_16,arithmetic_easy,3,0.9486328666763367,1007,1,1
+arith_easy_17,arithmetic_easy,3,0.8035743666528509,-234,1,1
+arith_easy_18,arithmetic_easy,3,0.4665859048810301,,0,0
+arith_easy_19,arithmetic_easy,3,0.9579230834711437,1738,1,1
+arith_easy_20,arithmetic_easy,3,0.42067713413179997,,0,0
+arith_hard_01,arithmetic_hard,3,0.6654526276002845,-65,0,1
+arith_hard_02,arithmetic_hard,3,0.4543353799242384,,0,0
+arith_hard_03,arithmetic_hard,3,0.4168575941103972,,0,0
+arith_hard_04,arithmetic_hard,3,0.9334095712024779,184,1,1
+arith_hard_05,arithmetic_hard,3,0.45056099548248063,-936,0,1
+arith_hard_06,arithmetic_hard,3,0.3847402106198612,,0,0
+arith_hard_07,arithmetic_hard,3,0.8278311841368818,75,0,1
+arith_hard_08,arithmetic_hard,3,0.43221331983494854,34821,0,1
+arith_hard_09,arithmetic_hard,3,0.6847313376052475,,0,0
+arith_hard_10,arithmetic_hard,3,0.5699481593428781,,0,0
+arith_hard_11,arithmetic_hard,3,0.681501992221013,,0,0
+arith_hard_12,arithmetic_hard,3,0.5313850619226436,-161,0,1
+arith_hard_13,arithmetic_hard,3,0.3797014401084726,218,0,1
+arith_hard_14,arithmetic_hard,3,0.4431342694291501,12360,0,1
+arith_hard_15,arithmetic_hard,3,0.4226084314298909,-22147,0,1
+arith_hard_16,arithmetic_hard,3,0.44561695358979336,4287,0,1
+arith_hard_17,arithmetic_hard,3,0.7237559659629673,-57,0,1
+arith_hard_18,arithmetic_hard,3,0.3420747774873095,,0,0
+arith_hard_19,arithmetic_hard,3,0.8003659637220328,307,0,1
+arith_hard_20,arithmetic_hard,3,0.36162088775619017,,0,0
+fact_common_01,factual_common,3,0.9160546929835295,Au,1,1
+fact_common_02,factual_common,3,0.9526844950268594,The capital of Japan is Tokyo.,1,1
+fact_common_03,factual_common,3,0.943530971894368,There are 8 planets in our solar system.,1,1
+fact_common_04,factual_common,3,0.955831146192093,1945,1,1
+fact_common_05,factual_common,3,0.7357893701708625,,0,0
+fact_common_06,factual_common,3,0.9452306018556091,Pacific Ocean,1,1
+fact_common_07,factual_common,3,0.9068927551984837,William Shakespeare wrote Romeo and Juliet.,1,1
+fact_common_08,factual_common,3,0.9594765174324682,12,1,1
+fact_common_09,factual_common,3,0.9570442627072855,Hydrogen,1,1
+fact_common_10,factual_common,3,0.9443587341977046,Humans typically have 46 chromosomes.,1,1
+fact_common_11,factual_common,3,0.9533554619927663,The boiling point of water at standard atmospheric pressure is 100 degrees Celsius or 212 degrees Fahrenheit.,1,1
+fact_common_12,factual_common,3,0.9304876381218691,Mercury,1,1
+fact_common_13,factual_common,3,0.9766881829515475,The chemical formula for water is H2O.,1,1
+fact_common_14,factual_common,3,0.8062512788295995,There are seven continents.,0,1
+fact_common_15,factual_common,3,0.8886017693887128,The longest river in the world is the Nile River.,1,1
+fact_obscure_01,factual_obscure,3,0.6543987415515082,,0,0
+fact_obscure_02,factual_obscure,3,0.8154196560707317,Monaco is the smallest country in the world by area. It has a land area of only 2.02 square kilometers (0.78 square miles).,0,1
+fact_obscure_03,factual_obscure,3,0.8979923298546807,The Treaty of Westphalia was signed in 1648.,1,1
+fact_obscure_04,factual_obscure,3,0.8049846667416533,The atomic number of osmium is 76.,1,1
+fact_obscure_05,factual_obscure,3,0.856685902938857,femur,1,1
+fact_obscure_06,factual_obscure,3,0.8860917155435999,A dodecahedron has 30 edges.,1,1
+fact_obscure_07,factual_obscure,3,0.9596512939403075,JPY,1,1
+fact_obscure_08,factual_obscure,3,0.7880786657950186,The Mohs hardness of topaz is 6-7.,0,1
+fact_obscure_09,factual_obscure,3,0.8949967534324731,The University of Bologna was founded in 1088.,1,1
+fact_obscure_10,factual_obscure,3,0.9418126038089792,The chemical symbol for Tungsten is W.,1,1
+fact_obscure_11,factual_obscure,3,0.8343705777016391,A standard piano typically has 88 keys.,1,1
+fact_obscure_12,factual_obscure,3,0.6502591185050107,,0,0
+fact_obscure_13,factual_obscure,3,0.8071699077506761,"HELSINKI-VANTAA AIRPORT IATA CODE IS ""HKO"".",1,1
+fact_obscure_14,factual_obscure,3,0.9198179468894896,An icosahedron has 20 vertices.,0,1
+fact_obscure_15,factual_obscure,3,0.9445627536976691,The pH of pure water at 25 degrees Celsius is 7.0,1,1
+code_simple_01,code_simple,3,0.880463975216799,def is_even(n): return n % 2 == 0,1,1
+code_simple_02,code_simple,3,0.5172813438967805,The largest of three numbers is the one passed as argument `c`.,0,1
+code_simple_03,code_simple,3,0.7288669444678836,,0,0
+code_simple_04,code_simple,3,0.4715991657591839,"The number of vowels in a string is a function that can be easily solved with Python. There are five vowels - A, E, I, O and U. The code will simply count the occurrences of these letters in the given string and return the total count as output.",0,1
+code_simple_05,code_simple,3,0.6545172145787211,,0,0
+code_simple_06,code_simple,3,0.6436292903952828,,0,0
+code_simple_07,code_simple,3,0.7468190056493548,def is_palindrome(s): return s == s[::-1],1,1
+code_simple_08,code_simple,3,0.6949972476959025,"In Python, the function to calculate factorial is `factorial(n) = n * (n-1) * (n-2) * ... * 1`.",0,1
+code_simple_09,code_simple,3,0.7584261064765557,"def clamp(x, lo, hi): return min(max(x, lo), hi)",1,1
+code_simple_10,code_simple,3,0.5295884293612602,`list(flatten(lst))`,0,1
+code_simple_11,code_simple,3,0.6565258168209522,"def unique(lst):
+    return list(set(lst))",1,1
+code_simple_12,code_simple,3,0.6321253374683573,,0,0
+code_simple_13,code_simple,3,0.7444649293320164,"The Python function `title_case(s)` can be written as follows:
+
+```python
+def title_case(s):
+    return ' '.join([word.capitalize() for word in s.split() if word])
+```",0,1
+code_simple_14,code_simple,3,0.5481853075007415,"', str(intersection([2,4,5,6],[3,4,5]))]))",0,1
+code_simple_15,code_simple,3,0.7661029190814677,,0,0
+code_algo_01,code_algorithmic,3,0.7679756631214317,""", binary_search(arr, target))",0,1
+code_algo_02,code_algorithmic,3,0.7375065857901514,"Here's my solution for the merge_sorted function in Python:
+
+```python
+def merge_sorted(a, b):
+    merged = []
+    i = j = 0
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            merged.append(a[i])
+            i += 1
+        else:
+            merged.append(b[j])
+
+    # append the rest of the values from list 'a'
+    if j < len(b):
+        for k in range(i, len(a)):
+            merged.append(a[k])
+
+    # append the rest of the values from list 'b'
+    if i < len(a):
+        for k in range(j, len(b)):
+            merged.append(b[k])
+
+    return merged
+```",0,1
+code_algo_03,code_algorithmic,3,0.740343844362769,14,0,1
+code_algo_04,code_algorithmic,3,0.6166977486225936,fibonacci,0,1
+code_algo_05,code_algorithmic,3,0.6147980025482278,"CONFIDENCE: 0.95
+ANSWER: The function `is_prime(n)` correctly determines if a number is prime or not based on the given implementation.",0,1
+code_algo_06,code_algorithmic,3,0.7014435946380186,,0,0
+code_algo_07,code_algorithmic,3,0.46689897249498363,''.join(sorted([min(strs) for strs in prefixes])),0,1
+code_algo_08,code_algorithmic,3,0.5569851359292746,"This is the implementation of two sum problem. We use a dictionary to store the numbers in array and their indices. Then we iterate over the array, calculate remaining target - current number and check if this value exists in our dictionary. If it does then we have found our two sum. We return index of first and second number.
+
+Here is Python code for this implementation:
+
+```python
+def two_sum(nums, target):
+    """"""
+    :type nums: List[int]
+    :rtype: List[int]
+
+    
+    This function returns indices of two numbers that add up to target.
+    :param nums: integer list
+    :param target: integer
+    :return: List[int] indices of two numbers that add up to target
+    """"""
+    index_dict = {} # Dictionary to store the numbers in array and their indices
+    for i,num in enumerate(nums):
+        remaining_target=target-num
+        if remaining_target in index_dict:
+            return [index_dict[remaining_target],i]
+        
+        index_dict[num]=i # Store the current number and its index in dictionary
+    return [] # Return empty list if no two sum exists in array
+
+# Test the code
+print(two_sum([2,7,11,15], 9))
+```",0,1
+code_algo_09,code_algorithmic,3,0.5302599687416123,True,0,1
+code_algo_10,code_algorithmic,3,0.7910926026872825,"def power(base, exp):
+    if exp == 0: return 1
+    result = base
+    while exp > 1:
+        result *= base
+        exp -= 1
+    return result",1,1
+code_algo_11,code_algorithmic,3,0.7450241756780455,,0,0
+code_algo_12,code_algorithmic,3,0.6126135889245514,"def count_inversions(arr): return sum(i<j and arr[i]>arr[j] for i,j in zip(range(len(arr)), range(1, len(arr)+1)))",0,1
+code_algo_13,code_algorithmic,3,0.5955339316717886,"A function called `run_length_encode` that takes an input string, and returns a list of tuples where each tuple contains the character found in the string and the count of how many times that character appears consecutively in the string.",0,1
+code_algo_14,code_algorithmic,3,0.5670951043249011,kadane(),0,1
+code_algo_15,code_algorithmic,3,0.4107635703339544,,0,0

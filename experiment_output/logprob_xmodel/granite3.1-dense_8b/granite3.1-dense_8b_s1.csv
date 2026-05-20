@@ -1,0 +1,364 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,1,0.7665728489859774,The sum of 664 and 124 is 788.,1,1
+arith_easy_02,arithmetic_easy,1,0.5324175396943124,-734 (35 - 769 = -734),1,1
+arith_easy_03,arithmetic_easy,1,0.7481731858092341,"The product of 291 and 260 is 75,760.",0,1
+arith_easy_04,arithmetic_easy,1,0.696386476628594,The correct sum of 238 and 152 is 390. I made an error in my initial response.,1,1
+arith_easy_05,arithmetic_easy,1,0.6169340283931459,"1. Start with the number 764.
+2. Subtract 114 from it.
+3. The result of 764 - 114 = 650.",1,1
+arith_easy_06,arithmetic_easy,1,0.6814758966585369,"The product of 702 and 768 is 539,856.",0,1
+arith_easy_07,arithmetic_easy,1,0.7873432231397122,The sum of 923 and 568 is 1491.,1,1
+arith_easy_08,arithmetic_easy,1,0.6126168931673952,"-515 (When subtracting a larger number from a smaller one, the result is negative)",1,1
+arith_easy_09,arithmetic_easy,1,0.6350739488538727,"The result of multiplying 442 by 42 is 18,564.
+
+Here's the calculation:
+
+442 * 42 = 18,564",1,1
+arith_easy_10,arithmetic_easy,1,0.7464641663827581,The sum of 40 and 105 is 145.,1,1
+arith_easy_11,arithmetic_easy,1,0.5257858418638712,-15,1,1
+arith_easy_12,arithmetic_easy,1,0.5978615893720756,"The product of 527 and 626 is 329,882.",0,1
+arith_easy_13,arithmetic_easy,1,0.566025657779525,"The sum of 37 and 584 is 621.
+
+Explanation: I can confidently state that the answer to this simple addition problem is 621, as it involves basic arithmetic operations without any ambiguity or uncertainty.",1,1
+arith_easy_14,arithmetic_easy,1,0.5193118605059632,"-530
+Explanation: The calculation is straightforward subtraction, so I am highly confident in the accuracy of this response. Subtracting 743 from 213 results in a negative value because 213 is less than 743.",1,1
+arith_easy_15,arithmetic_easy,1,0.6532244864567327,,0,0
+arith_easy_16,arithmetic_easy,1,0.5896127345008725,"The sum of 568 and 439 is 9872. However, it seems there was a mistake in my calculation. Let me correct that for you. The correct answer is actually 1001. I apologize for the confusion.",0,1
+arith_easy_17,arithmetic_easy,1,0.502750525913289,"-234
+Explanation: The problem is a simple subtraction task, so I am highly confident in providing the correct answer. When subtracting larger numbers from smaller ones, you end up with a negative result. In this case, 235 minus 469 equals -234.",1,1
+arith_easy_18,arithmetic_easy,1,0.6702707751777851,"The product of 613 and 294 is 180,582.",0,1
+arith_easy_19,arithmetic_easy,1,0.7691905241568588,The sum of 838 and 900 is 1738.,1,1
+arith_easy_20,arithmetic_easy,1,0.5786989166170349,-771,1,1
+arith_hard_01,arithmetic_hard,1,0.5861575980334489,-151,1,1
+arith_hard_02,arithmetic_hard,1,0.6469585034143029,"The result of the multiplication (126 * 163) is 20738, and then adding 137 to this product gives a final answer of 20875.",0,1
+arith_hard_03,arithmetic_hard,1,0.7533598484684002,The final result is 33.,1,1
+arith_hard_04,arithmetic_hard,1,0.6998787959852466,,0,0
+arith_hard_05,arithmetic_hard,1,0.58661901696281,,0,0
+arith_hard_06,arithmetic_hard,1,0.7760598867119971,"The sum of 157 + 56 * 106 + 26 equals 6,219.",0,1
+arith_hard_07,arithmetic_hard,1,0.7036627828926366,"The result of the expression 25 - 52 + 85 is 58. This can be calculated step by step as follows: first, subtract 52 from 25 to get -27, then add 85 to -27, resulting in 58.",1,1
+arith_hard_08,arithmetic_hard,1,0.7234287526255,"The result of the expression 159 * 177 + 176 is 28,203.
+
+To find this answer, I first multiplied 159 by 177, which equals 28,203. Then, I added 176 to this product, resulting in the final answer of 28,203.",0,1
+arith_hard_09,arithmetic_hard,1,0.6974270515636184,"The result of the expression 169 * 127 - 175 is 20,208. Here's the calculation:
+
+First, calculate the multiplication: 169 * 127 = 21,493.
+Then subtract 175 from this result: 21,493 - 175 = 20,208.",0,1
+arith_hard_10,arithmetic_hard,1,0.67621122594723,"The sum of 145, 180, 189, and 122 is 636.",1,1
+arith_hard_11,arithmetic_hard,1,0.743896333642655,,0,0
+arith_hard_12,arithmetic_hard,1,0.7506754997961641,"The result of 151 - 179 - 39 is -67.
+
+Explanation:
+First, let's simplify the problem by performing the subtraction from left to right:
+151 - 179 = -28 (since 179 is greater than 151)
+-28 - 39 = -67 (since subtracting a larger number from a smaller one results in a negative number, and 39 is larger than -28)",1,1
+arith_hard_13,arithmetic_hard,1,0.7374857901199271,,0,0
+arith_hard_14,arithmetic_hard,1,0.819606233976146,The result of 42 * 175 + 32 * 180 is 13110.,1,1
+arith_hard_15,arithmetic_hard,1,0.731450290326179,,0,0
+arith_hard_16,arithmetic_hard,1,0.7126546604057565,"The correct answer is 1563. According to the order of operations (PEMDAS/BODMAS), multiplication should be performed before addition. So, first, multiply 37 by 41, which equals 1517. Then, add that result to 10, yielding 1563.",0,1
+arith_hard_17,arithmetic_hard,1,0.6749076170095578,"The result of the calculation 96 * 40 - 193 is 3747. This is calculated by first multiplying 96 and 40, which equals 3840, and then subtracting 193 from this product.",0,1
+arith_hard_18,arithmetic_hard,1,0.6748197876688271,9676,0,1
+arith_hard_19,arithmetic_hard,1,0.5971724593422308,,0,0
+arith_hard_20,arithmetic_hard,1,0.7999947547002539,"To solve the expression 76 - 162 - 160 - 114, we should follow the order of operations, often remembered by the acronym PEMDAS (Parentheses, Exponents, Multiplication and Division, Addition and Subtraction). In this case, we only have addition and subtraction. The expression can be simplified as follows:
+
+(76 - 162) - 160 - 114
+= -86 - 160 - 114
+= -246 - 114
+= -360
+
+So, the answer is -360.",1,1
+fact_common_01,factual_common,1,0.609557422703182,The chemical symbol for gold is Au.,1,1
+fact_common_02,factual_common,1,0.6252972311281538,"The capital of Japan is Tokyo.
+
+Explanation: Tokyo, originally known as Edo, has been the capital of Japan since 1869 when the Meiji government moved from Kyoto. It serves as the country's political and economic center, hosting the Imperial Palace, the seat of the Japanese Emperor, and a significant portion of Japan's major corporations' headquarters. Tokyo is also one of the world's leading financial hubs and a major international tourist destination.",1,1
+fact_common_03,factual_common,1,0.6869484463802036,,0,0
+fact_common_04,factual_common,1,0.8028191356577535,"World War II ended in the year 1945. More specifically, it concluded on September 2, 1945, when Japan formally surrendered following the atomic bombings of Hiroshima and Nagasaki and the Soviet Union's declaration of war against Japan. The formal surrender ceremony took place aboard the USS Missouri in Tokyo Bay on September 2, 1945.",1,1
+fact_common_05,factual_common,1,0.7273012235454116,"300,000 km/s",0,1
+fact_common_06,factual_common,1,0.7135518075731194,,0,0
+fact_common_07,factual_common,1,0.7124889925592145,"Romeo and Juliet was written by William Shakespeare. It is one of his most famous plays, a classic tragedy about two young star-crossed lovers whose deaths ultimately unite their feuding families. The play was probably written between 1591 and 1596, and it has been translated into countless languages and adapted in various forms of media since its original publication in the late 16th century.",1,1
+fact_common_08,factual_common,1,0.6929642843357016,"The square root of 144 is 12, because 12 * 12 equals 144.",1,1
+fact_common_09,factual_common,1,0.5768968125351138,,0,0
+fact_common_10,factual_common,1,0.6220604912004711,"Humans typically have 46 chromosomes, arranged in 23 pairs. This is known as diploid number (2n). Each parent contributes one set of 23 chromosomes to their offspring during reproduction. The majority of our cells contain this full complement of chromosomes, but sperm and egg cells have only half the number (23), which is called haploid number (n). This reduction in chromosome number allows for the formation of a new individual with a complete set of genetic material upon fertilization.",1,1
+fact_common_11,factual_common,1,0.6219644561106066,The boiling point of water at standard atmospheric pressure (1 atmosphere) is 100 degrees Celsius.,1,1
+fact_common_12,factual_common,1,0.6915553171107589,The planet closest to the Sun is Mercury.,1,1
+fact_common_13,factual_common,1,0.6025343734169674,"The chemical formula for water is H2O, consisting of two hydrogen atoms and one oxygen atom.",1,1
+fact_common_14,factual_common,1,0.6619873522636004,"There are seven continents in the world: Africa, Antarctica, Asia, Europe, North America, Australia (or Oceania), and South America. This conventional list includes six continents if one considers Europe and Asia as a single continent due to historical and cultural reasons, forming Eurasia. However, the most widely accepted contemporary classification recognizes seven continents.",0,1
+fact_common_15,factual_common,1,0.8459547523397433,,0,0
+fact_obscure_01,factual_obscure,1,0.7398537264370965,,0,0
+fact_obscure_02,factual_obscure,1,0.7543573534859961,"The smallest country in the world by area is Vatican City, with a size of just 0.17 square miles (443 acres). It's an independent city-state enclaved within Rome, Italy.",1,1
+fact_obscure_03,factual_obscure,1,0.814258015579904,The Treaty of Westphalia was signed in 1648. It is a collective term for the two peace treaties of Münster and Osnabrück that concluded the Thirty Years' War (1618-1648) in the Holy Roman Empire and the Eighty Years' War (1568-1648) between Spain and the Dutch Republic.,1,1
+fact_obscure_04,factual_obscure,1,0.48621080193452754,,0,0
+fact_obscure_05,factual_obscure,1,0.8262256743894929,"The longest bone in the human body is the femur, also known as the thigh bone.",1,1
+fact_obscure_06,factual_obscure,1,0.6273776134479172,"A dodecahedron has 30 edges.
+
+Confidence: 1.0
+Explanation: A dodecahedron is a three-dimensional shape with twelve regular pentagonal faces. Each vertex connects three pentagons, and each edge is shared by two of these pentagons. To find the total number of edges, we can use Euler's formula for polyhedra: V - E + F = 2, where V is the number of vertices, E is the number of edges, and F is the number of faces. For a dodecahedron, F = 12 (since it has twelve pentagonal faces). A regular dodecahedron has 20 vertices (since each vertex connects three faces). Plugging these values into Euler's formula gives us:
+
+20 - E + 12 = 2
+E = 32
+
+However, this count includes edges repeated at vertices where four edges meet. Since a dodecahedron has five edges meeting at each vertex, we must divide the total by two to account for these double-counted edges:
+
+E_unique = E / 2 = 32 / 2 = 16
+
+But this calculation only accounts for the unique edges without considering shared edges between faces. To find the correct number of edges, we can use a direct counting method based on the relationships between vertices and edges in a dodecahedron:
+
+Each face (pentagon) contributes to five edges (one for each side), but since each edge is counted twice when summing up all the pentagons, we need to divide by two. Thus, the formula for calculating the number of unique edges in a regular dodecahedron is:
+
+E = 5 * F / 2
+E = 5 * 12 / 2
+E = 30
+
+Confidence: 1.0",1,1
+fact_obscure_07,factual_obscure,1,0.7429646340666803,The ISO 4217 currency code for the Japanese Yen is JPY.,1,1
+fact_obscure_08,factual_obscure,1,0.6602644579257676,,0,0
+fact_obscure_09,factual_obscure,1,0.6507012772499791,"The University of Bologna was founded in 1088, making it one of the oldest universities in continuous operation. It is often considered to be the first university, as its degree-granting privileges were recognized by the Holy Roman Empire and the Pope.",1,1
+fact_obscure_10,factual_obscure,1,0.45061370654493416,W,1,1
+fact_obscure_11,factual_obscure,1,0.5098994371876484,,0,0
+fact_obscure_12,factual_obscure,1,0.5999968388252748,,0,0
+fact_obscure_13,factual_obscure,1,0.580753111611255,,0,0
+fact_obscure_14,factual_obscure,1,0.6686240580315144,"An icosahedron has 20 vertices.
+
+Explanation: An icosahedron is a polyhedron with 20 triangular faces, 30 edges, and 12 vertices. Each vertex connects to five others, forming a regular polygonal structure. This information is widely known and can be found in various mathematical resources.",1,1
+fact_obscure_15,factual_obscure,1,0.6337793550294757,"The pH of pure water at 25 degrees Celsius is approximately 7.0, which indicates neutral conditions since it's neither acidic nor basic. This value results from the autoionization of water molecules, forming hydronium (H3O+) and hydroxide (OH-) ions in equal concentrations, leading to a balanced charge.",1,1
+code_simple_01,code_simple,1,0.7613068138982662,"Here is a simple Python function that checks if a number is even:
+
+```python
+def is_even(n):
+    return n % 2 == 0
+```
+
+This function uses the modulus operator (`%`) to find the remainder of `n` divided by 2. If the result is 0, then `n` is an even number and the function returns True. Otherwise, it returns False.",0,1
+code_simple_02,code_simple,1,0.7676583873081213,"Here's a simple Python function that determines the maximum of three numbers using built-in functions:
+
+```python
+def max_of_three(a, b, c):
+    return max(a, b, c)
+```
+
+This function works by utilizing Python's built-in `max()` function, which returns the largest item in an iterable or the largest of two or more arguments.",0,1
+code_simple_03,code_simple,1,0.5701889137290542,"The provided Python function `reverse_string(s)` utilizes Python's slicing feature to reverse a string. This method is both efficient and concise. It operates by starting from the end of the string (indicated by -1) and moving backward through the entire string, effectively reversing it. The `[::-1]` notation tells Python to step backwards through the string with no step size, resulting in the reversed string being returned. This function has a time complexity of O(n), where n is the length of the input string, and works for any string input.
+
+Note: In this solution, I assumed that the task was to return a new string that is the reverse of the input string, not to modify the original string in-place. If the latter was required, an alternative approach would be needed.",0,1
+code_simple_04,code_simple,1,0.5883974269095822,"The function `count_vowels(s)` works by iterating through each character in the input string 's' and checking if it is present in the predefined string of all vowels (considering both lower and upper cases). If a match is found, the counter is incremented. Finally, the total count of vowels is returned. This approach ensures that every instance of a vowel in the input string is accurately counted, regardless of case. The function is straightforward and has no complex logic, making it easy to understand and maintain, thus assigning a confidence level of 1.0.",0,1
+code_simple_05,code_simple,1,0.780819161503455,"The provided Python function `celsius_to_fahrenheit(c)` correctly converts a temperature from Celsius to Fahrenheit using the formula `(9/5) * C + 32`. It takes one parameter, `c`, which is the temperature in Celsius and returns the equivalent temperature in Fahrenheit.",0,1
+code_simple_06,code_simple,1,0.7210700591987358,"Here's a simple Python function that accomplishes this task:
+
+```python
+def sum_list(lst):
+    return sum(lst)
+```
+
+This function uses Python's built-in `sum()` function to add up all the numbers in the list, and then returns the result. It should work correctly for any list of numbers.
+
+Note that this function will return 0 if the input list is empty. If you want it to raise an error in such a case, you can modify the function like so:
+
+```python
+def sum_list(lst):
+    if not lst:
+        raise ValueError(""List is empty"")
+    return sum(lst)
+```",0,1
+code_simple_07,code_simple,1,0.6000790110767981,,0,0
+code_simple_08,code_simple,1,0.7090427534875269,"```python
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```
+This function calculates the factorial of a given non-negative integer `n` by using a simple iterative approach. If `n` is 0 or 1, it returns 1, as these are the base cases for the factorial function. For any other value of `n`, it initializes a variable `result` to 1 and then multiplies this by all integers from 2 up to `n`.
+
+Here's an example usage:
+```python
+print(factorial(5))  # Output: 120 (because 5! = 5 * 4 * 3 * 2 * 1)
+```",0,1
+code_simple_09,code_simple,1,0.7333553345268556,,0,0
+code_simple_10,code_simple,1,0.7265816872813551,"Here is a Python function named `flatten` that uses recursion to flatten a list of lists into a single list:
+
+```python
+def flatten(lst):
+    result = []
+    for i in lst:
+        if isinstance(i, list):
+            result.extend(flatten(i))  # recursive call
+        else:
+            result.append(i)
+    return result
+```
+
+This function checks each item in the input list. If the item is a list itself, it makes a recursive call to flatten that sublist and extends the result list with those flattened elements. If the item isn't a list (i.e., it's an element we want to keep), it appends it directly to the result list. This approach continues until all nested lists are flattened into one single list.",0,1
+code_simple_11,code_simple,1,0.641944231966571,"```python
+def unique(lst):
+    seen = set()
+    return [x for x in lst if not (x in seen or seen.add(x))]
+```
+
+Explanation: This Python function uses a list comprehension to iterate over the input list `lst`. It maintains a set called `seen` that keeps track of elements already encountered. For each element, it checks whether it's in the `seen` set. If not, it adds the element to both the result list and the `seen` set. This way, the function guarantees unique elements while preserving their original order.",0,1
+code_simple_12,code_simple,1,0.6234207432241254,"Here is a Python function `dot_product(a, b)` that computes the dot product of two lists:
+
+```python
+def dot_product(a, b):
+    return sum(x * y for x, y in zip(a, b))
+```
+
+This function uses Python's built-in `zip` function to pair up elements from each list and then calculates the product of these pairs. The `sum` function then adds all these products together, giving us the dot product. 
+
+The `zip` function stops creating pairs when it reaches the end of the shorter list, so this function will work even if the two lists aren't the same length. If they are different lengths, it calculates the dot product according to the definition in linear algebra: the sum of the products of corresponding entries from the sequence of numbers.
+
+Remember that this function assumes `a` and `b` are iterable sequences (like lists) containing numeric values. It won't work correctly with non-numeric types or empty sequences.",0,1
+code_simple_13,code_simple,1,0.5740154278275156,"Here's a Python function `title_case(s)` that converts a string to title case using the built-in `title()` method of strings in Python, and also handles exceptions like non-string inputs or empty strings.
+
+```python
+def title_case(s):
+    if not isinstance(s, str):
+        raise ValueError(""Input must be a string"")
+
+    # Convert the first character of each word to uppercase and the rest to lowercase
+    return s.title()
+```
+This function works by leveraging Python's built-in `str.title()` method, which converts the first character of each word to uppercase and the remaining characters to lowercase. It first checks if the input is a string; if not, it raises a ValueError. This ensures that the function behaves predictably even with unexpected inputs.
+
+Please note that the Python `title()` method does not follow strict grammatical rules for capitalization in titles (for example, it capitalizes ""a"", ""an"", and ""the""). If stricter adherence to title casing conventions is required, a more complex algorithm would be needed.",0,1
+code_simple_14,code_simple,1,0.6042219904514667,,0,0
+code_simple_15,code_simple,1,0.6408614899793635,,0,0
+code_algo_01,code_algorithmic,1,0.7741062780129895,,0,0
+code_algo_02,code_algorithmic,1,0.7435498121591371,"```python
+def merge_sorted(a, b):
+    # Initialize empty result list and pointers for a and b
+    result = []
+    i, j = 0, 0
+
+    # Loop until we've reached the end of both lists
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            result.append(a[i])
+            i += 1
+        else:
+            result.append(b[j])
+            j += 1
+
+    # Append remaining elements from list a, if any
+    while i < len(a):
+        result.append(a[i])
+        i += 1
+
+    # Append remaining elements from list b, if any
+    while j < len(b):
+        result.append(b[j])
+        j += 1
+
+    return result
+```
+This function `merge_sorted` uses two pointers to iterate through both lists and appends the smaller element at each step to the result list. After one of the input lists has been fully traversed, it appends any remaining elements from the other list to the result. This ensures that the final output is a single sorted list containing all elements from both input lists.",0,1
+code_algo_03,code_algorithmic,1,0.7471803739446669,"```python
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return abs(a)
+```
+This function implements Euclid's algorithm to find the greatest common divisor (gcd) of two integers `a` and `b`. It works by repeatedly replacing `a` with `b` and `b` with the remainder of `a / b`, until `b` becomes 0. At this point, `a` will be the gcd of the original `a` and `b`. The built-in `abs()` function ensures that the result is positive.",0,1
+code_algo_04,code_algorithmic,1,0.6853317616624509,,0,0
+code_algo_05,code_algorithmic,1,0.7596100648376538,"```python
+def is_prime(n):
+    if n <= 1:
+        return False
+    elif n <= 3:
+        return True
+    elif n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while (i * i) <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+```
+This function works by first handling the edge cases where `n` is less than or equal to 1, or 2 and 3. Then it checks if `n` can be divided evenly by 2 or 3. If not, it uses a while loop to check divisibility from 5 upwards, incrementing by 6 each time (since all primes greater than 3 are of the form 6k ± 1). This reduces unnecessary checks and speeds up the function for larger numbers.",0,1
+code_algo_06,code_algorithmic,1,0.837614412749612,"```python
+def matrix_multiply(A, B):
+    # Check if the number of columns in A is equal to the number of rows in B
+    if len(A[0]) != len(B):
+        raise ValueError(""The number of columns in the first matrix must be equal to the number of rows in the second matrix."")
+
+    # Initialize an empty result matrix with appropriate dimensions
+    result = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
+
+    # Perform matrix multiplication
+    for i in range(len(A)):
+        for j in range(len(B[0])):
+            for k in range(len(B)):
+                result[i][j] += A[i][k] * B[k][j]
+
+    return result
+```
+This function first checks if the number of columns in matrix A is equal to the number of rows in matrix B. If not, it raises a ValueError. Then, it initializes an empty result matrix with appropriate dimensions (number of rows from A and number of columns from B). Finally, it performs matrix multiplication by iterating through each element of the result matrix and summing the products of corresponding elements from row i of A and column j of B.",0,1
+code_algo_07,code_algorithmic,1,0.8025300676160043,"Here's a Python function that finds the longest common prefix of a list of strings using an efficient approach:
+
+```python
+def longest_common_prefix(strs):
+    if not strs:
+        return """"
+
+    # Find the shortest string in the list
+    shortest = min(strs, key=len)
+
+    # Iterate over each character in the shortest string
+    for i, char in enumerate(shortest):
+        # Compare the character with the corresponding character in all other strings
+        for other in strs:
+            if other[i] != char:
+                # If a mismatch is found, return the prefix up to this position
+                return shortest[:i]
+
+    # If no mismatches are found, the shortest string itself is the longest common prefix
+    return shortest
+```
+
+This function works by first identifying the shortest string in the list. It then iterates through each character of the shortest string and compares it with the corresponding character in all other strings. If a mismatch is found, the function returns the prefix up to that position. If no mismatches are found after checking all characters, the shortest string itself is returned as the longest common prefix.",0,1
+code_algo_08,code_algorithmic,1,0.7487294943418257,"Here is a Python function using two-pointer technique which should solve the problem correctly:
+
+```python
+def two_sum(nums, target):
+    num_map = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in num_map:
+            return [num_map[complement], i]
+        num_map[num] = i
+    return []  # Return empty list if no two numbers add up to the target
+```
+
+This function works by iterating through the input list `nums` and checking if the complement of each number (i.e., `target - num`) is in a dictionary (`num_map`). If it is, this means we have found two numbers that add up to the target, so we return their indices. If not, we store the current number and its index in the dictionary and continue to the next number. If no such pair of numbers is found by the end of the iteration, we return an empty list.
+
+This solution has a time complexity of O(n) as it requires a single pass through the input list, where n is the length of the list. The space complexity is also O(n), in the worst case scenario where all numbers are distinct and thus stored in the dictionary.",0,1
+code_algo_09,code_algorithmic,1,0.585795686685523,"This function works by using a stack data structure to keep track of opening parentheses. When it encounters an opening parenthesis, it pushes it onto the stack. When it encounters a closing parenthesis, it checks if there's an opening parenthesis on top of the stack (i.e., the most recently pushed one). If so, it pops the opening parenthesis from the stack; otherwise, the string is considered invalid because there is no matching opening parenthesis for this closing parenthesis. After processing all characters, the function checks if the stack is empty—it should be if every opening parenthesis had a matching closing one.
+
+This solution has a time complexity of O(n), where n is the length of the string s, and space complexity of O(m), where m is the number of unique types of parentheses in s (for this particular problem, it's always 1 - '(', ')'). This algorithm leverages the Last-In-First-Out property of a stack to achieve its functionality.",0,1
+code_algo_10,code_algorithmic,1,0.6910981872076091,"I am 100% confident in this solution as it correctly implements the fast exponentiation algorithm to calculate `base^exp`. This function handles both positive and negative integer exponents, as well as zero exponent (where the result is always 1). The algorithm reduces the time complexity from O(exp) to O(log exp), making it much more efficient for large exponents.",0,1
+code_algo_11,code_algorithmic,1,0.6620213246395896,"```python
+def rotate_list(lst, k):
+    """"""Rotate a list 'k' positions to the right.""""""
+
+    # Normalize k using modulus operation to handle large values of k
+    k = k % len(lst)
+    
+    # Reverse the entire list
+    lst.reverse()
+    
+    # Reverse the first 'len(lst)-k-1' elements and the remaining 'k' elements separately
+    lst[:len(lst)-k] = reversed(lst[:len(lst)-k])
+    lst[len(lst)-k:] = reversed(lst[len(lst)-k:])
+
+    return lst
+```
+
+This function works by first normalizing `k` using modulo operation to handle cases where `k` is larger than the list length. It then reverses the entire list and splits this rotation into two parts: reversing the first 'length of list - k' elements and reversing the remaining 'k' elements, effectively rotating the list to the right by 'k' positions.",0,1
+code_algo_12,code_algorithmic,1,0.8929299439115654,,0,0
+code_algo_13,code_algorithmic,1,0.7378327085223482,"This function works by iterating over each character in the input string `s`. It keeps a running count of consecutive identical characters, and when it encounters a different character or reaches the end of the string, it appends a tuple containing the previous character and its count to the encoded list. At the end, it also adds the last character and its count to the list.
+
+This approach ensures that all characters are properly encoded with their respective run-length counts. The time complexity of this function is O(n), where n is the length of the input string `s`, as it requires a single pass through the string. The space complexity is also O(n) in the worst case, where every character in the string is unique (i.e., there are no repeated characters).",0,1
+code_algo_14,code_algorithmic,1,0.7050344846047505,"The `kadane` function implements Kadane's algorithm to find the maximum subarray sum efficiently in linear time, O(n), where n is the length of the input array, arr. It iterates through the array once, maintaining both the current maximum sum and the global maximum sum encountered so far.",0,1
+code_algo_15,code_algorithmic,1,0.7429446975551355,,0,0

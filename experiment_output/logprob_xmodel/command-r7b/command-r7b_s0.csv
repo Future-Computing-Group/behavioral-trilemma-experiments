@@ -1,0 +1,157 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,0,0.9834939609800836,788,1,1
+arith_easy_02,arithmetic_easy,0,0.9656579690905712,-734,1,1
+arith_easy_03,arithmetic_easy,0,0.9186271533109824,75390,0,1
+arith_easy_04,arithmetic_easy,0,0.9821698937551505,390,1,1
+arith_easy_05,arithmetic_easy,0,0.9822010966010529,650,1,1
+arith_easy_06,arithmetic_easy,0,0.5860108699335492,"538,656",0,1
+arith_easy_07,arithmetic_easy,0,0.9834003824890927,1491,1,1
+arith_easy_08,arithmetic_easy,0,0.9346000992421843,-515,1,1
+arith_easy_09,arithmetic_easy,0,0.9003160672510196,18644,0,1
+arith_easy_10,arithmetic_easy,0,0.9842026677434661,145,1,1
+arith_easy_11,arithmetic_easy,0,0.9429605785174108,-15,1,1
+arith_easy_12,arithmetic_easy,0,0.7038118600725364,329684,0,1
+arith_easy_13,arithmetic_easy,0,0.9831752689181398,621,1,1
+arith_easy_14,arithmetic_easy,0,0.9628580613920639,-530,1,1
+arith_easy_15,arithmetic_easy,0,0.8641867968516195,497400,0,1
+arith_easy_16,arithmetic_easy,0,0.9824427069168028,1007,1,1
+arith_easy_17,arithmetic_easy,0,0.9648791625695153,-234,1,1
+arith_easy_18,arithmetic_easy,0,0.7683369009418802,"180,192",0,1
+arith_easy_19,arithmetic_easy,0,0.9809655997594586,1738,1,1
+arith_easy_20,arithmetic_easy,0,0.9704456062136569,-771,1,1
+arith_hard_01,arithmetic_hard,0,0.6550752993004992,-81,0,1
+arith_hard_02,arithmetic_hard,0,0.5662810896949995,24865,0,1
+arith_hard_03,arithmetic_hard,0,0.7638998511235336,47,0,1
+arith_hard_04,arithmetic_hard,0,0.9814597079946898,184,1,1
+arith_hard_05,arithmetic_hard,0,0.69833438766476,-5986,0,1
+arith_hard_06,arithmetic_hard,0,0.4268237747166432,** 18734,0,1
+arith_hard_07,arithmetic_hard,0,0.7865874102009858,-32,0,1
+arith_hard_08,arithmetic_hard,0,0.3927945651388722,,0,0
+arith_hard_09,arithmetic_hard,0,0.5984253655046913,19361,0,1
+arith_hard_10,arithmetic_hard,0,0.8343347041827218,636,1,1
+arith_hard_11,arithmetic_hard,0,0.6639418054600641,7484,0,1
+arith_hard_12,arithmetic_hard,0,0.7987755691217484,-197,0,1
+arith_hard_13,arithmetic_hard,0,0.28922311769501735,14,0,1
+arith_hard_14,arithmetic_hard,0,0.7248954321104351,8640,0,1
+arith_hard_15,arithmetic_hard,0,0.41609740933978556,-167938,0,1
+arith_hard_16,arithmetic_hard,0,0.7162498054358599,1693,0,1
+arith_hard_17,arithmetic_hard,0,0.7708608328938868,157,0,1
+arith_hard_18,arithmetic_hard,0,0.473345066936348,23586,0,1
+arith_hard_19,arithmetic_hard,0,0.9289814634312785,313,1,1
+arith_hard_20,arithmetic_hard,0,0.7785778203268993,-340,0,1
+fact_common_01,factual_common,0,0.9691200080643205,Au,1,1
+fact_common_02,factual_common,0,0.9269856693948064,Tokyo is the capital of Japan.,1,1
+fact_common_03,factual_common,0,0.8700101279456207,"There are eight planets in our solar system, including Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",0,1
+fact_common_04,factual_common,0,0.9594221769274202,1945,1,1
+fact_common_05,factual_common,0,0.903734778467509,"300,000 km/s",0,1
+fact_common_06,factual_common,0,0.7992241159617651,"The largest ocean on Earth is the Pacific Ocean. It covers approximately 63,800,000 square miles (165,250,000 square kilometers) and extends from the Arctic in the north to the Southern Ocean in the south. It also borders Asia and Australia to the west, the Americas to the east, and New Zealand to the northeast.",1,1
+fact_common_07,factual_common,0,0.9510931339432874,William Shakespeare,1,1
+fact_common_08,factual_common,0,0.9783520944403314,12,1,1
+fact_common_09,factual_common,0,0.9541778742906004,Hydrogen,1,1
+fact_common_10,factual_common,0,0.8196183951925511,"Humans have 46 chromosomes in their somatic cells, arranged in 23 pairs. This includes 22 pairs of autosomes and one pair of sex chromosomes (XX for females and XY for males).",1,1
+fact_common_11,factual_common,0,0.8581055042542037,The boiling point of water in Celsius is 100 degrees.,1,1
+fact_common_12,factual_common,0,0.9188300194175393,Mercury is the planet closest to the Sun.,1,1
+fact_common_13,factual_common,0,0.7889499411787025,H₂O,0,1
+fact_common_14,factual_common,0,0.703836848547933,"There are seven continents on Earth, namely Asia, Africa, North America, South America, Antarctica, Europe, and Australia (or Oceania).",0,1
+fact_common_15,factual_common,0,0.7100650428511109,"The longest river in the world is the Nile, which spans approximately 6,650 kilometers (4,132 miles) from its source at Lake Victoria in Tanzania to the Mediterranean Sea in Egypt. The Nile has two major tributaries, the White Nile and the Blue Nile, and it plays a crucial role in the history, culture, and economy of the regions through which it flows.",1,1
+fact_obscure_01,factual_obscure,0,0.8583862406627034,"5,730 years (rounded to the nearest hundred).",0,1
+fact_obscure_02,factual_obscure,0,0.9342677715494898,Vatican City,1,1
+fact_obscure_03,factual_obscure,0,0.8976721169747568,1648,1,1
+fact_obscure_04,factual_obscure,0,0.9666371021179565,76,1,1
+fact_obscure_05,factual_obscure,0,0.9447112154240781,"The femur, also known as the thigh bone, is the longest bone in the human body. It connects the hip to the knee and plays a crucial role in supporting the body's weight and facilitating movement.",1,1
+fact_obscure_06,factual_obscure,0,0.8849673395729333,A dodecahedron has 30 edges.,1,1
+fact_obscure_07,factual_obscure,0,0.9583147667155115,JPY,1,1
+fact_obscure_08,factual_obscure,0,0.7584869712365773,"Topaz has a Mohs hardness of 6 to 7, making it a relatively hard mineral.",0,1
+fact_obscure_09,factual_obscure,0,0.7283114570130079,"The University of Bologna was founded in the year 1088 AD, making it one of the oldest universities in the world still in operation.",1,1
+fact_obscure_10,factual_obscure,0,0.9660906879269116,W,1,1
+fact_obscure_11,factual_obscure,0,0.8743397409924464,"A standard piano typically has 88 keys, consisting of 52 white keys and 36 black keys.",1,1
+fact_obscure_12,factual_obscure,0,0.8324708162141705,11.2 km/s,1,1
+fact_obscure_13,factual_obscure,0,0.9527822867329541,HEL,1,1
+fact_obscure_14,factual_obscure,0,0.9665447341490915,12,1,1
+fact_obscure_15,factual_obscure,0,0.9085226172296114,The pH of pure water at 25 degrees Celsius is 7.0.,1,1
+code_simple_01,code_simple,0,0.6158564808208353,"True if n is even, False otherwise.",0,1
+code_simple_02,code_simple,0,0.7620589913113206,,0,0
+code_simple_03,code_simple,0,0.7169894341581714,"Here's a Python solution that solves the problem and passes corresponding tests:
+```python
+def reverse_string(s):
+  """"""Reverses the input string.
+
+  Args:
+    s: The input string to be reversed.
+
+  Returns:
+    The reversed string.
+  """"""
+  return s[::-1]
+```",0,1
+code_simple_04,code_simple,0,0.7178778319597697,**  The number of vowels found in the string.,0,1
+code_simple_05,code_simple,0,0.5587734661681477,,0,0
+code_simple_06,code_simple,0,0.8226675391232036,,0,0
+code_simple_07,code_simple,0,0.5783618496154208,True,0,1
+code_simple_08,code_simple,0,0.9477056762557612,,0,0
+code_simple_09,code_simple,0,0.9269974889341799,"Here is a Python function that clamps a value `x` to the range `[lo, hi]`:
+
+```python
+def clamp(x, lo, hi):
+    return min(max(x, lo), hi)
+```",0,1
+code_simple_10,code_simple,0,0.8862344544708287,"Here is a Python function that solves the problem and passes corresponding tests:
+```python
+def flatten(lst):
+    """"""Flatten a list of lists into a single list.""""""
+    return [item for sublist in lst for item in sublist]
+```",0,1
+code_simple_11,code_simple,0,0.6058707252985782,,0,0
+code_simple_12,code_simple,0,0.8428046147721844,,0,0
+code_simple_13,code_simple,0,0.8752197134317142,,0,0
+code_simple_14,code_simple,0,0.8789169453757278,,0,0
+code_simple_15,code_simple,0,0.6795912616334476,,0,0
+code_algo_01,code_algorithmic,0,0.6516928275085699,"** 0.99 The function `binary_search` returns the index of the target value in a sorted array if found; otherwise, it returns -1. It accomplishes this by repeatedly dividing the search interval in half and narrowing down the possible locations of the target until it is found or the interval becomes empty, indicating that the target value is not present in the list.",0,1
+code_algo_02,code_algorithmic,0,0.862815730865268,,0,0
+code_algo_03,code_algorithmic,0,0.8660927790454186,"Here is a Python function that calculates the greatest common divisor (GCD) of two numbers using Euclid's algorithm:
+```python
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+```
+This function works by repeatedly applying the division algorithm, swapping the roles of `a` and `b`, and reducing `b` until it becomes zero. At that point, `a` contains the GCD of the original two numbers.",0,1
+code_algo_04,code_algorithmic,0,0.9420540230836528,,0,0
+code_algo_05,code_algorithmic,0,0.7891147411845915,"** True if the number is prime, False otherwise.
+
+Here's the Python code for the *is_prime* function:
+
+```python
+def is_prime(n):
+    """""" 
+    Check if a number is prime.
+
+    Args:
+    n (int): The number to check.
+
+    Returns:
+    bool: True if n is prime, False otherwise.
+    """"""
+    if n <= 1:
+        return False
+    elif n <= 3:
+        return True
+    elif n % 2 == 0 or n % 3 == 0:
+        return False
+    i = 5
+    while i * i <= n:
+        if n % i == 0 or n % (i + 2) == 0:
+            return False
+        i += 6
+    return True
+```",0,1
+code_algo_06,code_algorithmic,0,0.9420389200926473,,0,0
+code_algo_07,code_algorithmic,0,0.8737908945864583,,0,0
+code_algo_08,code_algorithmic,0,0.7960100430869622,,0,0
+code_algo_09,code_algorithmic,0,0.8505492396219028,,0,0
+code_algo_10,code_algorithmic,0,0.7269898366438473,,0,0
+code_algo_11,code_algorithmic,0,0.781388613352906,,0,0
+code_algo_12,code_algorithmic,0,0.8384446622632433,,0,0
+code_algo_13,code_algorithmic,0,0.8436672739489388,,0,0
+code_algo_14,code_algorithmic,0,0.9241968435308239,,0,0
+code_algo_15,code_algorithmic,0,0.7170391933553542,,0,0

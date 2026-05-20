@@ -1,0 +1,110 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,2,0.557318827939425,CONFIDENCE: 1.0,0,1
+arith_easy_02,arithmetic_easy,2,0.3891612646022719,,0,0
+arith_easy_03,arithmetic_easy,2,0.7302388890302355,,0,0
+arith_easy_04,arithmetic_easy,2,0.19154152655715248,,0,0
+arith_easy_05,arithmetic_easy,2,0.7034593138212575,,0,0
+arith_easy_06,arithmetic_easy,2,0.38231194865855095,"56 * 92 * 8 = 49 * 10 * 8^3 (since we can cancel out units with tens)
+
+Now let's multiply these numbers together using the distributive property. The product should equal to:
+(7 * 9) + (0 * 1) + (6 * 8^2) = 54 + (0 * 1) + (368) = 54 + 368 = 422
+
+Therefore, the answer is:
+
+CONFIDENCE: 1.0",0,1
+arith_easy_07,arithmetic_easy,2,0.4386926025613768,,0,0
+arith_easy_08,arithmetic_easy,2,0.49537769427706546,,0,0
+arith_easy_09,arithmetic_easy,2,0.5569358967566396,,0,0
+arith_easy_10,arithmetic_easy,2,0.5317726202179854,"CONFIDENCE: 1.0 (since it's a simple arithmetic problem)
+ANSWER: 40 + 105 = 145",1,1
+arith_easy_11,arithmetic_easy,2,0.6311858509134942,-15,1,1
+arith_easy_12,arithmetic_easy,2,0.5322969133784917,,0,0
+arith_easy_13,arithmetic_easy,2,0.2853204179433867,,0,0
+arith_easy_14,arithmetic_easy,2,0.4863036921231112,213 - 743 = -530,1,1
+arith_easy_15,arithmetic_easy,2,0.31313984317148097,,0,0
+arith_easy_16,arithmetic_easy,2,0.523970038702777,1007,1,1
+arith_easy_17,arithmetic_easy,2,0.46127113437713585,,0,0
+arith_easy_18,arithmetic_easy,2,0.7955569025222193,180222,1,1
+arith_easy_19,arithmetic_easy,2,0.34347948708683773,,0,0
+arith_easy_20,arithmetic_easy,2,0.30563824119243,"For example, ""ANSWER: -611"".",0,1
+arith_hard_01,arithmetic_hard,2,0.4423718946081128,,0,0
+arith_hard_02,arithmetic_hard,2,0.41077073435777617,2598,0,1
+arith_hard_03,arithmetic_hard,2,0.29974974342111693,,0,0
+arith_hard_04,arithmetic_hard,2,0.3597410513380718,,0,0
+arith_hard_05,arithmetic_hard,2,0.4404368931638,,0,0
+arith_hard_06,arithmetic_hard,2,0.5560408353773888,6649,0,1
+arith_hard_07,arithmetic_hard,2,0.31196427017834927,,0,0
+arith_hard_08,arithmetic_hard,2,0.37283694497271125,2974,0,1
+arith_hard_09,arithmetic_hard,2,0.3132565158577784,,0,0
+arith_hard_10,arithmetic_hard,2,0.7005367621626063,626,0,1
+arith_hard_11,arithmetic_hard,2,0.7068545939671046,,0,0
+arith_hard_12,arithmetic_hard,2,0.3267677020060068,,0,0
+arith_hard_13,arithmetic_hard,2,0.5253641769662517,193 - 121 * 20 + 131 = 64,0,1
+arith_hard_14,arithmetic_hard,2,0.47583624832530047,,0,0
+arith_hard_15,arithmetic_hard,2,0.689989508275406,-26803,0,1
+arith_hard_16,arithmetic_hard,2,0.5131095960096463,10 + 1507 = 1517,0,1
+arith_hard_17,arithmetic_hard,2,0.36912421120319183,,0,0
+arith_hard_18,arithmetic_hard,2,0.561656939421492,,0,0
+arith_hard_19,arithmetic_hard,2,0.3579396948686326,,0,0
+arith_hard_20,arithmetic_hard,2,0.4408825395667656,,0,0
+fact_common_01,factual_common,2,0.4250844662491126,,0,0
+fact_common_02,factual_common,2,0.2867426659625974,,0,0
+fact_common_03,factual_common,2,0.6828874806525533,,0,0
+fact_common_04,factual_common,2,0.6322254039631631,,0,0
+fact_common_05,factual_common,2,0.5008620328604595,,0,0
+fact_common_06,factual_common,2,0.30833281597293893,,0,0
+fact_common_07,factual_common,2,0.6555527681638194,William Shakespeare,1,1
+fact_common_08,factual_common,2,0.7008168150457016,,0,0
+fact_common_09,factual_common,2,0.6743847747803619,,0,0
+fact_common_10,factual_common,2,0.40685754760397747,,0,0
+fact_common_11,factual_common,2,0.27042263198180755,,0,0
+fact_common_12,factual_common,2,0.38187092494342434,,0,0
+fact_common_13,factual_common,2,0.4574107881895022,,0,0
+fact_common_14,factual_common,2,0.6167253324250711,,0,0
+fact_common_15,factual_common,2,0.30360682792826155,,0,0
+fact_obscure_01,factual_obscure,2,0.6772372535956264,,0,0
+fact_obscure_02,factual_obscure,2,0.5985807480793174,"CONFIDENCE: 1.0
+ANSWER: Vatican City is the smallest country in the world by area with a total land area of just 44 hectares (about 109 acres).",1,1
+fact_obscure_03,factual_obscure,2,0.45726975670817677,,0,0
+fact_obscure_04,factual_obscure,2,0.5703026057894043,,0,0
+fact_obscure_05,factual_obscure,2,0.3685075692799798,,0,0
+fact_obscure_06,factual_obscure,2,0.37562143130123476,,0,0
+fact_obscure_07,factual_obscure,2,0.6370019161259924,JPY,1,1
+fact_obscure_08,factual_obscure,2,0.5717657481596682,,0,0
+fact_obscure_09,factual_obscure,2,0.4035936578872338,,0,0
+fact_obscure_10,factual_obscure,2,0.8079069642908266,The chemical symbol for tungsten is W.,1,1
+fact_obscure_11,factual_obscure,2,0.55552809174468,,0,0
+fact_obscure_12,factual_obscure,2,0.7092590421252104,,0,0
+fact_obscure_13,factual_obscure,2,0.4831357062798616,,0,0
+fact_obscure_14,factual_obscure,2,0.5359081925387248,,0,0
+fact_obscure_15,factual_obscure,2,0.5035378258074819,,0,0
+code_simple_01,code_simple,2,0.5900209032733841,,0,0
+code_simple_02,code_simple,2,0.566919241393406,,0,0
+code_simple_03,code_simple,2,0.8083937266117396,,0,0
+code_simple_04,code_simple,2,0.6862918991659329,,0,0
+code_simple_05,code_simple,2,0.3455182022246184,,0,0
+code_simple_06,code_simple,2,0.5968121554996212,,0,0
+code_simple_07,code_simple,2,0.6919368694150863,,0,0
+code_simple_08,code_simple,2,0.605925508959892,,0,0
+code_simple_09,code_simple,2,0.5757786221557756,,0,0
+code_simple_10,code_simple,2,0.825049878801017,,0,0
+code_simple_11,code_simple,2,0.572970042992323,,0,0
+code_simple_12,code_simple,2,0.7341067253858986,,0,0
+code_simple_13,code_simple,2,0.6658978889692417,,0,0
+code_simple_14,code_simple,2,0.39730689946823317,,0,0
+code_simple_15,code_simple,2,0.6541755425170903,"{'a': 1, 'b': 2, ...}",0,1
+code_algo_01,code_algorithmic,2,0.6701051141825665,,0,0
+code_algo_02,code_algorithmic,2,0.548231122752853,,0,0
+code_algo_03,code_algorithmic,2,0.49199825667562075,,0,0
+code_algo_04,code_algorithmic,2,0.7769995992810045,,0,0
+code_algo_05,code_algorithmic,2,0.6048611046050663,"`True` or `False`, depending on whether the input number is prime or not.",0,1
+code_algo_06,code_algorithmic,2,0.7435800576868123,,0,0
+code_algo_07,code_algorithmic,2,0.47962831640262604,,0,0
+code_algo_08,code_algorithmic,2,0.5968056833525388,,0,0
+code_algo_09,code_algorithmic,2,0.5458261979406251,,0,0
+code_algo_10,code_algorithmic,2,0.6600248675335407,,0,0
+code_algo_11,code_algorithmic,2,0.4340645226613422,[code snippet above],0,1
+code_algo_12,code_algorithmic,2,0.5236913429152257,,0,0
+code_algo_13,code_algorithmic,2,0.7320767823333091,,0,0
+code_algo_14,code_algorithmic,2,0.6287903326437931,,0,0
+code_algo_15,code_algorithmic,2,0.3906123229652879,,0,0

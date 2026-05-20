@@ -1,0 +1,214 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,2,0.9834939609800836,788,1,1
+arith_easy_02,arithmetic_easy,2,0.9656579690905712,-734,1,1
+arith_easy_03,arithmetic_easy,2,0.8781420936206182,74890,0,1
+arith_easy_04,arithmetic_easy,2,0.9821698937551505,390,1,1
+arith_easy_05,arithmetic_easy,2,0.9822010966010529,650,1,1
+arith_easy_06,arithmetic_easy,2,0.7257748277748012,543696,0,1
+arith_easy_07,arithmetic_easy,2,0.9834003824890927,1491,1,1
+arith_easy_08,arithmetic_easy,2,0.9346000992421843,-515,1,1
+arith_easy_09,arithmetic_easy,2,0.9003160672510196,18644,0,1
+arith_easy_10,arithmetic_easy,2,0.9842026677434661,145,1,1
+arith_easy_11,arithmetic_easy,2,0.9429605785174108,-15,1,1
+arith_easy_12,arithmetic_easy,2,0.7141332901327732,"328,594",0,1
+arith_easy_13,arithmetic_easy,2,0.9831752689181398,621,1,1
+arith_easy_14,arithmetic_easy,2,0.9628580613920639,-530,1,1
+arith_easy_15,arithmetic_easy,2,0.8446400350148121,496830,0,1
+arith_easy_16,arithmetic_easy,2,0.9824427069168028,1007,1,1
+arith_easy_17,arithmetic_easy,2,0.9648791625695153,-234,1,1
+arith_easy_18,arithmetic_easy,2,0.8053090475221798,181782,0,1
+arith_easy_19,arithmetic_easy,2,0.9809655997594586,1738,1,1
+arith_easy_20,arithmetic_easy,2,0.9704456062136569,-771,1,1
+arith_hard_01,arithmetic_hard,2,0.6309925777514507,-131,0,1
+arith_hard_02,arithmetic_hard,2,0.5833418095540681,25973,0,1
+arith_hard_03,arithmetic_hard,2,0.822579754250361,67,0,1
+arith_hard_04,arithmetic_hard,2,0.9814597079946898,184,1,1
+arith_hard_05,arithmetic_hard,2,0.7260007414685118,-5894,0,1
+arith_hard_06,arithmetic_hard,2,0.5462064913902349,7456,0,1
+arith_hard_07,arithmetic_hard,2,0.7865874102009858,-32,0,1
+arith_hard_08,arithmetic_hard,2,0.5473210520292979,36497,0,1
+arith_hard_09,arithmetic_hard,2,0.5589190147389749,18645,0,1
+arith_hard_10,arithmetic_hard,2,0.9740293075037318,616,0,1
+arith_hard_11,arithmetic_hard,2,0.714688396943606,6844,0,1
+arith_hard_12,arithmetic_hard,2,0.8665654768805907,-217,0,1
+arith_hard_13,arithmetic_hard,2,0.5665990792042158,-586,0,1
+arith_hard_14,arithmetic_hard,2,0.7047930763523634,11360,0,1
+arith_hard_15,arithmetic_hard,2,0.5835997536974189,-26967,0,1
+arith_hard_16,arithmetic_hard,2,0.8136929000132421,1597,0,1
+arith_hard_17,arithmetic_hard,2,0.7462030316698584,259,0,1
+arith_hard_18,arithmetic_hard,2,0.49406301117768847,37416,0,1
+arith_hard_19,arithmetic_hard,2,0.9289814634312785,313,1,1
+arith_hard_20,arithmetic_hard,2,0.7098588579680593,-340,0,1
+fact_common_01,factual_common,2,0.9691200080643205,Au,1,1
+fact_common_02,factual_common,2,0.9779567468985528,Tokyo,1,1
+fact_common_03,factual_common,2,0.8518769235629154,"There are eight planets in our solar system, which includes Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",0,1
+fact_common_04,factual_common,2,0.9594221769274202,1945,1,1
+fact_common_05,factual_common,2,0.903734778467509,"300,000 km/s",0,1
+fact_common_06,factual_common,2,0.8361802141040339,"The Pacific Ocean is the largest ocean on Earth, covering approximately 63,800,000 square miles (165,250,000 square kilometers) and making up about 46% of the global oceans' area.",1,1
+fact_common_07,factual_common,2,0.9510931339432874,William Shakespeare,1,1
+fact_common_08,factual_common,2,0.9783520944403314,12,1,1
+fact_common_09,factual_common,2,0.9541778742906004,Hydrogen,1,1
+fact_common_10,factual_common,2,0.7786019994462207,Humans typically have 46 chromosomes (23 pairs) in each cell.,1,1
+fact_common_11,factual_common,2,0.8573363564886995,The boiling point of water is 100 degrees Celsius at standard atmospheric pressure (1 atmosphere or 101.325 kPa).,1,1
+fact_common_12,factual_common,2,0.9682843106625082,Mercury,1,1
+fact_common_13,factual_common,2,0.9597084008178987,H2O,1,1
+fact_common_14,factual_common,2,0.6255631804025419,"There are seven continents on Earth, divided into Asia, Africa, Europe, North America, South America, Australia/Oceania (which includes New Zealand), and Antarctica.",0,1
+fact_common_15,factual_common,2,0.6911938239474305,"The Nile River is widely recognized as the longest river in the world, spanning approximately 6,650 kilometers (4,132 miles) from its source in central Africa to its delta on the Mediterranean Sea. The Nile's remarkable length has earned it the distinction of being the longest river globally.",1,1
+fact_obscure_01,factual_obscure,2,0.7031485314857148,,0,0
+fact_obscure_02,factual_obscure,2,0.9200741153868583,Vatican City,1,1
+fact_obscure_03,factual_obscure,2,0.8976721169747568,1648,1,1
+fact_obscure_04,factual_obscure,2,0.9666371021179565,76,1,1
+fact_obscure_05,factual_obscure,2,0.868626032905378,"The femur, also known as the thigh bone, is the longest bone in the human body. It connects the hip to the knee and plays a critical role in mobility and support.",1,1
+fact_obscure_06,factual_obscure,2,0.8849673395729333,A dodecahedron has 30 edges.,1,1
+fact_obscure_07,factual_obscure,2,0.9583147667155115,JPY,1,1
+fact_obscure_08,factual_obscure,2,0.59619727770816,"The Mohs hardness of topaz is 6 to 7, making it a relatively hard mineral. It is often used in jewelry and has a long history of human use due to its durability.",0,1
+fact_obscure_09,factual_obscure,2,0.8032305511946796,The University of Bologna was founded in the year 1088.,1,1
+fact_obscure_10,factual_obscure,2,0.9660906879269116,W,1,1
+fact_obscure_11,factual_obscure,2,0.6269974941646903,"A standard piano has 88 keys, consisting of 52 white keys and 36 black keys. This distribution includes seven octaves plus three extra semitones (C, D, and E), which allows for a wide range of musical expression.",1,1
+fact_obscure_12,factual_obscure,2,0.9342640367819612,11.2,1,1
+fact_obscure_13,factual_obscure,2,0.9527822867329541,HEL,1,1
+fact_obscure_14,factual_obscure,2,0.9665447341490915,12,1,1
+fact_obscure_15,factual_obscure,2,0.7278128575450997,,0,0
+code_simple_01,code_simple,2,0.9096240671006597,True,0,1
+code_simple_02,code_simple,2,0.6791762007220921,,0,0
+code_simple_03,code_simple,2,0.9325522836946439,"def reverse_string(s):
+    return s[::-1]",1,1
+code_simple_04,code_simple,2,0.9132715519296517,,0,0
+code_simple_05,code_simple,2,0.7842686670471982,,0,0
+code_simple_06,code_simple,2,0.7471340040028309,"```python
+def sum_list(lst):
+    """"""
+    Returns the sum of all numbers in a list.
+
+    Args:
+        lst (list): A list containing numbers.
+
+    Returns:
+        float: The sum of all numbers in the list.
+
+    Raises:
+        TypeError: If the list contains non-numeric values.
+    """"""
+    total = 0
+    for item in lst:
+        if isinstance(item, (int, float)):
+            total += item
+        else:
+            raise TypeError(""The list must only contain numeric values."")
+    return total
+```",0,1
+code_simple_07,code_simple,2,0.8734163580755342,,0,0
+code_simple_08,code_simple,2,0.7138985360269,"**
+
+```python
+def factorial(n):
+    """"""Returns n factorial.
+
+    Parameters:
+    n (int): The number for which to calculate the factorial.
+
+    Returns:
+    int: n! (n factorial).
+    """"""
+    if not isinstance(n, int):
+        raise TypeError(""Input must be an integer."")
+    elif n < 0:
+        raise ValueError(""Input must be a non-negative integer."")
+    elif n == 0 or n == 1:
+        return 1
+    else:
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```",0,1
+code_simple_09,code_simple,2,0.7472244483082058,"Here's a Python function that clamps a number `x` to the range `[lo, hi]`:
+
+```python
+def clamp(x, lo, hi):
+    return min(max(x, lo), hi)
+```
+
+This function uses the built-in `min` and `max` functions in Python to ensure that the input value `x` is always within the desired range.",0,1
+code_simple_10,code_simple,2,0.7960297087441265,,0,0
+code_simple_11,code_simple,2,0.7771698618753016,,0,0
+code_simple_12,code_simple,2,0.6469989262106692,"Here's a Python function that computes the dot product of two lists:
+```python
+def dot_product(a, b):
+    """"""
+    Compute the dot product of two lists.
+
+    Parameters:
+    a (list): The first list of numbers.
+    b (list): The second list of numbers.
+
+    Returns:
+    float: The dot product of the two input lists.
+    """"""
+    if len(a) != len(b):
+        raise ValueError(""Lists must be of equal length"")
+    
+    return sum([x * y for x, y in zip(a, b)])
+```",0,1
+code_simple_13,code_simple,2,0.9075066584451023,"def title_case(s):
+    """"""
+    Converts a string to title case.
+
+    Args:
+        s (str): The input string.
+
+    Returns:
+        str: The input string in title case.
+    """"""
+    return "" "".join(word.capitalize() for word in s.split())",1,1
+code_simple_14,code_simple,2,0.721826441812609,,0,0
+code_simple_15,code_simple,2,0.746740096856373,,0,0
+code_algo_01,code_algorithmic,2,0.7198770972703519,"** 
+0.95
+ANSWER: The function correctly implements the binary search algorithm and returns the index of the target element if found or -1 if it's not present in the list. It efficiently narrows down the search space by comparing the middle element with the target and adjusting the pointers accordingly.",0,1
+code_algo_02,code_algorithmic,2,0.8308045747898057,"The provided function correctly merges two sorted lists into one sorted list by comparing elements from both lists and adding the smaller element to the result. It handles cases where one or both input lists may be empty, ensuring all remaining elements are included in the final merged list.",0,1
+code_algo_03,code_algorithmic,2,0.9033219723917219,,0,0
+code_algo_04,code_algorithmic,2,0.7459419453495219,,0,0
+code_algo_05,code_algorithmic,2,0.8713954981800256,"Here is a Python function to check if a number is prime:
+```python
+def is_prime(n):
+    """"""
+    Check if a number is prime.
+
+    Args:
+        n (int): The number to check.
+
+    Returns:
+        bool: True if the number is prime, False otherwise.
+    """"""
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+```",0,1
+code_algo_06,code_algorithmic,2,0.7971615782061962,,0,0
+code_algo_07,code_algorithmic,2,0.8904621952686466,"Here is a Python function that finds the longest common prefix of a list of strings:
+```python
+def longest_common_prefix(strs):
+    if not strs:
+        return """"
+
+    shortest_str = min(strs, key=len)
+    
+    for i, char in enumerate(shortest_str):
+        for other in strs:
+            if other[i] != char:
+                return shortest_str[:i]
+    
+    return shortest_str
+```",0,1
+code_algo_08,code_algorithmic,2,0.7811449158483378,"[(num_to_idx[complement], i)]",0,1
+code_algo_09,code_algorithmic,2,0.6970323256953336,True,0,1
+code_algo_10,code_algorithmic,2,0.8737203887268562,,0,0
+code_algo_11,code_algorithmic,2,0.7163873650605009,,0,0
+code_algo_12,code_algorithmic,2,0.7421651740722649,,0,0
+code_algo_13,code_algorithmic,2,0.8891914157051108,,0,0
+code_algo_14,code_algorithmic,2,0.6451964169075263,,0,0
+code_algo_15,code_algorithmic,2,0.7372646275638705,,0,0

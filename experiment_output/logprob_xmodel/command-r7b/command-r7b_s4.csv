@@ -1,0 +1,298 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,4,0.365910507476574,788,1,1
+arith_easy_02,arithmetic_easy,4,0.49210272463319704,-734,1,1
+arith_easy_03,arithmetic_easy,4,0.47938282554118855,"74,910",0,1
+arith_easy_04,arithmetic_easy,4,0.5940895733013583,390,1,1
+arith_easy_05,arithmetic_easy,4,0.5933029340801224,650,1,1
+arith_easy_06,arithmetic_easy,4,0.4712134486711237,539424,0,1
+arith_easy_07,arithmetic_easy,4,0.6051711051590056,1491,1,1
+arith_easy_08,arithmetic_easy,4,0.4499542181546419,-515,1,1
+arith_easy_09,arithmetic_easy,4,0.54381369241237,18624,0,1
+arith_easy_10,arithmetic_easy,4,0.46870053849051685,145,1,1
+arith_easy_11,arithmetic_easy,4,0.4893868000305111,-15,1,1
+arith_easy_12,arithmetic_easy,4,0.5022801380021447,328562,0,1
+arith_easy_13,arithmetic_easy,4,0.47734986147357217,621,1,1
+arith_easy_14,arithmetic_easy,4,0.4943451447141429,-530,1,1
+arith_easy_15,arithmetic_easy,4,0.5466382236346039,495300,0,1
+arith_easy_16,arithmetic_easy,4,0.6315706647812619,1007,1,1
+arith_easy_17,arithmetic_easy,4,0.5790067587852291,-234,1,1
+arith_easy_18,arithmetic_easy,4,0.48983442456879406,182462,0,1
+arith_easy_19,arithmetic_easy,4,0.6323359585767099,1738,1,1
+arith_easy_20,arithmetic_easy,4,0.485213066739631,-771,1,1
+arith_hard_01,arithmetic_hard,4,0.5144516877678391,-231,0,1
+arith_hard_02,arithmetic_hard,4,0.4704924204387395,23957,0,1
+arith_hard_03,arithmetic_hard,4,0.4301756250059742,-24,0,1
+arith_hard_04,arithmetic_hard,4,0.5039589497654032,184,1,1
+arith_hard_05,arithmetic_hard,4,0.48201243056973764,,0,0
+arith_hard_06,arithmetic_hard,4,0.6743363224716675,,0,0
+arith_hard_07,arithmetic_hard,4,0.5802670322639615,-22,0,1
+arith_hard_08,arithmetic_hard,4,0.6574682376780113,28609,0,1
+arith_hard_09,arithmetic_hard,4,0.45952465224415073,20816,0,1
+arith_hard_10,arithmetic_hard,4,0.46225482887096325,616,0,1
+arith_hard_11,arithmetic_hard,4,0.5500350909253015,8464,0,1
+arith_hard_12,arithmetic_hard,4,0.5784951829994448,-237,0,1
+arith_hard_13,arithmetic_hard,4,0.43353536002100035,-27,0,1
+arith_hard_14,arithmetic_hard,4,0.5971576414953251,,0,0
+arith_hard_15,arithmetic_hard,4,0.8619935359796477,,0,0
+arith_hard_16,arithmetic_hard,4,0.4093512973095509,1679,0,1
+arith_hard_17,arithmetic_hard,4,0.4800817726030259,327,0,1
+arith_hard_18,arithmetic_hard,4,0.5195676270376466,12519,1,1
+arith_hard_19,arithmetic_hard,4,0.47395284493872647,333,0,1
+arith_hard_20,arithmetic_hard,4,0.5162198345162228,-340,0,1
+fact_common_01,factual_common,4,0.683874107046263,Au,1,1
+fact_common_02,factual_common,4,0.8218612866169143,Tokyo,1,1
+fact_common_03,factual_common,4,0.6282151503976147,"8 planets are in our solar system. They are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. However, Pluto is no longer classified as a planet but is considered a dwarf planet.",1,1
+fact_common_04,factual_common,4,0.6203592554550389,1945,1,1
+fact_common_05,factual_common,4,0.5729640106398696,"300,000 km/s
+
+The speed of light in a vacuum is approximately 299,792,458 meters per second, which rounds to about 300,000 kilometers per second when converted to the metric units of kilometers and seconds. This value has been experimentally confirmed and is widely used in physics, astronomy, and other scientific fields.",0,1
+fact_common_06,factual_common,4,0.7185391689322728,"The largest ocean on Earth is the Pacific Ocean. It covers approximately 63,800,000 square miles (165,250,000 square kilometers), which is roughly 46% of Earth's water area and about one-third of its surface area.",1,1
+fact_common_07,factual_common,4,0.5711523544065499,"Romeo and Juliet was written by William Shakespeare, one of the most renowned playwrights and poets in English literature. The play is a classic tale of star-crossed lovers from opposing families, set in the city of Verona in Italy. It has been adapted numerous times for stage, film, and various other media since its initial creation.",1,1
+fact_common_08,factual_common,4,0.5732529486125963,12,1,1
+fact_common_09,factual_common,4,0.6765543561936258,Hydrogen,1,1
+fact_common_10,factual_common,4,0.710136735301508,"Humans typically have 46 chromosomes in their somatic cells, arranged in 23 pairs (22 pairs of autosomes and one pair of sex chromosomes). However, it's important to note that this number can vary slightly between individuals due to the possibility of an extra X chromosome in females (XXX) or an extra Y chromosome in males (XY).",1,1
+fact_common_11,factual_common,4,0.6747686234391218,The boiling point of water is 100 degrees Celsius (212 degrees Fahrenheit) under standard atmospheric pressure at sea level.,1,1
+fact_common_12,factual_common,4,0.6551106829420803,"Mercury is the planet closest to the Sun, followed by Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune in order of increasing distance from the Sun.",1,1
+fact_common_13,factual_common,4,0.7300360406463734,The chemical formula for water is H2O.,1,1
+fact_common_14,factual_common,4,0.6848013873726838,7,1,1
+fact_common_15,factual_common,4,0.6646570808331838,"The longest river in the world is the Nile River, which stretches approximately 6,650 kilometers (4,132 miles) from its source in Central Africa to the Mediterranean Sea. It has two main tributaries: the White Nile and the Blue Nile, which join at Khartoum, Sudan, forming the Nile's northern bank. The Nile has played a significant role in the development of ancient Egyptian civilization, providing water for agriculture and transportation.",1,1
+fact_obscure_01,factual_obscure,4,0.7065935874378246,"5,730 years",0,1
+fact_obscure_02,factual_obscure,4,0.5714344073561849,Vatican City,1,1
+fact_obscure_03,factual_obscure,4,0.6497839868579257,1648,1,1
+fact_obscure_04,factual_obscure,4,0.7015623244566392,The atomic number of Osmium is 76.,1,1
+fact_obscure_05,factual_obscure,4,0.6413410497302962,femur,1,1
+fact_obscure_06,factual_obscure,4,0.5443436951418767,A dodecahedron has 30 edges.,1,1
+fact_obscure_07,factual_obscure,4,0.48716030016031997,JPY,1,1
+fact_obscure_08,factual_obscure,4,0.5763852866452915,"Topaz is a silicate mineral with a Mohs hardness of 8, meaning it can be scratched by a mineral with a hardness of 8 or lower on the Mohs scale, but not by one with a higher hardness. This places topaz in the category of minerals that are very hard and are often used in abrasives and cutting tools due to their durability.",1,1
+fact_obscure_09,factual_obscure,4,0.47582795223823937,The University of Bologna was founded in 1088 AD.,1,1
+fact_obscure_10,factual_obscure,4,0.6786296027982868,W,1,1
+fact_obscure_11,factual_obscure,4,0.7708273595021004,"There are 88 keys on a standard piano, consisting of 52 white keys and 36 black keys.",1,1
+fact_obscure_12,factual_obscure,4,0.4114671349953472,11.2 (km/s),1,1
+fact_obscure_13,factual_obscure,4,0.4474085276532292,HEL,1,1
+fact_obscure_14,factual_obscure,4,0.4827198285715002,An icosahedron has 12 vertices.,1,1
+fact_obscure_15,factual_obscure,4,0.5714749135417249,7,1,1
+code_simple_01,code_simple,4,0.874695231880406,True,0,1
+code_simple_02,code_simple,4,0.7915632814729656,"**
+```python
+def max_of_three(a, b, c):
+    """"""
+    Returns the largest of three numbers.
+
+    Parameters:
+    a (int or float): First number
+    b (int or float): Second number
+    c (int or float): Third number
+
+    Returns:
+    int or float: The largest of the three input numbers
+    """"""
+    return max(a, b, c)
+```",0,1
+code_simple_03,code_simple,4,0.7407754925122203,,0,0
+code_simple_04,code_simple,4,0.7692286759723848,"** The Python function `count_vowels(s)` that returns the number of vowels in a string is:
+```python
+def count_vowels(s):
+    vowels = ""aeiouAEIOU""
+    return sum(1 for char in s if char in vowels)
+```
+This function takes a string `s` as input and uses a set of vowels to efficiently count the number of vowels in the string. The `sum()` function is used to iterate through the characters in the string and increment a counter for each vowel found.",0,1
+code_simple_05,code_simple,4,0.8832365295378706,,0,0
+code_simple_06,code_simple,4,0.7774458508717671,,0,0
+code_simple_07,code_simple,4,0.8644167179345459,,0,0
+code_simple_08,code_simple,4,0.8920018056796751,,0,0
+code_simple_09,code_simple,4,0.7605521197075941,"```python
+def clamp(x, lo, hi):
+    if x < lo:
+        return lo
+    elif x > hi:
+        return hi
+    else:
+        return x
+```",0,1
+code_simple_10,code_simple,4,0.6670188145340838,"** Here's the answer using iteration:
+```python
+def flatten(lst):
+    result = []
+    for item in lst:
+        if isinstance(item, list):
+            result.extend(flatten(item))
+        else:
+            result.append(item)
+    return result
+```",0,1
+code_simple_11,code_simple,4,0.7833952431280774,"** Here is the Python solution that solves the problem and passes corresponding tests:
+```python
+def unique(lst):
+    seen = set()
+    return [x for x in lst if not (x in seen or seen.add(x))]
+```
+This function, `unique`, takes a list as input and returns a new list containing only the unique elements while preserving their original order. It uses a set called `seen` to keep track of elements that have already been encountered. For each element in the input list, it checks if the element is in the `seen` set. If not, it adds the element to both the list and the `seen` set. The final result is a list of unique elements in the original order.",0,1
+code_simple_12,code_simple,4,0.7096824162088494,None (since I provided the function directly),0,1
+code_simple_13,code_simple,4,0.6385507154945945,,0,0
+code_simple_14,code_simple,4,0.6697647247859094,[list of common elements],0,1
+code_simple_15,code_simple,4,0.9368956242791949,,0,0
+code_algo_01,code_algorithmic,4,0.9314198849105564,,0,0
+code_algo_02,code_algorithmic,4,0.9307186871592482,,0,0
+code_algo_03,code_algorithmic,4,0.6959083486133284,,0,0
+code_algo_04,code_algorithmic,4,0.8070824371213715,** 0,0,1
+code_algo_05,code_algorithmic,4,0.7087688964897269,"** The function above, `is_prime(n)`, correctly identifies whether a given number `n` is prime or not.",0,1
+code_algo_06,code_algorithmic,4,0.9383667364882482,,0,0
+code_algo_07,code_algorithmic,4,0.8617958739322623,,0,0
+code_algo_08,code_algorithmic,4,0.7743954871050325,,0,0
+code_algo_09,code_algorithmic,4,0.8411111199158124,"`True` if the string of brackets is valid, otherwise `False`.
+
+Here's a Python function that uses a stack to check for valid parentheses:
+```python
+def valid_parentheses(s):
+    stack = []
+    for char in s:
+        if char == '(':
+            stack.append(char)
+        elif char == ')':
+            if not stack or stack[-1] != '(':
+                return False
+            else:
+                stack.pop()
+        elif char == '{':
+            stack.append(char)
+        elif char == '}':
+            if not stack or stack[-1] != '{':
+                return False
+            else:
+                stack.pop()
+        elif char == '<':
+            stack.append(char)
+        elif char == '>':
+            if not stack or stack[-1] != '<':
+                return False
+            else:
+                stack.pop()
+    return len(stack) == 0
+```",0,1
+code_algo_10,code_algorithmic,4,0.8499550502118017,,0,0
+code_algo_11,code_algorithmic,4,0.7750873887773996,,0,0
+code_algo_12,code_algorithmic,4,0.8981873245012867,,0,0
+code_algo_13,code_algorithmic,4,0.7934049115896564,"** Here is a Python function that takes a string `s` and returns its run-length encoding as a list of (char, count) tuples:
+```python
+def run_length_encode(s):
+    if not s:  # edge case for empty string
+        return []
+
+    result = []
+    current_char = s[0]
+    count = 1
+
+    for char in s[1:]:
+        if char == current_char:
+            count += 1
+        else:
+            result.append((current_char, count))
+            current_char = char
+            count = 1
+
+    # append the last character's count
+    result.append((current_char, count))
+    return result
+```
+This function iterates through the input string and keeps track of the current character and its count. When it encounters a different character, it appends the previous character and its count to the `result` list. Finally, it adds the last character and its count as well.",0,1
+code_algo_14,code_algorithmic,4,0.8118544683770903,"** 
+
+```python
+def kadane(arr):
+    """"""
+    Returns the maximum subarray sum using Kadane's algorithm.
+
+    :param arr: List of integers representing the array.
+    :return: Maximum subarray sum.
+    """"""
+    if not arr:
+        return 0
+
+    max_sum = current_sum = arr[0]
+
+    for num in arr[1:]:
+        current_sum = max(num, current_sum + num)
+        max_sum = max(max_sum, current_sum)
+
+    return max_sum
+```",0,1
+code_algo_15,code_algorithmic,4,0.7742621561524691,"Here is a Python function `topological_sort` that solves the problem as described:
+```python
+from collections import defaultdict, deque
+
+
+def topological_sort(graph):
+    """"""
+    Performs a topological sort on a directed acyclic graph (DAG).
+
+    Args:
+    graph: A dictionary mapping nodes to lists of dependencies.
+
+    Returns:
+    A list of nodes in a valid topological order. If the graph contains a cycle,
+    raises a ValueError.
+    """"""
+    # Initialize the count and visited dictionaries
+    count = defaultdict(int)
+    visited = set()
+    ordering = []
+
+    # Define a helper function for DFS
+    def dfs(node):
+        if node in visited:
+            return
+        visited.add(node)
+
+        for dependency in graph[node]:
+            count[dependency] += 1
+            if dependency not in visited:
+                dfs(dependency)
+
+        # Add the current node to the ordering when all dependencies are visited
+        count[node] -= 1
+        if count[node] == 0:
+            ordering.append(node)
+
+    # Check for cycles by performing DFS on all nodes with no incoming edges
+    for node in graph:
+        if node not in visited:
+            dfs(node)
+
+    return ordering[::-1]
+```
+Here is the test suite to demonstrate its correctness:
+```python
+import unittest
+
+
+class TestTopologicalSort(unittest.TestCase):
+
+    def test_trivial(self):
+        # Trivial graph with no dependencies
+        graph = {
+            ""A"": [],
+            ""B"": [],
+            ""C"": []
+        }
+        self.assertEqual(topological_sort(graph), [""A"", ""B"", ""C""])
+
+    def test_simple(self):
+        # Graph with simple dependencies
+        graph = {
+            ""A"": [],
+            ""B"": [""A""],
+            ""C"": [""A""],
+            ""D"": [""B"", ""C""]
+        }
+        self.assertEqual(topological_sort(graph), [""A"", ""B"", ""C"", ""D""])
+
+    def test_cyclic(self):
+        # Graph with a cycle (dependencies that create a cycle)
+        graph = {
+            ""A"": [],
+            ""B"": [""A""],
+            ""C"": [""B""],
+            ""D"": [""C""]
+        }
+        # Topological sort should raise an error for cyclic graphs
+        with self",0,1

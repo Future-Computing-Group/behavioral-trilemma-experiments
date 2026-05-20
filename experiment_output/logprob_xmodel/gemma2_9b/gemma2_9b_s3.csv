@@ -1,0 +1,840 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,3,0.9201245378114186,788,1,1
+arith_easy_02,arithmetic_easy,3,0.934890167119902,-734,1,1
+arith_easy_03,arithmetic_easy,3,0.9687501958161221,75660,1,1
+arith_easy_04,arithmetic_easy,3,0.9131294483907333,390,1,1
+arith_easy_05,arithmetic_easy,3,0.9324793237034762,650,1,1
+arith_easy_06,arithmetic_easy,3,0.8147874547374914,"538,496",0,1
+arith_easy_07,arithmetic_easy,3,0.9995383555012058,1491,1,1
+arith_easy_08,arithmetic_easy,3,0.9341218010334342,-515,1,1
+arith_easy_09,arithmetic_easy,3,0.9185747964690868,18644,0,1
+arith_easy_10,arithmetic_easy,3,0.9265911234878624,145,1,1
+arith_easy_11,arithmetic_easy,3,0.9222800200171164,-15,1,1
+arith_easy_12,arithmetic_easy,3,0.7283246608545928,"328,422",0,1
+arith_easy_13,arithmetic_easy,3,0.9323641634478158,621,1,1
+arith_easy_14,arithmetic_easy,3,0.9447445243149662,-530,1,1
+arith_easy_15,arithmetic_easy,3,0.8019777008881867,"489,600",0,1
+arith_easy_16,arithmetic_easy,3,0.9995373848786409,1007,1,1
+arith_easy_17,arithmetic_easy,3,0.9333205884199626,-234,1,1
+arith_easy_18,arithmetic_easy,3,0.7491539085114273,"179,062",0,1
+arith_easy_19,arithmetic_easy,3,0.9995696042158525,1738,1,1
+arith_easy_20,arithmetic_easy,3,0.9415313111316458,-771,1,1
+arith_hard_01,arithmetic_hard,3,0.9061699690498192,-151,1,1
+arith_hard_02,arithmetic_hard,3,0.8158070168257666,20695,0,1
+arith_hard_03,arithmetic_hard,3,0.9123440285838832,33,1,1
+arith_hard_04,arithmetic_hard,3,0.9040386191408818,194,0,1
+arith_hard_05,arithmetic_hard,3,0.8373890172472543,-5494,0,1
+arith_hard_06,arithmetic_hard,3,0.8250966779566304,6093,0,1
+arith_hard_07,arithmetic_hard,3,0.9252241900033827,58,1,1
+arith_hard_08,arithmetic_hard,3,0.7004420397143597,"28,035",0,1
+arith_hard_09,arithmetic_hard,3,0.7761829643097078,21498,0,1
+arith_hard_10,arithmetic_hard,3,0.9371297150500306,636,1,1
+arith_hard_11,arithmetic_hard,3,0.7378955379466504,4362,0,1
+arith_hard_12,arithmetic_hard,3,0.8988181754215139,-127,0,1
+arith_hard_13,arithmetic_hard,3,0.9464093600128488,193 - 121 * 20 + 131 = 193 - 2420 + 131 = -2096,1,1
+arith_hard_14,arithmetic_hard,3,0.8570970446420423,9450,0,1
+arith_hard_15,arithmetic_hard,3,0.8327327009586925,"-26389  
+
+
+
+**Explanation:**
+
+To solve this, we need to follow the order of operations (PEMDAS/BODMAS):
+
+1. **Multiplication:** 186 * 147 = 27282
+2. **Subtraction:** 37 - 27282 = -27245
+3. **Addition:** -27245 + 118 = -27127",0,1
+arith_hard_16,arithmetic_hard,3,0.9517451333910903,1557,0,1
+arith_hard_17,arithmetic_hard,3,0.8642664811910926,3687,0,1
+arith_hard_18,arithmetic_hard,3,0.8331563774874924,"13596  
+
+
+
+Here's how to solve it using the order of operations (PEMDAS/BODMAS):
+
+1. **Multiplication:** 126 * 97 = 12222
+2. **Addition:** 189 + 12222 + 108 = 13596",0,1
+arith_hard_19,arithmetic_hard,3,0.9448867994556759,213,0,1
+arith_hard_20,arithmetic_hard,3,0.9151647492321936,-360,1,1
+fact_common_01,factual_common,3,0.9300337048946979,Au,1,1
+fact_common_02,factual_common,3,0.9245984595943126,Tokyo,1,1
+fact_common_03,factual_common,3,0.9298287615849148,8,1,1
+fact_common_04,factual_common,3,0.9995587235706388,1945,1,1
+fact_common_05,factual_common,3,0.8568660436665042,300 thousand  km/s,0,1
+fact_common_06,factual_common,3,0.901611255903997,Pacific Ocean,1,1
+fact_common_07,factual_common,3,0.9170510206499664,William Shakespeare,1,1
+fact_common_08,factual_common,3,0.9150126108284715,12,1,1
+fact_common_09,factual_common,3,0.9417456797692271,Hydrogen,1,1
+fact_common_10,factual_common,3,0.7998740612592187,"46  (Humans have 23 pairs of chromosomes, totaling 46)",1,1
+fact_common_11,factual_common,3,0.7098714420672643,100  Celsius,1,1
+fact_common_12,factual_common,3,0.9816504557233552,Mercury,1,1
+fact_common_13,factual_common,3,0.8308416912528777,H₂O,0,1
+fact_common_14,factual_common,3,0.924339571319399,7,1,1
+fact_common_15,factual_common,3,0.7747142102101623,The Nile River  is widely considered the longest river in the world.,1,1
+fact_obscure_01,factual_obscure,3,0.9646684802141016,5600,0,1
+fact_obscure_02,factual_obscure,3,0.9228520384033608,Vatican City,1,1
+fact_obscure_03,factual_obscure,3,0.9509255222369218,1648,1,1
+fact_obscure_04,factual_obscure,3,0.8426913444862998,76,1,1
+fact_obscure_05,factual_obscure,3,0.9611911609028815,Femur,1,1
+fact_obscure_06,factual_obscure,3,0.9852744725820104,30,1,1
+fact_obscure_07,factual_obscure,3,0.9267900584352398,JPY,1,1
+fact_obscure_08,factual_obscure,3,0.9868025820741786,8,1,1
+fact_obscure_09,factual_obscure,3,0.967594242955112,1088,1,1
+fact_obscure_10,factual_obscure,3,0.8836978626640825,W,1,1
+fact_obscure_11,factual_obscure,3,0.8798024467530351,88,1,1
+fact_obscure_12,factual_obscure,3,0.964558572527436,11,1,1
+fact_obscure_13,factual_obscure,3,0.9691389217619573,HEL,1,1
+fact_obscure_14,factual_obscure,3,0.8323692623071814,20,0,1
+fact_obscure_15,factual_obscure,3,0.9604614258533214,7.0,1,1
+code_simple_01,code_simple,3,0.9005197481311699,"```python
+def is_even(n):
+  return n % 2 == 0 
+``` 
+
+
+
+This function uses the modulo operator (%) to check if the remainder of `n` divided by 2 is equal to 0. If it is, then `n` is even and the function returns `True`; otherwise, it returns `False`.",0,1
+code_simple_02,code_simple,3,0.956926336736667,"```python
+def max_of_three(a, b, c):
+  """"""Returns the largest of three numbers.""""""
+  return max(a, b, c) 
+```",0,1
+code_simple_03,code_simple,3,0.9749227700348498,"```python
+def reverse_string(s):
+  return s[::-1]
+```",0,1
+code_simple_04,code_simple,3,0.957314497549821,"```python
+def count_vowels(s):
+  """"""Counts the number of vowels in a string.
+
+  Args:
+    s: The input string.
+
+  Returns:
+    The number of vowels in the string.
+  """"""
+  vowels = set('aeiouAEIOU')
+  count = 0
+  for char in s:
+    if char in vowels:
+      count += 1
+  return count 
+```",0,1
+code_simple_05,code_simple,3,0.9696422693089992,"```python
+def celsius_to_fahrenheit(c):
+  """"""Converts Celsius to Fahrenheit.
+
+  Args:
+    c: The temperature in Celsius.
+
+  Returns:
+    The temperature in Fahrenheit.
+  """"""
+  return (c * 9/5) + 32 
+```",0,1
+code_simple_06,code_simple,3,0.9498168519353724,"```python
+def sum_list(lst):
+  """"""
+  This function takes a list of numbers as input and returns the sum of all numbers in the list.
+
+  Args:
+      lst: A list of numbers.
+
+  Returns:
+      The sum of all numbers in the list.
+  """"""
+  sum = 0
+  for number in lst:
+    sum += number
+  return sum
+```",0,1
+code_simple_07,code_simple,3,0.8642190438568894,"```python
+def is_palindrome(s):
+  """"""Checks if a string is a palindrome.
+
+  Args:
+    s: The string to check.
+
+  Returns:
+    True if the string is a palindrome, False otherwise.
+  """"""
+  s = s.lower()
+  return s == s[::-1] 
+```
+
+
+**Explanation:**
+
+* **Function Definition:** `def is_palindrome(s):` defines a function named `is_palindrome` that takes a string `s` as input.
+* **Lowercase Conversion:** `s = s.lower()` converts the input string to lowercase to ensure case-insensitivity.
+* **Palindrome Check:**
+   - `s[::-1]` creates a reversed copy of the string.
+   -  `s == s[::-1]` compares the original string with its reversed version. If they are equal, the string is a palindrome. 
+* **Return Value:** The function returns `True` if the string is a palindrome, and `False` otherwise.",0,1
+code_simple_08,code_simple,3,0.9698139693610706,"```python
+def factorial(n):
+  if n == 0:
+    return 1
+  else:
+    return n * factorial(n-1)
+```",0,1
+code_simple_09,code_simple,3,0.9634353623373543,"```python
+def clamp(x, lo, hi):
+  return max(lo, min(x, hi)) 
+```",0,1
+code_simple_10,code_simple,3,0.9794678909119237,"```python
+def flatten(lst):
+  """"""Flattens a list of lists into a single list.
+
+  Args:
+    lst: A list of lists.
+
+  Returns:
+    A single list containing all the elements from the input list of lists.
+  """"""
+  return [item for sublist in lst for item in sublist] 
+```",0,1
+code_simple_11,code_simple,3,0.8414362258807746,"```python
+def unique(lst):
+  seen = set()
+  result = []
+  for item in lst:
+    if item not in seen:
+      seen.add(item)
+      result.append(item)
+  return result
+```
+
+### Function Explanation:
+
+1. **Initialization**:
+   - `seen = set()`: A set named `seen` is created to keep track of elements encountered in the list. Sets inherently store unique elements, so this ensures we only track each element once.
+   - `result = []`: An empty list called `result` will store the unique elements in the order they first appear in the input list.
+
+2. **Iterating through the List**:
+   - `for item in lst:`: The code iterates through each `item` in the input list `lst`.
+
+3. **Checking for Uniqueness**:
+   - `if item not in seen:`: For each `item`, it checks if the `item` is already present in the `seen` set. If the `item` is *not* in the `seen` set, it means this is the first occurrence of the element.
+
+4. **Adding Unique Elements**:
+   - `seen.add(item)`: If the `item` is unique (not yet in `seen`), it's added to the `seen` set.
+   - `result.append(item)`: The unique `item` is appended to the `result` list, preserving its original order from the input list.
+
+5. **Returning the Result**:
+   - `return result`: After processing all items in the input list, the function returns the `result` list containing the unique elements in their original order.
+
+
+
+Let me know if you have any other questions!",0,1
+code_simple_12,code_simple,3,0.9411618524892806,"```python
+def dot_product(a, b):
+  """"""Computes the dot product of two lists.
+
+  Args:
+    a: The first list.
+    b: The second list.
+
+  Returns:
+    The dot product of the two lists.
+
+  Raises:
+    ValueError: If the lists are not of equal length.
+  """"""
+  if len(a) != len(b):
+    raise ValueError(""Lists must be of equal length"")
+  return sum(x * y for x, y in zip(a, b))
+
+```",0,1
+code_simple_13,code_simple,3,0.8705418211675525,"```python
+def title_case(s):
+  """"""Converts a string to title case.""""""
+  return s.title()
+``` 
+
+
+This function leverages the built-in `title()` method in Python, which directly handles the conversion of a string to title case.",0,1
+code_simple_14,code_simple,3,0.7353971788506949,"```python
+def intersection(a, b):
+  """"""Returns common elements of two lists.""""""
+  return list(set(a) & set(b)) 
+``` 
+
+
+**Explanation:**
+
+* **`set(a) & set(b)`**: This part efficiently finds the intersection of the two lists. It converts both lists into sets, which automatically eliminate duplicates and allow for fast intersection operations. The `&` operator then finds the common elements between the two sets.
+* **`list(...)`**:  The result of the `&` operation is a set. Since the function is expected to return a list, we convert the set back into a list using `list()`.
+
+
+
+ Let me know if you'd like to see this function used in an example!",0,1
+code_simple_15,code_simple,3,0.942797833397831,"```python
+def char_frequency(s):
+  """"""Calculates the frequency of each character in a string.
+
+  Args:
+    s: The input string.
+
+  Returns:
+    A dictionary where keys are characters and values are their frequencies.
+  """"""
+  frequency = {}
+  for char in s:
+    if char in frequency:
+      frequency[char] += 1
+    else:
+      frequency[char] = 1
+  return frequency
+
+```",0,1
+code_algo_01,code_algorithmic,3,0.871295013245943,"```python
+def binary_search(arr, target):
+  """"""
+  Performs a binary search on a sorted list.
+
+  Args:
+    arr: The sorted list to search.
+    target: The value to search for.
+
+  Returns:
+    The index of the target in the list if found, or -1 if not found.
+  """"""
+  left = 0
+  right = len(arr) - 1
+
+  while left <= right:
+    mid = (left + right) // 2
+    if arr[mid] == target:
+      return mid
+    elif arr[mid] < target:
+      left = mid + 1
+    else:
+      right = mid - 1
+  return -1
+```
+
+
+
+**Explanation:**
+
+The function `binary_search(arr, target)` implements the binary search algorithm as follows:
+
+1. **Initialization:** It sets `left` to 0 (the start index of the list) and `right` to the last index (`len(arr) - 1`).
+2. **Iteration:**  It enters a `while` loop that continues as long as `left` is less than or equal to `right`.
+3. **Calculate Midpoint:** Inside the loop, it calculates the `mid` index as the average of `left` and `right`. This effectively divides the search space in half with each iteration.
+4. **Comparison:** It compares the value at the `mid` index (`arr[mid]`) with the `target`:
+   - If they are equal, the target is found, and its index `mid` is returned.
+   - If `arr[mid]` is less than the `target`, it means the target could be in the right half of the list. So, `left` is updated to `mid + 1`, effectively discarding the left half.
+   - If `arr[mid]` is greater than the `target`, it means the target could be in the left half. So, `right` is updated to `mid - 1`, discarding the right half.
+5. **Target Not Found:** If the loop completes without finding the target (i.e., `left` becomes greater than `right`), it means the target is not in the list, and -1 is returned.
+
+
+
+Let me know if you'd",0,1
+code_algo_02,code_algorithmic,3,0.927984462002052,"```python
+def merge_sorted(a, b):
+  """"""Merges two sorted lists into one sorted list.
+
+  Args:
+    a: The first sorted list.
+    b: The second sorted list.
+
+  Returns:
+    A new sorted list containing all elements from a and b.
+  """"""
+  merged = []
+  i = 0
+  j = 0
+  while i < len(a) and j < len(b):
+    if a[i] <= b[j]:
+      merged.append(a[i])
+      i += 1
+    else:
+      merged.append(b[j])
+      j += 1
+  
+  # Add any remaining elements from list a
+  while i < len(a):
+    merged.append(a[i])
+    i += 1
+
+  # Add any remaining elements from list b
+  while j < len(b):
+    merged.append(b[j])
+    j += 1
+
+  return merged
+``` 
+
+
+**Explanation:**
+
+1. **Initialization:**
+   - `merged`: An empty list to store the merged result.
+   - `i`: Index for traversing list `a` (initialized to 0).
+   - `j`: Index for traversing list `b` (initialized to 0).
+
+2. **Comparison and Merging:**
+   - The `while` loop continues as long as both `i` and `j` are within the bounds of their respective lists.
+   - Inside the loop, we compare the elements at `a[i]` and `b[j]`:
+     - If `a[i]` is smaller or equal, append it to `merged` and increment `i`.
+     - Otherwise, append `b[j]` to `merged` and increment `j`.
+
+3. **Handling Remaining Elements:**
+   - After one list is exhausted, we need to add any remaining elements from the other list to `merged`. 
+   - The two additional `while` loops handle this by iterating through the remaining elements of either `a` or `b` and appending them to `merged`.
+
+4. **Return:** Finally, the function returns the `merged` list, which now contains all elements from both input lists in sorted order.",0,1
+code_algo_03,code_algorithmic,3,0.8344635390863646,"```python
+def gcd(a, b):
+  while b:
+    a, b = b, a % b
+  return a
+``` 
+
+
+This function implements Euclid's algorithm iteratively:
+
+* It uses a `while` loop that continues as long as `b` is not zero.
+* Inside the loop:
+    * `a` is updated to the value of `b`.
+    * `b` is updated to the remainder when `a` is divided by `b` (`a % b`).
+* Once `b` becomes zero, it means we've reached the greatest common divisor, which is the final value of `a`, so the function returns it.",0,1
+code_algo_04,code_algorithmic,3,0.9816604147884948,"```python
+def fib(n):
+  if n == 0:
+    return 0
+  elif n == 1:
+    return 1
+  else:
+    return fib(n-1) + fib(n-2) 
+```",0,1
+code_algo_05,code_algorithmic,3,0.8261253905012143,"```python
+def is_prime(n):
+  """"""
+  Returns True if n is a prime number, False otherwise.
+
+  Args:
+    n: An integer.
+
+  Returns:
+    True if n is prime, False otherwise.
+  """"""
+  if n <= 1:
+    return False
+  for i in range(2, int(n**0.5) + 1):
+    if n % i == 0:
+      return False
+  return True
+``` 
+
+
+
+###  Explanation:
+
+* **Base Cases:** A prime number is greater than 1. So, we handle `n <= 1` cases by returning `False`.
+
+* **Iteration and Divisibility Check:** We iterate from 2 up to the square root of `n`. We only need to check divisors up to the square root because any factor larger than the square root would have a corresponding factor smaller than the square root. For each number `i` in this range, we check if `n` is divisible by `i`. If it is, then `n` is not prime, and we return `False`.
+
+* **Prime Confirmation:** If the loop completes without finding any divisors, it means that `n` is only divisible by 1 and itself, making it a prime number. We return `True` in this case.
+
+
+
+Let me know if you'd like to explore optimizations or different approaches for primality testing!",0,1
+code_algo_06,code_algorithmic,3,0.8657332319845836,"```python
+def matrix_multiply(A, B):
+  """"""
+  Multiplies two 2D matrices (lists of lists).
+
+  Args:
+    A: The first matrix.
+    B: The second matrix.
+
+  Returns:
+    The product of the two matrices, or None if the matrices cannot be multiplied.
+  """"""
+  # Check if matrices can be multiplied
+  if len(A[0]) != len(B):
+    print(""Error: Matrices cannot be multiplied. Number of columns in A must equal number of rows in B."")
+    return None
+
+  # Create a result matrix filled with zeros
+  result = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
+
+  # Perform matrix multiplication
+  for i in range(len(A)):
+    for j in range(len(B[0])):
+      for k in range(len(B)):
+        result[i][j] += A[i][k] * B[k][j]
+
+  return result 
+```
+
+
+
+**Explanation:**
+
+1. **Input Validation**: The function first checks if the number of columns in matrix `A` is equal to the number of rows in matrix `B`. If not, it prints an error message and returns `None` as matrix multiplication is not possible. 2. **Result Matrix Initialization**: A new matrix called `result` is created, filled with zeros, and its dimensions are determined by the number of rows in `A` and the number of columns in `B`.
+
+3. **Multiplication Logic**: The core logic involves three nested loops:
+   -  The outer loop iterates through each row (`i`) of matrix `A`.
+   -  The middle loop iterates through each column (`j`) of matrix `B`.
+   -  The inner loop iterates through the corresponding elements in a row of `A` and a column of `B`, calculates their product, and accumulates the sum in the appropriate position `result[i][j]`.
+
+4. **Return Result**: Finally, the function returns the calculated `result` matrix. 
+
+
+
+Let me know if you would like to test this function with some examples!",0,1
+code_algo_07,code_algorithmic,3,0.8538879751868365,"```python
+def longest_common_prefix(strs):
+  """"""
+  Finds the longest common prefix string amongst an array of strings.
+
+  Args:
+      strs: A list of strings.
+
+  Returns:
+      The longest common prefix string, or an empty string if there is none.
+  """"""
+  if not strs:
+    return """"
+
+  prefix = strs[0]
+  for i in range(1, len(strs)):
+    j = 0
+    while j < len(prefix) and j < len(strs[i]) and prefix[j] == strs[i][j]:
+      j += 1
+    prefix = prefix[:j]
+
+  return prefix 
+``` 
+
+
+**Explanation:**
+
+1. **Handle Empty Input:** The function first checks if the input list `strs` is empty. If it is, there's no common prefix, so it immediately returns an empty string.
+
+2. **Initialize Prefix:** If there are strings, it assumes the first string (`strs[0]`) as the initial `prefix`.
+
+3. **Iterate and Compare:**
+   -  The code iterates through the remaining strings in the list (`strs[1:]`).
+   - For each string, it compares characters with the current `prefix` using a `while` loop. 
+   - The loop continues as long as:
+      -  `j` is within the bounds of both the `prefix` and the current string.
+      - The characters at position `j` in both strings are equal.
+
+4. **Update Prefix:** After the `while` loop, `prefix` is updated to be a substring from the beginning up to position `j`. This effectively shortens the `prefix` if a mismatch occurs.
+
+5. **Return Result:** Finally, the function returns the `prefix`, which now represents the longest common prefix found among all the strings in the input list.
+
+
+
+Let me know if you have any other questions or want to explore different approaches!",0,1
+code_algo_08,code_algorithmic,3,0.8340730805565922,"```python
+def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return [] 
+``` 
+
+
+**Explanation:**
+
+1. **`seen = {}`**: This creates an empty dictionary called `seen` to store numbers we've encountered so far and their indices.
+
+2. **`for i, num in enumerate(nums):`**:  The `enumerate()` function iterates through the `nums` list, giving us both the index (`i`) and the value (`num`) of each element.
+
+3. **`complement = target - num`**: For each number `num`, we calculate the `complement` needed to reach the `target`.
+
+4. **`if complement in seen:`**: 
+   - We check if the `complement` is already present as a key in our `seen` dictionary.
+   - If it is, this means we've found two numbers that add up to the `target`.
+
+5. **`return [seen[complement], i]`**:  If the `complement` is found, we return a list containing:
+   - The index of the `complement` (stored in `seen[complement]`) 
+   - The current index (`i`) where we found the `num`.
+
+6. **`seen[num] = i`**: If the `complement` isn't found, we store the current `num` and its index (`i`) in our `seen` dictionary for future checks.
+
+7. **`return []`**: If the loop completes without finding a pair that sums to the target, we return an empty list.
+
+
+
+Let me know if you have any other questions!",0,1
+code_algo_09,code_algorithmic,3,0.8366167836228279,"```python
+def valid_parentheses(s):
+    """"""
+    Determines if a string of parentheses is valid.
+
+    Args:
+        s: The string of parentheses to check.
+
+    Returns:
+        True if the parentheses are valid, False otherwise.
+    """"""
+    stack = []
+    parenthesis_map = {"")"": ""("", ""}"": ""{"", ""]"": ""[""} 
+
+    for char in s:
+        if char in parenthesis_map.values():  
+            stack.append(char) # Push opening parentheses onto the stack
+        elif char in parenthesis_map.keys():
+            if not stack or stack.pop() != parenthesis_map[char]:
+                return False  # Mismatched closing parenthesis
+
+    return len(stack) == 0  # Valid if the stack is empty at the end
+
+
+
+```
+
+
+**Explanation:**
+
+1. **Initialization:**
+   - `stack = []`: An empty list is used as a stack to keep track of opening parentheses.
+   - `parenthesis_map`: A dictionary maps closing parentheses to their corresponding opening parentheses.
+
+2. **Iteration:** The code iterates through each character (`char`) in the input string `s`.
+
+3. **Opening Parentheses:** If `char` is an opening parenthesis (present as a value in `parenthesis_map`), it's pushed onto the `stack`.
+
+4. **Closing Parentheses:** If `char` is a closing parenthesis:
+   - It checks if the `stack` is empty. If it is, there's no matching opening parenthesis, so the string is invalid (`return False`).
+   - If the `stack` is not empty, it pops the last element (which should be the corresponding opening parenthesis) and compares it to the expected opening parenthesis from `parenthesis_map`. If they don't match, the string is invalid (`return False`).
+
+5. **Final Check:** After processing all characters, if the `stack` is empty, it means all opening parentheses have been correctly matched with closing ones, and the function returns `True`. Otherwise, there are unmatched opening parentheses, and it returns `False`.
+
+
+Let me know if you'd like any part of this explained in more detail!",0,1
+code_algo_10,code_algorithmic,3,0.9559656141126145,"```python
+def power(base, exp):
+  """"""Computes base^exp using fast exponentiation.""""""
+  result = 1
+  while exp > 0:
+    if exp % 2 == 1:
+      result *= base
+    base *= base
+    exp //= 2
+  return result
+```",0,1
+code_algo_11,code_algorithmic,3,0.7523322589374798,"```python
+def rotate_list(lst, k):
+  """"""Rotates a list k positions to the right.
+
+  Args:
+    lst: The list to be rotated.
+    k: The number of positions to rotate the list by.
+
+  Returns:
+    The rotated list.
+  """"""
+
+  k %= len(lst)  # Handle cases where k is larger than the list length
+  return lst[-k:] + lst[:-k] 
+```
+
+
+**Explanation:**   
+
+1. **Modulus Operation (%):** The line `k %= len(lst)` ensures that `k` is always less than the length of the list. This handles cases where `k` is larger than the list size, preventing errors and effectively rotating by the remainder after division.
+2. **List Slicing:** 
+   - `lst[-k:]`:  Selects the last `k` elements from the list (these will be moved to the beginning).
+   - `lst[:-k]`: Selects all elements except the last `k` elements (these will come after the rotated part).
+
+3. **Concatenation (+):** The `+` operator concatenates these two slices, effectively rotating the list to the right by `k` positions.
+
+
+
+
+Let me know if you'd like to see an example of how to use this function!",0,1
+code_algo_12,code_algorithmic,3,0.8007680113247082,"```python
+def count_inversions(arr):
+    """"""
+    Counts the number of inversions in a list.
+
+    Args:
+      arr: A list of integers.
+
+    Returns:
+      The number of inversions in the list.
+    """"""
+    count = 0
+    n = len(arr)
+    for i in range(n):
+        for j in range(i + 1, n):
+            if arr[i] > arr[j]:
+                count += 1
+    return count
+
+```
+
+
+**Explanation:**
+
+* **Initialization:**  
+    * `count = 0`: We start with a counter variable to track the number of inversions.
+    * `n = len(arr)`:  Store the length of the array for efficiency.
+
+* **Nested Loops:**
+    * The code uses two nested loops to compare every element with all the elements that come after it. 
+    * The outer loop iterates through each element (`arr[i]`) as a potential 'larger' element in an inversion.
+    * The inner loop (starting from `i + 1`) compares `arr[i]` with all subsequent elements (`arr[j]`).
+
+* **Inversion Check:**
+    * Inside the inner loop, `if arr[i] > arr[j]:` checks if an inversion exists (the element at index `i` is greater than the element at index `j`). 
+    * If an inversion is found, `count += 1` increments the inversion counter.
+
+* **Return Count:**  After comparing all pairs, the function returns `count`, which holds the total number of inversions in the input list.
+
+
+
+Let me know if you'd like to explore more efficient algorithms for counting inversions (like Merge Sort-based approaches)!",0,1
+code_algo_13,code_algorithmic,3,0.8619516050784742,"```python
+def run_length_encode(s):
+  """"""Runs length encodes a string.
+
+  Args:
+    s: The string to encode.
+
+  Returns:
+    A list of (char, count) tuples representing the run-length encoding of s.
+  """"""
+  if not s:
+    return []
+  encoded = []
+  prev_char = s[0]
+  count = 1
+  for i in range(1, len(s)):
+    if s[i] == prev_char:
+      count += 1
+    else:
+      encoded.append((prev_char, count))
+      prev_char = s[i]
+      count = 1
+  encoded.append((prev_char, count))  # Append the last run
+  return encoded 
+```
+
+
+
+**Explanation:**
+
+1. **Initialization:**
+   - The function checks if the input string `s` is empty. If so, it returns an empty list as there's nothing to encode.
+   - It initializes `encoded` (the list to store the encoded tuples), `prev_char` with the first character of `s`, and `count` to 1 (since we start with one occurrence of the first character).
+
+2. **Iterating through the String:**
+   - The code iterates through the string `s` starting from the second character (`i = 1`).
+   - For each character:
+     - If it's the same as the `prev_char`, increment the `count`.
+     - Otherwise, append the tuple `(prev_char, count)` to the `encoded` list. This signifies the end of a run of consecutive characters. Update `prev_char` to the current character and reset `count` to 1.
+
+3. **Appending the Last Run:**
+   - After the loop, append the last run `(prev_char, count)` to ensure it's included in the encoded list.
+
+4. **Returning the Encoded List:**
+   - Finally, the function returns the `encoded` list containing the run-length encoding of the input string.",0,1
+code_algo_14,code_algorithmic,3,0.8936089496611063,"```python
+def kadane(arr):
+  """"""
+  Finds the maximum sum of a contiguous subarray within a given array.
+
+  Args:
+      arr: A list of integers.
+
+  Returns:
+      The maximum subarray sum.
+  """"""
+  max_so_far = arr[0]
+  current_max = arr[0]
+  for i in range(1, len(arr)):
+    current_max = max(arr[i], current_max + arr[i])
+    max_so_far = max(max_so_far, current_max)
+  return max_so_far 
+```
+
+**Explanation:**
+
+The `kadane` function implements Kadane's Algorithm to efficiently find the maximum subarray sum. Here's how it works:
+
+1. **Initialization:**
+   - `max_so_far`:  Stores the maximum sum encountered so far. Initialized with the first element of the array.
+   - `current_max`: Stores the maximum sum ending at the current position. Also initialized with the first element.
+
+2. **Iteration:**
+   - The loop iterates through the array starting from the second element (`i = 1`).
+
+3. **Updating `current_max`:**
+   - At each position, `current_max` is updated by taking the maximum between:
+     - The current element itself (`arr[i]`) -  Starting a new subarray from this element.
+     - The sum of the current element and the previous `current_max` (`current_max + arr[i]`) - Extending the existing subarray.
+
+4. **Updating `max_so_far`:**
+   - After updating `current_max`,  `max_so_far` is updated to store the maximum value between its current value and the newly calculated `current_max`. This ensures we track the overall maximum sum found so far.
+
+5. **Return:**
+   - Finally, the function returns `max_so_far`, which represents the maximum subarray sum found in the input array.
+
+
+
+Let me know if you have any other questions or tasks!",0,1
+code_algo_15,code_algorithmic,3,0.790001257128924,"```python
+from collections import defaultdict
+
+def topological_sort(graph):
+  """"""
+  Performs a topological sort on a directed graph represented as an adjacency list.
+
+  Args:
+    graph: A dictionary where keys are nodes and values are lists of their dependencies.
+
+  Returns:
+    A list of nodes in a valid topological order, or None if the graph contains a cycle.
+  """"""
+  in_degree = defaultdict(int)
+  for node in graph:
+    # Calculate in-degree for each node: number of incoming edges
+    for dependent in graph[node]:
+      in_degree[dependent] += 1
+
+  queue = [node for node in graph if in_degree[node] == 0]  # Nodes with no dependencies start first
+  result = []
+
+  while queue:
+    node = queue.pop(0)
+    result.append(node)
+    for dependent in graph[node]:
+      in_degree[dependent] -= 1
+      if in_degree[dependent] == 0:
+        queue.append(dependent)  # Add node to queue once its dependencies are processed
+
+  return result if len(result) == len(graph) else None  # Check for cycle
+
+
+
+```
+
+**Explanation:**
+
+
+The `topological_sort` function implements Kahn's algorithm, which is a common approach for topological sorting:
+
+1. **Calculate In-Degrees:**
+   - It first builds an `in_degree` dictionary to store the number of incoming edges (dependencies) for each node.
+
+2. **Enqueue Zero-In-Degree Nodes:**
+   -  Nodes with no dependencies (in-degree of 0) are added to a `queue`. These nodes can be processed first as they don't depend on anything else.
+
+3. **Iterative Processing:**
+   - The algorithm iteratively processes nodes from the `queue`:
+     - Dequeues a node (`node`) from the front of the queue.
+     - Appends the dequeued `node` to the `result` list (the topological order).
+     - For each dependency (`dependent`) of the current `node`, it decrements the `in_degree` of the `dependent`. 
+     - If the `in_degree` of a `dependent` becomes 0, it means all its dependencies",0,1

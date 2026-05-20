@@ -1,0 +1,189 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,2,0.9339516668497593,788,1,1
+arith_easy_02,arithmetic_easy,2,0.5675787847288063,-734,1,1
+arith_easy_03,arithmetic_easy,2,0.5133440083538131,75860,0,1
+arith_easy_04,arithmetic_easy,2,0.9532781244550121,390,1,1
+arith_easy_05,arithmetic_easy,2,0.8737579924225902,650,1,1
+arith_easy_06,arithmetic_easy,2,0.2946740255412372,,0,0
+arith_easy_07,arithmetic_easy,2,0.9470743702501228,1491,1,1
+arith_easy_08,arithmetic_easy,2,0.7556627275765858,-515,1,1
+arith_easy_09,arithmetic_easy,2,0.7885268478576575,18136,0,1
+arith_easy_10,arithmetic_easy,2,0.9653742711316253,145,1,1
+arith_easy_11,arithmetic_easy,2,0.7437230030904264,-5,0,1
+arith_easy_12,arithmetic_easy,2,0.4924169191919521,328978,0,1
+arith_easy_13,arithmetic_easy,2,0.9401406314281611,621,1,1
+arith_easy_14,arithmetic_easy,2,0.5712586925373001,-530,1,1
+arith_easy_15,arithmetic_easy,2,0.4148413106522545,504864,0,1
+arith_easy_16,arithmetic_easy,2,0.9486328666763367,1007,1,1
+arith_easy_17,arithmetic_easy,2,0.8035743666528509,-234,1,1
+arith_easy_18,arithmetic_easy,2,0.34159851165895055,,0,0
+arith_easy_19,arithmetic_easy,2,0.9579230834711437,1738,1,1
+arith_easy_20,arithmetic_easy,2,0.3375496639607241,-771,1,1
+arith_hard_01,arithmetic_hard,2,0.7646940478372806,-117,0,1
+arith_hard_02,arithmetic_hard,2,0.4544796489831011,,0,0
+arith_hard_03,arithmetic_hard,2,0.6490170393700181,,0,0
+arith_hard_04,arithmetic_hard,2,0.9334095712024779,184,1,1
+arith_hard_05,arithmetic_hard,2,0.6280904299760756,-14,0,1
+arith_hard_06,arithmetic_hard,2,0.6949267013693428,,0,0
+arith_hard_07,arithmetic_hard,2,0.8168249814105867,102,0,1
+arith_hard_08,arithmetic_hard,2,0.4933137510336212,,0,0
+arith_hard_09,arithmetic_hard,2,0.43692949879017084,-6,0,1
+arith_hard_10,arithmetic_hard,2,0.5560951400379489,736,0,1
+arith_hard_11,arithmetic_hard,2,0.40524715752947643,3846,0,1
+arith_hard_12,arithmetic_hard,2,0.6878142965242261,-49,0,1
+arith_hard_13,arithmetic_hard,2,0.38158057951621044,-52,0,1
+arith_hard_14,arithmetic_hard,2,0.5346436668575395,,0,0
+arith_hard_15,arithmetic_hard,2,0.29186125144083164,,0,0
+arith_hard_16,arithmetic_hard,2,0.5843535177681298,749,0,1
+arith_hard_17,arithmetic_hard,2,0.7015154243880999,-77,0,1
+arith_hard_18,arithmetic_hard,2,0.385374280815875,16897,0,1
+arith_hard_19,arithmetic_hard,2,0.8049770404668717,397,0,1
+arith_hard_20,arithmetic_hard,2,0.47073127903674233,,0,0
+fact_common_01,factual_common,2,0.8306471621520546,The chemical symbol for gold is AU.,1,1
+fact_common_02,factual_common,2,0.9526844950268594,The capital of Japan is Tokyo.,1,1
+fact_common_03,factual_common,2,0.8998264364697832,There are eight planets in our solar system.,0,1
+fact_common_04,factual_common,2,0.955831146192093,1945,1,1
+fact_common_05,factual_common,2,0.4862694650235239,299792,0,1
+fact_common_06,factual_common,2,0.9452306018556091,Pacific Ocean,1,1
+fact_common_07,factual_common,2,0.9416693457738875,William Shakespeare,1,1
+fact_common_08,factual_common,2,0.9594765174324682,12,1,1
+fact_common_09,factual_common,2,0.9570442627072855,Hydrogen,1,1
+fact_common_10,factual_common,2,0.9393945782005615,Humans have 46 chromosomes.,1,1
+fact_common_11,factual_common,2,0.9084917497256648,The boiling point of water is 100 degrees Celsius or 212 degrees Fahrenheit at standard atmospheric pressure.,1,1
+fact_common_12,factual_common,2,0.9304876381218691,Mercury,1,1
+fact_common_13,factual_common,2,0.9766881829515475,The chemical formula for water is H2O.,1,1
+fact_common_14,factual_common,2,0.9567839365740846,There are 7 continents.,1,1
+fact_common_15,factual_common,2,0.8822815617976316,The Nile River is the longest river in the world.,1,1
+fact_obscure_01,factual_obscure,2,0.6556835335725133,,0,0
+fact_obscure_02,factual_obscure,2,0.8868461460093104,Monaco,0,1
+fact_obscure_03,factual_obscure,2,0.9182816594546166,1648,1,1
+fact_obscure_04,factual_obscure,2,0.9086200438654293,The atomic number of Osmium is 72.,0,1
+fact_obscure_05,factual_obscure,2,0.856685902938857,femur,1,1
+fact_obscure_06,factual_obscure,2,0.8860917155435999,A dodecahedron has 30 edges.,1,1
+fact_obscure_07,factual_obscure,2,0.9596512939403075,JPY,1,1
+fact_obscure_08,factual_obscure,2,0.8795283901449142,Topaz has a Mohs hardness of 5 to 6.,0,1
+fact_obscure_09,factual_obscure,2,0.8907830628936547,1088,1,1
+fact_obscure_10,factual_obscure,2,0.9074862798579412,W,1,1
+fact_obscure_11,factual_obscure,2,0.90227013972846,A standard piano has 88 keys.,1,1
+fact_obscure_12,factual_obscure,2,0.4593052231700994,11.2,1,1
+fact_obscure_13,factual_obscure,2,0.914046726215114,HEL,1,1
+fact_obscure_14,factual_obscure,2,0.9198179468894896,An icosahedron has 20 vertices.,0,1
+fact_obscure_15,factual_obscure,2,0.8758047450106311,The pH of pure water at 25 degrees Celsius is approximately 7.42.,1,1
+code_simple_01,code_simple,2,0.7964894122095117,True,0,1
+code_simple_02,code_simple,2,0.6777796081218754,"The function to find the maximum of three numbers is `max()` in Python, so `max_of_three(a, b, c) = max(a, b, c)`.",0,1
+code_simple_03,code_simple,2,0.7349631032582932,"def reverse_string(s):
+    return s[::-1]",1,1
+code_simple_04,code_simple,2,0.5108234471938995,,0,0
+code_simple_05,code_simple,2,0.7584808719556946,,0,0
+code_simple_06,code_simple,2,0.5874749193810572,sum(lst),0,1
+code_simple_07,code_simple,2,0.7856103240667,"def is_palindrome(s):
+    s = s.lower()
+    s = ''.join([c for c in s if c.isalnum()])
+    return s == s[::-1]",1,1
+code_simple_08,code_simple,2,0.6124688685170484,362880,0,1
+code_simple_09,code_simple,2,0.8100554414971175,"Here's a Python function that clamps a number to a range:
+
+```python
+def clamp(x, lo, hi):
+    if x < lo:
+        return lo
+    elif x > hi:
+        return hi
+    else:
+        return x
+```",0,1
+code_simple_10,code_simple,2,0.5356781682074689,,0,0
+code_simple_11,code_simple,2,0.6498043703651225,def unique(lst): return list(set(lst)),1,1
+code_simple_12,code_simple,2,0.6199432659679173,"The dot product of two lists can be computed by multiplying their corresponding elements and summing the results. This can be written in Python using a for loop or list comprehension to iterate over the elements of the two lists, and then adding up the resulting products. Here is an example function that implements this algorithm:
+
+```python
+def dot_product(a, b):
+    return sum([x*y for x, y in zip(a, b)])
+
+```",0,1
+code_simple_13,code_simple,2,0.5661348608621297,The function converts a string to title case by capitalizing the first letter of each word in it. It handles spaces and special characters gracefully.,0,1
+code_simple_14,code_simple,2,0.4936750033779659,"```python
+def intersection(a, b):
+    setA = set(a)
+    setB = set(b)
+    return list(setA & setB) #python list comprehension
+```",0,1
+code_simple_15,code_simple,2,0.637322952166064,""", char_frequency('HackerRank'))
+```",0,1
+code_algo_01,code_algorithmic,2,0.8407328748483881,"def binary_search(arr, target):
+    left = 0
+    right = len(arr) -1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid+1
+        else:
+            right = mid-1
+    return -1",1,1
+code_algo_02,code_algorithmic,2,0.6239011843178524,,0,0
+code_algo_03,code_algorithmic,2,0.7903728953727066,"def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return abs(a)",1,1
+code_algo_04,code_algorithmic,2,0.7430461502796685,"55
+```",0,1
+code_algo_05,code_algorithmic,2,0.579968937329376,False,0,1
+code_algo_06,code_algorithmic,2,0.7865401082229154,"def matrix_multiply(A, B):
+    result = [[0 for x in range(len(B[0]))] for y in range(len(A))]
+    for i in range (len(A)):
+        for j in range (len(B[0])):
+            for k in range (len(B)):
+                result[i][j] += A[i][k]*B[k][j]
+     return result",0,1
+code_algo_07,code_algorithmic,2,0.7230690253952456,"The function `longest_common_prefix(strs)` returns the longest common prefix of a list of strings by first finding the shortest string in the list and then iterating through each character in this string while comparing it with the corresponding character in all other strings. If any character does not match, the function returns up to that point. If all characters match, the function returns the whole string.",0,1
+code_algo_08,code_algorithmic,2,0.5515263242159197,"[(0, 1)]",0,1
+code_algo_09,code_algorithmic,2,0.6608151619317063,True,0,1
+code_algo_10,code_algorithmic,2,0.5820448940359622,"The function `power(base, exp)` that computes base^exp using fast exponentiation (no ** operator).",0,1
+code_algo_11,code_algorithmic,2,0.554652185173407,"rotate_list(lst, k)]",0,1
+code_algo_12,code_algorithmic,2,0.6213375338428153,The function should return the number of pairs where i < j but arr[i] > arr[j].,0,1
+code_algo_13,code_algorithmic,2,0.6654622499756191,,0,0
+code_algo_14,code_algorithmic,2,0.6513814412483241,"function kadane(arr):
+```",0,1
+code_algo_15,code_algorithmic,2,0.4721634543856886,"[The function to implement topological sort is given below.]
+
+Please find the Python code below to implement `topological_sort` function.
+
+```python
+from collections import defaultdict
+
+def topological_sort(graph):
+    """"""
+    This function takes a dictionary as input representing graph and returns a valid topological ordering of nodes in that graph.
+    
+    Graph is represented as a dictionary where keys are nodes and values are list of dependencies. 
+    Each dependency is represented as tuple (node, parent_node).
+    
+    For example:
+    {
+        'A': ['B', 'C'],
+        'B': ['D'],
+        'C': [],
+        'D': []
+    }
+    
+    Will result in topological ordering ['A', 'B', 'C', 'D']
+    
+    """"""
+    
+    # If graph is empty return empty list as there is no node to sort
+    if not graph:
+        return []
+        
+    # Create a dictionary to store nodes in the order they will be sorted. 
+    # Initialize all nodes with value set to -1 indicating they are yet to be processed. 
+    sorted_order = defaultdict(int)
+    
+    # Set source node as first element of our list and initialize its value to 0. 
+    src_node = next(iter(graph))[0]
+    sorted_order[src_node] = 0
+    
+    # Recursively sort the remaining nodes by visiting them in reverse topological order.
+    for node in graph[src_node]:
+        # Calculate tentative value of current node as",0,1

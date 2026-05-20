@@ -1,0 +1,343 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,1,0.46270223426258755,788,1,1
+arith_easy_02,arithmetic_easy,1,0.45767320450706955,[-734],1,1
+arith_easy_03,arithmetic_easy,1,0.3298122483127656,** 75390,0,1
+arith_easy_04,arithmetic_easy,1,0.4049093434493014,390,1,1
+arith_easy_05,arithmetic_easy,1,0.3937041382399309,650,1,1
+arith_easy_06,arithmetic_easy,1,0.389318917501452,"** The product of 702 and 768 is **535,616**.",0,1
+arith_easy_07,arithmetic_easy,1,0.21297313802479906,1491,1,1
+arith_easy_08,arithmetic_easy,1,0.424545339420195,-515,1,1
+arith_easy_09,arithmetic_easy,1,0.3316534896475208,18644,0,1
+arith_easy_10,arithmetic_easy,1,0.34305447801325123,145,1,1
+arith_easy_11,arithmetic_easy,1,0.32907892434168257,** -15,1,1
+arith_easy_12,arithmetic_easy,1,0.5103528697827144,328504,0,1
+arith_easy_13,arithmetic_easy,1,0.43235342044939806,621,1,1
+arith_easy_14,arithmetic_easy,1,0.34623222942706244,-530,1,1
+arith_easy_15,arithmetic_easy,1,0.7373889360717385,,0,0
+arith_easy_16,arithmetic_easy,1,0.21591414231205888,1007,1,1
+arith_easy_17,arithmetic_easy,1,0.4058468048033587,-234,1,1
+arith_easy_18,arithmetic_easy,1,0.19438006708938577,**183462**,0,1
+arith_easy_19,arithmetic_easy,1,0.41796854979092934,1738,1,1
+arith_easy_20,arithmetic_easy,1,0.3001734039251821,-761,0,1
+arith_hard_01,arithmetic_hard,1,0.3145633870625659,-231,0,1
+arith_hard_02,arithmetic_hard,1,0.28430299721966656,26573,0,1
+arith_hard_03,arithmetic_hard,1,0.37304298144732273,"[383]
+CONFIDENCE: [0.99]",0,1
+arith_hard_04,arithmetic_hard,1,0.19318410114981605,184,1,1
+arith_hard_05,arithmetic_hard,1,0.2656196528912437,-5884,0,1
+arith_hard_06,arithmetic_hard,1,0.42206289477018827,"83998
+```",0,1
+arith_hard_07,arithmetic_hard,1,0.22808895112272753,** \boxed{-72},0,1
+arith_hard_08,arithmetic_hard,1,0.1738413194184856,31759,0,1
+arith_hard_09,arithmetic_hard,1,0.3638175748645488,16752,0,1
+arith_hard_10,arithmetic_hard,1,0.19503660295995956,636,1,1
+arith_hard_11,arithmetic_hard,1,0.1671642338539672,5468,0,1
+arith_hard_12,arithmetic_hard,1,0.319996638347012,** -207,0,1
+arith_hard_13,arithmetic_hard,1,0.4055971043431866,-40,0,1
+arith_hard_14,arithmetic_hard,1,0.3506166205718888,8642,0,1
+arith_hard_15,arithmetic_hard,1,0.2753095656724775,-135436,0,1
+arith_hard_16,arithmetic_hard,1,0.46981639197467,1723,0,1
+arith_hard_17,arithmetic_hard,1,0.31449992743985294,3247,0,1
+arith_hard_18,arithmetic_hard,1,0.6821461155187616,12339,0,1
+arith_hard_19,arithmetic_hard,1,0.17701917903029557,333,0,1
+arith_hard_20,arithmetic_hard,1,0.3189555781507375,-250,0,1
+fact_common_01,factual_common,1,0.3572404489316618,Au,1,1
+fact_common_02,factual_common,1,0.296039381997525,"Tokyo is the capital of Japan, known for its vibrant mix of traditional and modern culture.",1,1
+fact_common_03,factual_common,1,0.5098846821314775,"8
+
+There are eight planets in our solar system: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune. Pluto was once considered the ninth planet but was reclassified as a dwarf planet by the International Astronomical Union (IAU) in 2006 due to the discovery of other similar-sized objects in the Kuiper Belt region beyond Neptune.",1,1
+fact_common_04,factual_common,1,0.4029220554707946,The year World War II ended is 1945.,1,1
+fact_common_05,factual_common,1,0.3345147050076554,"300,000 km/s",0,1
+fact_common_06,factual_common,1,0.5690907062795774,"The Pacific Ocean is the largest ocean on Earth, covering approximately 63.8 million square miles (165.2 million km²), which is roughly 46% of Earth's water surface and 29% of its total surface area.",1,1
+fact_common_07,factual_common,1,0.5547007118027291,"Romeo and Juliet was written by William Shakespeare, the renowned English playwright and poet. The play is one of his most famous tragedies, depicting the tragic romance between two young lovers from feuding families.",1,1
+fact_common_08,factual_common,1,0.17754847431034484,12,1,1
+fact_common_09,factual_common,1,0.4370334757792738,Hydrogen,1,1
+fact_common_10,factual_common,1,0.4039170906076532,46,1,1
+fact_common_11,factual_common,1,0.42391948881131014,The boiling point of water at sea level is 100 degrees Celsius (212 degrees Fahrenheit).,1,1
+fact_common_12,factual_common,1,0.39870710597044307,Mercury,1,1
+fact_common_13,factual_common,1,0.2082957956604074,H2O,1,1
+fact_common_14,factual_common,1,0.03266779907977668,,0,0
+fact_common_15,factual_common,1,0.40031627318675683,"The longest river in the world is the Nile, flowing through Egypt and Sudan.",1,1
+fact_obscure_01,factual_obscure,1,0.3540777227765458,"5,730 years (rounded to the nearest hundred)",0,1
+fact_obscure_02,factual_obscure,1,0.25860481754914705,Vatican City,1,1
+fact_obscure_03,factual_obscure,1,0.4333662105766081,"** The Treaty of Westphalia was signed in two parts, the Peace of Westphalia (1648) and the Treaty of Münster (1648). These treaties officially ended the Thirty Years' War in the Holy Roman Empire and established the modern concept of nation-states and sovereignty. 
+
+Given that your task involves answering a specific year for a historical event, and considering the context provided, I am confident in providing this answer.",1,1
+fact_obscure_04,factual_obscure,1,0.15527744901805235,76,1,1
+fact_obscure_05,factual_obscure,1,0.606358850990479,"The femur, or thigh bone, is the longest bone in the human body. It connects the hip to the knee and plays a crucial role in supporting the body's weight and providing attachment points for muscles that enable movement.",1,1
+fact_obscure_06,factual_obscure,1,0.01,,0,0
+fact_obscure_07,factual_obscure,1,0.48052303635858856,JPY,1,1
+fact_obscure_08,factual_obscure,1,0.632522631375548,"Topaz typically has a Mohs hardness of 8, making it a very hard mineral. This hardness can vary slightly depending on the specific type of topaz and its composition.",1,1
+fact_obscure_09,factual_obscure,1,0.4141007835117541,The University of Bologna was founded in the year 1088 AD.,1,1
+fact_obscure_10,factual_obscure,1,0.46002806875678953,W,1,1
+fact_obscure_11,factual_obscure,1,0.3783391245628265,"A standard piano has 88 keys in total, comprising of 52 white keys and 36 black keys.",1,1
+fact_obscure_12,factual_obscure,1,0.5564416863983852,11.2 (rounded to nearest integer),1,1
+fact_obscure_13,factual_obscure,1,0.5069967350134555,HEL,1,1
+fact_obscure_14,factual_obscure,1,0.515203767807557,An icosahedron has 12 vertices.,1,1
+fact_obscure_15,factual_obscure,1,0.4255472363118204,,0,0
+code_simple_01,code_simple,1,0.3664301341160189,,0,0
+code_simple_02,code_simple,1,0.11537858243783052,,0,0
+code_simple_03,code_simple,1,0.4131113326575526,,0,0
+code_simple_04,code_simple,1,0.7489857715713165,,0,0
+code_simple_05,code_simple,1,0.6226713972684332,(function celsius_to_fahrenheit(c)),0,1
+code_simple_06,code_simple,1,0.5792306453491449,"Here's the Python function that solves the problem:
+```python
+def sum_list(lst):
+    return sum(lst)
+```
+This function takes a list `lst` as input and directly uses the built-in `sum()` function to calculate the sum of all its elements, returning the result.",0,1
+code_simple_07,code_simple,1,0.769295648836247,,0,0
+code_simple_08,code_simple,1,0.7402289693925718,"Here is the Python solution that solves the problem and passes corresponding tests:
+```python
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        result = 1
+        for i in range(2, n + 1):
+            result *= i
+        return result
+```",0,1
+code_simple_09,code_simple,1,0.7912561676407205,"Here is the Python solution that solves the problem:
+```python
+def clamp(x, lo, hi):
+    """"""
+    Clamps x to the range [lo, hi].
+
+    Args:
+        x (float): The value to be clamped.
+        lo (float): The lower bound of the range.
+        hi (float): The upper bound of the range.
+
+    Returns:
+        float: The clamped value of x.
+    """"""
+    return min(max(x, lo), hi)
+```",0,1
+code_simple_10,code_simple,1,0.8730364114091552,,0,0
+code_simple_11,code_simple,1,0.73966019846305,"Here is a Python function `unique(lst)` that returns a list of unique elements while preserving the original order:
+```python
+def unique(lst):
+    seen = set()
+    result = []
+    for item in lst:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
+```
+This function uses a `set` to keep track of the elements that have already been encountered and ensures that each element is added only once to the resulting list.",0,1
+code_simple_12,code_simple,1,0.7855648605218932,,0,0
+code_simple_13,code_simple,1,0.48028507738038173,,0,0
+code_simple_14,code_simple,1,0.7713865945188881,"Here is the Python solution that solves the problem:
+```python
+def intersection(a, b):
+    """"""
+    Returns common elements of two lists.
+
+    Parameters:
+    a (list): First list
+    b (list): Second list
+
+    Returns:
+    list: Common elements of the two input lists
+    """"""
+    return [element for element in a if element in b]
+```",0,1
+code_simple_15,code_simple,1,0.8535654368403337,"Here is the Python solution that solves the problem and passes corresponding tests:
+```python
+def char_frequency(s):
+    """"""
+    Returns a dictionary of character frequencies in the input string s.
+
+    Parameters:
+    s (str): The input string.
+
+    Returns:
+    dict: A dictionary where keys are characters and values are their frequencies.
+    """"""
+    freq_dict = {}
+    for char in s:
+        if char in freq_dict:
+            freq_dict[char] += 1
+        else:
+            freq_dict[char] = 1
+    return freq_dict
+```",0,1
+code_algo_01,code_algorithmic,1,0.7200256808822803,"Unfortunately, I cannot generate the final numerical answer for the binary_search function, since it depends on the input array arr and target value. However, here's a Python code with an explanation that demonstrates how to solve this problem correctly using binary search.
+```python
+def binary_search(arr, target):
+  """"""
+  Returns the index of target in a sorted list, or -1 if not found.
+
+  Args:
+    arr: A sorted list of integers.
+    target: The integer to search for.
+
+  Returns:
+    The index of target in arr if found, -1 otherwise.
+  """"""
+
+  left = 0
+  right = len(arr) - 1
+
+  while left <= right:
+    mid = (left + right) // 2
+
+    if arr[mid] == target:
+      return mid
+    elif arr[mid] < target:
+      left = mid + 1
+    else:
+      right = mid - 1
+
+  return -1
+```
+
+Explanation:
+
+1. **Initialization:**
+   - `left`: Tracks the lower bound of the search range (initialized to 0).
+   - `right`: Tracks the upper bound of the search range (initialized to the length of arr minus 1).
+
+2. **Binary Search Loop:**
+   - The loop continues as long as `left` is less than or equal to `right`, meaning there's a potential search range left.
+   - `mid`: Calculates the middle index of the current search range.
+   - **Comparison and Adjustment:**
+     - If `arr[mid]` equals the `target`, return the `mid` index (found!).
+     - If `arr[mid]` is less than the `target`, update `left` to `mid + 1` to narrow down the right half of the search range.
+     - Otherwise, update `right` to `mid - 1` to narrow down the left half.
+
+3. **Not Found:**
+   - If the loop exits without finding the target, return `-1`.
+
+This implementation efficiently narrows down the search range by half in each iteration, taking advantage of the sorted nature of the array.",0,1
+code_algo_02,code_algorithmic,1,0.8786317661474808,,0,0
+code_algo_03,code_algorithmic,1,0.8425573544070188,"Here is the Python solution that solves the problem and passes corresponding tests:
+```python
+def gcd(a, b):
+    """"""
+    This function calculates the greatest common divisor of two numbers using Euclid's algorithm.
+    
+    Parameters:
+    a (int or float): The first number.
+    b (int or float): The second number.
+    
+    Returns:
+    int or float: The greatest common divisor of a and b.
+    """"""
+    while b != 0:
+        a, b = b, a % b
+    return a
+```",0,1
+code_algo_04,code_algorithmic,1,0.8322482418315916,"The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones, usually starting with 0 and 1. Here's a Python function to calculate the nth Fibonacci number using a recursive approach:
+```python
+def fib(n):
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+```
+This function uses recursion to calculate the Fibonacci number. However, it's not efficient for large values of `n` due to its exponential time complexity. For improved performance, you can use memoization or an iterative approach. Here's an example using memoization:
+```python
+def fib_memo(n, memo={}):
+    if n in memo:
+        return memo[n]
+    if n <= 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        memo[n] = fib_memo(n-1, memo) + fib_memo(n-2, memo)
+        return memo[n]
+```
+This version uses a dictionary to store previously computed Fibonacci numbers, making it much faster for larger values of `n`.",0,1
+code_algo_05,code_algorithmic,1,0.7991737584751455,"Here is the Python solution that solves the problem and passes corresponding tests:
+```python
+def is_prime(n):
+    """"""Returns True if n is a prime number, False otherwise.""""""
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(n**0.5) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+```",0,1
+code_algo_06,code_algorithmic,1,0.8763552564394778,"Here is the Python solution that solves the problem:
+```python
+def matrix_multiply(A, B):
+    """"""
+    Multiply two 2D matrices A and B.
+
+    Args:
+        A (list of list): The first matrix.
+        B (list of list): The second matrix.
+
+    Returns:
+        list of list: The product of the two matrices.
+
+    Raises:
+        ValueError: If the number of columns in A is not equal to the number of rows in B.
+    """"""
+    # Check if the matrices can be multiplied
+    if len(A[0]) != len(B):
+        raise ValueError(""The number of columns in A must be equal to the number of rows in B"")
+
+    # Initialize the result matrix with zeros
+    result = [[0 for _ in range(len(B[0]))] for _ in range(len(A))]
+
+    # Perform the multiplication
+    for i in range(len(A)):
+        for j in range(len(B[0])):
+            for k in range(len(B)):
+                result[i][j] += A[i][k] * B[k][j]
+
+    return result
+```",0,1
+code_algo_07,code_algorithmic,1,0.7189231315416077,,0,0
+code_algo_08,code_algorithmic,1,0.8343508340565634,"Possible solution:
+```python
+def two_sum(nums, target):
+    """"""
+    Returns the indices of two numbers in a list that add up to a given target.
+
+    Args:
+        nums (list): A list of integers.
+        target (int): The target sum.
+
+    Returns:
+        tuple: A tuple containing the indices of the two numbers that add up to the target.
+               If no such pair exists, returns None.
+    """"""
+    num_dict = {}  # Dictionary to store numbers and their indices
+    for i, num in enumerate(nums):
+        complement = target - num  # Calculate the complement of the current number
+        if complement in num_dict:
+            # If the complement is found in the dictionary, return the indices
+            return (num_dict[complement], i)
+        num_dict[num] = i  # Store the current number and its index in the dictionary
+    # If no pair is found, return None
+    return None
+```
+CONFIDENCE: [1.0]",0,1
+code_algo_09,code_algorithmic,1,0.472172952293577,True,0,1
+code_algo_10,code_algorithmic,1,0.679811256105122,"def power(base, exp):
+    """"""Compute base^exp using fast exponentiation.""""""
+    result = 1
+    while exp > 0:
+        if exp % 2 == 1:
+            result *= base
+        base *= base
+        exp //= 2
+    return result",1,1
+code_algo_11,code_algorithmic,1,0.5707214110262048,,0,0
+code_algo_12,code_algorithmic,1,0.1313670313477728,,0,0
+code_algo_13,code_algorithmic,1,0.7067162519454304,,0,0
+code_algo_14,code_algorithmic,1,0.7502461420149962,,0,0
+code_algo_15,code_algorithmic,1,0.06333765097116993,TO DO,0,1

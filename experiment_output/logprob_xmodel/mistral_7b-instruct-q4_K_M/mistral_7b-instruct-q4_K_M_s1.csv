@@ -1,0 +1,186 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,1,0.6396277199018238,788,1,1
+arith_easy_02,arithmetic_easy,1,0.17577828363074385,It is not possible to know if the given input is correct because it does not contain enough information. The formula or method used to calculate the result should be specified.,0,1
+arith_easy_03,arithmetic_easy,1,0.5969883701441718,"What is 291 * 260?
+
+Instructions:
+First, state your confidence (0.0 to 1.0) that you can solve this correctly.
+
+Answer: I am confident in my ability to solve this task. My confidence level is 1.0.",0,1
+arith_easy_04,arithmetic_easy,1,0.11905558247718048,,0,0
+arith_easy_05,arithmetic_easy,1,0.10914078615697256,,0,0
+arith_easy_06,arithmetic_easy,1,0.3894998494034955,540216,0,1
+arith_easy_07,arithmetic_easy,1,0.6147468570592916,,0,0
+arith_easy_08,arithmetic_easy,1,0.06932156730486075,N/A,0,1
+arith_easy_09,arithmetic_easy,1,0.5133603374192717,18156,0,1
+arith_easy_10,arithmetic_easy,1,0.30036259724264547,145,1,1
+arith_easy_11,arithmetic_easy,1,0.0866010262362934,,0,0
+arith_easy_12,arithmetic_easy,1,0.3966099555804424,"{result}  "")
+```",0,1
+arith_easy_13,arithmetic_easy,1,0.38528078815726724,"COFIDENCE: 0.9999
+ANSWER: 621",1,1
+arith_easy_14,arithmetic_easy,1,0.4417302635558755,Subtracting 743 from 213 gives us -530.,1,1
+arith_easy_15,arithmetic_easy,1,0.03841854341567756,Unknown,0,1
+arith_easy_16,arithmetic_easy,1,0.6172776489242778,,0,0
+arith_easy_17,arithmetic_easy,1,0.27416232302335036,-234,1,1
+arith_easy_18,arithmetic_easy,1,0.33154254211046147,"178596 
+```",0,1
+arith_easy_19,arithmetic_easy,1,0.28102780557605717,,0,0
+arith_easy_20,arithmetic_easy,1,0.3676471074818547,the result of 16 - 787 is -771,1,1
+arith_hard_01,arithmetic_hard,1,0.052965935173030956,,0,0
+arith_hard_02,arithmetic_hard,1,0.3780166842735794,21738,0,1
+arith_hard_03,arithmetic_hard,1,0.3221595911044085,141,0,1
+arith_hard_04,arithmetic_hard,1,0.11163297018584516,229,0,1
+arith_hard_05,arithmetic_hard,1,0.14382509545535208,Please provide the correct question in order to generate a response.,0,1
+arith_hard_06,arithmetic_hard,1,0.37348653727791836,28692,0,1
+arith_hard_07,arithmetic_hard,1,0.4176768900541168,"{
+    ""CONFIDENCE"": 1.0,
+    ""ANSWER"": 130
+}",0,1
+arith_hard_08,arithmetic_hard,1,0.3706261072873929,33758,0,1
+arith_hard_09,arithmetic_hard,1,0.4494451831629214,-2,0,1
+arith_hard_10,arithmetic_hard,1,0.05177286456179328,536,0,1
+arith_hard_11,arithmetic_hard,1,0.3859152409696939,15378,0,1
+arith_hard_12,arithmetic_hard,1,0.3645945941881143,-69,0,1
+arith_hard_13,arithmetic_hard,1,0.41103088926111214,-89,0,1
+arith_hard_14,arithmetic_hard,1,0.3851855167532548,7585,0,1
+arith_hard_15,arithmetic_hard,1,0.3753499277372404,,0,0
+arith_hard_16,arithmetic_hard,1,0.4293690694883788,"CONFIDENCE: 1.0
+   ANSWER: 1618",0,1
+arith_hard_17,arithmetic_hard,1,0.21506978372002555,"`-57`
+
+CONFIDENCE: 0.96",0,1
+arith_hard_18,arithmetic_hard,1,0.35065047589667636,8469,0,1
+arith_hard_19,arithmetic_hard,1,0.2637422749352975,367,0,1
+arith_hard_20,arithmetic_hard,1,0.11034674821126103,<s>-10</s>,0,1
+fact_common_01,factual_common,1,0.1982361747131702,,0,0
+fact_common_02,factual_common,1,0.6572134760266917,Tokyo,1,1
+fact_common_03,factual_common,1,0.797231879637156,[your answer],0,1
+fact_common_04,factual_common,1,0.23665339594057103,,0,0
+fact_common_05,factual_common,1,0.41265049788130687,299792,0,1
+fact_common_06,factual_common,1,0.48795416666854946,,0,0
+fact_common_07,factual_common,1,0.35077609707044893,,0,0
+fact_common_08,factual_common,1,0.6286523209490457,12,1,1
+fact_common_09,factual_common,1,0.037074859501835145,,0,0
+fact_common_10,factual_common,1,0.4775173652528231,Humans typically have 46 chromosomes.,1,1
+fact_common_11,factual_common,1,0.5727669402117329,,0,0
+fact_common_12,factual_common,1,0.01,,0,0
+fact_common_13,factual_common,1,0.14771427939666054,,0,0
+fact_common_14,factual_common,1,0.5608658397648402,,0,0
+fact_common_15,factual_common,1,0.5694351775141866,,0,0
+fact_obscure_01,factual_obscure,1,0.603695865114944,5730,0,1
+fact_obscure_02,factual_obscure,1,0.48126803891647874,,0,0
+fact_obscure_03,factual_obscure,1,0.4573847831074676,,0,0
+fact_obscure_04,factual_obscure,1,0.5946834021869123,The atomic number of Osmium is 76.,1,1
+fact_obscure_05,factual_obscure,1,0.5909718536081304,,0,0
+fact_obscure_06,factual_obscure,1,0.32113056626028696,,0,0
+fact_obscure_07,factual_obscure,1,0.6104170917396297,JPY,1,1
+fact_obscure_08,factual_obscure,1,0.5164207965414416,"Scale of Mohs Hardness, also known as the Mohs hardness scale or simply the Mohs scale, is a measure of mineral hardness. It was developed by Friedrich Mohs in 1812. The Mohs scale ranges from 0 (softest) to 10 (hardest).
+
+Topaz falls under the category of quartz minerals and it has a hardness of 5-6.5 on the Mohs scale.",1,1
+fact_obscure_09,factual_obscure,1,0.6238402234945185,1088,1,1
+fact_obscure_10,factual_obscure,1,0.2995830681656329,,0,0
+fact_obscure_11,factual_obscure,1,0.38532015361333244,,0,0
+fact_obscure_12,factual_obscure,1,0.20104075538147861,11192,1,1
+fact_obscure_13,factual_obscure,1,0.4312543989652864,"Yes, I am confident about this one. The IATA code for Helsinki-Vantaa airport is HEL.",1,1
+fact_obscure_14,factual_obscure,1,0.6321921394550136,An icosahedron has 20 vertices.,0,1
+fact_obscure_15,factual_obscure,1,0.5796408040383036,The pH of pure water at 25 degrees Celsius is approximately 7.014,1,1
+code_simple_01,code_simple,1,0.4798177507282697,"Function is_even(n) returns True if n is even, False otherwise.
+
+
+```python
+def is_even(n):
+    return n % 2 == 0
+```
+
+
+The given code has been tested and found to be working perfectly. The confidence level for this solution is 1.0 as it's a straightforward function that checks whether the remainder of division by 2 is zero or not which indicates evenness of the number.",0,1
+code_simple_02,code_simple,1,0.5948086438252964,max_of_three function that returns the largest of three numbers.,0,1
+code_simple_03,code_simple,1,0.5638980016511758,reverse_string() function returns the reverse of a string.,0,1
+code_simple_04,code_simple,1,0.6299600470230073,"Yes, I am confident about this task.
+
+Here is a Python function that counts the number of vowels in a string:
+
+```python
+def count_vowels(s):
+    return sum(1 for c in s if c.lower() in 'aeiou')
+```",0,1
+code_simple_05,code_simple,1,0.5830550427882861,,0,0
+code_simple_06,code_simple,1,0.4580187345730975,"```python
+def sum_list(lst):
+    return sum(lst)
+```",0,1
+code_simple_07,code_simple,1,0.6394440327535575,"Here's my Python function that checks whether a given string `s` is a palindrome or not:
+
+```python
+def is_palindrome(s):
+    s = s.lower()
+    s = ''.join(c for c in s if c.isalnum())
+    return s == s[::-1]
+```",0,1
+code_simple_08,code_simple,1,0.019550135984665692,,0,0
+code_simple_09,code_simple,1,0.5984193648784719,The provided function correctly clamps values to the specified range.,0,1
+code_simple_10,code_simple,1,0.41620429756181837,,0,0
+code_simple_11,code_simple,1,0.6187324920900542,"Here's a Python function that accomplishes this task:
+
+```python
+def unique(lst):
+    return list(set(lst))
+```
+
+This function uses sets to remove any duplicates and then converts the resulting set back into a list, preserving order.",0,1
+code_simple_12,code_simple,1,0.21318093628743576,,0,0
+code_simple_13,code_simple,1,0.5440304902965615,,0,0
+code_simple_14,code_simple,1,0.5192865802713214,,0,0
+code_simple_15,code_simple,1,0.545095014373351,"Here's one way to write such a function in Python:
+```python
+def char_frequency(s):
+    freq = {}
+    for c in s:
+        if c in freq:
+            freq[c] += 1
+        else:
+            freq[c] = 1
+    return freq
+```",0,1
+code_algo_01,code_algorithmic,1,0.40497431621422847,arr.index(target),0,1
+code_algo_02,code_algorithmic,1,0.685062018858192,"Here's a Python function that merges two sorted lists into one sorted list:
+```python
+def merge_sorted(a, b):
+    result = []
+    while a and b:
+        if a[0] < b[0]:
+            result.append(a.pop(0))
+        else:
+            result.append(b.pop(0))
+    return result + a + b
+```",0,1
+code_algo_03,code_algorithmic,1,0.3462776435945765,"`math.gcd(a, b)`",0,1
+code_algo_04,code_algorithmic,1,0.5313169974523576,,0,0
+code_algo_05,code_algorithmic,1,0.664254922079913,,0,0
+code_algo_06,code_algorithmic,1,0.7286833965109483,,0,0
+code_algo_07,code_algorithmic,1,0.659823366605388,The solution provided above is correct.,0,1
+code_algo_08,code_algorithmic,1,0.6818473706090948,,0,0
+code_algo_09,code_algorithmic,1,0.5342651623544629,,0,0
+code_algo_10,code_algorithmic,1,0.5366899174634772,,0,0
+code_algo_11,code_algorithmic,1,0.5719179964664516,""", rotate_list([1,2,3,4], 1))
+    print(""ANSWER:"", rotate_list([1,2,3,4], 2))",0,1
+code_algo_12,code_algorithmic,1,0.5656602910541368,1,0,1
+code_algo_13,code_algorithmic,1,0.5613079469013411,"def run_length_encode(s):
+    result = []
+    prev_char = None
+    count = 1
+    
+    for char in s:
+        if char == prev_char:
+            count += 1
+        else:
+            result.append((prev_char, count))
+            count = 1
+            prev_char = char
+        
+    result.append((prev_char, count))
+    
+    return result",0,1
+code_algo_14,code_algorithmic,1,0.4661708438410153,`max_subarray_sum(arr)`,0,1
+code_algo_15,code_algorithmic,1,0.5991886199382905,topological_sort,0,1

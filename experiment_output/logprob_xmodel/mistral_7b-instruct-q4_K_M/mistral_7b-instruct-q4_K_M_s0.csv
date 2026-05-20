@@ -1,0 +1,218 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,0,0.4615430271452035,,0,0
+arith_easy_02,arithmetic_easy,0,0.7769277828966467,-734,1,1
+arith_easy_03,arithmetic_easy,0,0.652192885936619,76100,0,1
+arith_easy_04,arithmetic_easy,0,0.4648950328245145,,0,0
+arith_easy_05,arithmetic_easy,0,0.5600644045420832,,0,0
+arith_easy_06,arithmetic_easy,0,0.4587049779352985,539472,0,1
+arith_easy_07,arithmetic_easy,0,0.575469538549416,1491,1,1
+arith_easy_08,arithmetic_easy,0,0.5525624588302674,-525,0,1
+arith_easy_09,arithmetic_easy,0,0.49854906765670853,,0,0
+arith_easy_10,arithmetic_easy,0,0.9653742711316253,145,1,1
+arith_easy_11,arithmetic_easy,0,0.5331547983601792,,0,0
+arith_easy_12,arithmetic_easy,0,0.49076325533149584,329443,0,1
+arith_easy_13,arithmetic_easy,0,0.5689158220154228,,0,0
+arith_easy_14,arithmetic_easy,0,0.7818736979565938,-530,1,1
+arith_easy_15,arithmetic_easy,0,0.526243116123254,"503,200",0,1
+arith_easy_16,arithmetic_easy,0,0.5480517281657461,,0,0
+arith_easy_17,arithmetic_easy,0,0.5783191028087094,,0,0
+arith_easy_18,arithmetic_easy,0,0.6309165101990731,178152,0,1
+arith_easy_19,arithmetic_easy,0,0.5524904405899834,,0,0
+arith_easy_20,arithmetic_easy,0,0.9152713944369104,-771,1,1
+arith_hard_01,arithmetic_hard,0,0.37422579079251755,,0,0
+arith_hard_02,arithmetic_hard,0,0.5603284343988065,23243,0,1
+arith_hard_03,arithmetic_hard,0,0.6429899602432071,,0,0
+arith_hard_04,arithmetic_hard,0,0.4926454528916603,,0,0
+arith_hard_05,arithmetic_hard,0,0.35034441635895097,-1468,0,1
+arith_hard_06,arithmetic_hard,0,0.4362536836444533,86526,0,1
+arith_hard_07,arithmetic_hard,0,0.6609365467392935,The result of 25 - 52 + 85 is 65.,0,1
+arith_hard_08,arithmetic_hard,0,0.5124106871936294,36279,0,1
+arith_hard_09,arithmetic_hard,0,0.648330427397525,-6,0,1
+arith_hard_10,arithmetic_hard,0,0.6586845384948564,,0,0
+arith_hard_11,arithmetic_hard,0,0.3936744788455181,,0,0
+arith_hard_12,arithmetic_hard,0,0.36618635942730554,,0,0
+arith_hard_13,arithmetic_hard,0,0.5263895961544829,365,0,1
+arith_hard_14,arithmetic_hard,0,0.6073930691357331,7690,0,1
+arith_hard_15,arithmetic_hard,0,0.5806689790920981,,0,0
+arith_hard_16,arithmetic_hard,0,0.4358017517183685,1498,0,1
+arith_hard_17,arithmetic_hard,0,0.4238077226626485,,0,0
+arith_hard_18,arithmetic_hard,0,0.4148505117126125,32547,0,1
+arith_hard_19,arithmetic_hard,0,0.6298786551224291,337,0,1
+arith_hard_20,arithmetic_hard,0,0.6526640090959759,-270,0,1
+fact_common_01,factual_common,0,0.8716273474203444,AU,1,1
+fact_common_02,factual_common,0,0.8821213044076066,Tokyo,1,1
+fact_common_03,factual_common,0,0.8998264364697832,There are eight planets in our solar system.,0,1
+fact_common_04,factual_common,0,0.8954800605424432,"World War II ended on September 2, 1945.",1,1
+fact_common_05,factual_common,0,0.7166746563344539,"299,792",0,1
+fact_common_06,factual_common,0,0.9452306018556091,Pacific Ocean,1,1
+fact_common_07,factual_common,0,0.9082550973907034,Romeo and Juliet was written by William Shakespeare.,1,1
+fact_common_08,factual_common,0,0.9594765174324682,12,1,1
+fact_common_09,factual_common,0,0.9570442627072855,Hydrogen,1,1
+fact_common_10,factual_common,0,0.9443587341977046,Humans typically have 46 chromosomes.,1,1
+fact_common_11,factual_common,0,0.8235525895444475,The boiling point of water is 100 degrees Celsius or 212 degrees Fahrenheit at a pressure of 1 atmospheric pressure.,1,1
+fact_common_12,factual_common,0,0.9289632129931875,The planet closest to the Sun is Mercury.,1,1
+fact_common_13,factual_common,0,0.9766881829515475,The chemical formula for water is H2O.,1,1
+fact_common_14,factual_common,0,0.9567839365740846,There are 7 continents.,1,1
+fact_common_15,factual_common,0,0.8610719215827249,Nile River,1,1
+fact_obscure_01,factual_obscure,0,0.6474141309924639,,0,0
+fact_obscure_02,factual_obscure,0,0.6987141441758608,"The smallest country in the world by area is Monaco, with an area of just 2.02 square kilometers (0.78 square miles).",0,1
+fact_obscure_03,factual_obscure,0,0.8979923298546807,The Treaty of Westphalia was signed in 1648.,1,1
+fact_obscure_04,factual_obscure,0,0.9044554301967266,The atomic number of Osmium is 76.,1,1
+fact_obscure_05,factual_obscure,0,0.8689718765953801,Femur,1,1
+fact_obscure_06,factual_obscure,0,0.6190175415275403,A dodecahedron has 120 edges.,0,1
+fact_obscure_07,factual_obscure,0,0.9596512939403075,JPY,1,1
+fact_obscure_08,factual_obscure,0,0.6576260889198583,Topaz is a Mohs hardness of 5-6.,0,1
+fact_obscure_09,factual_obscure,0,0.5289161185712093,The University of Bologna was founded in the year 1088.,1,1
+fact_obscure_10,factual_obscure,0,0.9074862798579412,W,1,1
+fact_obscure_11,factual_obscure,0,0.7095393475924638,A standard piano has 88 keys.,1,1
+fact_obscure_12,factual_obscure,0,0.6228502941733934,,0,0
+fact_obscure_13,factual_obscure,0,0.8927063707983429,HEL,1,1
+fact_obscure_14,factual_obscure,0,0.5452135236277937,,0,0
+fact_obscure_15,factual_obscure,0,0.8996956139985123,The pH of pure water at 25 degrees Celsius is approximately 7.4.,1,1
+code_simple_01,code_simple,0,0.5730343846424271,,0,0
+code_simple_02,code_simple,0,0.5770514237673744,"max_of_three function will take three arguments 'a', 'b' and 'c' and returns the largest number among them.",0,1
+code_simple_03,code_simple,0,0.6514091852553987,,0,0
+code_simple_04,code_simple,0,0.35039554628167924,8,0,1
+code_simple_05,code_simple,0,0.9371723968259196,celsius_to_fahrenheit(c) = (c * 9/5) + 32,0,1
+code_simple_06,code_simple,0,0.6805378928804526,,0,0
+code_simple_07,code_simple,0,0.7976750560352465,"Here is an implementation of the is_palindrome function in Python:
+```python
+def is_palindrome(s):
+    s = s.lower()
+    s = ''.join(c for c in s if c.isalnum())
+    return s == s[::-1]
+```",0,1
+code_simple_08,code_simple,0,0.8648048141854776,"def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)",1,1
+code_simple_09,code_simple,0,0.7094846768143888,"Here is my implementation of the requested function:
+
+```python
+def clamp(x, lo, hi):
+    return min(max(x, lo), hi)
+```",0,1
+code_simple_10,code_simple,0,0.6703077646729463,"Here is my solution to the problem:
+
+```python
+def flatten(lst):
+    """""" Flattens a list of lists into a single list """"""
+    result = [] # List to hold our flat result
+    i = 0 # Initialize our index counter
+
+    # Iterate through each element in the list
+    while i < len(lst):
+        # If the current element is itself a list, recurse
+        if isinstance(lst[i], list):
+            result.extend(flatten(lst[i])) # Extend our result by flattening the current sublist
+        else: # If the current element is not a list, it must be a scalar value
+            result.append(lst[i]) # Add the scalar value to our result list
+
+        i += 1 # Increment our index counter
+
+    return result # Return our final, flattened list
+```",0,1
+code_simple_11,code_simple,0,0.5734242713925953,"Here's the Python code for a function that returns a list of unique elements preserving order:
+
+```python
+def unique(lst):
+    """"""
+    This function returns unique elements from a list while preserving the order.
+    
+    :param lst: input list
+    :return: list of unique elements in the original order
+    """"""
+    # create an empty set to store unique elements
+    # converting to set remove any duplicate values and preserve order of first occurrence
+    s = set(lst)
+    
+    # convert back to list and return
+    return list(s)
+```",0,1
+code_simple_12,code_simple,0,0.6618741717168042,,0,0
+code_simple_13,code_simple,0,0.6169939119417029,"Here's a Python function that converts a string to title case:
+
+```python
+def title_case(s):
+    return s[0].title() + s[1:].lower()
+```",0,1
+code_simple_14,code_simple,0,0.6231882527713023,,0,0
+code_simple_15,code_simple,0,0.5022856234605271,,0,0
+code_algo_01,code_algorithmic,0,0.6998790802829954,"The function returns the index of target in a sorted list, or -1 if not found.",0,1
+code_algo_02,code_algorithmic,0,0.7869136794439363,"```python
+def merge_sorted(a, b):
+    """"""
+    Merges two sorted lists into one sorted list.
+
+    :param a: sorted list 
+    :param b: sorted list
+    :return: merged_list
+    """"""
+    while a and b:
+        if a[0] < b[0]:
+            yield a.pop(0)
+        else:
+            yield b.pop(0)
+    if a:
+        yield from a
+    if b:
+        yield from b
+```",0,1
+code_algo_03,code_algorithmic,0,0.7746480197537136,"gcd(a, b) -> math.gcd(a, b)",0,1
+code_algo_04,code_algorithmic,0,0.6199676544622397,fib(n) = n*(n-1)/2,0,1
+code_algo_05,code_algorithmic,0,0.7617760010062222,False,0,1
+code_algo_06,code_algorithmic,0,0.6755412233848771,,0,0
+code_algo_07,code_algorithmic,0,0.6531393566626696,longest_common_prefix,0,1
+code_algo_08,code_algorithmic,0,0.641596029978572,"[(2, 1), (2, 4)]
+```",0,1
+code_algo_09,code_algorithmic,0,0.7698293984193124,,0,0
+code_algo_10,code_algorithmic,0,0.3406034960907191,"The function works correctly, but there is no ** operator in Python.",0,1
+code_algo_11,code_algorithmic,0,0.6193775105308614,,0,0
+code_algo_12,code_algorithmic,0,0.8270641326691078,"def count_inversions(arr):
+    inversion_count = 0
+    for i in range(len(arr) - 1):
+        for j in range(i + 1, len(arr)):
+            if arr[i] > arr[j]:
+                inversion_count += 1
+    return inversion_count",1,1
+code_algo_13,code_algorithmic,0,0.5509137252214783,"Answer: `run_length_encode(s)` will return a list of tuples, where the first element of each tuple is the character and the second the count of that character in the string s. If there are multiple instances of the same character in a row, they will all be included in one tuple, indicating the length of the run. For example, if s is ""aaabbbcc"", `run_length_encode(s)` will return `[('a', 3), ('b', 2), ('c', 2)]`.",0,1
+code_algo_14,code_algorithmic,0,0.7865610742670465,"The maximum subarray sum is kadane(arr) = max_so_far + max_ending_here, where max_so_far is the maximum sum found so far and max_ending_here is the maximum sum ending at the current position. Initialize both max_so_far and max_ending_here to 0. Then, iterate through the array and update max_ending_here as the maximum of arr[i] and max_ending_here + arr[i]. After that, update max_so_far as the maximum of max_so_far and max_ending_here. Finally, return max_so_far.",0,1
+code_algo_15,code_algorithmic,0,0.6212369960086511,"We can use a modified version of the Kahn's algorithm to solve this problem. The steps are:
+
+1. Add an in-degree counter for each node which will be initialized to zero.
+2. Create an empty list `queue` of nodes with no dependencies.
+3. While `queue` is not empty, pick the node with minimum in-degree from `queue`.
+4. For each neighbor of the picked node, if it hasn't been visited yet and its in-degree is one less than ours, add it to our queue. Also, decrement its in-degree.
+5. If a node becomes unreachable (i.e., its in-degree becomes negative), then it can never be part of any topological sort. Hence, we stop the algorithm at this point and return `None`.
+6. Otherwise, remove the current node from our queue and append it to our output list.
+7. Repeat steps 3-6 until all nodes have been processed or an empty queue couldn't be formed.
+8. Finally, reverse the order of the output list to get the topological sort.
+
+Here is the Python code for this:
+
+```python
+def topological_sort(graph):
+    # initialize in-degree counter and queue
+    in_degrees = {}
+    queue = []
+
+    # traverse graph and update in-degree counter
+    for node in graph:
+        in_degrees[node] = sum([1 for neighbor in graph[node]])
+        if in_degrees[node] == 0:
+            queue.append(node)
+
+    while queue:
+        current_node = queue.pop(0)
+        remaining_nodes = {k: v - 1 for k, v in in_degrees.items() if k != current_node}
+        if all(remaining_nodes[n] >= 0 for n in queue):
+            queue.append(current_node)
+        else:
+            return None
+    
+    # reverse the order of output list to get topological sort
+    return list(reversed(queue))
+```
+
+This should work correctly and efficiently for any directed graph. Let me know if you have any questions or need further explanation!",0,1

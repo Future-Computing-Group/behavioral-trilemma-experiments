@@ -1,0 +1,208 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,4,0.8991871656251731,788,1,1
+arith_easy_02,arithmetic_easy,4,0.8936521812574326,-734,1,1
+arith_easy_03,arithmetic_easy,4,0.6091765225297507,75820,0,1
+arith_easy_04,arithmetic_easy,4,0.915031449691734,390,1,1
+arith_easy_05,arithmetic_easy,4,0.8185510769777249,650,1,1
+arith_easy_06,arithmetic_easy,4,0.41716867774616107,545834.4,0,1
+arith_easy_07,arithmetic_easy,4,0.9209420819872505,1491,1,1
+arith_easy_08,arithmetic_easy,4,0.7925201745753324,-515,1,1
+arith_easy_09,arithmetic_easy,4,0.6763097189305056,18362,0,1
+arith_easy_10,arithmetic_easy,4,0.9179337100177692,145,1,1
+arith_easy_11,arithmetic_easy,4,0.6301049496248783,-15,1,1
+arith_easy_12,arithmetic_easy,4,0.475089472198684,332146,0,1
+arith_easy_13,arithmetic_easy,4,0.8455967960825272,617,0,1
+arith_easy_14,arithmetic_easy,4,0.5588404909433603,-530,1,1
+arith_easy_15,arithmetic_easy,4,0.39941960506267543,501263,0,1
+arith_easy_16,arithmetic_easy,4,0.7852087089729899,907,0,1
+arith_easy_17,arithmetic_easy,4,0.6773203215457931,-234,1,1
+arith_easy_18,arithmetic_easy,4,0.5306795848634653,181332,0,1
+arith_easy_19,arithmetic_easy,4,0.9266465030340405,1738,1,1
+arith_easy_20,arithmetic_easy,4,0.5810397483820284,-771,1,1
+arith_hard_01,arithmetic_hard,4,0.5553756944115644,-83,0,1
+arith_hard_02,arithmetic_hard,4,0.46123671669675503,23117,0,1
+arith_hard_03,arithmetic_hard,4,0.48106584747680853,-85,0,1
+arith_hard_04,arithmetic_hard,4,0.8960053489673956,184,1,1
+arith_hard_05,arithmetic_hard,4,0.436929896013555,-1938,0,1
+arith_hard_06,arithmetic_hard,4,0.45811494890550636,397582,0,1
+arith_hard_07,arithmetic_hard,4,0.7777385475809574,85,0,1
+arith_hard_08,arithmetic_hard,4,0.4132410365972173,34287,0,1
+arith_hard_09,arithmetic_hard,4,0.4749362769512471,21893,0,1
+arith_hard_10,arithmetic_hard,4,0.8881263458492801,636,1,1
+arith_hard_11,arithmetic_hard,4,0.5167735439857437,5068,0,1
+arith_hard_12,arithmetic_hard,4,0.5812374728322753,-71,0,1
+arith_hard_13,arithmetic_hard,4,0.756709695534207,3,0,1
+arith_hard_14,arithmetic_hard,4,0.5240379227722668,17640,0,1
+arith_hard_15,arithmetic_hard,4,0.3692715297642647,-531,0,1
+arith_hard_16,arithmetic_hard,4,0.6212796724383834,5910,0,1
+arith_hard_17,arithmetic_hard,4,0.6424537889109423,-67,0,1
+arith_hard_18,arithmetic_hard,4,0.4526864579346306,159468,0,1
+arith_hard_19,arithmetic_hard,4,0.7687622153965179,357,0,1
+arith_hard_20,arithmetic_hard,4,0.4772622427569312,-314,0,1
+fact_common_01,factual_common,4,0.8114678744047404,Au,1,1
+fact_common_02,factual_common,4,0.882180072202632,The capital of Japan is Tokyo.,1,1
+fact_common_03,factual_common,4,0.8504225554953881,There are eight planets in our solar system.,0,1
+fact_common_04,factual_common,4,0.8769965783062408,1945,1,1
+fact_common_05,factual_common,4,0.930907746365654,299792,0,1
+fact_common_06,factual_common,4,0.8675358502737284,Pacific Ocean,1,1
+fact_common_07,factual_common,4,0.8664826007676683,William Shakespeare,1,1
+fact_common_08,factual_common,4,0.8957176154068149,12,1,1
+fact_common_09,factual_common,4,0.8812288569196305,Hydrogen,1,1
+fact_common_10,factual_common,4,0.8796133197042904,Humans typically have 46 chromosomes.,1,1
+fact_common_11,factual_common,4,0.9082827745496628,The boiling point of water at standard atmospheric pressure is 100 degrees Celsius or 212 degrees Fahrenheit.,1,1
+fact_common_12,factual_common,4,0.851310902461373,Mercury,1,1
+fact_common_13,factual_common,4,0.9051656872462736,The chemical formula for water is H2O.,1,1
+fact_common_14,factual_common,4,0.8972496576616894,There are 7 continents.,1,1
+fact_common_15,factual_common,4,0.8264001063080495,"The longest river in the world is the Nile River, which is approximately 6,650 kilometers (4,130 miles) long.",1,1
+fact_obscure_01,factual_obscure,4,0.8562077756403057,5730,0,1
+fact_obscure_02,factual_obscure,4,0.7690043424181381,Monaco,0,1
+fact_obscure_03,factual_obscure,4,0.8603928716315531,1648,1,1
+fact_obscure_04,factual_obscure,4,0.8536607436991728,The atomic number of Osmium is 76.,1,1
+fact_obscure_05,factual_obscure,4,0.7054530928269261,The femur bone,1,1
+fact_obscure_06,factual_obscure,4,0.8087536140158856,A dodecahedron has 30 edges.,1,1
+fact_obscure_07,factual_obscure,4,0.9127520174115828,JPY,1,1
+fact_obscure_08,factual_obscure,4,0.6894780519936821,"Topaz has a Mohs hardness of 5 to 6, which is relatively soft compared to other gemstones.",0,1
+fact_obscure_09,factual_obscure,4,0.8571837914073114,1088,1,1
+fact_obscure_10,factual_obscure,4,0.8239756988660283,W,1,1
+fact_obscure_11,factual_obscure,4,0.8589168792039464,A standard piano has 88 keys.,1,1
+fact_obscure_12,factual_obscure,4,0.79655079434797,11.2,1,1
+fact_obscure_13,factual_obscure,4,0.8927063707983429,HEL,1,1
+fact_obscure_14,factual_obscure,4,0.8980919691872008,An icosahedron has 20 vertices.,0,1
+fact_obscure_15,factual_obscure,4,0.8948559200852001,The pH of pure water at 25 degrees Celsius is 7.0.,1,1
+code_simple_01,code_simple,4,0.8079277528268202,True,0,1
+code_simple_02,code_simple,4,0.7198086910831423,"The function `max_of_three(a, b, c)` should return the largest of three numbers `a`, `b`, and `c`. This can be achieved by comparing them using conditional statements or Python's built-in `max()` function.",0,1
+code_simple_03,code_simple,4,0.5655531442242614,reverse_string(s) function in Python will return the reverse of a string using slicing technique.,0,1
+code_simple_04,code_simple,4,0.5462761935560133,"count_vowels(s) can be easily done by creating a counter for the vowels (a, e, i, o, u) and iterating over the string s. If the character in the string is present in the set of vowels, increment the counter.",0,1
+code_simple_05,code_simple,4,0.9371723968259196,celsius_to_fahrenheit(c) = (c * 9/5) + 32,0,1
+code_simple_06,code_simple,4,0.8721018568637261,sum_list(lst),0,1
+code_simple_07,code_simple,4,0.7673541521349921,True,0,1
+code_simple_08,code_simple,4,0.6978509338240184,The function to calculate factorial of a number is `factorial(n) = n * (n-1) * (n-2) ... * 1`.,0,1
+code_simple_09,code_simple,4,0.8621359788840749,"def clamp(x, lo, hi): return max(lo, min(x, hi))",1,1
+code_simple_10,code_simple,4,0.8167802902004255,"Here is one way you could write the function using Python's built-in list recursion:
+
+```python
+def flatten(lst):
+    flat_list = []
+    for item in lst:
+        if isinstance(item, list):
+            flat_list += flatten(item)
+        else:
+            flat_list.append(item)
+    return flat_list
+```",0,1
+code_simple_11,code_simple,4,0.6698690660914278,def unique(lst): return list(set(lst)),1,1
+code_simple_12,code_simple,4,0.8240140663248073,"def dot_product(a, b): return sum(x*y for x,y in zip(a,b))",1,1
+code_simple_13,code_simple,4,0.8004073846040951,"The title_case function in Python converts a string to title case by capitalizing the first letter of each word, except for certain words such as articles, conjunctions, and prepositions. Here's how you can implement it:
+
+```python
+def title_case(s):
+    """"""
+    Converts a string to title case.
+    """"""
+    # define list of words that should not be capitalized
+    exclude_words = ['a', 'an', 'the', 'and', 'but', 'or', 'if', 'in', 'to', 'of', 'for', 'with']
+    
+    # split the string into words
+    words = s.split()
+    
+    # capitalize first letter of each word, except for exclude_words
+    result = [word.capitalize() for word in words if not word.lower() in exclude_words]
+    
+    # join the words back together into a string with spaces between them
+    return ' '.join(result)
+```",0,1
+code_simple_14,code_simple,4,0.7925565475009804,"intersection(a, b)",0,1
+code_simple_15,code_simple,4,0.639988217942614,"The function takes a string `s` as its input and returns a dictionary of the frequency of characters in the string. Here's an example implementation:
+
+```python
+def char_frequency(s):
+    return dict(enumerate(s))
+```",0,1
+code_algo_01,code_algorithmic,4,0.740872697025579,"def binary_search(arr, target): return arr.index(target) if sorted(arr) else -1",0,1
+code_algo_02,code_algorithmic,4,0.7264452531531158,"Here is one way to implement merge_sorted in Python:
+```
+def merge_sorted(a, b):
+    result = []
+    while a and b:
+        if a[0] < b[0]:
+            result.append(a.pop(0))
+        else:
+            result.append(b.pop(0))
+    result.extend(a)
+    result.extend(b)
+    return result
+```
+This function takes two sorted lists `a` and `b` as input, and returns a new sorted list `result`. It does this by repeatedly removing the smallest element from either `a` or `b`, append it to `result`, and then popping that element from its corresponding list. If either `a` or `b` is empty, we just pop all remaining elements from the other list and add them to `result`.
+
+You can test this function with some sample inputs like so:
+```
+>>> merge_sorted([1,4,7], [2,5,6])
+[1, 2, 4, 5, 6, 7]
+>>> merge_sorted([], [3,9,10,100])
+[3, 9, 100]
+>>> merge_sorted([100, 100], [3, 9, 10])
+[3, 9, 10, 100]
+```",0,1
+code_algo_03,code_algorithmic,4,0.8519456910045899,"def gcd(a, b):
+	while b != 0:
+		a, b = b, a % b
+	return a",1,1
+code_algo_04,code_algorithmic,4,0.8451211640356423,fib(n) = n*(n-1)/2,0,1
+code_algo_05,code_algorithmic,4,0.6658650366666804,False,0,1
+code_algo_06,code_algorithmic,4,0.8280864429618422,"```python
+def matrix_multiply(A, B):
+    return [[sum(x*y for x in a) for y in b] for a in A for b in B]
+```",0,1
+code_algo_07,code_algorithmic,4,0.5264841748749304,prefix,0,1
+code_algo_08,code_algorithmic,4,0.6917528822279082,"Here is the Python function to solve the problem ""Two Sum"":
+
+def two_sum(nums, target):
+    from collections import defaultdict
+    num2ind = defaultdict(list)  # Store index of numbers in a dictionary
+    for i, num in enumerate(nums):
+        num2ind[num].append(i)  # Associate number with its index
+    for i1 in range(len(nums)):
+        for i2 in range(i1+1, len(nums)):
+            diff = target - nums[i1]  # Compute difference of target and current number
+            if diff in num2ind.keys():  # If difference exists in dictionary
+                inds = num2ind[diff]  # Get list of indices associated with difference
+                if len(inds) > 0:  # If there are other indices associated with difference
+                    return (i1, i2)  # Return indices of current and differencing numbers
+    return None",0,1
+code_algo_09,code_algorithmic,4,0.8332184276365208,True,0,1
+code_algo_10,code_algorithmic,4,0.5975904811604802,The function is correct. It uses the fast exponentiation method by repeatedly squaring the base until it reaches the desired power.,0,1
+code_algo_11,code_algorithmic,4,0.8927931421302407,"def rotate_list(lst, k):
+    return lst[k:] + lst[:k]",0,1
+code_algo_12,code_algorithmic,4,0.8971148969300311,"def count_inversions(arr):
+	count = 0
+	for i in range(len(arr)-1):
+		for j in range(i+1, len(arr)):
+			if arr[i] > arr[j]:
+				count += 1
+	return count",1,1
+code_algo_13,code_algorithmic,4,0.7589794239219753,"`def run_length_encode(s):`
+```python
+	runs = []
+	i = j = 0
+	while i < len(s):
+		while j + 1 < len(s) and s[j] == s[j+1]:
+			j += 1
+		count = j - i + 1
+		runs.append((s[i], count))
+		i = j + 1
+	return runs
+```",0,1
+code_algo_14,code_algorithmic,4,0.7258042238362092,kadane(arr) -> max_subarray_sum,0,1
+code_algo_15,code_algorithmic,4,0.6647594734563221,"```python
+def topological_sort(graph):
+    # Find all nodes in the graph
+    nodes = set()
+    for node in graph:
+        if not isinstance(node, str) and isinstance(node, list):
+            nodes |= set(node)
+        else:
+            nodes.add(node)
+    # Sort them by their number of incoming edges
+    sorted_nodes = sorted(nodes, key=lambda n: len(graph[n]))
+    return [n for n in sorted_nodes]
+```",0,1

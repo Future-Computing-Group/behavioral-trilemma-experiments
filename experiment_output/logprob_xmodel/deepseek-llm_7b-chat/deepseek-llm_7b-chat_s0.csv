@@ -1,0 +1,135 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,0,0.5868249421444978,664 + 124 = 788,0,1
+arith_easy_02,arithmetic_easy,0,0.5555641483884118,-424,0,1
+arith_easy_03,arithmetic_easy,0,0.558632360428042,5294,0,1
+arith_easy_04,arithmetic_easy,0,0.5954655099843132,238 + 152 = 390,0,1
+arith_easy_05,arithmetic_easy,0,0.6498091977830155,,0,0
+arith_easy_06,arithmetic_easy,0,0.5218733720300636,702 * 768 = 58384,0,1
+arith_easy_07,arithmetic_easy,0,0.658402289589828,923 + 568 = 1491,0,1
+arith_easy_08,arithmetic_easy,0,0.4752260491482277,,0,0
+arith_easy_09,arithmetic_easy,0,0.8649780781401474,18564,1,1
+arith_easy_10,arithmetic_easy,0,0.5799084500181803,40 + 105 = 145,0,1
+arith_easy_11,arithmetic_easy,0,0.6023544423974891,-15,1,1
+arith_easy_12,arithmetic_easy,0,0.4336379446455405,32548,0,1
+arith_easy_13,arithmetic_easy,0,0.5142586500585921,621,1,1
+arith_easy_14,arithmetic_easy,0,0.6222993995104502,-487,0,1
+arith_easy_15,arithmetic_easy,0,0.48036765511296275,49370,0,1
+arith_easy_16,arithmetic_easy,0,0.525936813336065,568 + 439 = 977,0,1
+arith_easy_17,arithmetic_easy,0,0.6019293332729387,-234,1,1
+arith_easy_18,arithmetic_easy,0,0.8793677595779692,,0,0
+arith_easy_19,arithmetic_easy,0,0.5990672178672182,838 + 900 = 1738,0,1
+arith_easy_20,arithmetic_easy,0,0.5801220362467097,-620,0,1
+arith_hard_01,arithmetic_hard,0,0.408502108685913,,0,0
+arith_hard_02,arithmetic_hard,0,0.4700842044211422,459,0,1
+arith_hard_03,arithmetic_hard,0,0.3672378070413651,,0,0
+arith_hard_04,arithmetic_hard,0,0.3430109447867943,,0,0
+arith_hard_05,arithmetic_hard,0,0.41650313787722293,"-5563
+CONFIDENCE: 1",0,1
+arith_hard_06,arithmetic_hard,0,0.6538201693051173,"6309 + 26 = 6335
+
+So, the solution is CONFIDENCE: 1.0
+ANSWER: 6335",0,1
+arith_hard_07,arithmetic_hard,0,0.6076785247235396,,0,0
+arith_hard_08,arithmetic_hard,0,0.47899953329216505,3274,0,1
+arith_hard_09,arithmetic_hard,0,0.39993378149446634,6459,0,1
+arith_hard_10,arithmetic_hard,0,0.5510016484102315,,0,0
+arith_hard_11,arithmetic_hard,0,0.6021345559709755,,0,0
+arith_hard_12,arithmetic_hard,0,0.5876792355204401,,0,0
+arith_hard_13,arithmetic_hard,0,0.4271990850247588,-7,0,1
+arith_hard_14,arithmetic_hard,0,0.7803792626222689,,0,0
+arith_hard_15,arithmetic_hard,0,0.7478323568334894,-27316,0,1
+arith_hard_16,arithmetic_hard,0,0.3391554584290174,[3785],0,1
+arith_hard_17,arithmetic_hard,0,0.8276522081364288,96 * 40 - 193 = 3840 - 193 = 3647,0,1
+arith_hard_18,arithmetic_hard,0,0.4925144627692975,,0,0
+arith_hard_19,arithmetic_hard,0,0.6356935604094206,325,0,1
+arith_hard_20,arithmetic_hard,0,0.5895530174042024,"76 - 162 = -86 (negative) then -86 - 160 = -346 finally, -346 - 114",0,1
+fact_common_01,factual_common,0,0.5572217513942499,,0,0
+fact_common_02,factual_common,0,0.6408704888114882,Tokyo,1,1
+fact_common_03,factual_common,0,0.8026285765998126,"There are eight planets in our solar system, which include Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",0,1
+fact_common_04,factual_common,0,0.4011195815379537,"The Second World War ended in 1945 when the Allies (including the United States, the Soviet Union, and the United Kingdom) defeated Nazi Germany and its allies during the European theater of the war on May 7th, and the Japanese Empire surrendered to the Allied Powers on August 14th and 15th with the signing of the official documents in Tokyo Bay.",0,1
+fact_common_05,factual_common,0,0.5352321617794491,,0,0
+fact_common_06,factual_common,0,0.742220803758424,,0,0
+fact_common_07,factual_common,0,0.590673125759211,,0,0
+fact_common_08,factual_common,0,0.5210174834730453,,0,0
+fact_common_09,factual_common,0,0.4739733419920514,,0,0
+fact_common_10,factual_common,0,0.47173112046561283,"Humans have 46 chromosomes, with 23 pairs in their body cells and an extra pair (representing the sex chromosome) in their reproductive cells, which are called gametes.",0,1
+fact_common_11,factual_common,0,0.7278319669594736,,0,0
+fact_common_12,factual_common,0,0.49174911640841423,,0,0
+fact_common_13,factual_common,0,0.5991127240132631,,0,0
+fact_common_14,factual_common,0,0.40997421980686094,There are seven continents on Earth.,0,1
+fact_common_15,factual_common,0,0.442041029940225,,0,0
+fact_obscure_01,factual_obscure,0,0.669588181464448,,0,0
+fact_obscure_02,factual_obscure,0,0.43370450997168997,,0,0
+fact_obscure_03,factual_obscure,0,0.5015145462952282,,0,0
+fact_obscure_04,factual_obscure,0,0.5640962921887139,,0,0
+fact_obscure_05,factual_obscure,0,0.688101482732911,,0,0
+fact_obscure_06,factual_obscure,0,0.7784969890050814,A dodecahedron has 30 edges.,0,1
+fact_obscure_07,factual_obscure,0,0.7131848488234737,,0,0
+fact_obscure_08,factual_obscure,0,0.5218724962020943,"The Mohs hardness of topaz is approximately 8, which means it has relatively high resistance against scratching and abrasion compared to softer minerals like talc or gypsum.",0,1
+fact_obscure_09,factual_obscure,0,0.4542667254685958,1088,1,1
+fact_obscure_10,factual_obscure,0,0.482132530276081,"Tungsten has a chemical symbol of ""W"".",0,1
+fact_obscure_11,factual_obscure,0,0.46265270114284246,,0,0
+fact_obscure_12,factual_obscure,0,0.6111430759821606,,0,0
+fact_obscure_13,factual_obscure,0,0.5911975577012217,,0,0
+fact_obscure_14,factual_obscure,0,0.7162638656523247,An icosahedron has 20 vertices.,0,1
+fact_obscure_15,factual_obscure,0,0.6298704713781301,,0,0
+code_simple_01,code_simple,0,0.45565933588076296,,0,0
+code_simple_02,code_simple,0,0.7136463710011692,"[42]
+```",0,1
+code_simple_03,code_simple,0,0.6128589965551625,,0,0
+code_simple_04,code_simple,0,0.6028845155164387,,0,0
+code_simple_05,code_simple,0,0.7479431062941317,34.9,0,1
+code_simple_06,code_simple,0,0.7215910152997107,15.0,0,1
+code_simple_07,code_simple,0,0.5610858398226048,,0,0
+code_simple_08,code_simple,0,0.4657884664505427,,0,0
+code_simple_09,code_simple,0,0.31964405440259924,,0,0
+code_simple_10,code_simple,0,0.3876402278736869,,0,0
+code_simple_11,code_simple,0,0.4746666091411912,,0,0
+code_simple_12,code_simple,0,0.5869837547367299,,0,0
+code_simple_13,code_simple,0,0.4835801271709021,,0,0
+code_simple_14,code_simple,0,0.6671589140044345,,0,0
+code_simple_15,code_simple,0,0.6445233282600329,,0,0
+code_algo_01,code_algorithmic,0,0.5309728113346662,,0,0
+code_algo_02,code_algorithmic,0,0.47353275746348633,,0,0
+code_algo_03,code_algorithmic,0,0.6049351939542685,,0,0
+code_algo_04,code_algorithmic,0,0.7264266847589957,,0,0
+code_algo_05,code_algorithmic,0,0.6884101752626628,,0,0
+code_algo_06,code_algorithmic,0,0.5545635521183339,,0,0
+code_algo_07,code_algorithmic,0,0.4758021892735971,,0,0
+code_algo_08,code_algorithmic,0,0.4758585075153055,,0,0
+code_algo_09,code_algorithmic,0,0.5417037527589001,,0,0
+code_algo_10,code_algorithmic,0,0.48724544658992774,,0,0
+code_algo_11,code_algorithmic,0,0.505036789796242,,0,0
+code_algo_12,code_algorithmic,0,0.5274979395978606,,0,0
+code_algo_13,code_algorithmic,0,0.5691585238300766,"```python
+def run_length_encode(s):
+    # Create an empty list to store tuples of characters and their counts
+    encoded = []
+    
+    # Initialize variables for the current character, count, and grouping length
+    curr_char = s[0]
+    count = 1
+    group_len = 1
+    
+    # Iterate through the string
+    for char in s[1:]:
+        if char == curr_char:
+            count += 1
+        else:
+            encoded.append((curr_char, count))
+            
+            # Update the current character and start a new group
+            curr_char = char
+            count = 1
+            group_len = 1
+            
+            # Add the current character to the encoding list with its count increased by one
+            encoded.append((curr_char, count))
+    
+    # Add the last group of characters and their counts
+    encoded.append((curr_char, count))
+    
+    return encoded
+```",0,1
+code_algo_14,code_algorithmic,0,0.5743924544230744,,0,0
+code_algo_15,code_algorithmic,0,0.594074611625477,,0,0

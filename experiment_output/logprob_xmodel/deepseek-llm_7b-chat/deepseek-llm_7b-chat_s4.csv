@@ -1,0 +1,253 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,4,0.7975857322705193,788,1,1
+arith_easy_02,arithmetic_easy,4,0.3777114964992379,,0,0
+arith_easy_03,arithmetic_easy,4,0.5859537639090556,69480,0,1
+arith_easy_04,arithmetic_easy,4,0.9449945144455223,390,1,1
+arith_easy_05,arithmetic_easy,4,0.4968983296006375,,0,0
+arith_easy_06,arithmetic_easy,4,0.4972980658944041,5386496,0,1
+arith_easy_07,arithmetic_easy,4,0.6956537547456443,1491,1,1
+arith_easy_08,arithmetic_easy,4,0.5416014155050282,,0,0
+arith_easy_09,arithmetic_easy,4,0.7437300373514711,4084,0,1
+arith_easy_10,arithmetic_easy,4,0.9451517443521037,145,1,1
+arith_easy_11,arithmetic_easy,4,0.7942853787234786,-15,1,1
+arith_easy_12,arithmetic_easy,4,0.4181460873468914,3479656,0,1
+arith_easy_13,arithmetic_easy,4,0.8210222623277299,621,1,1
+arith_easy_14,arithmetic_easy,4,0.7883539895762511,-519,0,1
+arith_easy_15,arithmetic_easy,4,0.5724371018983112,469584,0,1
+arith_easy_16,arithmetic_easy,4,0.7822492580195199,1007,1,1
+arith_easy_17,arithmetic_easy,4,0.33788947400914976,,0,0
+arith_easy_18,arithmetic_easy,4,0.9717509509237693,613 * 294 = 613 * (200 + 90 + 4) = 613 * 200 + 613 * 90 + 613 * 4 = 122600 + 55170 + 2452 = 177770 + 2452 = 180222,1,1
+arith_easy_19,arithmetic_easy,4,0.9448425702664827,1738,1,1
+arith_easy_20,arithmetic_easy,4,0.7693035100811269,-671,0,1
+arith_hard_01,arithmetic_hard,4,0.5316195307395775,,0,0
+arith_hard_02,arithmetic_hard,4,0.47950752879578457,,0,0
+arith_hard_03,arithmetic_hard,4,0.5099402464262657,"[your answer]
+
+Answer:
+
+I am confident in solving the task, so my confidence is 1. Now let's solve it step by step:
+
+Step 1: Calculate (157 - 105) - 169 + 150
+To perform this calculation follow these steps:
+
+First subtract the larger number from the smaller ones, then continue subtracting and adding until you reach a positive result.
+
+1st subtraction: 157 - 105 = 52
+Then add it to the next numbers: 52 + 169 = 221
+Finally subtract/add remaining values: 221 - 150 = 71
+
+The result is 71.",0,1
+arith_hard_04,arithmetic_hard,4,0.9103615055138876,154,0,1
+arith_hard_05,arithmetic_hard,4,0.47742096491915514,-5751.,0,1
+arith_hard_06,arithmetic_hard,4,0.642172931860681,3375,0,1
+arith_hard_07,arithmetic_hard,4,0.4241932015250735,25 - 52 + 85 = 0,0,1
+arith_hard_08,arithmetic_hard,4,0.573191697238244,3178,0,1
+arith_hard_09,arithmetic_hard,4,0.38822535704653127,,0,0
+arith_hard_10,arithmetic_hard,4,0.6664364433713448,,0,0
+arith_hard_11,arithmetic_hard,4,0.6527468444572188,11644,0,1
+arith_hard_12,arithmetic_hard,4,0.5480293658402372,,0,0
+arith_hard_13,arithmetic_hard,4,0.40244299092813524,,0,0
+arith_hard_14,arithmetic_hard,4,0.4485370480043008,12742,0,1
+arith_hard_15,arithmetic_hard,4,0.4536846415881681,264,0,1
+arith_hard_16,arithmetic_hard,4,0.2897888509079348,,0,0
+arith_hard_17,arithmetic_hard,4,0.5083244969186377,,0,0
+arith_hard_18,arithmetic_hard,4,0.5048606055557218,12645,0,1
+arith_hard_19,arithmetic_hard,4,0.6574486173669529,335,0,1
+arith_hard_20,arithmetic_hard,4,0.667162784412453,,0,0
+fact_common_01,factual_common,4,0.4993145629604614,Au,1,1
+fact_common_02,factual_common,4,0.40603401391078786,Tokyo,1,1
+fact_common_03,factual_common,4,0.8642349489988805,"There are eight planets in our solar system, namely Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",0,1
+fact_common_04,factual_common,4,0.6810180842848539,"World War II ended on September 2, 1945.",1,1
+fact_common_05,factual_common,4,0.5517876654065808,,0,0
+fact_common_06,factual_common,4,0.7107199672953249,,0,0
+fact_common_07,factual_common,4,0.5840027919051711,,0,0
+fact_common_08,factual_common,4,0.9384724025721896,12,1,1
+fact_common_09,factual_common,4,0.49684339099636343,,0,0
+fact_common_10,factual_common,4,0.7507403034643327,"Humans have 46 chromosomes, which includes 23 pairs of autosomes (non-sex chromosomes) and one pair of sex chromosomes (either X or Y).",1,1
+fact_common_11,factual_common,4,0.6184478329762944,,0,0
+fact_common_12,factual_common,4,0.45750996168898395,Mercury,1,1
+fact_common_13,factual_common,4,0.9192903505355849,H2O,1,1
+fact_common_14,factual_common,4,0.6408517264644182,,0,0
+fact_common_15,factual_common,4,0.779847708206444,,0,0
+fact_obscure_01,factual_obscure,4,0.948519126523233,5730.0,0,1
+fact_obscure_02,factual_obscure,4,0.7683891228327414,"Vatican City, with an area of only 44 hectares (109 acres), is the smallest country in the world by area.",1,1
+fact_obscure_03,factual_obscure,4,0.4913319882773768,,0,0
+fact_obscure_04,factual_obscure,4,0.9345660008439385,The atomic number of Osmium is 76.,1,1
+fact_obscure_05,factual_obscure,4,0.9537813612619033,Femur,1,1
+fact_obscure_06,factual_obscure,4,0.6692808226947874,,0,0
+fact_obscure_07,factual_obscure,4,0.9288793304722427,JPY,1,1
+fact_obscure_08,factual_obscure,4,0.7358084847307685,"The Mohs hardness of topaz is approximately 8, which means it has a relatively high resistance to scratching compared to other minerals.",1,1
+fact_obscure_09,factual_obscure,4,0.7878935558845932,The University of Bologna was founded in the year 1088.,1,1
+fact_obscure_10,factual_obscure,4,0.7475115225897322,The chemical symbol for tungsten is W.,1,1
+fact_obscure_11,factual_obscure,4,0.5557673312969522,"There are typically 88 keys on a standard piano, which includes both black (notes A to C below middle C) and white (notes D above middle C to B above high C) keys.",1,1
+fact_obscure_12,factual_obscure,4,0.5783905182789784,,0,0
+fact_obscure_13,factual_obscure,4,0.5068957568677988,HEL,1,1
+fact_obscure_14,factual_obscure,4,0.9253183239256925,An icosahedron has 20 vertices.,0,1
+fact_obscure_15,factual_obscure,4,0.4126946662146927,,0,0
+code_simple_01,code_simple,4,0.7553778536465119,"{answer}"")
+```
+
+OUTPUT:
+```
+CONFIDENCE: 0.95
+ANSWER: I am confident that the provided function will correctly identify whether a given number is even or not.",0,1
+code_simple_02,code_simple,4,0.7948688107515675,"max_of_three(a, b, c) = max(a, b, c)",0,1
+code_simple_03,code_simple,4,0.9344366741170287,"def reverse_string(s):
+    return s[::-1]",1,1
+code_simple_04,code_simple,4,0.8171220352096716,count_vowels(s) = len([x for x in s.lower() if x in 'aeiou']),0,1
+code_simple_05,code_simple,4,0.7512561940769024,,0,0
+code_simple_06,code_simple,4,0.66976812430373,"{total_sum}"")
+```",0,1
+code_simple_07,code_simple,4,0.5241381411470101,,0,0
+code_simple_08,code_simple,4,0.7356308005133221,"```python
+def factorial(n):
+    # Check if n is a non-negative integer
+    if not isinstance(n, int) or n < 0:
+        raise ValueError(""Input must be a non-negative integer"")
+    
+    # Base case: factorial of 0 is 1
+    if n == 0:
+        return 1
+    else:
+        result = 1
+        
+        for i in range(1, n + 1):
+            result *= i
+            
+        return result
+```",0,1
+code_simple_09,code_simple,4,0.899024553409066,"```python
+def clamp(x, lo, hi):
+    if x < lo:
+        return lo
+    elif x > hi:
+        return hi
+    else:
+        return x
+```",0,1
+code_simple_10,code_simple,4,0.6680348271363948,"[flatten([[1, 2], [3, 4], [5, 6]]), flatten([1, 2, [3, 4], (5, 6)])]",0,1
+code_simple_11,code_simple,4,0.6144178800669587,"```python
+def unique(lst):
+    return sorted(set(lst), key=lambda x: lst.index(x))
+```",0,1
+code_simple_12,code_simple,4,0.8298014873506339,"```python
+def dot_product(a, b):
+    """"""Compute the dot product of two lists.""""""
+    if len(a) != len(b):
+        raise ValueError(""Lists must have the same length"")
+    
+    result = 0
+    for i in range(len(a)):
+        result += a[i] * b[i]
+        
+    return result
+```",0,1
+code_simple_13,code_simple,4,0.5575670392488806,"The Python function `title_case(s)` can be implemented using the built-in method called `title()` in Python, which converts a string to title case by converting the first character of each word to uppercase and keeping other characters (including whitespaces) lowercase. Here is an example implementation of the `title_case` function:
+```python
+def title_case(s):
+    # Convert the whole string to lower case
+    s = s.lower()
+    # Use the 'title' method on the string
+    return s.title()
+```
+The `title_case()` function can now be used as follows:
+```python
+>>> title_case(""hello world"")
+'Hello World'
+```",0,1
+code_simple_14,code_simple,4,0.7288337814101041,"```python
+def intersection(a, b):
+    """"""Return the common elements of two lists.""""""
+    return [x for x in a if x in b]
+```",0,1
+code_simple_15,code_simple,4,0.9027371120555466,"```python
+def char_frequency(s):
+    freq_dict = {}
+    for ch in s:
+        if ch in freq_dict:
+            freq_dict[ch] += 1
+        else:
+            freq_dict[ch] = 1
+    return freq_dict
+```",0,1
+code_algo_01,code_algorithmic,4,0.456670880768167,,0,0
+code_algo_02,code_algorithmic,4,0.6603291687809469,,0,0
+code_algo_03,code_algorithmic,4,0.5861741068877024,,0,0
+code_algo_04,code_algorithmic,4,0.8916836878534783,"```python
+def fib(n):
+    if n <= 0:
+        return ""Input should be positive integer""
+    elif n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        a, b = 0, 1
+        for _ in range(n-1):
+            a, b = b, a + b
+        return a
+```",0,1
+code_algo_05,code_algorithmic,4,0.938987749201757,"```
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+```",0,1
+code_algo_06,code_algorithmic,4,0.6253607358720619,,0,0
+code_algo_07,code_algorithmic,4,0.6945854841658533,['abc'],0,1
+code_algo_08,code_algorithmic,4,0.8828200345894678,"[2, 3]",0,1
+code_algo_09,code_algorithmic,4,0.409555453644427,"Below is a Python function that checks if the given string of brackets is valid or not using two stack data structures. The function takes in a string 's' as input and returns True if it consists only of '[' and ']' characters, with the same number of opening and closing brackets, otherwise it returns False.
+
+```python
+def isValid(ch):
+    """"""Checks if character is a valid bracket""""""
+    
+    # Check for open brackets that require corresponding close brackets
+    return ch in ['(', '{', '[', 'a', 'b']
+                  # List of valid opening brackets (parentheses, braces) and random characters (as placeholders) 
+            
+def validate(s):
+   """"""Checks if string s is a valid bracket expression""""""
+    
+    stack = []
+    for ch in s:
+        if ch in ('(', '['):
+            # Push the open brackets onto the stack.
+            stack.append(ch)
+        elif ch in (')', ']'):
+            # If there is nothing to match with, return False
+            if not stack or stack.pop() != ('(' if ch == ')' else '[')[-1]:
+                return False
+    # If we've made it this far, the brackets are valid
+    return not stack            
+ 
+```",0,1
+code_algo_10,code_algorithmic,4,0.7945513801240355,"```python
+def power(base, exp):
+    if exp == 0:
+        return 1
+    elif exp < 0:
+        return 1 / power(base, -exp)
+    else:
+        quotient = 1
+        remainder = base
+        
+        for _ in range(exp - 1):
+            quotient, remainder = remainder, quotient % remainder
+            
+        return remainder
+```",0,1
+code_algo_11,code_algorithmic,4,0.5823839334290726,,0,0
+code_algo_12,code_algorithmic,4,0.718555174714347,,0,0
+code_algo_13,code_algorithmic,4,0.6837024324439657,,0,0
+code_algo_14,code_algorithmic,4,0.8475622550246192,,0,0
+code_algo_15,code_algorithmic,4,0.5527244707105472,""", topological_sort(graph))
+```
+In this implementation, we first create a directed graph `G` from the input dictionary using `nx.DiGraph()`. The `breadth-first search` algorithm is then used to find a topological ordering of the nodes in our graph. If there's no such order found (which means that cycles exist), an exception will be raised, and we return an empty list in this case.
+
+The confidence for solving this problem correctly is quite high due to the use of networkx library which has built-in functions designed specifically for topological sorting.
+
+For the given example graph: `{'A': ['B', 'C'], 'B': ['D'], 'C': ['E']}`, we would get a valid topological order as output, which is `['A', 'B', 'C', 'D', 'E']`.",0,1

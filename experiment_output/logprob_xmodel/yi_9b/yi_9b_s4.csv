@@ -1,0 +1,468 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,4,0.9942247221748227,788,1,1
+arith_easy_02,arithmetic_easy,4,0.9986026753645764,35 - 769 = -734,1,1
+arith_easy_03,arithmetic_easy,4,0.963666111514969,"291 * 260 = 75,660",1,1
+arith_easy_04,arithmetic_easy,4,0.933261321368286,390,1,1
+arith_easy_05,arithmetic_easy,4,0.9935252008251623,650,1,1
+arith_easy_06,arithmetic_easy,4,0.7497463227913365,"538416
+
+I used the basic multiplication operation to solve this task, multiplying 702 by 768 and arriving at the product of 538416.",0,1
+arith_easy_07,arithmetic_easy,4,0.6481975782359591,"923 + 568 = 1491
+
+Explanation of the calculation: To find the sum of 923 and 568, you start by adding the rightmost digits (3 and 8) which gives you 11. You write down the 1 and carry over the 1 to the next column (which is implied in this simple addition method). Then, add the middle digits along with the carried over value (2+6+5=13 plus the carried over 1 equals 14). Again, you write down the 4 and carry over the 1. Finally, add the leftmost digits along with the last carried over value (9+1=10). Combining all these results will give us the final sum of 1491.",1,1
+arith_easy_08,arithmetic_easy,4,0.9994584321616763,99 - 614 = -515,1,1
+arith_easy_09,arithmetic_easy,4,0.9655307796034409,18564,1,1
+arith_easy_10,arithmetic_easy,4,0.9284829622681094,40 + 105 = 145,1,1
+arith_easy_11,arithmetic_easy,4,0.6918134900016822,"233 - 248 = -15
+
+To explain how I arrived at this answer, subtraction is the process of finding the difference between two numbers. When subtracting a larger number from a smaller one, as in this case (233 - 248), the result will be negative because we're essentially 'going backwards' on the number line. Subtracting 248 from 233 gives us -15.",1,1
+arith_easy_12,arithmetic_easy,4,0.9382970504908794,"527 * 626 = 329,102",0,1
+arith_easy_13,arithmetic_easy,4,0.9969389598199431,621,1,1
+arith_easy_14,arithmetic_easy,4,0.9998056438712596,213 - 743 = -530,1,1
+arith_easy_15,arithmetic_easy,4,0.7700145165171602,"675 * 728 = 490,800
+
+I used the basic arithmetic operation of multiplication to solve this task. I multiplied 675 by 728 to get the final answer.",0,1
+arith_easy_16,arithmetic_easy,4,0.7898543218422581,"568 + 439 = 1007
+
+To solve the task, I simply added the two given numbers together using basic arithmetic operations. The result is 1007.",1,1
+arith_easy_17,arithmetic_easy,4,0.9995680050441061,235 - 469 = -234,1,1
+arith_easy_18,arithmetic_easy,4,0.8636544381615687,"613 * 294 = 179,842",0,1
+arith_easy_19,arithmetic_easy,4,0.9993667273457347,1738,1,1
+arith_easy_20,arithmetic_easy,4,0.9989730381125929,16 - 787 = -771,1,1
+arith_hard_01,arithmetic_hard,4,0.7172938617149693,-87,0,1
+arith_hard_02,arithmetic_hard,4,0.7690019773123387,20415,0,1
+arith_hard_03,arithmetic_hard,4,0.7698072154046677,26,0,1
+arith_hard_04,arithmetic_hard,4,0.9969042552982399,184,1,1
+arith_hard_05,arithmetic_hard,4,0.7193652623264332,141 - (136 * 42) = -5879,0,1
+arith_hard_06,arithmetic_hard,4,0.731606404676948,"157 + 56 * 106 + 26 = 6003
+
+To break it down, first we perform the multiplication operation inside the brackets:
+56 * 106 = 5936
+
+Then, we add each term together as per the given expression:
+157 + 5936 + 26 = 6003",0,1
+arith_hard_07,arithmetic_hard,4,0.8323586719513626,25 - 52 + 85 = 64,0,1
+arith_hard_08,arithmetic_hard,4,0.7609096431702875,"28349 + 176 = 28525
+
+To break it down, I calculated the product of 159 and 177 first:
+
+159 * 177 = 28349
+
+Then, I added 176 to this result:
+
+28349 + 176 = 28525
+
+So the final answer is 28525.",0,1
+arith_hard_09,arithmetic_hard,4,0.8895105418301454,20948 - 175 = 20773,0,1
+arith_hard_10,arithmetic_hard,4,0.9802374348373711,636,1,1
+arith_hard_11,arithmetic_hard,4,0.7010306059931822,"22 * 161 + 78 * 104 = 3542 + 8112 = 11654
+
+Here's how it breaks down:
+First calculation in the task, 22 * 161, equals to 3542.
+Second part of the calculation, 78 * 104, equals to 8112.
+Finally, add both results together (3542 + 8112) and get the total answer: 11654.",1,1
+arith_hard_12,arithmetic_hard,4,0.6445872766348357,"151 - 179 - 39 = -267
+
+To solve the task, I simply followed the order of operations as indicated by the subtraction signs provided in the equation (151 - 179 - 39). First, I performed the first operation, which is subtracting 179 from 151. This results in -28. Then, I subtracted 39 from -28, giving me a final answer of -267.",0,1
+arith_hard_13,arithmetic_hard,4,0.8775908399731349,"193 - 121 * 20 + 131 = -22867
+
+To solve the expression, we follow the order of operations (PEMDAS/BODMAS), which stands for Parentheses/Brackets, Exponents/Orders, Multiplication and Division (from left to right), and Addition and Subtraction (from left to right). In this case, there are no parentheses or exponents, so we start with multiplication:
+
+193 - 121 * 20 + 131
+= 193 - 2420 + 131 (since 121 * 20 = 2420)
+
+Next, we perform the subtraction and addition from left to right:
+
+= -2227 + 131
+= -2196 (since 2227 - 131 = 2196)
+
+So the correct answer is -2196.",0,1
+arith_hard_14,arithmetic_hard,4,0.8532741218485919,"42 * 175 + 32 * 180 = 7350 + 5760 = 13110
+
+Here's how it breaks down:
+First multiplication, 42 * 175 = 7350
+Second multiplication, 32 * 180 = 5760
+Then add the two results together: 7350 + 5760 = 13110",1,1
+arith_hard_15,arithmetic_hard,4,0.8896350015093475,37 - 186 * 147 + 118 = -27592,0,1
+arith_hard_16,arithmetic_hard,4,0.7963791618237837,"37 * 41 + 10 = 1517
+Therefore, the answer is 1517.",0,1
+arith_hard_17,arithmetic_hard,4,0.9003515069288818,3767,0,1
+arith_hard_18,arithmetic_hard,4,0.7403135740543351,"189 + 126 * 97 + 108 = 12053
+
+To provide a step-by-step calculation, here's how I arrived at this answer:
+
+Step 1: Perform the multiplication operation first as per the order of operations (PEMDAS/BODMAS).
+126 * 97 = 12222
+
+Step 2: Now, substitute the result back into the expression and perform the addition operations from left to right.
+189 + 12222 + 108 = 12519 + 108 = 12627
+
+However, there seems to be a mistake in my initial response provided above. The correct answer after recalculating is:
+ANSWER: 12627",1,1
+arith_hard_19,arithmetic_hard,4,0.9399286540984358,213,0,1
+arith_hard_20,arithmetic_hard,4,0.7882692074073793,"76 - 162 - 160 - 114 = -360
+
+To solve the task, I simply followed the order of operations as stated in the problem (subtracting each number in the sequence provided). Starting with 76 and then subtracting 162 gives us -86. Next, we subtract 160 from -86 resulting in -246. Finally, subtracting 114 from -246 yields the final answer of -360.",1,1
+fact_common_01,factual_common,4,0.9981959932514076,Au,1,1
+fact_common_02,factual_common,4,0.9971236308867718,Tokyo,1,1
+fact_common_03,factual_common,4,0.9786249150019415,There are 8 planets in our solar system.,1,1
+fact_common_04,factual_common,4,0.9967953787304102,World War II ended in 1945.,1,1
+fact_common_05,factual_common,4,0.9035834710267029,"The speed of light in a vacuum is approximately 299,792 kilometers per second (km/s). Rounded to the nearest thousand, it would be 300,000 km/s.",0,1
+fact_common_06,factual_common,4,0.7448432788420212,"The largest ocean on Earth is the Pacific Ocean. It covers an area of approximately 63,800,000 square kilometers (24,652,000 sq mi) and holds about 30% of all marine life.",1,1
+fact_common_07,factual_common,4,0.9635934176991279,William Shakespeare wrote Romeo and Juliet.,1,1
+fact_common_08,factual_common,4,0.9986942532119809,12,1,1
+fact_common_09,factual_common,4,0.6722850503610016,"Hydrogen
+
+I'm confident (at a level of 1.0) in my ability to solve this task because the atomic number uniquely identifies each element in the periodic table, and knowing that hydrogen is at the beginning of the periodic table with an atomic number of 1 makes it straightforward to answer this question accurately.",1,1
+fact_common_10,factual_common,4,0.8228087339033912,"Humans have 46 chromosomes in their somatic cells (body cells), made up of 23 pairs of homologous chromosomes. However, humans produce gametes (sperm and egg cells) with half the number of chromosomes, which is 23 chromosomes each.",1,1
+fact_common_11,factual_common,4,0.8254164854776057,The boiling point of water in Celsius is 100°C at standard atmospheric pressure.,1,1
+fact_common_12,factual_common,4,0.8735737192011647,Mercury is the planet closest to the Sun.,1,1
+fact_common_13,factual_common,4,0.7185456326586218,"H2O
+
+I am confident (at a level of 1.0) in my ability to solve this task correctly because the chemical formula for water is a well-known and simple one, typically memorized in chemistry education. Water has two hydrogen atoms (H2) and one oxygen atom (O), making its chemical formula H2O.",1,1
+fact_common_14,factual_common,4,0.8329276449262039,"There are 7 continents. They are Africa, Antarctica, Asia, Europe, North America, Australia/Oceania, and South America.",1,1
+fact_common_15,factual_common,4,0.8000041860760608,"The Nile River is the longest river in the world. It flows through northeastern Africa for about 6,650 kilometers (4,130 miles) before it empties into the Mediterranean Sea.",1,1
+fact_obscure_01,factual_obscure,4,0.9586971301757815,5700 years,1,1
+fact_obscure_02,factual_obscure,4,0.7411482883948584,"The smallest country in the world by area is Vatican City, with a total surface area of just 0.44 square kilometers (0.17 square miles). It is an independent city-state completely enclaved within Rome, Italy.",1,1
+fact_obscure_03,factual_obscure,4,0.996339619180537,The Treaty of Westphalia was signed in 1648.,1,1
+fact_obscure_04,factual_obscure,4,0.9443295152587998,The atomic number of Osmium is 76.,1,1
+fact_obscure_05,factual_obscure,4,0.9799002976269267,The name of the longest bone in the human body is the femur.,1,1
+fact_obscure_06,factual_obscure,4,0.9451761960641591,A dodecahedron has 30 edges.,1,1
+fact_obscure_07,factual_obscure,4,0.8022219721000684,"JPY
+
+The ISO 4217 currency code for the Japanese Yen is JPY. This code is widely used in international transactions and financial communications to identify this specific currency.",1,1
+fact_obscure_08,factual_obscure,4,0.8584953176950263,The Mohs hardness of topaz is 8.5 to 9 on the Mohs scale of mineral hardness.,1,1
+fact_obscure_09,factual_obscure,4,0.9889150866703019,The University of Bologna was founded in 1088.,1,1
+fact_obscure_10,factual_obscure,4,0.6504124400216841,"W
+
+The chemical symbol for Tungsten is ""W"". This metal, with the atomic number 74, is a lustrous, silvery-white metal known for its high melting point and excellent electrical conductivity. It is commonly used in alloys, filaments in incandescent light bulbs, and electrodes due to these unique properties.",1,1
+fact_obscure_11,factual_obscure,4,0.9469842549548334,There are 88 keys on a standard piano.,1,1
+fact_obscure_12,factual_obscure,4,0.9869485256348114,11 km/s,1,1
+fact_obscure_13,factual_obscure,4,0.9210758027940392,"The IATA code for Helsinki-Vantaa airport is ""HEA"".",1,1
+fact_obscure_14,factual_obscure,4,0.9244261369398015,An icosahedron has 12 vertices.,1,1
+fact_obscure_15,factual_obscure,4,0.8234366397750645,"The pH of pure water at 25 degrees Celsius is approximately 7.0. This is because, at this temperature, pure water undergoes autoionization, producing equal concentrations of hydronium ions (H₃O⁺) and hydroxide ions (OH⁻), making the solution neutral with a pH of 7.",1,1
+code_simple_01,code_simple,4,0.9478364469055696,"def is_even(n):
+    return n % 2 == 0",1,1
+code_simple_02,code_simple,4,0.9361750583737511,"def max_of_three(a, b, c):
+    return max(a, b, c)",1,1
+code_simple_03,code_simple,4,0.670470239196676,"def reverse_string(s):
+    return s[::-1]
+
+# This function uses slicing to reverse the input string 's'. The syntax `s[::-1]` means ""take every character in 's', but go backwards"", effectively reversing the order of characters in the string.",1,1
+code_simple_04,code_simple,4,0.7323314046824125,"Here's the Python function `count_vowels(s)` that returns the number of vowels in a string:
+
+```python
+def count_vowels(s):
+    vowels = 'aeiouAEIOU'
+    return sum(1 for char in s if char in vowels)
+```
+
+This function works by iterating through each character in the input string `s`, and checking if it is a vowel (a member of the string `vowels`). For every character that matches a vowel, it increments a count (`sum(1 for ...)`) which gets returned as the final result.",0,1
+code_simple_05,code_simple,4,0.911096861283858,"def celsius_to_fahrenheit(c):
+    return (c * 9/5) + 32",1,1
+code_simple_06,code_simple,4,0.930574672850374,"def sum_list(lst):
+    return sum(lst)",1,1
+code_simple_07,code_simple,4,0.8107918893359389,"Here is the Python function `is_palindrome(s)` that returns True if a string is a palindrome:
+```python
+def is_palindrome(s):
+    return s == s[::-1]
+```
+This function works by comparing the input string `s` with its reversed version (`s[::-1]`). If they are equal, then the string is a palindrome and the function returns True; otherwise, it returns False.",0,1
+code_simple_08,code_simple,4,0.9001283358662184,"```python
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+```",0,1
+code_simple_09,code_simple,4,0.8863394742366414,"def clamp(x, lo, hi):
+    return max(min(x, hi), lo)",1,1
+code_simple_10,code_simple,4,0.7623619325296483,"Here is the Python function `flatten(lst)` that flattens a list of lists into a single list:
+
+```python
+def flatten(lst):
+    flat_list = []
+    for sublist in lst:
+        for item in sublist:
+            flat_list.append(item)
+    return flat_list
+```
+This function iterates through the outer list and then iterates through each individual inner list, appending all items to a new, single list called `flat_list`. Finally, it returns this flattened list.",0,1
+code_simple_11,code_simple,4,0.9199404736380498,"```python
+def unique(lst):
+    unique_list = []
+    for item in lst:
+        if item not in unique_list:
+            unique_list.append(item)
+    return unique_list
+```",0,1
+code_simple_12,code_simple,4,0.6748496191141259,"Here is the Python function `dot_product(a, b)` that computes the dot product of two lists:
+```python
+def dot_product(a, b):
+    if len(a) != len(b):
+        raise ValueError('Both input sequences must have same length')
+    return sum(ea*eb for ea, eb in zip(a, b))
+```
+This function calculates the dot product of two lists `a` and `b` by multiplying corresponding elements together and then adding all those results. If the lengths of the inputs do not match, it raises a `ValueError`.",0,1
+code_simple_13,code_simple,4,0.7232807477023994,"```python
+def title_case(s):
+    return s.title()
+```
+This function uses the built-in `str.title()` method to capitalize the first letter of each word in a string, converting it into title case.",0,1
+code_simple_14,code_simple,4,0.6276099266140351,"```python
+def intersection(a, b):
+    return list(set(a) & set(b))
+```
+This function converts the input lists `a` and `b` to sets and uses the built-in Python operation for set intersection (`&`). The resulting set is then converted back into a list, which is returned as the result of the intersection of the original two input lists.",0,1
+code_simple_15,code_simple,4,0.7757220568062779,"def char_frequency(s):
+    freq = {}  # create an empty dictionary to store character frequencies
+    for char in s:  # iterate through each character in the string
+        if char not in freq:  # if the character is not already in the dictionary
+            freq[char] = 1  # add it with a count of 1
+        else:
+            freq[char] += 1  # increment its count by 1
+    return freq  # return the frequency dictionary",1,1
+code_algo_01,code_algorithmic,4,0.6804503829822798,"Here is the Python function `binary_search(arr, target)`:
+
+```python
+def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+
+    # If the element is not found in the array, return -1.
+    return -1
+```
+This function uses binary search to locate the `target` within a sorted list `arr`. It updates the left and right pointers based on whether the target is greater or less than the value at the midpoint of the current range until it finds the target or exhausts all possibilities, returning -1 if not found.",0,1
+code_algo_02,code_algorithmic,4,0.8229520765197824,"```python
+def merge_sorted(a, b):
+    # Initialize an empty list to store the merged result
+    merged = []
+    # Initialize pointers for both lists
+    i = j = 0
+
+    # Merge while there are still elements in both lists
+    while i < len(a) and j < len(b):
+        if a[i] <= b[j]:
+            merged.append(a[i])
+            i += 1
+        else:
+            merged.append(b[j])
+            j += 1
+
+    # Add the remaining elements from one of the lists if there are any
+    merged += a[i:]
+    merged += b[j:]
+
+    return merged
+```",0,1
+code_algo_03,code_algorithmic,4,0.8678278800367712,"Here is the Python function `gcd(a, b)` using Euclid's algorithm to find the greatest common divisor of two numbers:
+
+```python
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return abs(a)
+```",0,1
+code_algo_04,code_algorithmic,4,0.7225287882763664,"Here is a Python function `fib(n)` that calculates the nth Fibonacci number using recursion:
+
+```python
+def fib(n):
+    if n <= 0:  # Base case for 0
+        return 0
+    elif n == 1:  # Base case for 1
+        return 1
+    else:  # Recursive call
+        return fib(n-1) + fib(n-2)
+```
+However, this implementation is not efficient as it performs a lot of repeated calculations. A more efficient approach uses memoization to store previously calculated Fibonacci numbers:
+
+```python
+def fib_memoize(n, memo={}):
+    if n in memo:  # Lookup cached value
+        return memo[n]
+    elif n <= 0:  # Base case for 0
+        return 0
+    elif n == 1:  # Base case for 1
+        return 1
+    else: 
+        memo[n] = fib_memoize(n-1, memo) + fib_memoize(n-2, memo)  # Cache the result before returning
+        return memo[n]
+```
+Both implementations correctly compute the nth Fibonacci number. The choice between them depends on whether performance is a concern for large values of `n`.",0,1
+code_algo_05,code_algorithmic,4,0.6732316712128891,"Here is a simple Python function to check if a number n is prime:
+
+```python
+def is_prime(n):
+    if n <= 1:
+        return False
+    elif n == 2:
+        return True
+    else:
+        for i in range(2, int(n**0.5) + 1):  # only up to square root of n
+            if n % i == 0:
+                return False
+        return True
+```
+This function works by checking if n is divisible by any number up to its square root (since a larger factor of the number would be a multiple of smaller factor that has already been checked). If it finds such a number, then n is not prime and it immediately returns `False`. If no such number is found after testing all required potential factors, then n must be prime and the function returns `True`.
+
+Please note that this function assumes input 'n' is an integer. It also considers 1 as NOT prime and 2 as a prime number.",0,1
+code_algo_06,code_algorithmic,4,0.6747111692292567,"```python
+def matrix_multiply(A, B):
+    num_rows_A = len(A)
+    num_cols_A = len(A[0])
+    num_rows_B = len(B)
+    num_cols_B = len(B[0])
+  
+    if num_cols_A != num_rows_B:
+        raise ValueError('Matrices are not eligible for multiplication')
+
+    C = [[0 for j in range(num_cols_B)] for i in range(num_rows_A)]
+  
+    for i in range(num_rows_A):
+        for j in range(num_cols_B):
+            for k in range(num_cols_A): # or num_rows_B, since it's equal
+                C[i][j] += A[i][k] * B[k][j]
+    return C
+```
+This function first checks if matrix multiplication is possible by comparing the number of columns in the first matrix to the number of rows in the second. If not, it raises an error message. It then initializes a new empty matrix `C` with dimensions compatible for storing the result of the matrix multiplication and proceeds by iterating over every element of this resulting matrix, updating each one as per the definition of matrix multiplication: the sum of the product of elements from row `i` in the first matrix and column `j` in the second. In the end it returns the computed matrix `C`.",0,1
+code_algo_07,code_algorithmic,4,0.6447726712281397,"def longest_common_prefix(strs):
+    if not strs:
+        return """"
+    shortest = min(strs, key=len)
+    for i, char in enumerate(shortest):
+        for other in strs:
+            if other[i] != char:
+                return shortest[:i]
+    return shortest
+
+This function first checks if the list of strings is empty. If it's not, then it identifies the shortest string in the list because any common prefix would be no longer than this. It then iterates through each character position in this shortest string and checks every other string to see if they all have the same character at that position. If they do, then the function returns this prefix upto index i (exclusive). If it finds a mismatch, the function immediately returns the common prefix found so far. In case of no mismatches, the shortest string itself is returned as the longest common prefix.",0,1
+code_algo_08,code_algorithmic,4,0.7683319503415582,"Here is a Python function `two_sum(nums, target)` that returns the indices of two numbers in the list `nums` that add up to the `target`:
+
+```python
+def two_sum(nums, target):
+    # Create an empty dictionary to store complement values and their indices
+    complements = {}
+    for i, num in enumerate(nums):
+        if num in complements:
+            return [complements[num], i]  # Return the indices of the two numbers
+        else:
+            complement = target - num
+            complements[complement] = i  # Store the complement value and its index
+    return None  # If no pair found, return None
+```
+You can use this function like so:
+
+```python
+nums = [2, 7, 11, 15]
+target = 9
+print(two_sum(nums, target))  # Output: [0, 1] since nums[0]+nums[1]==9
+```",0,1
+code_algo_09,code_algorithmic,4,0.9616454038894443,"```python
+def valid_parentheses(s):
+    stack = []
+    mapping = {"")"": ""("", ""}"": ""{"", ""]"": ""[""}
+    for char in s:
+        if char in mapping:
+            top_element = stack.pop() if stack else '#'
+            if mapping[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+    return not stack
+```",0,1
+code_algo_10,code_algorithmic,4,0.6842856690677853,"Here is a Python function `power(base, exp)` that uses fast exponentiation to compute base^exp without using the ** operator:
+
+```python
+def power(base, exp):
+    if exp == 0:
+        return 1
+    elif exp % 2 == 1:  # odd
+        return power(base, exp - 1) * base
+    else:  # even
+        sub_exp = power(base, exp // 2)
+        return sub_exp * sub_exp
+```
+
+This function uses the divide-and-conquer approach to calculate `base^exp` by breaking down the exponentiation into smaller calculations. If the exponent is odd, it reduces the problem to calculating (base^((exp - 1)/2))^2 and multiplying it with base once. If the exponent is even, it simply calculates (base^(exp/2))^2. This approach significantly reduces the number of multiplications required compared to a straightforward recursive method.",0,1
+code_algo_11,code_algorithmic,4,0.570064050444797,"```python
+def rotate_list(lst, k):
+    k = k % len(lst)  # Make sure k is within the list's length to avoid unnecessary rotations
+    return lst[-k:] + lst[:-k]
+```
+This function rotates a list `lst` by moving last `k` elements to the beginning of the list. To handle large values of `k`, we first modulo `k` with the length of the list `lst` to ensure that `k` is within the bounds of the list's length. This will ensure that if `k` exceeds the length of the list, the rotation will only involve the necessary elements (i.e., without unnecessary repetitions).",0,1
+code_algo_12,code_algorithmic,4,0.8272733940622354,"```python
+def count_inversions(arr):
+    count = 0
+    for i in range(len(arr)):
+        for j in range(i+1, len(arr)):
+            if arr[i] > arr[j]:
+                count += 1
+    return count
+```
+This function iterates through the input list `arr` and for each element at index `i` it compares it with all elements after it (indexes `j`). If an inversion is found (i.e., `arr[i] > arr[j]` and `i < j`), it increments the count of inversions. Finally, it returns the total count of inversions found in the list.",0,1
+code_algo_13,code_algorithmic,4,0.6841589641616292,"Here is the Python function `run_length_encode(s)`:
+```python
+def run_length_encode(s):
+    if not s:
+        return []
+    encoded = []
+    current = s[0]
+    count = 1
+    for char in s[1:]:
+        if char == current:
+            count += 1
+        else:
+            encoded.append((current, count))
+            current = char
+            count = 1
+    encoded.append((current, count))
+    return encoded
+```
+This function takes a string `s` and iterates through the characters one by one. If it encounters a new character that is different from the current character, it adds a tuple containing the current character and its count to the result list, then updates the current character. At the end of the input string, the last run's data is added as well. The function returns this list of tuples, each representing a run in the original string.",0,1
+code_algo_14,code_algorithmic,4,0.954422013226209,"```python
+def kadane(arr):
+    max_sum = current_sum = arr[0]
+    for num in arr[1:]:
+        current_sum = max(num, current_sum + num)
+        max_sum = max(max_sum, current_sum)
+    return max_sum
+```",0,1
+code_algo_15,code_algorithmic,4,0.7256081107694031,"Here is a Python function `topological_sort(graph)` which implements a topological sorting algorithm for the given graph:
+
+```python
+def topological_sort(graph):
+    in_degree = {u : 0 for u in graph}
+    for u in graph:
+        for v in graph[u]:
+            in_degree[v] += 1
+
+    queue = [u for u in in_degree if in_degree[u] == 0]
+
+    L = []
+    while queue:
+        n = queue.pop(0)
+        L.append(n)
+        for m in graph[n]:
+            in_degree[m] -= 1
+            if in_degree[m] == 0:
+                queue.append(m)
+                
+    if len(L) == len(graph):
+        return L
+    else:
+        raise ValueError('Graph has a cycle')
+```
+
+This function calculates the in-degrees of all nodes and initializes a queue with nodes that have an in-degree of 0 (i.e., nodes without dependencies). Then it iterates through this queue, adding each node to our sorted list (`L`) and decreasing the in-degree of its dependents. If any dependent node's in-degree drops to 0, we add it to the queue for further processing.
+
+We raise a `ValueError` if the graph contains cycles (i.e., nodes that have not been included in our sorted list `L` after traversing all dependencies). The function returns a valid topological ordering of the nodes if no cycles are found.",0,1

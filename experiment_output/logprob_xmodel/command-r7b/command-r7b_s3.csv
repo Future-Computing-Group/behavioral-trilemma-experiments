@@ -1,0 +1,197 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,3,0.9834939609800836,788,1,1
+arith_easy_02,arithmetic_easy,3,0.9656579690905712,-734,1,1
+arith_easy_03,arithmetic_easy,3,0.7896530562030443,"75,290",0,1
+arith_easy_04,arithmetic_easy,3,0.9821698937551505,390,1,1
+arith_easy_05,arithmetic_easy,3,0.9822010966010529,650,1,1
+arith_easy_06,arithmetic_easy,3,0.5008073205128586,537846,0,1
+arith_easy_07,arithmetic_easy,3,0.9834003824890927,1491,1,1
+arith_easy_08,arithmetic_easy,3,0.9346000992421843,-515,1,1
+arith_easy_09,arithmetic_easy,3,0.9003160672510196,18644,0,1
+arith_easy_10,arithmetic_easy,3,0.9842026677434661,145,1,1
+arith_easy_11,arithmetic_easy,3,0.9429605785174108,-15,1,1
+arith_easy_12,arithmetic_easy,3,0.704858911056185,326734,0,1
+arith_easy_13,arithmetic_easy,3,0.9831752689181398,621,1,1
+arith_easy_14,arithmetic_easy,3,0.9628580613920639,-530,1,1
+arith_easy_15,arithmetic_easy,3,0.8662851388451865,495300,0,1
+arith_easy_16,arithmetic_easy,3,0.9824427069168028,1007,1,1
+arith_easy_17,arithmetic_easy,3,0.9648791625695153,-234,1,1
+arith_easy_18,arithmetic_easy,3,0.5809367184040083,183732,0,1
+arith_easy_19,arithmetic_easy,3,0.9809655997594586,1738,1,1
+arith_easy_20,arithmetic_easy,3,0.9704456062136569,-771,1,1
+arith_hard_01,arithmetic_hard,3,0.7856175997671814,-151,1,1
+arith_hard_02,arithmetic_hard,3,0.5364133807884811,24536,0,1
+arith_hard_03,arithmetic_hard,3,0.8274752967682388,7,0,1
+arith_hard_04,arithmetic_hard,3,0.9814597079946898,184,1,1
+arith_hard_05,arithmetic_hard,3,0.6848782593604233,-5918,0,1
+arith_hard_06,arithmetic_hard,3,0.5871173675155578,17936,0,1
+arith_hard_07,arithmetic_hard,3,0.7865874102009858,-32,0,1
+arith_hard_08,arithmetic_hard,3,0.5887417277761997,31293,0,1
+arith_hard_09,arithmetic_hard,3,0.5991667403940768,20981,0,1
+arith_hard_10,arithmetic_hard,3,0.8343347041827218,636,1,1
+arith_hard_11,arithmetic_hard,3,0.6954080586844235,6304,0,1
+arith_hard_12,arithmetic_hard,3,0.6590617449543769,-245,0,1
+arith_hard_13,arithmetic_hard,3,0.5242450729447984,-3659,0,1
+arith_hard_14,arithmetic_hard,3,0.6974867099673061,9470,0,1
+arith_hard_15,arithmetic_hard,3,0.7347118195405005,-26787,0,1
+arith_hard_16,arithmetic_hard,3,0.7562044164516122,1605,0,1
+arith_hard_17,arithmetic_hard,3,0.5833828537628889,3587,0,1
+arith_hard_18,arithmetic_hard,3,0.465718350848472,259674,0,1
+arith_hard_19,arithmetic_hard,3,0.9289814634312785,313,1,1
+arith_hard_20,arithmetic_hard,3,0.7785778203268993,-340,0,1
+fact_common_01,factual_common,3,0.9691200080643205,Au,1,1
+fact_common_02,factual_common,3,0.9779567468985528,Tokyo,1,1
+fact_common_03,factual_common,3,0.8518769235629154,"There are eight planets in our solar system, which includes Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.",0,1
+fact_common_04,factual_common,3,0.9594221769274202,1945,1,1
+fact_common_05,factual_common,3,0.903734778467509,"300,000 km/s",0,1
+fact_common_06,factual_common,3,0.9056296813353022,"The Pacific Ocean is the largest ocean on Earth, covering approximately 63,800,000 square miles (165,250,000 square kilometers). It spans from the Arctic in the north to the Southern Ocean in the south and is bordered by the continents of Asia and Australia to the west, North and South America to the east, and Antarctica to the south.",1,1
+fact_common_07,factual_common,3,0.9510931339432874,William Shakespeare,1,1
+fact_common_08,factual_common,3,0.9783520944403314,12,1,1
+fact_common_09,factual_common,3,0.9148134756855897,Hydrogen,1,1
+fact_common_10,factual_common,3,0.8053906980857249,"Humans typically have 46 chromosomes in their somatic cells, arranged in 23 pairs. This includes 22 autosomes and one pair of sex chromosomes (XX for females and XY for males).",1,1
+fact_common_11,factual_common,3,0.8581055042542037,The boiling point of water in Celsius is 100 degrees.,1,1
+fact_common_12,factual_common,3,0.9682843106625082,Mercury,1,1
+fact_common_13,factual_common,3,0.9597084008178987,H2O,1,1
+fact_common_14,factual_common,3,0.7797711522338069,"There are seven continents on Earth, which are Asia, Africa, North America, South America, Antarctica, Europe, and Australia (also known as Oceania).",0,1
+fact_common_15,factual_common,3,0.8099439416539019,"The longest river in the world is the Nile River, stretching approximately 4,132 miles (6,650 kilometers) from its source in central Africa to the Mediterranean Sea. It flows through Egypt, Sudan, Uganda, Ethiopia, Kenya, and Tanzania, among other countries.",1,1
+fact_obscure_01,factual_obscure,3,0.9022556036314612,"5,730 years",0,1
+fact_obscure_02,factual_obscure,3,0.8443454748012114,"Vatican City is the smallest country in the world by area, covering just 0.2 square kilometers (0.077 square miles). It is an enclave within Rome, Italy, and is the headquarters of the Roman Catholic Church.",1,1
+fact_obscure_03,factual_obscure,3,0.8976721169747568,1648,1,1
+fact_obscure_04,factual_obscure,3,0.9666371021179565,76,1,1
+fact_obscure_05,factual_obscure,3,0.925517660575007,"The femur, also known as the thigh bone, is the longest bone in the human body. It connects the hip to the knee and plays a crucial role in supporting the body's weight and providing mobility.",1,1
+fact_obscure_06,factual_obscure,3,0.7495536715826986,"A dodecahedron, a regular polyhedron with 12 pentagonal faces, has 30 edges. Each face is a pentagon, and each edge is shared by two faces, resulting in a total of 30 edges for the entire solid.",1,1
+fact_obscure_07,factual_obscure,3,0.9583147667155115,JPY,1,1
+fact_obscure_08,factual_obscure,3,0.7106991179919625,"Topaz has a hardness on the Mohs scale of 6 to 7, making it a relatively hard mineral. This means it can scratch materials with a lower hardness, such as quartz (7), but cannot be scratched by diamonds (10).",0,1
+fact_obscure_09,factual_obscure,3,0.8683610237325401,The University of Bologna was founded in 1088.,1,1
+fact_obscure_10,factual_obscure,3,0.9660906879269116,W,1,1
+fact_obscure_11,factual_obscure,3,0.7802149448273584,"A standard piano typically has 88 keys, consisting of 52 white keys and 36 black keys. The range of a full-size piano spans seven octaves plus a few notes, from A0 to C8.",1,1
+fact_obscure_12,factual_obscure,3,0.8324708162141705,11.2 km/s,1,1
+fact_obscure_13,factual_obscure,3,0.9527822867329541,HEL,1,1
+fact_obscure_14,factual_obscure,3,0.9665447341490915,12,1,1
+fact_obscure_15,factual_obscure,3,0.7694292104860418,"The pH of pure water at 25 degrees Celsius is 7, which is neutral on the pH scale. This is because pure water has a concentration of hydrogen ions (H+) and hydroxide ions (OH-) that are equal, resulting in a balanced pH level.",1,1
+code_simple_01,code_simple,3,0.9096240671006597,True,0,1
+code_simple_02,code_simple,3,0.673606826426686,,0,0
+code_simple_03,code_simple,3,0.8285418775913336,"Here is the Python function that solves the problem and passes corresponding tests:
+```python
+def reverse_string(s):
+    return s[::-1]
+```",0,1
+code_simple_04,code_simple,3,0.7344433027249305,"Here is a Python function `count_vowels(s)` that returns the number of vowels in a string:
+```python
+def count_vowels(s):
+    vowels = ""aeiouAEIOU""
+    return sum(1 for char in s if char in vowels)
+```
+This function counts the number of vowels in a given string by using a set of vowels and counting the occurrences of each vowel in the input string. The `sum` function then returns the total count of vowels at the end.",0,1
+code_simple_05,code_simple,3,0.8512560034485038,"Here is the Python function `celsius_to_fahrenheit(c)`:
+```python
+def celsius_to_fahrenheit(c):
+    """"""Converts Celsius to Fahrenheit.""""""
+    return (c * 9/5) + 32
+```",0,1
+code_simple_06,code_simple,3,0.5798077504717284,,0,0
+code_simple_07,code_simple,3,0.8789325711539967,True,0,1
+code_simple_08,code_simple,3,0.6986779895031673,"Here is the solution:
+```python
+def factorial(n):
+    """"""
+    Calculate the factorial of a non-negative integer n.
+
+    :param n: A non-negative integer.
+    :return: The factorial of n (n!).
+    """"""
+    if not isinstance(n, int):
+        raise TypeError(""Input must be an integer."")
+    elif n < 0:
+        raise ValueError(""Factorial is not defined for negative numbers."")
+    elif n == 0 or n == 1:
+        return 1
+
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+
+    return result
+```",0,1
+code_simple_09,code_simple,3,0.6691393136222207,"Here is a Python function that clamps a number `x` to the range `[lo, hi]`:
+```python
+def clamp(x, lo, hi):
+    return min(max(x, lo), hi)
+```",0,1
+code_simple_10,code_simple,3,0.7485112348448814,,0,0
+code_simple_11,code_simple,3,0.8561448048018461,"Here is a Python function `unique(lst)` that returns a list of unique elements while preserving the original order:
+```python
+def unique(lst):
+    """"""Return a list of unique elements in the input list, preserving order.""""""
+    seen = set()
+    return [x for x in lst if not (x in seen or seen.add(x))]
+```",0,1
+code_simple_12,code_simple,3,0.8846388678381748,,0,0
+code_simple_13,code_simple,3,0.9244696933260038,"def title_case(s):
+    """"""Converts a string to title case.
+
+    Args:
+        s (str): The input string.
+
+    Returns:
+        str: The input string in title case.
+    """"""
+    return s.title()",1,1
+code_simple_14,code_simple,3,0.7277309168802053,"An empty list if there are no common elements, or a list of unique common elements",0,1
+code_simple_15,code_simple,3,0.800468073178376,,0,0
+code_algo_01,code_algorithmic,3,0.7318831256016152,"Here's the Python function that performs binary search on a sorted array to find the target value's index or -1 if not found:
+```python
+def binary_search(arr, target):
+    """"""
+    Perform binary search on a sorted list to find the index of the target.
+
+    Args:
+        arr (list): A sorted list of elements.
+        target: The value being searched for in the list.
+
+    Returns:
+        int: The index of the target if found, -1 otherwise.
+    """"""
+    low = 0
+    high = len(arr) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+```",0,1
+code_algo_02,code_algorithmic,3,0.9339731789377314,,0,0
+code_algo_03,code_algorithmic,3,0.915908123035505,,0,0
+code_algo_04,code_algorithmic,3,0.7706884987484935,,0,0
+code_algo_05,code_algorithmic,3,0.9262180837285138,,0,0
+code_algo_06,code_algorithmic,3,0.7857787529901511,"The function provided correctly multiplies two matrices by iterating through each element of the product matrix and performing the dot product between corresponding rows and columns of the original matrices. It also includes error handling to ensure that matrices can be multiplied, providing a clear and efficient solution to the task.",0,1
+code_algo_07,code_algorithmic,3,0.8895108611757357,,0,0
+code_algo_08,code_algorithmic,3,0.7702587238899554,"(0-indexed) tuple containing the indices of two numbers that add up to target. For example, if `nums = [2, 7, 11, 15]` and `target = 9`, then the answer would be `(0, 1)` because `[nums[0], nums[1]] = [2, 7] == 9`. If no such pair exists, the function returns `None`.",0,1
+code_algo_09,code_algorithmic,3,0.5909831912127643,"**
+```python
+def valid_parentheses(s):
+    stack = []
+    parentheses_map = {')': '(', '}': '{', ']': '[', '>': '<'}
+    
+    for char in s:
+        if char in parentheses_map:
+            top_element = stack.pop() if stack else '#'
+            if parenthesizes_map[char] != top_element:
+                return False
+        else:
+            stack.append(char)
+    
+    return not stack
+```
+This function uses a stack to keep track of the opening brackets and checks for balanced closing brackets. It iterates through each character in the input string `s`, pushing opening brackets onto the stack and popping the top element when it encounters a corresponding closing bracket. If at any point, it finds an unmatched closing bracket or if the stack is empty and there are still opening brackets left, it returns `False`. If the loop completes without finding such issues, it means all parentheses were balanced, and the function returns `True`.",0,1
+code_algo_10,code_algorithmic,3,0.8071010616429205,[your answer],0,1
+code_algo_11,code_algorithmic,3,0.8365925358829578,,0,0
+code_algo_12,code_algorithmic,3,0.8448994143165819,The number of inversions in the input list.**  The function `count_inversions` takes a list `arr` as input and returns the number of inversions present in the list using the merge sort algorithm.,0,1
+code_algo_13,code_algorithmic,3,0.8545105984597982,,0,0
+code_algo_14,code_algorithmic,3,0.7440058892570708,,0,0
+code_algo_15,code_algorithmic,3,0.7163217396135222,"The function correctly performs a topological sort on a directed acyclic graph (DAG) by using depth-first search (DFS). It first initializes sets to keep track of visited nodes and nodes currently being visited during the DFS traversal. The `dfs` helper function checks for conflicts with the current path before recursively exploring each dependency, ensuring that nodes in the ordering are not visited more than once or in an incorrect order due to cycles. If a cycle is detected, it raises a `ValueError`. Finally",0,1

@@ -1,0 +1,133 @@
+task,category,seed,r_logprob,answer,y,acted
+arith_easy_01,arithmetic_easy,3,0.5301754585092511,,0,0
+arith_easy_02,arithmetic_easy,3,0.7051818258106514,,0,0
+arith_easy_03,arithmetic_easy,3,0.7697527550322775,75660,1,1
+arith_easy_04,arithmetic_easy,3,0.6266337697387449,,0,0
+arith_easy_05,arithmetic_easy,3,0.659736330135245,649,0,1
+arith_easy_06,arithmetic_easy,3,0.3852391663722881,,0,0
+arith_easy_07,arithmetic_easy,3,0.6214917624627693,,0,0
+arith_easy_08,arithmetic_easy,3,0.635461724326006,,0,0
+arith_easy_09,arithmetic_easy,3,0.4919223265947081,,0,0
+arith_easy_10,arithmetic_easy,3,0.6517203027625051,,0,0
+arith_easy_11,arithmetic_easy,3,0.6261609778050109,,0,0
+arith_easy_12,arithmetic_easy,3,0.43492028858343285,The result of the multiplication is 382946.,0,1
+arith_easy_13,arithmetic_easy,3,0.606641123182469,,0,0
+arith_easy_14,arithmetic_easy,3,0.6382428358135004,,0,0
+arith_easy_15,arithmetic_easy,3,0.5192572501965347,,0,0
+arith_easy_16,arithmetic_easy,3,0.502485238036723,,0,0
+arith_easy_17,arithmetic_easy,3,0.6349548149104625,,0,0
+arith_easy_18,arithmetic_easy,3,0.8200225306869923,,0,0
+arith_easy_19,arithmetic_easy,3,0.6284242452810372,,0,0
+arith_easy_20,arithmetic_easy,3,0.6222854591167886,,0,0
+arith_hard_01,arithmetic_hard,3,0.6949930467129941,-151,1,1
+arith_hard_02,arithmetic_hard,3,0.496071751154416,725,0,1
+arith_hard_03,arithmetic_hard,3,0.5615591067007304,-139,0,1
+arith_hard_04,arithmetic_hard,3,0.4480126349628644,,0,0
+arith_hard_05,arithmetic_hard,3,0.284869326079182,,0,0
+arith_hard_06,arithmetic_hard,3,0.2960470115559312,,0,0
+arith_hard_07,arithmetic_hard,3,0.5254157213583872,,0,0
+arith_hard_08,arithmetic_hard,3,0.48835592991913085,4356,0,1
+arith_hard_09,arithmetic_hard,3,0.47888996109318654,"The result of the calculation is -654, which means 169 * 127 - 175 = -654",0,1
+arith_hard_10,arithmetic_hard,3,0.48088288008432273,724,0,1
+arith_hard_11,arithmetic_hard,3,0.8009406418096646,(22 * 161) + (78 * 104) = 3932 + 8352 = 12284,0,1
+arith_hard_12,arithmetic_hard,3,0.4741588198908436,[-67].,1,1
+arith_hard_13,arithmetic_hard,3,0.645563597205813,-2227,0,1
+arith_hard_14,arithmetic_hard,3,0.5611885400351594,"{result}"")
+```",0,1
+arith_hard_15,arithmetic_hard,3,0.3668985210687333,,0,0
+arith_hard_16,arithmetic_hard,3,0.4508349635505969,,0,0
+arith_hard_17,arithmetic_hard,3,0.766338270233001,,0,0
+arith_hard_18,arithmetic_hard,3,0.5063368039673805,845,0,1
+arith_hard_19,arithmetic_hard,3,0.5796934421212917,,0,0
+arith_hard_20,arithmetic_hard,3,0.49715147919944785,,0,0
+fact_common_01,factual_common,3,0.7281629496253893,,0,0
+fact_common_02,factual_common,3,0.6158963228124181,Tokyo,1,1
+fact_common_03,factual_common,3,0.6238194172257456,,0,0
+fact_common_04,factual_common,3,0.7399579078217253,,0,0
+fact_common_05,factual_common,3,0.41900076582092455,,0,0
+fact_common_06,factual_common,3,0.6533809303623157,,0,0
+fact_common_07,factual_common,3,0.5530990091730562,"William Shakespeare wrote Romeo and Juliet, a famous play that has been adapted into numerous films, TV shows, ballets, operas, and other forms of media throughout the centuries.",1,1
+fact_common_08,factual_common,3,0.6161681294002572,,0,0
+fact_common_09,factual_common,3,0.6967298535350884,The element that has an atomic number of 1 is hydrogen (H).,1,1
+fact_common_10,factual_common,3,0.4578351396414917,,0,0
+fact_common_11,factual_common,3,0.559131790440585,,0,0
+fact_common_12,factual_common,3,0.6818020655073913,,0,0
+fact_common_13,factual_common,3,0.6139358911625818,,0,0
+fact_common_14,factual_common,3,0.7284549181925093,,0,0
+fact_common_15,factual_common,3,0.5130164580142891,,0,0
+fact_obscure_01,factual_obscure,3,0.7734884289410322,,0,0
+fact_obscure_02,factual_obscure,3,0.5825925726729262,,0,0
+fact_obscure_03,factual_obscure,3,0.6302525576758051,,0,0
+fact_obscure_04,factual_obscure,3,0.6973639806580224,,0,0
+fact_obscure_05,factual_obscure,3,0.6179854052485141,,0,0
+fact_obscure_06,factual_obscure,3,0.49606550083462975,,0,0
+fact_obscure_07,factual_obscure,3,0.5725958327895745,JPY,1,1
+fact_obscure_08,factual_obscure,3,0.5002581416037092,,0,0
+fact_obscure_09,factual_obscure,3,0.5955252845730133,,0,0
+fact_obscure_10,factual_obscure,3,0.36992762118931805,,0,0
+fact_obscure_11,factual_obscure,3,0.5222986857304363,,0,0
+fact_obscure_12,factual_obscure,3,0.7506082458142402,,0,0
+fact_obscure_13,factual_obscure,3,0.5665933787492587,,0,0
+fact_obscure_14,factual_obscure,3,0.5561435282506839,,0,0
+fact_obscure_15,factual_obscure,3,0.6579552777319327,,0,0
+code_simple_01,code_simple,3,0.820380432970779,"```python
+def is_even(n):
+    return n % 2 == 0
+```",0,1
+code_simple_02,code_simple,3,0.8148559600757063,,0,0
+code_simple_03,code_simple,3,0.524593624327338,,0,0
+code_simple_04,code_simple,3,0.6243425217978632,,0,0
+code_simple_05,code_simple,3,0.5173676233363041,,0,0
+code_simple_06,code_simple,3,0.5279505688664174,"', sum_list(numbers))
+```
+
+The `sum_list` function takes a list of numbers 'lst' as an input and returns their sum using the built-in Python library called 'sum'. The output is then printed to the console, showing my confidence level (0.9) and displaying the result of the function on the test case.",0,1
+code_simple_07,code_simple,3,0.651147559496885,,0,0
+code_simple_08,code_simple,3,0.7607976450367031,returns the factorial of a given number 'n'.,0,1
+code_simple_09,code_simple,3,0.7222021951048598,"[0.9]
+
+Please use this function as needed for clamping your values between the given range.",0,1
+code_simple_10,code_simple,3,0.6401863841478298,,0,0
+code_simple_11,code_simple,3,0.5119275459707897,,0,0
+code_simple_12,code_simple,3,0.638964613067135,,0,0
+code_simple_13,code_simple,3,0.6659886894011284,,0,0
+code_simple_14,code_simple,3,0.7717452388854499,,0,0
+code_simple_15,code_simple,3,0.6337061382300353,,0,0
+code_algo_01,code_algorithmic,3,0.6446465109011069,,0,0
+code_algo_02,code_algorithmic,3,0.69869056175048,,0,0
+code_algo_03,code_algorithmic,3,0.7962942566267528,,0,0
+code_algo_04,code_algorithmic,3,0.9192846736104593,,0,0
+code_algo_05,code_algorithmic,3,0.3266556556983899,"```python
+def is_prime(n):
+    # Check if n is less than 2 (the smallest prime), or a negative integer
+    if n<2 or n < 0: 
+        return False
+    
+    if n == 2:  
+        return True
+        
+    if n % 2 == 0 or n == 1:  # even numbers, except 2, are not prime
+        return False
+
+    divisor = round(n**0.5)
+    for i in range(divisor):
+        # If the first number is greater than the square root of n and it divides n evenly, break out of loop
+        if n % (i+1) == 0:
+            return False
+    
+    return True
+```
+Each time this function receives a call, check if `n` is less than 2 or negative. If it's any of these cases, we immediately declare `False`. Otherwise, our code continues with the following checks:
+   - We ensure that `n` isn't prime in the case where `n` equals either `1` (since a single number can't be considered prime) or `2`, which is the only even prime. Therefore we return `True` for these inputs as well before going on to handle any other cases.
+   - We first check if `n` could possibly be divisible by 2, because 2 is the smallest and most commonly divided-by number in all numbers (except one). If `n` can't be evenly divided by any integer from 1 up until its square root, then it must be prime.
+   - Finally, we make sure to only check for divisibility from integers that are greater than or equal to the absolute value of the floor function applied on the computed square root of n (`n ** 0.5`). The reason is simple: if `n` had any divisors other than 1 and itself, it would be possible to find those in a range between its",0,1
+code_algo_06,code_algorithmic,3,0.6374515169621715,,0,0
+code_algo_07,code_algorithmic,3,0.4846023992119503,loveleetcode,0,1
+code_algo_08,code_algorithmic,3,0.36139421269940586,,0,0
+code_algo_09,code_algorithmic,3,0.44139294650061933,"The function `valid_parentheses(s)` returns True or False based on the validity of the brackets in the string. In Python, you can check if a character is in a set by using ""in"" operator. A stack data structure allows us to keep track of open brackets encountered so far. For each bracket in the input string, we check if it's an opening bracket (push onto the stack), or a closing bracket (find its corresponding opening bracket from the top of the stack and remove it). If all brackets are closed by matching opening brackets, the function returns True, otherwise false.",0,1
+code_algo_10,code_algorithmic,3,0.49184536593262423,,0,0
+code_algo_11,code_algorithmic,3,0.4984622988805586,,0,0
+code_algo_12,code_algorithmic,3,0.3775036346416887,,0,0
+code_algo_13,code_algorithmic,3,0.6198150201945861,,0,0
+code_algo_14,code_algorithmic,3,0.6037704761826955,4,0,1
+code_algo_15,code_algorithmic,3,0.6086599031838562,,0,0
