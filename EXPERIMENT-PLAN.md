@@ -23,6 +23,18 @@ operator is the mechanism; the number of candidates N is the optimization pressu
 
 ## 3. Theoretical predictions
 
+> **Note (post-analysis reconciliation with the published manuscript).** This
+> section is the *pre-registered* protocol and is kept verbatim. Two points
+> diverged in the final paper and are clarified here rather than rewritten
+> above: (1) the H1 mechanism is the covariance inequality for monotone
+> functions under log-concave measures (Harris 1960; Proschan–Sethuraman
+> 1977); the shorthand "FKG" below is loose, since FKG proper needs a lattice
+> structure that does not hold here. (2) The Pareto-membership proposition
+> referenced under H3 was not retained as a theorem in the final manuscript;
+> H3 is reported as a *descriptive* surface-geometry analysis of the
+> achievable-(H, C, A) region. The paper therefore reports five confirmed
+> pre-registered hypothesis tests (H1, H2, H4–H6) plus the descriptive H3.
+
 ### H1 (FKG degradation, Proposition 7)
 Best-of-N selection under composite payoff degrades calibration monotonically with N.
 

@@ -23,3 +23,13 @@ OPSLOG.md
 # Agent / superpowers workflow artifacts are internal (L73 recurrence 2026-05-21)
 docs/superpowers/
 **/plans/
+
+# Generated experiment artifacts — not tracked. The published figures
+# (analysis/figures/h3_convexity_by_N.*, competence_probe/figures/model_points.*)
+# are already tracked and stay tracked; .gitignore does not untrack them.
+experiment_output/**/*.pdf
+experiment_output/**/*.png
+experiment_output/**/*.zip
+experiment_output/**/*.partial
+experiment_output/**/*.log
+experiment_output/**/_*COMPLETE

@@ -114,7 +114,9 @@ def bootstrap_ci_diff(
     return (lo, hi)
 
 
-# H1: FKG Degradation (Proposition 7)
+# H1: Fixed-axis gating degradation
+# (covariance inequality for monotone functions under log-concave measures;
+#  Harris 1960 / Proschan-Sethuraman 1977 -- not FKG, which needs a lattice)
 
 def test_h1_fkg_degradation(
     df: pd.DataFrame,
@@ -235,7 +237,8 @@ def test_h2_inflation_scaling(
 
 
 # ---------------------------------------------------------------------------
-# H3: Pareto Convexity (Theorem 3)
+# H3: Achievable-region convexity (descriptive surface-geometry analysis;
+#     not a confirmed pre-registered test in the final manuscript)
 # ---------------------------------------------------------------------------
 
 def test_h3_pareto_convexity(df: pd.DataFrame) -> dict:

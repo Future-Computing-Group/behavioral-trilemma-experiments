@@ -1,12 +1,16 @@
 # Reproducing the paper
 
 Step-by-step guide to reproducing the 540-configuration Best-of-N sweep and the
-six-hypothesis analysis reported in the JMLR A1 manuscript
+analysis (five pre-registered hypothesis tests, plus the descriptive H3
+surface-geometry analysis) reported in the JMLR A1 manuscript
 *The Behavioral Credibility Trilemma: When Calibrated Autonomy Becomes
-Impossible* (Lovén, 2026).
+Impossible* (Lovén, Do, Mehmood, and Tarkoma, 2026).
 
-If you only want to rebuild the `hypothesis_results.json` and the H3 figure
-from the raw CSVs already shipped in the repository, skip to step 5.
+The raw per-completion CSVs are not shipped (the run is a stochastic
+LLM-in-the-loop process; re-runs reproduce the effects, not the exact
+records). To rebuild from your own run, do Stages 1–2 first; the
+hypothesis-results JSON shipped in the repository holds the paper's
+Table-1 values.
 
 ---
 
@@ -15,7 +19,7 @@ from the raw CSVs already shipped in the repository, skip to step 5.
 - **Python** 3.10 or newer (tested on 3.11 on macOS 12+; expected to work on
   Linux and Windows under equivalent Python versions).
 - **Ollama** 0.4.2 or newer. Install from <https://ollama.com>.
-- **Git** and ~6 GB of disk (raw CSVs + model weights).
+- **Git** and ~6 GB of disk (model weights; raw CSVs are regenerated locally).
 - A machine with ~64 GB RAM if you intend to run the full 540-config sweep
   locally; 16 GB suffices for the analysis-only reproduction.
 
@@ -127,8 +131,9 @@ experiment_output/
     └── qwen2.5_7b_N{1,2,4,8,16,32}_w{0,0.25,...}_r{0.5,0.7,0.9}_s{0,42,...}.csv
 ```
 
-If you do not want to run Stage 2 yourself, the repository already ships with
-all 540 CSVs from the paper's run — skip to Stage 3.
+The raw 540 CSVs are not shipped (stochastic LLM run; not bit-reproducible).
+Stage 2 regenerates them locally; the paper's hypothesis-results JSON is
+shipped for comparison.
 
 ## 6. Stage 3 — Analysis and figures
 
@@ -165,7 +170,9 @@ experiment_output/analysis_logprob/figures/
 
 ## 7. Verify the results match the manuscript
 
-The JSON's top-level `H1` … `H6` keys should match Table 1 of the manuscript:
+The JSON's top-level keys should match Table 1 of the manuscript. H1, H2,
+H4, H5, H6 are the five pre-registered hypothesis tests; H3 is the
+descriptive surface-geometry analysis (reported, not a confirmed test):
 
 | Key | Expected | Manuscript |
 |---|---|---|
@@ -205,7 +212,8 @@ with the 15% tolerance line crossed between $N = 8$ and $N = 16$.
 @article{loven2026trilemma,
   title   = {The Behavioral Credibility Trilemma: When Calibrated Autonomy
              Becomes Impossible},
-  author  = {Lov{\'e}n, Lauri},
+  author  = {Lov{\'e}n, Lauri and Do, Nam and Mehmood, Hassan and
+             Tarkoma, Sasu},
   journal = {Journal of Machine Learning Research},
   year    = {2026},
   note    = {Under review}

@@ -4,9 +4,9 @@ Experiment code and raw results for the empirical validation of the Behavioral
 Credibility Trilemma via Best-of-N selection. This repository accompanies the
 manuscript
 
-> L. Lovén (2026). *The Behavioral Credibility Trilemma: When Calibrated
-> Autonomy Becomes Impossible.* Journal of Machine Learning Research
-> (under review).
+> L. Lovén, N. Do, H. Mehmood, S. Tarkoma (2026). *The Behavioral
+> Credibility Trilemma: When Calibrated Autonomy Becomes Impossible.*
+> Journal of Machine Learning Research (under review).
 
 ## What's here
 
@@ -15,9 +15,13 @@ observations) testing five pre-registered hypotheses derived from the
 Behavioral Perturbation Lemma, plus a descriptive analysis of the
 achievable-(H, C, A) surface geometry of the Confidence-Gated Decision
 Problem. All five hypotheses are confirmed at α = 0.05 after
-Bonferroni–Holm correction. The repository contains the raw per-configuration
-CSVs, the Phase 0 calibration file, aggregated metrics, the hypothesis-results
-JSON, and the analysis pipeline that rebuilds the JSON from the raw data.
+Bonferroni–Holm correction. The repository ships the full simulation code,
+the task set, the experiment configs, the hypothesis-results JSON (the
+Table-1 values), and the H3 figure. The raw per-completion CSVs are not a
+deterministic function of the code (the run is a stochastic LLM-in-the-loop
+process at temperature τ = 0.8), so they are regenerable via the pipeline
+(Stages 1–2) rather than shipped; re-runs reproduce the effects, not the
+exact records.
 
 ## Reproducing the paper
 
@@ -59,7 +63,7 @@ Qwen-2.5-7B locally.
 python -m scripts.regenerate_hypothesis_results
 # Output: experiment_output/analysis_logprob/hypothesis_results.json
 
-# Plot H3 tolerance-aware Pareto-convexity violation rate by N
+# Plot H3 achievable-region convexity violation rate by N (descriptive)
 python -m scripts.plot_h3_convexity_by_N
 # Output: experiment_output/analysis_logprob/figures/h3_convexity_by_N.{pdf,png}
 ```
@@ -75,14 +79,17 @@ N_BOOT=10000 python -m scripts.regenerate_hypothesis_results
 Expected runtime: 1–3 minutes for `regenerate_hypothesis_results.py` at
 `N_BOOT=2000`, ~5 minutes at `N_BOOT=10000`. Plot script: seconds.
 
-After Stage 3, the `hypothesis_results.json` keys `H1`–`H6` should match
-Table 1 of the manuscript:
+After Stage 3, the `hypothesis_results.json` keys should match Table 1 of
+the manuscript. H1, H2, H4, H5, H6 are the **five pre-registered hypothesis
+tests** (all confirmed); **H3 is reported as the descriptive
+surface-geometry analysis** of the achievable-(H, C, A) region, not a
+confirmed test:
 
 | Hypothesis | $p$-value | Effect size |
 |---|---|---|
 | H1 Fixed-axis gating degradation | $4.67 \times 10^{-19}$ | $d = 1.10$ |
 | H2 Monotone inflation trend (Jonckheere–Terpstra) | $8.49 \times 10^{-5}$ | $\rho = 0.89$ |
-| H3 Tolerance-aware convexity | binomial test, 10% < 15% | — |
+| H3 Achievable-region convexity (descriptive) | binomial test, 10% < 15% | — |
 | H4 Threshold clustering | $< 10^{-3}$ | $z = 30.02$ |
 | H5 Binding-state specificity | $< 10^{-3}$ | $d = 5.32$ |
 | H6 Control ($w_A = 0$) | $1.35 \times 10^{-23}$ | $d = 1.31$ |
@@ -179,7 +186,8 @@ exclusively from `logprob/`.
 @article{loven2026trilemma,
   title   = {The Behavioral Credibility Trilemma: When Calibrated Autonomy
              Becomes Impossible},
-  author  = {Lov{\'e}n, Lauri},
+  author  = {Lov{\'e}n, Lauri and Do, Nam and Mehmood, Hassan and
+             Tarkoma, Sasu},
   journal = {Journal of Machine Learning Research},
   year    = {2026},
   note    = {Under review}
