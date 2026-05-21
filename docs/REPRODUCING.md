@@ -151,8 +151,9 @@ Runtime: **1–3 minutes** at `N_BOOT=2000`, **~5 minutes** at `N_BOOT=10000`.
 Output:
 
 ```
-experiment_output/analysis_logprob/hypothesis_results.json
+experiment_output/analysis/hypothesis_results.json
 ```
+(rewritten in place — this is the file the paper's Table 1 is drawn from)
 
 Generate the H3 stratified-by-$N$ figure:
 
@@ -163,7 +164,7 @@ python -m scripts.plot_h3_convexity_by_N
 Runtime: seconds. Output:
 
 ```
-experiment_output/analysis_logprob/figures/
+experiment_output/analysis/figures/
 ├── h3_convexity_by_N.pdf
 └── h3_convexity_by_N.png
 ```
@@ -195,10 +196,10 @@ with the 15% tolerance line crossed between $N = 8$ and $N = 16$.
 ## 8. Troubleshooting
 
 - **"connection refused"** — Ollama is not running; start `ollama serve`.
-- **Unexpected hypothesis numbers** — ensure you are reading
-  `analysis_logprob/hypothesis_results.json`, not the legacy
-  `analysis/hypothesis_results.json`. The `analysis/` copy is from an
-  earlier verbalized-confidence run and is not used by the paper.
+- **Unexpected hypothesis numbers** — the canonical results live in
+  `experiment_output/analysis/hypothesis_results.json` (the file the paper's
+  Table 1 is drawn from). Re-running `regenerate_hypothesis_results` rewrites
+  it in place and reproduces Table 1 exactly.
 - **Out-of-memory during Stage 2** — reduce `N_max` in
   `configs/params.yaml` and re-run. The 540-config count assumes the full
   grid.

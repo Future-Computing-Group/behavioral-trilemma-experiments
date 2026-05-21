@@ -6,7 +6,8 @@ plus phase0_calibration.csv, assembles them into a single dataframe, and
 calls run_all_tests from analysis.hypothesis_tests.
 
 Writes the updated JSON to
-  experiment_output/analysis_logprob/hypothesis_results.json
+  experiment_output/analysis/hypothesis_results.json
+(the canonical location the manuscript's Table 1 is drawn from)
 
 Usage:
     python -m scripts.regenerate_hypothesis_results
@@ -33,7 +34,7 @@ from analysis.hypothesis_tests import run_all_tests  # type: ignore  # noqa: E40
 
 
 RAW_DIR = _ROOT / "experiment_output" / "raw_runs" / "logprob" / "results"
-OUT_PATH = _ROOT / "experiment_output" / "analysis_logprob" / "hypothesis_results.json"
+OUT_PATH = _ROOT / "experiment_output" / "analysis" / "hypothesis_results.json"
 
 
 def load_phase0(results_dir: pathlib.Path) -> tuple[dict, dict]:

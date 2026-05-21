@@ -1,11 +1,11 @@
-"""Plot Pareto-convexity violation rate as a function of N.
+"""Plot achievable-region convexity violation rate as a function of N (descriptive).
 
 Reads H3_convexity_by_N from hypothesis_results.json and produces
 a publication-quality PDF showing the violation rate vs N with exact
 binomial 95% CIs and the pre-registered 15% tolerance line. This
-supports the asymptotic interpretation of Proposition 3 (the achievable
-region is convex in the limit; finite-N runs show tolerable slack that
-decreases with selection pressure).
+supports the descriptive surface-geometry analysis (the achievable
+region's frontier is approximately convex; finite-N runs show tolerable
+slack that decreases with selection pressure).
 
 Usage:
     python -m scripts.plot_h3_convexity_by_N
@@ -23,8 +23,8 @@ import numpy as np
 
 
 _ROOT = pathlib.Path(__file__).resolve().parent.parent
-IN_PATH = _ROOT / "experiment_output" / "analysis_logprob" / "hypothesis_results.json"
-OUT_DIR = _ROOT / "experiment_output" / "analysis_logprob" / "figures"
+IN_PATH = _ROOT / "experiment_output" / "analysis" / "hypothesis_results.json"
+OUT_DIR = _ROOT / "experiment_output" / "analysis" / "figures"
 OUT_PDF = OUT_DIR / "h3_convexity_by_N.pdf"
 OUT_PNG = OUT_DIR / "h3_convexity_by_N.png"
 

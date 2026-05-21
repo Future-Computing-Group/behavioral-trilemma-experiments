@@ -33,3 +33,6 @@ experiment_output/**/*.zip
 experiment_output/**/*.partial
 experiment_output/**/*.log
 experiment_output/**/_*COMPLETE
+# Vestigial frozen code snapshots under the output dir (never import these;
+# the maintained package is repo-root analysis/) — must not be tracked
+experiment_output/**/*.py
