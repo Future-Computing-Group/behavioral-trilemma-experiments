@@ -108,7 +108,6 @@ def test_updated_hypotheses_on_logprob_results():
         [
             root / "experiment_output" / "raw_runs" / "logprob" / "results",
             root / "experiment_results" / "raw_runs" / "logprob" / "results",
-            root / "puhti_output" / "results",
         ]
     )
 

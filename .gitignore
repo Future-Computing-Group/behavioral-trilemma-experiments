@@ -19,3 +19,7 @@ experiment_output/competence_probe/_runs/
 
 # Local campaign ops log (gitignored — internal, L51/L73)
 OPSLOG.md
+
+# Agent / superpowers workflow artifacts are internal (L73 recurrence 2026-05-21)
+docs/superpowers/
+**/plans/

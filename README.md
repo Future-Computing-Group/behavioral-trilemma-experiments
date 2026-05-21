@@ -11,9 +11,10 @@ manuscript
 ## What's here
 
 A 540-configuration Best-of-N sweep on Qwen-2.5-7B (54,000 selected-task
-observations) testing six pre-specified hypotheses derived from the
-Behavioral Perturbation Lemma and the Pareto bound of the Confidence-Gated
-Decision Problem. All six hypotheses are confirmed at α = 0.05 after
+observations) testing five pre-registered hypotheses derived from the
+Behavioral Perturbation Lemma, plus a descriptive analysis of the
+achievable-(H, C, A) surface geometry of the Confidence-Gated Decision
+Problem. All five hypotheses are confirmed at α = 0.05 after
 Bonferroni–Holm correction. The repository contains the raw per-configuration
 CSVs, the Phase 0 calibration file, aggregated metrics, the hypothesis-results
 JSON, and the analysis pipeline that rebuilds the JSON from the raw data.
