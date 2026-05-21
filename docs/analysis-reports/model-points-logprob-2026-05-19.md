@@ -6,7 +6,7 @@ Source: `analysis.model_points` LOGPROB loader
 (7-col schema `task,category,seed,r_logprob,answer,y,acted`). Figure
 written by `scripts/plot_model_points.py` (mode `logprob`,
 `build_logprob_figure`) to
-`experiment_output/analysis_logprob/figures/model_points_logprob.{pdf,png}`.
+`experiment_output/analysis/figures/model_points_logprob.{pdf,png}`.
 
 This is a **separate** report from `model-points-2026-05-19.md` (the
 competence-probe path); that report is not superseded or overwritten.

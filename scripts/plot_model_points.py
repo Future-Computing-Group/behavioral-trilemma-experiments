@@ -294,7 +294,7 @@ REAL_LOGPROB_RUNS_DIR = os.path.join(
     _REPO_ROOT, "experiment_output", "logprob_xmodel"
 )
 REAL_LOGPROB_FIGURES_DIR = os.path.join(
-    _REPO_ROOT, "experiment_output", "analysis_logprob", "figures"
+    _REPO_ROOT, "experiment_output", "analysis", "figures"
 )
 
 
