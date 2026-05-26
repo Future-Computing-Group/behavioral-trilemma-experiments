@@ -1,0 +1,30 @@
+{
+  "title": "The Behavioral Credibility Trilemma: When Calibrated Autonomy Becomes Impossible",
+  "description": "Code and experiment data for the empirical validation of the Behavioral Credibility Trilemma via Best-of-N selection. This repository accompanies the manuscript submitted to the Journal of Machine Learning Research (JMLR).",
+  "creators": [
+    {
+      "name": "Lovén, Lauri",
+      "affiliation": "University of Helsinki"
+    },
+    {
+      "name": "Do, Nam",
+      "affiliation": "University of Helsinki"
+    },
+    {
+      "name": "Mehmood, Hassan",
+      "affiliation": "University of Helsinki"
+    },
+    {
+      "name": "Tarkoma, Sasu",
+      "affiliation": "University of Helsinki"
+    }
+  ],
+  "keywords": [
+    "calibrated autonomy",
+    "behavioral credibility trilemma",
+    "best-of-n selection",
+    "large language models"
+  ],
+  "license": "mit",
+  "upload_type": "software"
+}
