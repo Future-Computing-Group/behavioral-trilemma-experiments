@@ -4,8 +4,8 @@ Experiment code and raw results for the empirical validation of the Behavioral
 Credibility Trilemma via Best-of-N selection. This repository accompanies the
 manuscript
 
-> L. Lovén, N. Do, H. Mehmood, S. Tarkoma (2026). *The Behavioral
-> Credibility Trilemma: When Calibrated Autonomy Becomes Impossible.*
+> L. Lovén, N. Do, H. Mehmood, S. Tarkoma (2026). _The Behavioral
+> Credibility Trilemma: When Calibrated Autonomy Becomes Impossible._
 > Journal of Machine Learning Research (under review).
 
 ## What's here
@@ -85,14 +85,14 @@ tests** (all confirmed); **H3 is reported as the descriptive
 surface-geometry analysis** of the achievable-(H, C, A) region, not a
 confirmed test:
 
-| Hypothesis | $p$-value | Effect size |
-|---|---|---|
-| H1 Fixed-axis gating degradation | $4.67 \times 10^{-19}$ | $d = 1.10$ |
-| H2 Monotone inflation trend (Jonckheere–Terpstra) | $8.49 \times 10^{-5}$ | $\rho = 0.89$ |
-| H3 Achievable-region convexity (descriptive) | binomial test, 10% < 15% | — |
-| H4 Threshold clustering | $< 10^{-3}$ | $z = 30.02$ |
-| H5 Binding-state specificity | $< 10^{-3}$ | $d = 5.32$ |
-| H6 Control ($w_A = 0$) | $1.35 \times 10^{-23}$ | $d = 1.31$ |
+| Hypothesis                                        | $p$-value                | Effect size   |
+| ------------------------------------------------- | ------------------------ | ------------- |
+| H1 Fixed-axis gating degradation                  | $4.67 \times 10^{-19}$   | $d = 1.10$    |
+| H2 Monotone inflation trend (Jonckheere–Terpstra) | $8.49 \times 10^{-5}$    | $\rho = 0.89$ |
+| H3 Achievable-region convexity (descriptive)      | binomial test, 10% < 15% | —             |
+| H4 Threshold clustering                           | $< 10^{-3}$              | $z = 30.02$   |
+| H5 Binding-state specificity                      | $< 10^{-3}$              | $d = 5.32$    |
+| H6 Control ($w_A = 0$)                            | $1.35 \times 10^{-23}$   | $d = 1.31$    |
 
 ## Repository structure
 
@@ -163,14 +163,9 @@ The oracle correctness label $y_i \in \{0, 1\}$ is set task-type-specifically:
 
 See [`src/scorer.py`](src/scorer.py) for the full verification logic.
 
-## Legacy: `experiment_output/raw_runs/qwen_2.5/`
+## Note on Verbalized Confidence
 
-The `qwen_2.5/` subdirectory contains results from an earlier run using
-verbalized confidence (the model states its own confidence in prose). The
-`logprob/` results supersede these. The legacy directory is kept for
-audit-trail purposes and should not be used for the paper's analysis
-pipeline; all `regenerate_hypothesis_results.py` and `plot_*` scripts load
-exclusively from `logprob/`.
+During experiments, we asked the model (here Qwen-2.5-7B) to state its confidence for each answer to help analyze the calibration tradeoff. However, the reported confidence was unreliably high -- the model consistently responded with 100% confidence regardless of correctness or task difficulty. This made meaningful calibration analysis impossible, which motivated our switch to token-level log probabilities as the confidence measure instead.
 
 ## Citation
 
