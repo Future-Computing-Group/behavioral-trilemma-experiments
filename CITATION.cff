@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Lovén"
+    given-names: "Lauri"
+    affiliation: "University of Oulu"
+  - family-names: "Do"
+    given-names: "Nam"
+    affiliation: "University of Oulu"
+  - family-names: "Mehmood"
+    given-names: "Hassan"
+    affiliation: "University of Oulu"
+  - family-names: "Sah"
+    given-names: "Dinesh Kumar"
+    affiliation: "University of Oulu"
+  - family-names: "Tarkoma"
+    given-names: "Sasu"
+    affiliation: "University of Helsinki"
+title: "The Behavioral Credibility Trilemma: When Calibrated Autonomy Becomes Impossible"
+version: 1.0-jmlr-submission
+date-released: 2026-05-26
+url: "https://github.com/Future-Computing-Group/behavioral-trilemma-experiments"
