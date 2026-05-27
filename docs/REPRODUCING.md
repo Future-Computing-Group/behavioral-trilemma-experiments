@@ -4,7 +4,7 @@ Step-by-step guide to reproducing the 540-configuration Best-of-N sweep and the
 analysis (five pre-registered hypothesis tests, plus the descriptive H3
 surface-geometry analysis) reported in the JMLR A1 manuscript
 *The Behavioral Credibility Trilemma: When Calibrated Autonomy Becomes
-Impossible* (Lovén, Do, Mehmood, and Tarkoma, 2026).
+Impossible* (Lovén, Do, Mehmood, Sah, and Tarkoma, 2026).
 
 The raw per-completion CSVs are not shipped (the run is a stochastic
 LLM-in-the-loop process; re-runs reproduce the effects, not the exact
@@ -214,7 +214,7 @@ with the 15% tolerance line crossed between $N = 8$ and $N = 16$.
   title   = {The Behavioral Credibility Trilemma: When Calibrated Autonomy
              Becomes Impossible},
   author  = {Lov{\'e}n, Lauri and Do, Nam and Mehmood, Hassan and
-             Tarkoma, Sasu},
+             Sah, Dinesh Kumar and Tarkoma, Sasu},
   journal = {Journal of Machine Learning Research},
   year    = {2026},
   note    = {Under review}

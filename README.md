@@ -4,7 +4,7 @@ Experiment code and raw results for the empirical validation of the Behavioral
 Credibility Trilemma via Best-of-N selection. This repository accompanies the
 manuscript
 
-> L. Lovén, N. Do, H. Mehmood, S. Tarkoma (2026). *The Behavioral
+> L. Lovén, N. Do, H. Mehmood, D. K. Sah, S. Tarkoma (2026). *The Behavioral
 > Credibility Trilemma: When Calibrated Autonomy Becomes Impossible.*
 > Journal of Machine Learning Research (under review).
 
@@ -179,7 +179,7 @@ exclusively from `logprob/`.
   title   = {The Behavioral Credibility Trilemma: When Calibrated Autonomy
              Becomes Impossible},
   author  = {Lov{\'e}n, Lauri and Do, Nam and Mehmood, Hassan and
-             Tarkoma, Sasu},
+             Sah, Dinesh Kumar and Tarkoma, Sasu},
   journal = {Journal of Machine Learning Research},
   year    = {2026},
   note    = {Under review}
