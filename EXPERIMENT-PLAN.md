@@ -24,7 +24,7 @@ operator is the mechanism; the number of candidates N is the optimization pressu
 ## 3. Theoretical predictions
 
 > **Note (post-analysis reconciliation with the published manuscript).** This
-> section is the *pre-registered* protocol and is kept verbatim. Two points
+> section is the original analysis protocol and is reproduced below. Two points
 > diverged in the final paper and are clarified here rather than rewritten
 > above: (1) the H1 mechanism is the covariance inequality for monotone
 > functions under log-concave measures (Harris 1960; Proschan–Sethuraman
@@ -33,7 +33,7 @@ operator is the mechanism; the number of candidates N is the optimization pressu
 > referenced under H3 was not retained as a theorem in the final manuscript;
 > H3 is reported as a *descriptive* surface-geometry analysis of the
 > achievable-(H, C, A) region. The paper therefore reports five confirmed
-> pre-registered hypothesis tests (H1, H2, H4–H6) plus the descriptive H3.
+> hypothesis tests (H1, H2, H4–H6) plus the descriptive H3.
 
 ### H1 (FKG degradation, Proposition 7)
 Best-of-N selection under composite payoff degrades calibration monotonically with N.
@@ -44,7 +44,7 @@ Cov(V, r) > 0 when q is monotone, so selection for high V biases toward high r.
 **Quantitative prediction:** Brier score increases as O(log N) for large N
 (extreme value theory scaling of the maximum of N draws).
 
-**Pre-specified effect size:** BS(N=32) - BS(N=1) ≥ 0.02 (2 percentage points
+**Target effect size:** BS(N=32) - BS(N=1) ≥ 0.02 (2 percentage points
 of Brier degradation) for w_A/w_C ≥ 1.0. Below this threshold, the effect is
 not practically meaningful even if statistically significant. Cohen's d ≥ 0.3
 (small-medium effect).
@@ -62,7 +62,7 @@ inflation onset occurs at w_A/w_C = g_t². The fraction of binding tasks
 inflating increases monotonically with w_A/w_C. Mean Δ on inflating tasks
 is approximately r_min - p_t (the minimum inflation to clear the gate).
 
-**Pre-specified effect size:** For r_min = 0.7, assuming median binding gap
+**Target effect size:** For r_min = 0.7, assuming median binding gap
 g = 0.2, onset occurs at w_A/w_C = 0.04. At w_A/w_C = 1.0, all tasks with
 g < 1.0 inflate. The minimum detectable Δ per task is g_t (the gap itself).
 H2 is confirmed if regression slope β_1 > 0 with the predicted onset pattern.

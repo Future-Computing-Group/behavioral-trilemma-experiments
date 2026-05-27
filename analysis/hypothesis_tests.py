@@ -238,7 +238,7 @@ def test_h2_inflation_scaling(
 
 # ---------------------------------------------------------------------------
 # H3: Achievable-region convexity (descriptive surface-geometry analysis;
-#     not a confirmed pre-registered test in the final manuscript)
+#     not a confirmed hypothesis test in the final manuscript)
 # ---------------------------------------------------------------------------
 
 def test_h3_pareto_convexity(df: pd.DataFrame) -> dict:
@@ -1041,7 +1041,7 @@ def test_h3_prime_approx_convexity(
     noise in (H, C, A) estimates induces small violations of strict
     midpoint-interpolation convexity. The test allows a 5% per-axis slack
     (applied inside test_h3_pareto_convexity) and passes if the overall
-    violation rate is below a pre-specified tolerance.
+    violation rate is below a fixed tolerance.
 
     Parameters
     ----------
@@ -1049,7 +1049,7 @@ def test_h3_prime_approx_convexity(
         Output of test_h3_pareto_convexity(df). Must contain keys
         'violations' and 'total_tests'.
     tolerance : float
-        Pre-specified violation-rate threshold. Default 0.15 (15%).
+        Fixed violation-rate threshold. Default 0.15 (15%).
 
     Returns
     -------
@@ -1202,7 +1202,7 @@ def run_all_tests(
 
     The FINAL (reported) specifications for H1-H3 are the theory-aligned tests
     (axis-, shape-, and tolerance-corrected per Section 10.4 of the manuscript).
-    The original pre-registered specifications are retained under
+    The original protocol specifications are retained under
     `original_prereg_spec` as an audit trail. H4-H6 are unchanged.
 
     Additionally reports:
@@ -1223,7 +1223,7 @@ def run_all_tests(
     """
     binding_07 = (binding_tasks or {}).get(0.7, set())
 
-    # -- Pre-registered original specifications (kept as audit trail) --------
+    # -- Original protocol specifications (kept as audit trail) --------------
     prereg_H1 = test_h1_fkg_degradation(df, n_boot=n_boot)
     prereg_H2 = test_h2_inflation_scaling(
         df, binding_tasks=binding_07, p_hat=p_hat, n_boot=n_boot
@@ -1287,7 +1287,7 @@ def run_all_tests(
         f"H{i+1}": c for i, c in enumerate(correction)
     }
 
-    # -- Audit trail: pre-registered specs preserved -------------------------
+    # -- Audit trail: original protocol specs preserved ----------------------
     results["original_prereg_spec"] = {
         "H1": prereg_H1,
         "H2": prereg_H2,

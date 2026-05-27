@@ -1,7 +1,7 @@
 # Reproducing the paper
 
 Step-by-step guide to reproducing the 540-configuration Best-of-N sweep and the
-analysis (five pre-registered hypothesis tests, plus the descriptive H3
+analysis (five hypothesis tests, plus the descriptive H3
 surface-geometry analysis) reported in the JMLR A1 manuscript
 *The Behavioral Credibility Trilemma: When Calibrated Autonomy Becomes
 Impossible* (Lovén, Do, Mehmood, Sah, and Tarkoma, 2026).
@@ -172,7 +172,7 @@ experiment_output/analysis/figures/
 ## 7. Verify the results match the manuscript
 
 The JSON's top-level keys should match Table 1 of the manuscript. H1, H2,
-H4, H5, H6 are the five pre-registered hypothesis tests; H3 is the
+H4, H5, H6 are the five hypothesis tests; H3 is the
 descriptive surface-geometry analysis (reported, not a confirmed test):
 
 | Key | Expected | Manuscript |

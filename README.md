@@ -11,7 +11,7 @@ manuscript
 ## What's here
 
 A 540-configuration Best-of-N sweep on Qwen-2.5-7B (54,000 selected-task
-observations) testing five pre-registered hypotheses derived from the
+observations) testing five hypotheses derived from the
 Behavioral Perturbation Lemma, plus a descriptive analysis of the
 achievable-(H, C, A) surface geometry of the Confidence-Gated Decision
 Problem. All five hypotheses are confirmed at α = 0.05 after
@@ -80,7 +80,7 @@ Expected runtime: 1–3 minutes for `regenerate_hypothesis_results.py` at
 `N_BOOT=2000`, ~5 minutes at `N_BOOT=10000`. Plot script: seconds.
 
 After Stage 3, the `hypothesis_results.json` keys should match Table 1 of
-the manuscript. H1, H2, H4, H5, H6 are the **five pre-registered hypothesis
+the manuscript. H1, H2, H4, H5, H6 are the **five hypothesis
 tests** (all confirmed); **H3 is reported as the descriptive
 surface-geometry analysis** of the achievable-(H, C, A) region, not a
 confirmed test:

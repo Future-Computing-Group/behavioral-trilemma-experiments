@@ -2,7 +2,7 @@
 
 Reads H3_convexity_by_N from hypothesis_results.json and produces
 a publication-quality PDF showing the violation rate vs N with exact
-binomial 95% CIs and the pre-registered 15% tolerance line. This
+binomial 95% CIs and the fixed 15% tolerance line. This
 supports the descriptive surface-geometry analysis (the achievable
 region's frontier is approximately convex; finite-N runs show tolerable
 slack that decreases with selection pressure).
