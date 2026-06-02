@@ -6,7 +6,8 @@ manuscript
 
 > L. Lovén, N. Do, H. Mehmood, D. K. Sah, S. Tarkoma (2026). _The Behavioral
 > Credibility Trilemma: When Calibrated Autonomy Becomes Impossible._
-> Journal of Machine Learning Research (under review).
+> Preprint, [arXiv:2605.25739](https://arxiv.org/abs/2605.25739).
+> In preparation for submission to the Journal of Machine Learning Research.
 
 ## What's here
 
@@ -25,36 +26,64 @@ exact records.
 
 ## Reproducing the paper
 
-The full pipeline consists of three stages:
+The pipeline is **two-stage**: a Stage-A pool generator that calls Ollama
+once per `(task, seed, draw)` to capture per-completion text + per-token
+logprobs + the parsed answer + oracle correctness; and a Stage-B selector
+that runs Best-of-N argmax over the pool for each of the 540 weight-config
+cells. Stage A is the expensive step (~14 h of local Ollama); Stage B is
+purely deterministic and runs in seconds against the pool jsonls. Plus a
+Phase-0 calibration step that estimates per-task base accuracy from a
+disjoint held-out seed split.
 
-### Stage 1: Phase 0 calibration (held-out)
+### Stage 0: Phase-0 calibration (held-out, 20 seeds)
 
 Estimates per-task base accuracy $\hat{p}_t$ and binding-set membership at
-each threshold $r_{\min} \in \{0.5, 0.7, 0.9\}$. Uses 20 held-out seeds
-`{1000..1019}`, disjoint from the experimental seeds to avoid circularity in
+each threshold $r_{\min} \in \{0.5, 0.7, 0.9\}$ using 20 held-out seeds
+`{1000..1019}`, disjoint from the experimental seeds. Avoids circularity in
 the H5 binding-state-specificity test.
 
 ```bash
-python -m scripts.run --mode phase0
-# Output: experiment_output/raw_runs/logprob/results/phase0_calibration.csv
+python -m scripts.run --phase0
+# Output: results/phase0_calibration.csv  (read into the analysis pipeline
+#         from experiment_output/raw_runs/qwen_2.5/phase0_calibration.csv)
 ```
 
 Estimated runtime: ~1 hour on a single machine.
 
-### Stage 2: Full 540-config Best-of-N sweep
+### Stage A: pool generation (32 completions × 100 tasks × 5 seeds)
+
+Generates the per-completion pool jsonl files that Stage B consumes.
 
 ```bash
-python -m scripts.run --mode full
-# Output: 540 per-configuration CSVs under
-#         experiment_output/raw_runs/logprob/results/
+python -m scripts.generate_pool --smoke         # ~30 s, 4 completions
+python -m scripts.generate_pool --seed 0        # ~2-3 h, one seed
+python -m scripts.generate_pool --all-seeds     # ~14 h, the full sweep
+# Output: experiment_output/raw_runs/logprob/pools/
+#           pool_meta_qwen2.5_7b_N32.json
+#           pool_qwen2.5_7b_seed{42,123,456,789,0}_N32.jsonl
 ```
 
-Sweep: $N \in \{1, 2, 4, 8, 16, 32\}$, $w_A/w_C \in \{0, 0.25, 0.5, 1, 2, 4\}$,
-$r_{\min} \in \{0.5, 0.7, 0.9\}$, seeds $\{0, 42, 123, 456, 789\}$.
-Total configurations: $6 \times 6 \times 3 \times 5 = 540$.
+Stage A is the only step that needs Ollama (`qwen2.5:7b` via the
+OpenAI-compatible `/v1/chat/completions` endpoint with `logprobs:true`).
+Re-runs at the same seeds are NOT byte-identical — `llama.cpp` build and
+hardware perturb the per-token logprobs — so re-runs reproduce the reported
+effects rather than exact records (manuscript §exp-compute).
 
-Estimated runtime: ~14 hours on a single machine with Ollama serving
-Qwen-2.5-7B locally.
+### Stage B: Best-of-N selection (540 per-config CSVs from the pools)
+
+Reads the pool jsonls + applies the oracle payoff
+$V_i = -w_C(r_i - y_i)^2 + w_A \mathbf{1}\{r_i \geq r_{\min}\}$ at every
+$(N, w_A/w_C, r_{\min}, \text{seed})$ cell, argmax-selects with first-index
+tie-breaking, and writes 540 per-config CSVs. Pure-deterministic; runs in
+~5 s against the pre-generated pools.
+
+```bash
+python -m scripts.select_from_pool --all --out-dir /tmp/regen \
+    --verify-against-shipped
+# Output: 540 CSVs under /tmp/regen, matching the shipped
+#         experiment_output/raw_runs/logprob/results/*.csv byte-for-byte
+#         when run against the shipped pools.
+```
 
 ### Stage 3: Analysis and figures
 
@@ -68,16 +97,15 @@ python -m scripts.plot_h3_convexity_by_N
 # Output: experiment_output/analysis/figures/h3_convexity_by_N.{pdf,png}
 ```
 
-`N_BOOT` environment variable controls bootstrap-CI resamples for H1/H5/H6
-(default 2000; the paper uses 10000 in a final run but 2000 is within
-measurement noise and much faster):
+`N_BOOT` controls bootstrap-CI resamples for H1/H4/H5/H6 (default 10000,
+matching the manuscript):
 
 ```bash
-N_BOOT=10000 python -m scripts.regenerate_hypothesis_results
+N_BOOT=2000 python -m scripts.regenerate_hypothesis_results  # ~1 min, smoke
+N_BOOT=10000 python -m scripts.regenerate_hypothesis_results # ~5 min, paper
 ```
 
-Expected runtime: 1–3 minutes for `regenerate_hypothesis_results.py` at
-`N_BOOT=2000`, ~5 minutes at `N_BOOT=10000`. Plot script: seconds.
+Plot script: seconds.
 
 After Stage 3, the `hypothesis_results.json` keys should match Table 1 of
 the manuscript. H1, H2, H4, H5, H6 are the **five hypothesis
@@ -105,17 +133,23 @@ analysis/
   hypothesis_tests.py                        # H1–H6 tests + helpers
   metrics.py                                 # Brier decomposition etc.
   figures.py                                 # general figure utilities
+  logprob_confidence.py                      # logprob-confidence geomean (manuscript Eq.)
 configs/
   params.yaml                                # weight grid, seeds, r_min
 scripts/
-  run.py                                     # orchestrator (phase0 + full)
-  regenerate_hypothesis_results.py           # rebuild JSON from raw CSVs
+  run.py                                     # legacy single-stage orchestrator (Phase 0)
+  generate_pool.py                           # Stage A: 32-completion pool jsonl per (task, seed)
+  select_from_pool.py                        # Stage B: Best-of-N argmax → 540 per-config CSVs
+  regenerate_hypothesis_results.py           # rebuild JSON from per-config CSVs + Phase 0
   plot_h3_convexity_by_N.py                  # H3 stratified-by-N figure
+  plot_model_points.py                       # Appendix cross-model figure
+  eval_logprob.py                            # one-cell driver for the cross-model figure
   generate_tasks.py                          # task generation
 src/
-  orchestrator.py                            # per-config runner
-  ollama_client.py                           # Ollama OpenAI-compatible client
-  parser.py                                  # response parser
+  orchestrator.py                            # per-config runner (legacy verbalized path)
+  ollama_client.py                           # Ollama native /api/generate client
+  ollama_logprob_client.py                   # Ollama OpenAI-compat /v1 client w/ logprobs
+  parser.py                                  # response parser (CONFIDENCE + ANSWER)
   scorer.py                                  # composite payoff
 tasks/                                       # 100 tasks (arith/factual/code)
 tests/                                       # pytest unit tests
@@ -124,10 +158,11 @@ experiment_output/
     hypothesis_results.json                  #   shipped; rewritten by Stage 3
     figures/h3_convexity_by_N.{pdf,png}      #   shipped; manuscript Figure 2
     (aggregate metric CSVs regenerated here by Stage 3)
-  competence_probe/figures/model_points.*    # shipped; model-points figure
-  logprob_xmodel/<model>/<model>_s{0..4}.csv # shipped; cross-model logprob CSVs
-  raw_runs/logprob/results/                  # NOT shipped — regenerated by Stages 1-2
-                                             #   (540 per-config CSVs + phase0)
+  competence_probe/figures/model_points.*    # shipped; cross-model figure
+  raw_runs/                                  # NOT shipped (gitignored, L73);
+    logprob/pools/                           #   Stage A output (regenerated by --all-seeds)
+    logprob/results/                         #   Stage B output (regenerated from pools)
+    qwen_2.5/phase0_calibration.csv          #   shipped Phase-0 (20-seed protocol)
 docs/
   REPRODUCING.md                             # step-by-step reproduction guide
 ```
