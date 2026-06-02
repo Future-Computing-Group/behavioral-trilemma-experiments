@@ -1253,9 +1253,20 @@ def run_all_tests(
     h4["ci_hi"] = h4_best["ci_hi"]
     h4["effect_size"] = h4_best["effect_size"]
 
-    h5 = test_h5_binding_specificity(
-        df, binding_tasks=binding_07, p_hat=p_hat or {}, n_boot=n_boot
-    )
+    # H5: run the test at every r_min so the manuscript's "ratio up to X
+    # at r_min=0.9" claim is verifiable directly from the artefact. The
+    # canonical (top-level) H5 stays at r_min=0.7 for continuity with the
+    # original protocol; per-threshold results live under H5_by_rmin.
+    h5_by_rmin = {
+        r_min: test_h5_binding_specificity(
+            df,
+            binding_tasks=(binding_tasks or {}).get(r_min, set()),
+            p_hat=p_hat or {},
+            n_boot=n_boot,
+        )
+        for r_min in (0.5, 0.7, 0.9)
+    }
+    h5 = h5_by_rmin[0.7]
     h6 = test_h6_control_improves(df, n_boot=n_boot)
 
     # -- Top-level H1-H6 keys point to the FINAL specs ----------------------
@@ -1265,6 +1276,7 @@ def run_all_tests(
         "H3": final_H3,
         "H4": h4,
         "H5": h5,
+        "H5_by_rmin": h5_by_rmin,
         "H6": h6,
     }
 

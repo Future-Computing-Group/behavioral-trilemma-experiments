@@ -34,11 +34,20 @@ from analysis.hypothesis_tests import run_all_tests  # type: ignore  # noqa: E40
 
 
 RAW_DIR = _ROOT / "experiment_output" / "raw_runs" / "logprob" / "results"
+# Phase-0 (binding-set identification) is sourced from the 20-seed-honest
+# file at raw_runs/qwen_2.5/phase0_calibration.csv, which matches the
+# manuscript's stated protocol ("p_hat per task from the base model's
+# accuracy on 20 held-out seeds {1000..1019}", §exp-tasks). An older path
+# pooled 8 sweep cells × 20 seeds = 160 observations per task; its
+# binding-set sizes (72/73/76 at r_min=0.5/0.7/0.9) drifted from the
+# protocol-honest 71/72/74. Switched 2026-06-02 per audit B-A2-1.
+PHASE0_PATH = (_ROOT / "experiment_output" / "raw_runs" / "qwen_2.5"
+               / "phase0_calibration.csv")
 OUT_PATH = _ROOT / "experiment_output" / "analysis" / "hypothesis_results.json"
 
 
-def load_phase0(results_dir: pathlib.Path) -> tuple[dict, dict]:
-    phase0 = pd.read_csv(results_dir / "phase0_calibration.csv")
+def load_phase0(phase0_path: pathlib.Path = PHASE0_PATH) -> tuple[dict, dict]:
+    phase0 = pd.read_csv(phase0_path)
     p_hat = {row.task_id: float(row.p_hat) for row in phase0.itertuples(index=False)}
     binding = {
         0.5: set(phase0.loc[phase0["binding_0.5"] == 1, "task_id"]),
@@ -59,15 +68,20 @@ def load_dataframe(results_dir: pathlib.Path) -> pd.DataFrame:
 
 
 def main() -> None:
-    p_hat, binding = load_phase0(RAW_DIR)
+    p_hat, binding = load_phase0()
     df = load_dataframe(RAW_DIR)
     print(f"Loaded {len(df):,} rows, {df['task_id'].nunique()} tasks, "
           f"N={sorted(df['N'].unique())}, "
           f"w_ratio={sorted(df['w_ratio'].unique())}, "
           f"r_min={sorted(df['r_min'].unique())}, "
           f"seeds={sorted(df['seed'].unique())}")
+    print(f"Phase-0 binding-set sizes: "
+          f"{', '.join(f'r_min={r}: {len(b)}' for r, b in sorted(binding.items()))}")
 
-    n_boot = int(os.environ.get("N_BOOT", "2000"))
+    # Manuscript §exp-stats specifies 10,000 bootstrap resamples for
+    # mean-difference and effect-size CIs. The N_BOOT env var allows
+    # faster smoke runs; the canonical artefact is regenerated at 10000.
+    n_boot = int(os.environ.get("N_BOOT", "10000"))
     print(f"Running hypothesis tests with n_boot={n_boot}...")
     results = run_all_tests(df, binding_tasks=binding, p_hat=p_hat, n_boot=n_boot)
 
@@ -96,6 +110,13 @@ def main() -> None:
                    f"z={final['H4']['z']:.2f}"))
     print(decision("H5", final["H5"]["p_value"],
                    f"d={final['H5']['effect_size']:.2f}"))
+    # Per-r_min H5 (drives the manuscript's "ratio up to X at r_min=0.9" claim).
+    h5_by = results.get("H5_by_rmin", {})
+    if h5_by:
+        print("  H5 by r_min: " + ", ".join(
+            f"r_min={r}: d={h5_by[r]['effect_size']:.2f} ratio={h5_by[r]['ratio']:.0f}x"
+            for r in sorted(h5_by)
+        ))
     print(decision("H6", final["H6"]["p_value"],
                    f"d={final['H6']['effect_size']:.2f}"))
 
