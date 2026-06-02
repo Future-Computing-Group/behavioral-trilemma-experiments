@@ -10,12 +10,27 @@ analysis/figures/*.pdf
 notes/
 .env
 
-# Experiment data must not be tracked (L73 — no internal data in git)
+# Experiment data must not be tracked (L73 — no internal data in git).
+# Pattern note: `experiment_output/**/*.csv` did NOT actually catch
+# nested CSVs under `experiment_output/logprob_xmodel/*/*.csv` on some git
+# versions, so we add the explicit subtree rule too. Run
+# `git check-ignore -v <path>` to verify before assuming a path is ignored.
 experiment_output/**/*.csv
 experiment_output/**/*.csv.orig
 experiment_output/**/*.json
 experiment_output/**/*.jsonl
+experiment_output/logprob_xmodel/
+experiment_output/raw_runs/
+experiment_output/analysis_logprob/
 experiment_output/competence_probe/_runs/
+# Re-permit the canonical results JSON (manuscript Table 1) + the H3 figure
+# + the cross-model figure + the competence-probe figure, all of which are
+# load-bearing for the artefact reviewers will inspect.
+!experiment_output/analysis/hypothesis_results.json
+!experiment_output/analysis/figures/h3_convexity_by_N.pdf
+!experiment_output/analysis/figures/h3_convexity_by_N.png
+!experiment_output/competence_probe/figures/
+!experiment_output/competence_probe/figures/*
 
 # Local campaign ops log (gitignored — internal, L51/L73)
 OPSLOG.md
