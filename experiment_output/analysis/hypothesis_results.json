@@ -147,20 +147,14 @@
     "H1": {
       "rank": 4,
       "original_p": 4.66712529351552e-19,
-      "adjusted_p": 1.400137588054656e-18,
+      "adjusted_p": 9.33425058703104e-19,
       "rejected": true
     },
     "H2": {
       "rank": 5,
       "original_p": 8.489321970750474e-05,
-      "adjusted_p": 0.00016978643941500948,
+      "adjusted_p": 8.489321970750474e-05,
       "rejected": true
-    },
-    "H3": {
-      "rank": 6,
-      "original_p": 0.18484131448273428,
-      "adjusted_p": 0.18484131448273428,
-      "rejected": false
     },
     "H4": {
       "rank": 1,
@@ -177,7 +171,7 @@
     "H6": {
       "rank": 3,
       "original_p": 1.345188577296134e-23,
-      "adjusted_p": 5.380754309184536e-23,
+      "adjusted_p": 4.035565731888402e-23,
       "rejected": true
     }
   },

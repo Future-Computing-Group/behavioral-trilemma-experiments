@@ -44,8 +44,9 @@ the H5 binding-state-specificity test.
 
 ```bash
 python -m scripts.run --phase0
-# Output: results/phase0_calibration.csv  (read into the analysis pipeline
-#         from experiment_output/raw_runs/qwen_2.5/phase0_calibration.csv)
+# Output: experiment_output/raw_runs/qwen_2.5/phase0_calibration.csv
+# (the canonical Phase-0 artifact; this exact file is what
+#  scripts/regenerate_hypothesis_results.py reads)
 ```
 
 Estimated runtime: ~1 hour on a single machine.
@@ -201,6 +202,8 @@ See [`src/scorer.py`](src/scorer.py) for the full verification logic.
 ## Note on Verbalized Confidence
 
 During experiments, we asked the model (here Qwen-2.5-7B) to state its confidence for each answer to help analyze the calibration tradeoff. However, the reported confidence was unreliably high -- the model consistently responded with 100% confidence regardless of correctness or task difficulty. This made meaningful calibration analysis impossible, which motivated our switch to token-level log probabilities as the confidence measure instead.
+
+The archived per-config CSVs from that earlier verbalised run are retained for provenance under `experiment_output/raw_runs/qwen_2.5/` (selected confidence in the `r_selected` column: 93.3% of the 53,928 selected completions at r = 1.0 and the remaining 6.7% at r = 0.95). The manuscript's hypothesis results rest on the log-probability pipeline alone; the verbalised run is documented as degenerate, not used as a robustness check.
 
 ## Citation
 

@@ -146,3 +146,27 @@ def test_updated_hypotheses_on_logprob_results():
     assert results["H5"]["ratio"] > 2.0
     assert results["H6"]["statistic"] < 0
     assert results["H6"]["p_value"] < 0.05
+
+
+def test_holm_family_is_confirmatory_five():
+    """Manuscript §exp-stats: Bonferroni-Holm runs over the confirmatory
+    family {H1, H2, H4, H5, H6}; H3 is descriptive and carries no
+    inferential weight, so it must NOT appear in the correction block
+    (and must not inflate the family size m)."""
+    root = pathlib.Path(__file__).resolve().parent.parent
+    results_dir = _first_existing(
+        [
+            root / "experiment_output" / "raw_runs" / "logprob" / "results",
+            root / "experiment_results" / "raw_runs" / "logprob" / "results",
+        ]
+    )
+    phase0_path = results_dir / "phase0_calibration.csv"
+    if not phase0_path.exists():
+        pytest.skip("phase0_calibration.csv not found.")
+    df = load_results(results_dir)
+    p_hat, binding_sets = _load_phase0_simple(phase0_path)
+    results = run_all_tests(df, binding_tasks=binding_sets, p_hat=p_hat, n_boot=1)
+    assert set(results["correction"].keys()) == {"H1", "H2", "H4", "H5", "H6"}
+    # Family size m = 5: the most significant p-value's adjustment factor is 5.
+    ranks = {k: v["rank"] for k, v in results["correction"].items()}
+    assert sorted(ranks.values()) == [1, 2, 3, 4, 5]

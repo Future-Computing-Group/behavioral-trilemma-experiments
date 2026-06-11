@@ -1280,23 +1280,25 @@ def run_all_tests(
         "H6": h6,
     }
 
-    # -- Bonferroni-Holm correction over the FINAL family -------------------
+    # -- Bonferroni-Holm correction over the confirmatory family ------------
+    # Family = {H1, H2, H4, H5, H6} (m = 5), matching the manuscript's
+    # pre-specified confirmatory set. H3 is the descriptive surface-geometry
+    # observation and carries no inferential weight, so it is reported
+    # alongside the family but excluded from the correction.
     h4_p = min(
         (v["p_value"] for k, v in h4.items() if isinstance(k, (int, float))),
         default=1.0,
     )
-    h3_p = final_H3.get("p_value", 1.0)
-    p_values = [
-        final_H1["p_value"],
-        final_H2["p_value"],
-        h3_p,
-        h4_p,
-        h5["p_value"],
-        h6["p_value"],
+    family = [
+        ("H1", final_H1["p_value"]),
+        ("H2", final_H2["p_value"]),
+        ("H4", h4_p),
+        ("H5", h5["p_value"]),
+        ("H6", h6["p_value"]),
     ]
-    correction = bonferroni_holm(p_values, alpha=alpha)
+    correction = bonferroni_holm([p for _, p in family], alpha=alpha)
     results["correction"] = {
-        f"H{i+1}": c for i, c in enumerate(correction)
+        name: c for (name, _), c in zip(family, correction)
     }
 
     # -- Audit trail: original protocol specs preserved ----------------------
