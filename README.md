@@ -208,14 +208,16 @@ The archived per-config CSVs from that earlier verbalised run are retained for p
 ## Citation
 
 ```bibtex
-@article{loven2026trilemma,
-  title   = {The Behavioral Credibility Trilemma: When Calibrated Autonomy
-             Becomes Impossible},
-  author  = {Lov{\'e}n, Lauri and Do, Nam and Mehmood, Hassan and
-             Sah, Dinesh Kumar and Tarkoma, Sasu},
-  journal = {Journal of Machine Learning Research},
-  year    = {2026},
-  note    = {Under review}
+@misc{loven2026trilemma,
+  title         = {The Behavioral Credibility Trilemma: When Calibrated Autonomy
+                   Becomes Impossible},
+  author        = {Lov{\'e}n, Lauri and Do, Nam and Mehmood, Hassan and
+                   Sah, Dinesh Kumar and Tarkoma, Sasu},
+  year          = {2026},
+  eprint        = {2605.25739},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2605.25739}
 }
 ```
 

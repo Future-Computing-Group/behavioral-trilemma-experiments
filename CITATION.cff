@@ -20,3 +20,23 @@ title: "The Behavioral Credibility Trilemma: When Calibrated Autonomy Becomes Im
 version: 1.1-jmlr-submission
 date-released: 2026-06-11
 url: "https://github.com/Future-Computing-Group/behavioral-trilemma-experiments"
+preferred-citation:
+  type: article
+  title: "The Behavioral Credibility Trilemma: When Calibrated Autonomy Becomes Impossible"
+  authors:
+    - family-names: "Lovén"
+      given-names: "Lauri"
+    - family-names: "Do"
+      given-names: "Nam"
+    - family-names: "Mehmood"
+      given-names: "Hassan"
+    - family-names: "Sah"
+      given-names: "Dinesh Kumar"
+    - family-names: "Tarkoma"
+      given-names: "Sasu"
+  year: 2026
+  url: "https://arxiv.org/abs/2605.25739"
+  identifiers:
+    - type: other
+      value: "arXiv:2605.25739"
+      description: "arXiv preprint"
