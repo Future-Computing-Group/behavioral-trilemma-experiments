@@ -207,6 +207,14 @@ The archived per-config CSVs from that earlier verbalised run are retained for p
 
 ## Citation
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20392749.svg)](https://doi.org/10.5281/zenodo.20392749)
+
+Archival snapshots are deposited at Zenodo: concept DOI
+[10.5281/zenodo.20392749](https://doi.org/10.5281/zenodo.20392749) (always resolves
+to the latest version); this release (v1.1-jmlr-submission) is
+[10.5281/zenodo.20646964](https://doi.org/10.5281/zenodo.20646964).
+
+
 ```bibtex
 @misc{loven2026trilemma,
   title         = {The Behavioral Credibility Trilemma: When Calibrated Autonomy
