@@ -609,3 +609,112 @@ untouched). §9's reduced-grid design is retired.
 4. The E-A decision criterion (all-5 match) and the E-B replication
    criterion (all-5 match per model) are frozen by this section and may
    not be reinterpreted after results exist.
+
+### §11 E-A amendment 1 (2026-06-12)
+
+**Provenance and honesty statement.** This amendment is written AFTER the
+§11.E-A.3 smoke ladder step (iii) (full-540 $V_c$ Stage B + `N_BOOT=2000`
+regenerate) and BEFORE any canonical (`N_BOOT=10000`) E-A artifact exists.
+The smoke run produced Holm-5 decisions {H1: False, H2: False, H4: True,
+H5: True, H6: False} against the primary's all-True, and the L23/L91
+diagnosis (verified on the smoke artifacts before this amendment was
+drafted) shows the discrepancy is a CONSTRUCT property of $V_c$, not an
+empirical finding about the data: the archived Stage-A pools predate all
+of §11.E-A and are not touched by this amendment, so this is
+analysis-design iteration on a fixed dataset, not data-contingent
+cherry-picking. The amendment is recorded openly rather than silently
+revising §11.E-A (per the §11 honesty clauses: no quiet criterion
+changes).
+
+**Diagnosis (verified empirically on the 540 comonotone CSVs).** Above
+the gate, $V_c$ is $y$-independent and strictly increasing in $r$, so
+within the gate-cleared set the argmax is always the max-$r$ candidate
+REGARDLESS of $(w_A, w_C)$. In the archived pools this w-invariance is
+total: the selected candidate is identical across all 6 $w$-levels in
+9000/9000 $(N, r_{\min}, s, t)$ groups, and all 48,984 gate-cleared
+selections pick the max-$r$ cleared candidate. Consequently the
+weight-contrast hypotheses lose their treatment variable BY CONSTRUCTION:
+H1's contrast BS($w{=}4$) − BS($w{=}0$) is identically zero (paired t is
+0/0 = NaN), H2's trend variable is constant in $w$ ($z = 0$, $\rho$ =
+NaN), and the H6 control reverses sign (mean BS(N=32) − BS(N=1) at
+$w_A{=}0$ is +0.030: comonotone selection alone inflates, which is
+exactly `prop:bon`(i)'s prediction, anticipated for H6 in §11.E-A.4's
+contingency but realized here for H1/H2 as structural degeneracy, not as
+evidence). The mechanism hypotheses H4 (threshold clustering) and H5
+(binding specificity) are not built on $w$ contrasts and survive. $V_c$
+therefore instantiates `prop:bon` part (ii)'s noiseless rank-aligned
+limit, NOT a robustness check of the weight contrasts.
+
+#### E-A.1a ($V_c$, unchanged): reinterpreted as the rank-aligned-limit analysis
+
+The selector, protocol, and artifacts of §11.E-A.1/E-A.3/E-A.5 are
+unchanged; only the INTERPRETATION and the decision criterion are
+amended. The canonical `N_BOOT=10000` artifact
+(`hypothesis_results-comonotone.json`) is still produced, kept, and
+reported, AS the empirical realization of the `prop:bon`(ii) noiseless
+rank-aligned limit, with expected signature {H4, H5 hold; H1, H2, H6
+structurally undefined as weight contrasts}. It is NOT reported as a
+robustness failure. The §11.E-A.4 pre-stated all-five criterion is
+RETRACTED for $V_c$, with the structural reason above: a criterion that
+requires weight-contrast decisions to match is incoherent for a selector
+that removes the weight contrast by construction. (The retraction is for
+$V_c$ only; the criterion concept transfers to E-A.1b below, where it is
+re-stated before that analysis runs.)
+
+#### E-A.1b (NEW): comonotone rearrangement selector (the robustness check proper)
+
+**Definition.** Per (cell, task) pool with candidate set = first $N$
+completions: let $G = \{i : r_i \ge r_{\min}\}$ (gate-cleared) and let
+$V_i$ be the ORACLE Eq.-11 score (§5.2, verbatim, including the gate
+bonus). Take the multiset $\{V_i : i \in G\}$; sort the candidates of $G$
+by $r$ ascending, ties broken by original index ascending; sort the
+scores ascending; reassign rank-to-rank (smallest score to smallest-$r$
+candidate, and so on). Candidates outside $G$ keep their oracle scores
+unchanged. Selection = argmax over the WHOLE pool of the resulting
+scores, first-index tie-breaking, identical to §5.2 step (d).
+`payoff_mode = "rearrangement"`.
+
+**Properties (pre-stated).**
+1. *Hypothesis (c) holds by construction on the cleared set.* Proof (3
+   lines): the assignment pairs the $k$-th smallest score with the
+   $k$-th smallest $r$ (the comonotone coupling of the two empirical
+   marginals); hence for $i, j \in G$ with $r_i > r_j$, candidate $i$ has
+   the strictly larger rank and receives a score $\ge$ candidate $j$'s.
+   Strictly higher report never gets strictly lower score. ∎
+2. *The score distribution of each pool is preserved exactly* (the
+   cleared multiset is permuted, the uncleared scores are untouched), so
+   the weights still operate: across cells, via the cleared-vs-uncleared
+   margin, and via the score VALUES themselves; only the
+   within-cleared-set score-to-candidate ASSIGNMENT is replaced by its
+   rank-aligned version.
+3. *Minimality.* This is the minimal hypothesis-compliant transform of
+   the actual experiment: it changes nothing except the one feature that
+   violates (c), namely the within-$G$ coupling of scores to reports.
+
+**Decision criterion for E-A.1b (pre-stated BEFORE running it):
+robustness confirmed iff all five Holm-5 decisions (H1, H2, H4, H5, H6)
+under the rearrangement selector match the primary analysis; any other
+outcome is reported as "not confirmed (k/5 matching)" with the
+per-hypothesis table, label not softened.**
+
+**Protocol.** Identical to §11.E-A.3 with selector = rearrangement: L23
+ladder (unit/property tests RED→GREEN; one-cell integration on
+`N32_w1.0_r0.7_s42` with content checks per L30/L88; full 540 +
+`N_BOOT=2000` smoke; `N_BOOT=10000` canonical). Same pools, same Phase-0
+inputs (71/72/74), same Holm-5 family, H3 descriptive.
+
+**Artifacts (siblings; nothing overwritten).**
+
+| Artifact | Path |
+|---|---|
+| Stage-B CSVs (540) | `experiment_output/raw_runs/logprob/results-rearrangement/qwen2.5_7b_N{N}_w{W}_r{R}_s{S}.csv` |
+| Hypothesis results | `experiment_output/analysis/hypothesis_results-rearrangement.json` |
+| 3-way comparison | `experiment_output/analysis/ea-comparison.md` (primary vs $V_c$ vs rearrangement) |
+
+#### E-A.2 (violation rates): unchanged
+
+Already computed from the archived pools with the original oracle
+selector, before this amendment: event-level rate 0.6443 (25,626/39,774
+eligible selections), pair-level rate 0.8878 (1,844,850/2,077,890
+comparable pairs); `comonotone_violation.json`. Nothing in this amendment
+alters E-A.2.
