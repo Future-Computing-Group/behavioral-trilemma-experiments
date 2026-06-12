@@ -183,18 +183,28 @@ def generate_pool_record_for_task(task: dict, seed: int, n_max: int = N_MAX,
     )
 
 
-def pool_path(seed: int, pools_dir: pathlib.Path = POOLS_DIR) -> pathlib.Path:
-    return pools_dir / f"pool_{MODEL_SLUG}_seed{seed}_N{N_MAX}.jsonl"
+def model_slug(model: str) -> str:
+    """Filesystem slug for an Ollama model tag. Identical rule to
+    ``scripts.eval_logprob._model_slug`` (kept in sync by test)."""
+    return model.replace(":", "_").replace("/", "_")
 
 
-def pool_meta_path(pools_dir: pathlib.Path = POOLS_DIR) -> pathlib.Path:
-    return pools_dir / f"pool_meta_{MODEL_SLUG}_N{N_MAX}.json"
+def pool_path(seed: int, pools_dir: pathlib.Path = POOLS_DIR,
+              model_slug: str = MODEL_SLUG) -> pathlib.Path:
+    return pools_dir / f"pool_{model_slug}_seed{seed}_N{N_MAX}.jsonl"
 
 
-def write_pool_meta(pools_dir: pathlib.Path = POOLS_DIR) -> pathlib.Path:
+def pool_meta_path(pools_dir: pathlib.Path = POOLS_DIR,
+                   model_slug: str = MODEL_SLUG) -> pathlib.Path:
+    return pools_dir / f"pool_meta_{model_slug}_N{N_MAX}.json"
+
+
+def write_pool_meta(pools_dir: pathlib.Path = POOLS_DIR,
+                    model: str = MODEL,
+                    model_slug: str = MODEL_SLUG) -> pathlib.Path:
     pools_dir.mkdir(parents=True, exist_ok=True)
     meta = {
-        "model": MODEL,
+        "model": model,
         "n_max": N_MAX,
         "temperature": TEMPERATURE,
         "max_tokens": MAX_TOKENS,
@@ -211,7 +221,7 @@ def write_pool_meta(pools_dir: pathlib.Path = POOLS_DIR) -> pathlib.Path:
             "not byte-equality, is the contract — see the module docstring."
         ),
     }
-    path = pool_meta_path(pools_dir)
+    path = pool_meta_path(pools_dir, model_slug=model_slug)
     path.write_text(json.dumps(meta, indent=2))
     return path
 
@@ -219,17 +229,19 @@ def write_pool_meta(pools_dir: pathlib.Path = POOLS_DIR) -> pathlib.Path:
 def write_pool_for_seed(seed: int, tasks: list[dict],
                         pools_dir: pathlib.Path = POOLS_DIR,
                         n_max: int = N_MAX,
-                        progress: bool = True) -> pathlib.Path:
+                        progress: bool = True,
+                        model: str = MODEL,
+                        model_slug: str = MODEL_SLUG) -> pathlib.Path:
     """Generate and write one seed's worth (100 tasks × n_max completions).
     Wall time is ~2-3 h on a Mac Studio with qwen2.5:7b warm."""
     pools_dir.mkdir(parents=True, exist_ok=True)
-    out_path = pool_path(seed, pools_dir)
+    out_path = pool_path(seed, pools_dir, model_slug=model_slug)
     t0 = time.time()
     with out_path.open("w") as f:
         for j, task in enumerate(tasks):
             t_task = time.time()
             rec = generate_pool_record_for_task(task=task, seed=seed,
-                                                n_max=n_max)
+                                                n_max=n_max, model=model)
             f.write(json.dumps(rec) + "\n")
             f.flush()
             if progress:
@@ -262,15 +274,30 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--all-seeds", action="store_true",
                    help="Generate all 5 seeds (~14 h).")
     p.add_argument("--task-set", type=pathlib.Path, default=DEFAULT_TASK_SET)
-    p.add_argument("--pools-dir", type=pathlib.Path, default=POOLS_DIR)
+    p.add_argument("--pools-dir", type=pathlib.Path, default=None,
+                   help="Pool output dir. Default: the legacy logprob/pools "
+                        "dir for the default model, "
+                        "experiment_output/raw_runs/logprob-<slug>/pools/ "
+                        "for any other --model (§11.E-B.5).")
     p.add_argument("--n-max", type=int, default=N_MAX)
     p.add_argument("--n-tasks", type=int, default=None,
                    help="Subset the task set to the first N tasks (smoke).")
+    p.add_argument("--model", default=MODEL,
+                   help=f"Ollama model tag (default: {MODEL}). Output "
+                        "filenames use the derived slug.")
     args = p.parse_args(argv)
 
     chosen = sum([bool(args.smoke), args.seed is not None, args.all_seeds])
     if chosen != 1:
         p.error("exactly one of --smoke / --seed / --all-seeds is required")
+
+    slug = model_slug(args.model)
+    if args.pools_dir is None:
+        if args.model == MODEL:
+            args.pools_dir = POOLS_DIR          # legacy path, byte-stable
+        else:
+            args.pools_dir = (ROOT / "experiment_output" / "raw_runs"
+                              / f"logprob-{slug}" / "pools")
 
     args.pools_dir.mkdir(parents=True, exist_ok=True)
     tasks = load_tasks(args.task_set)
@@ -285,7 +312,7 @@ def main(argv: list[str] | None = None) -> int:
         task = tasks[0]
         print(f"[smoke] generating 4 completions for {task['id']} seed=0 ...")
         rec = generate_pool_record_for_task(
-            task=task, seed=0, n_max=4,
+            task=task, seed=0, n_max=4, model=args.model,
         )
         print(json.dumps({
             "task_id": rec["task_id"],
@@ -306,10 +333,12 @@ def main(argv: list[str] | None = None) -> int:
               f"[{min(rs):.4f}, {max(rs):.4f}] -- non-degenerate OK")
         return 0
 
-    write_pool_meta(args.pools_dir)
+    write_pool_meta(args.pools_dir, model=args.model, model_slug=slug)
     seeds = [args.seed] if args.seed is not None else SEEDS
     for s in seeds:
-        out_path = write_pool_for_seed(s, tasks, args.pools_dir, n_max=args.n_max)
+        out_path = write_pool_for_seed(s, tasks, args.pools_dir,
+                                       n_max=args.n_max, model=args.model,
+                                       model_slug=slug)
         print(f"wrote {out_path}")
 
     return 0

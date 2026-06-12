@@ -12,7 +12,11 @@ def test_load_config_returns_dict(params_path):
 def test_load_config_model_fields(params_path):
     cfg = load_config(params_path)
     assert cfg["model"]["primary"] == "qwen2.5:7b"
-    assert cfg["model"]["secondary"] == "llama3.1:8b"
+    # §11.E-B.6: llama3.1:8b secondary superseded by the E-B slots.
+    assert cfg["model"]["secondary"] == "gemma2:9b"
+    assert cfg["model"]["tertiary"] == "mistral:7b-instruct-q4_K_M"
+    assert cfg["model"]["fallback1"] == "yi:9b"
+    assert cfg["model"]["fallback2"] == "granite3.1-dense:8b"
     assert cfg["model"]["temperature"] == 0.8
 
 

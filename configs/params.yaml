@@ -6,7 +6,13 @@ mode: unit_smoke  # unit_smoke | integration_smoke | full
 # Model configuration
 model:
   primary: qwen2.5:7b
-  secondary: llama3.1:8b  # Cross-model validation (committed per AE-6c)
+  # Cross-model replication slots per EXPERIMENT-PLAN §11.E-B.1 / §11.E-B.6
+  # (supersedes the llama3.1:8b AE-6c secondary; the AE-6c cross-family
+  # commitment is satisfied and exceeded by two families at the full grid).
+  secondary: gemma2:9b                    # E-B slot M1
+  tertiary: mistral:7b-instruct-q4_K_M    # E-B slot M2 (expected to trip the §11.E-B.4 parse gate)
+  fallback1: yi:9b                        # E-B fallback ladder, fixed order
+  fallback2: granite3.1-dense:8b
   ollama_url: http://localhost:11434
   temperature: 0.8
   max_tokens: 512
