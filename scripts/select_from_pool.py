@@ -45,6 +45,7 @@ import argparse
 import csv
 import json
 import pathlib
+import re
 import sys
 from typing import Iterator
 
@@ -192,6 +193,32 @@ def config_filename(N: int, w_ratio: float, r_min: float, seed: int,
     )
 
 
+def parse_config_descriptor(descriptor: str,
+                            model_slug: str = MODEL_SLUG,
+                            ) -> tuple[int, float, float, int]:
+    """Parse ``<slug>_N<N>_w<W>_r<R>_s<S>`` back into (N, w_ratio, r_min,
+    seed). The w-string is mapped to the canonical ``W_RATIOS`` entry so
+    int-0 vs float-0.0 typing round-trips through filenames cleanly."""
+    m = re.match(
+        rf"^{re.escape(model_slug)}_N(\d+)_w([0-9.]+)_r([0-9.]+)_s(\d+)$",
+        descriptor,
+    )
+    if not m:
+        raise ValueError(
+            f"could not parse config descriptor {descriptor!r} "
+            f"for model slug {model_slug!r}")
+    N = int(m.group(1))
+    w_str = m.group(2)
+    w_ratio = next((v for v in W_RATIOS if _format_w_ratio(v) == w_str), None)
+    if w_ratio is None:
+        raise ValueError(
+            f"unknown w_ratio {w_str!r} (expected one of "
+            f"{[_format_w_ratio(v) for v in W_RATIOS]})")
+    r_min = float(m.group(3))
+    seed = int(m.group(4))
+    return N, w_ratio, r_min, seed
+
+
 def iter_full_grid() -> Iterator[tuple[int, float, float, int]]:
     """Yield the 540 (N, w_ratio, r_min, seed) tuples in the same order as
     the shipped filenames. Order doesn't affect content (per-cell CSV) but
@@ -221,8 +248,9 @@ def clear_pool_cache() -> None:
     _POOL_CACHE.clear()
 
 
-def _load_pool(seed: int, pools_dir: pathlib.Path = POOLS_DIR) -> list[dict]:
-    path = (pools_dir / f"pool_{MODEL_SLUG}_seed{seed}_N32.jsonl").resolve()
+def _load_pool(seed: int, pools_dir: pathlib.Path = POOLS_DIR,
+               model_slug: str = MODEL_SLUG) -> list[dict]:
+    path = (pools_dir / f"pool_{model_slug}_seed{seed}_N32.jsonl").resolve()
     if path not in _POOL_CACHE:
         _POOL_CACHE[path] = _read_pool_file(path)
     return _POOL_CACHE[path]
@@ -231,7 +259,8 @@ def _load_pool(seed: int, pools_dir: pathlib.Path = POOLS_DIR) -> list[dict]:
 def write_config_csv(N: int, w_ratio: float, r_min: float, seed: int,
                      out_dir: pathlib.Path,
                      pools_dir: pathlib.Path = POOLS_DIR,
-                     selector: str = "oracle") -> pathlib.Path:
+                     selector: str = "oracle",
+                     model_slug: str = MODEL_SLUG) -> pathlib.Path:
     """Regenerate one config's CSV from the pool for ``seed``."""
     w_A = W_C * w_ratio
     # Pool jsonl files are written in category-grouped order
@@ -240,9 +269,11 @@ def write_config_csv(N: int, w_ratio: float, r_min: float, seed: int,
     # against ``qwen2.5_7b_N1_w0_r0.5_s0.csv`` whose row order is
     # arith_*, code_algo_*, code_simple_*, fact_common_*, fact_obscure_*.
     # Sort to match.
-    pool_records = sorted(_load_pool(seed, pools_dir), key=lambda d: d["task_id"])
+    pool_records = sorted(_load_pool(seed, pools_dir, model_slug),
+                          key=lambda d: d["task_id"])
     out_dir.mkdir(parents=True, exist_ok=True)
-    out_path = out_dir / config_filename(N, w_ratio, r_min, seed)
+    out_path = out_dir / config_filename(N, w_ratio, r_min, seed,
+                                         model_slug=model_slug)
     with out_path.open("w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=SHIPPED_FIELDS)
         writer.writeheader()
@@ -292,8 +323,12 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument(
         "--config",
         help="Single config descriptor "
-             "'qwen2.5_7b_N<N>_w<W>_r<R>_s<S>' (filename without .csv).",
+             "'<slug>_N<N>_w<W>_r<R>_s<S>' (filename without .csv).",
     )
+    p.add_argument("--model-slug", default=MODEL_SLUG,
+                   help=f"Model filesystem slug (default: {MODEL_SLUG}). "
+                        "Drives pool/CSV filenames and the --config "
+                        "descriptor prefix (§11.E-B.5).")
     p.add_argument("--all", action="store_true",
                    help="Regenerate the full 540-config grid.")
     p.add_argument("--out-dir", type=pathlib.Path, default=RESULTS_DIR,
@@ -332,33 +367,20 @@ def main(argv: list[str] | None = None) -> int:
 
     written = []
     if args.config:
-        # Parse the descriptor.
-        # Format: qwen2.5_7b_N<N>_w<W>_r<R>_s<S>
-        import re
-        m = re.match(
-            r"^qwen2\.5_7b_N(\d+)_w([0-9.]+)_r([0-9.]+)_s(\d+)$",
-            args.config,
-        )
-        if not m:
-            p.error(f"could not parse config descriptor {args.config!r}")
-        N = int(m.group(1))
-        # Map the matched w-string back to the canonical W_RATIOS entry so
-        # int-0 vs float-0.0 typing round-trips through filenames cleanly
-        # (the shipped CSVs serialise the integer zero without ``.0``).
-        w_str = m.group(2)
-        w_ratio = next((v for v in W_RATIOS if _format_w_ratio(v) == w_str), None)
-        if w_ratio is None:
-            p.error(f"unknown w_ratio {w_str!r} (expected one of "
-                    f"{[_format_w_ratio(v) for v in W_RATIOS]})")
-        r_min = float(m.group(3))
-        seed = int(m.group(4))
+        try:
+            N, w_ratio, r_min, seed = parse_config_descriptor(
+                args.config, model_slug=args.model_slug)
+        except ValueError as e:
+            p.error(str(e))
         written.append(write_config_csv(N, w_ratio, r_min, seed, args.out_dir,
-                                        selector=args.selector))
+                                        selector=args.selector,
+                                        model_slug=args.model_slug))
     else:
         for N, w_ratio, r_min, seed in iter_full_grid():
             written.append(write_config_csv(N, w_ratio, r_min, seed,
                                             args.out_dir,
-                                            selector=args.selector))
+                                            selector=args.selector,
+                                            model_slug=args.model_slug))
 
     print(f"wrote {len(written)} CSVs to {args.out_dir}")
 
