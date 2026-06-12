@@ -254,7 +254,7 @@ def _salvage_completed_task_ids(out_path: pathlib.Path) -> set[str]:
             salvage_needed = True
     if salvage_needed:
         tmp = out_path.with_suffix(out_path.suffix + ".tmp")
-        tmp.write_text("".join(l + "\n" for l in good_lines))
+        tmp.write_text("".join(line + "\n" for line in good_lines))
         os.replace(tmp, out_path)
     return completed
 

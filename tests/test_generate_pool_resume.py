@@ -47,7 +47,7 @@ def test_resume_skips_completed_and_preserves_bytes(monkeypatch, tmp_path):
 
     text = out.read_text()
     assert text.startswith(before)                  # originals byte-preserved
-    ids = [json.loads(l)["task_id"] for l in text.splitlines()]
+    ids = [json.loads(ln)["task_id"] for ln in text.splitlines()]
     assert ids == ["t00", "t01", "t02", "t03"]      # exactly once each
     assert len(calls) == 2                          # only the 2 remaining ran
 
@@ -80,6 +80,6 @@ def test_trailing_partial_line_salvaged_and_rerun(monkeypatch, tmp_path):
     gp.write_pool_for_seed(42, tasks, tmp_path, n_max=1, progress=False)
 
     lines = out.read_text().splitlines()
-    ids = [json.loads(l)["task_id"] for l in lines]
+    ids = [json.loads(ln)["task_id"] for ln in lines]
     assert ids == ["t00", "t01", "t02"]             # garbage dropped, t02 rerun
     assert len(calls) == 1                          # only t02 ran
