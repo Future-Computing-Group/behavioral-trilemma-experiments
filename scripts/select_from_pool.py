@@ -87,8 +87,22 @@ def _oracle_payoff(r: float, y: int, w_C: float, w_A: float, r_min: float) -> fl
     return -w_C * (r - y) ** 2 + (w_A if r >= r_min else 0.0)
 
 
+def comonotone_payoff(r: float, y: int, w_C: float, w_A: float,
+                      r_min: float) -> float:
+    """EXPERIMENT-PLAN §11.E-A.1: Eq. 11 with y -> 1 on {r >= r_min} only.
+    Strictly increasing in r on [r_min, 1) regardless of y, so prop:bon
+    hypothesis (c) holds surely. Below the gate, identical to Eq. 11."""
+    if r >= r_min:
+        return -w_C * (1.0 - r) ** 2 + w_A
+    return -w_C * (r - y) ** 2
+
+
+_SELECTORS = {"oracle": _oracle_payoff, "comonotone": comonotone_payoff}
+
+
 def select_for_config(pool_record: dict, *, N: int, w_C: float, w_A: float,
-                      r_min: float, w_ratio: float) -> dict:
+                      r_min: float, w_ratio: float,
+                      selector: str = "oracle") -> dict:
     """Run Stage B on one (task, seed) pool record for one config.
 
     Returns a 19-key dict in ``SHIPPED_FIELDS`` order, ready for
@@ -108,14 +122,16 @@ def select_for_config(pool_record: dict, *, N: int, w_C: float, w_A: float,
     # ``a_selected=''``).
     n_parsed = sum(1 for c in completions if c.get("r") is not None)
 
+    payoff = _SELECTORS[selector]
+
     # argmax V with first-index tie-breaking (Python's ``max`` keeps the
     # earlier element on equality).
     best_i = 0
-    best_V = _oracle_payoff(
+    best_V = payoff(
         completions[0]["r"], completions[0]["y"], w_C, w_A, r_min,
     )
     for i in range(1, n_candidates):
-        v = _oracle_payoff(
+        v = payoff(
             completions[i]["r"], completions[i]["y"], w_C, w_A, r_min,
         )
         if v > best_V:
@@ -138,7 +154,7 @@ def select_for_config(pool_record: dict, *, N: int, w_C: float, w_A: float,
         "w_A": w_A,
         "r_min": r_min,
         "seed": pool_record["seed"],
-        "payoff_mode": "oracle",
+        "payoff_mode": selector,
         "selection_mode": "argmax",
         "n_candidates": n_candidates,
         "n_parsed": n_parsed,
@@ -195,7 +211,8 @@ def _load_pool(seed: int, pools_dir: pathlib.Path = POOLS_DIR) -> list[dict]:
 
 def write_config_csv(N: int, w_ratio: float, r_min: float, seed: int,
                      out_dir: pathlib.Path,
-                     pools_dir: pathlib.Path = POOLS_DIR) -> pathlib.Path:
+                     pools_dir: pathlib.Path = POOLS_DIR,
+                     selector: str = "oracle") -> pathlib.Path:
     """Regenerate one config's CSV from the pool for ``seed``."""
     w_A = W_C * w_ratio
     # Pool jsonl files are written in category-grouped order
@@ -213,6 +230,7 @@ def write_config_csv(N: int, w_ratio: float, r_min: float, seed: int,
         for record in pool_records:
             row = select_for_config(
                 record, N=N, w_C=W_C, w_A=w_A, r_min=r_min, w_ratio=w_ratio,
+                selector=selector,
             )
             writer.writerow(row)
     return out_path
@@ -264,12 +282,20 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--verify-against-shipped", action="store_true",
                    help="After writing, diff each CSV vs the shipped one. "
                         "Exits non-zero on any divergence.")
+    p.add_argument("--selector", choices=sorted(_SELECTORS),
+                   default="oracle",
+                   help="Selection payoff: 'oracle' (Eq. 11, default) or "
+                        "'comonotone' (EXPERIMENT-PLAN §11.E-A.1 V_c).")
     args = p.parse_args(argv)
 
     if not args.config and not args.all:
         p.error("--config NAME or --all required")
     if args.config and args.all:
         p.error("--config and --all are mutually exclusive")
+    if args.selector != "oracle" and args.verify_against_shipped:
+        p.error("--verify-against-shipped only applies to the oracle "
+                "selector (shipped CSVs are oracle-generated; a "
+                "comonotone run has a different contract)")
 
     # Distinguish "write to a different dir" from "overwrite shipped".
     # Default refuses to overwrite; --verify-against-shipped reads shipped.
@@ -307,10 +333,13 @@ def main(argv: list[str] | None = None) -> int:
                     f"{[_format_w_ratio(v) for v in W_RATIOS]})")
         r_min = float(m.group(3))
         seed = int(m.group(4))
-        written.append(write_config_csv(N, w_ratio, r_min, seed, args.out_dir))
+        written.append(write_config_csv(N, w_ratio, r_min, seed, args.out_dir,
+                                        selector=args.selector))
     else:
         for N, w_ratio, r_min, seed in iter_full_grid():
-            written.append(write_config_csv(N, w_ratio, r_min, seed, args.out_dir))
+            written.append(write_config_csv(N, w_ratio, r_min, seed,
+                                            args.out_dir,
+                                            selector=args.selector))
 
     print(f"wrote {len(written)} CSVs to {args.out_dir}")
 
