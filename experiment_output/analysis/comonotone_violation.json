@@ -1,0 +1,24 @@
+{
+  "metric": "EXPERIMENT-PLAN \u00a711.E-A.2 prop:bon(c) violation rate (original Eq. 11 oracle selector)",
+  "w_A_invariance_note": "Within the gate-cleared set the w_A bonus is constant, so the metric is identical across the w-levels; the 540-cell view replicates the (N, r_min, seed) tallies across w (disclosed structural fact, not a finding).",
+  "grid_540_view": {
+    "n_selections": 54000,
+    "n_eligible": 39774,
+    "n_excluded": 14226,
+    "n_events": 25626,
+    "event_rate": 0.6442902398551817,
+    "n_comparable_pairs": 2077890,
+    "n_violating_pairs": 1844850,
+    "pair_rate": 0.8878477686499285
+  },
+  "collapsed_90_view": {
+    "n_selections": 9000,
+    "n_eligible": 6629,
+    "n_excluded": 2371,
+    "n_events": 4271,
+    "event_rate": 0.6442902398551817,
+    "n_comparable_pairs": 346315,
+    "n_violating_pairs": 307475,
+    "pair_rate": 0.8878477686499285
+  }
+}
