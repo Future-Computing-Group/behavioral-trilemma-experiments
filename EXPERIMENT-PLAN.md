@@ -718,3 +718,58 @@ selector, before this amendment: event-level rate 0.6443 (25,626/39,774
 eligible selections), pair-level rate 0.8878 (1,844,850/2,077,890
 comparable pairs); `comonotone_violation.json`. Nothing in this amendment
 alters E-A.2.
+
+### §11 E-B amendment 2 (2026-06-12): yi:9b host = CSC Puhti (V100, user-space Ollama serve)
+
+**Provenance and honesty statement.** Written AFTER the E-B.4 smoke gates
+completed on the laptop (gemma2:9b PASS; mistral:7b-instruct-q4_K_M FAIL,
+swapped to fallback 1 yi:9b per E-B.1; yi:9b PASS, 0/66 unparsed) and
+AFTER the gemma2:9b full run was launched locally, but BEFORE any yi:9b
+full-run work has started. No result of any full run informs this
+amendment; it changes WHERE the yi:9b slot executes, not WHAT is run.
+
+**Rationale (wall-clock).** Measured full-run pace on the laptop revised
+the gemma2:9b Stage-A estimate from the §11.E-B.5 ~18 h to ~20-33 h
+(short tasks ~40 s per 32-completion task, code tasks ~400-720 s; the
+original estimate extrapolated a blended rate dominated by short tasks).
+Running yi:9b sequentially after gemma2 on the same laptop would add
+~1-1.5 days of wall-clock. Parallel per-model hosts (gemma2:9b on the
+laptop, yi:9b on CSC Puhti, V100) remove the queueing delay without
+touching the in-flight gemma2 run.
+
+**Invariants (binding for the yi:9b slot).**
+
+1. The whole yi:9b model instance runs on ONE host (Puhti), including
+   its Phase-0 calibration — no split of a model across hosts, so each
+   model's Phase-0 estimates and Stage-A pools come from one hardware/
+   build regime.
+2. Same code SHA as the laptop campaign (recorded in both OPSLOGs).
+3. Same task set, grids, seeds, prompts, temperature/max_tokens, strict
+   verifier — §4-§6 and E-B.2 parameters unchanged in every respect.
+4. Ollama Linux server version as close to the laptop's 0.18.0 as
+   available; the version actually used is recorded in the remote
+   OPSLOG.
+5. **The pulled model digest MUST MATCH the laptop's yi:9b digest
+   `3af70141e8eb`. A digest mismatch is a STOP condition: report and do
+   not run** (different weights/quantization would silently break
+   cross-host protocol identity).
+
+**Remote smoke gate.** E-B.4 is unchanged and MANDATORY on Puhti before
+the full run: the laptop yi:9b gate pass does not transfer across
+host/build regimes. SG-1 + SG-2 + the four content rules run to
+completion on the V100 via the real Stage-A path; any failure follows
+the E-B.1/E-B.4 swap-and-OPSLOG procedure.
+
+**Supersession scope.** E-B.5's "MacBook-local Ollama only (no CSC)"
+clause is superseded FOR THE yi:9b SLOT ONLY; gemma2:9b remains
+laptop-local, FCG cluster nodes remain off-limits, and E-B.5's
+"sequential, one model resident at a time" becomes per-host (one model
+resident per host). All other E-B.5 mechanics (output dirs, L63 status,
+L69 resume, R5-R8 preconditions) apply unchanged on the remote host.
+
+**Accounting.** Realized GPU billing is quoted from `seff <jobid>`
+("Job consumed X CSC billing units") only — never from Slurm TRES
+weights. Site-specific values (project/account, scratch paths) are
+deliberately absent from this plan and from all tracked files; they
+live in the gitignored `configs/csc/site.env` (tracked example:
+`configs/csc/site.env.example`) and in the remote operations log.

@@ -57,3 +57,8 @@ experiment_output/**/_*COMPLETE
 # Vestigial frozen code snapshots under the output dir (never import these;
 # the maintained package is repo-root analysis/) — must not be tracked
 experiment_output/**/*.py
+
+# CSC site values (account/project IDs, scratch paths) are NEVER tracked
+# (public-bound repo; §11 E-B amendment 2). Only the placeholder example is.
+configs/csc/*
+!configs/csc/site.env.example
