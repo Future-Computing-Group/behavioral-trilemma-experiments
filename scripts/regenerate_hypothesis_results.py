@@ -11,9 +11,15 @@ Writes the updated JSON to
 
 Usage:
     python -m scripts.regenerate_hypothesis_results
+
+E-A / E-B sibling analyses (EXPERIMENT-PLAN §11) parameterize the paths:
+    python -m scripts.regenerate_hypothesis_results \
+        --results-dir <dir> --phase0 <csv> --out <json> --glob '<slug>_*.csv'
+Zero-arg invocation keeps the canonical (primary, Table-1) paths.
 """
 from __future__ import annotations
 
+import argparse
 import glob
 import json
 import os
@@ -57,8 +63,9 @@ def load_phase0(phase0_path: pathlib.Path = PHASE0_PATH) -> tuple[dict, dict]:
     return p_hat, binding
 
 
-def load_dataframe(results_dir: pathlib.Path) -> pd.DataFrame:
-    pattern = str(results_dir / "qwen2.5_7b_*.csv")
+def load_dataframe(results_dir: pathlib.Path,
+                   csv_glob: str = "qwen2.5_7b_*.csv") -> pd.DataFrame:
+    pattern = str(results_dir / csv_glob)
     files = sorted(glob.glob(pattern))
     if not files:
         raise SystemExit(f"No raw CSVs matched {pattern}")
@@ -67,9 +74,28 @@ def load_dataframe(results_dir: pathlib.Path) -> pd.DataFrame:
     return df
 
 
-def main() -> None:
-    p_hat, binding = load_phase0()
-    df = load_dataframe(RAW_DIR)
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(
+        prog="regenerate_hypothesis_results",
+        description="Assemble raw per-config CSVs + Phase-0 calibration and "
+                    "rerun the hypothesis test suite.",
+    )
+    p.add_argument("--results-dir", type=pathlib.Path, default=RAW_DIR,
+                   help=f"Per-config CSV dir (default: {RAW_DIR}).")
+    p.add_argument("--phase0", type=pathlib.Path, default=PHASE0_PATH,
+                   help=f"Phase-0 calibration CSV (default: {PHASE0_PATH}).")
+    p.add_argument("--out", type=pathlib.Path, default=OUT_PATH,
+                   help=f"Output JSON path (default: {OUT_PATH}).")
+    p.add_argument("--glob", default="qwen2.5_7b_*.csv",
+                   help="CSV filename pattern within --results-dir "
+                        "(default: qwen2.5_7b_*.csv).")
+    return p
+
+
+def main(argv: list[str] | None = None) -> None:
+    args = build_parser().parse_args(argv)
+    p_hat, binding = load_phase0(args.phase0)
+    df = load_dataframe(args.results_dir, args.glob)
     print(f"Loaded {len(df):,} rows, {df['task_id'].nunique()} tasks, "
           f"N={sorted(df['N'].unique())}, "
           f"w_ratio={sorted(df['w_ratio'].unique())}, "
@@ -85,10 +111,10 @@ def main() -> None:
     print(f"Running hypothesis tests with n_boot={n_boot}...")
     results = run_all_tests(df, binding_tasks=binding, p_hat=p_hat, n_boot=n_boot)
 
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUT_PATH, "w") as f:
+    args.out.parent.mkdir(parents=True, exist_ok=True)
+    with open(args.out, "w") as f:
         json.dump(results, f, indent=2, default=str)
-    print(f"Wrote {OUT_PATH}")
+    print(f"Wrote {args.out}")
 
     # One-line summary of final decisions
     def decision(key: str, pval: float, extra: str = "") -> str:

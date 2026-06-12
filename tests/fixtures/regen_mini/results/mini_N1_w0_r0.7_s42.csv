@@ -1,0 +1,4 @@
+task_id,category,N,w_ratio,w_C,w_A,r_min,seed,payoff_mode,selection_mode,n_candidates,n_parsed,selected_index,r_selected,a_selected,y,V_selected,brier,gate_cleared
+t1,arithmetic_hard,1,0,1.0,0.0,0.7,42,oracle,argmax,1,1,0,0.45,42,0,-0.2025,0.2025,0
+t2,factual_obscure,1,0,1.0,0.0,0.7,42,oracle,argmax,1,1,0,0.55,42,1,-0.20249999999999996,0.20249999999999996,0
+t3,arithmetic_easy,1,0,1.0,0.0,0.7,42,oracle,argmax,1,1,0,0.9,42,1,-0.009999999999999995,0.009999999999999995,1

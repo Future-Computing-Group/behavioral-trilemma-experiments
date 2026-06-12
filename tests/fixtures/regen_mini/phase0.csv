@@ -1,0 +1,4 @@
+task_id,p_hat,binding_0.5,binding_0.7,binding_0.9
+t1,0.3,1,1,1
+t2,0.5,0,1,1
+t3,0.9,0,0,0
