@@ -47,6 +47,7 @@ from __future__ import annotations
 import argparse
 import datetime as _dt
 import json
+import os
 import pathlib
 import sys
 import time
@@ -226,6 +227,37 @@ def write_pool_meta(pools_dir: pathlib.Path = POOLS_DIR,
     return path
 
 
+def _salvage_completed_task_ids(out_path: pathlib.Path) -> set[str]:
+    """L69 resume support: read completed task_ids from an existing pool
+    file, dropping a trailing partial line (crash mid-write) by atomically
+    rewriting the file without it (tmp + ``os.replace``). Returns the set
+    of task_ids whose records are intact on disk."""
+    if not out_path.exists():
+        return set()
+    raw_lines = out_path.read_text().splitlines()
+    good_lines: list[str] = []
+    completed: set[str] = set()
+    salvage_needed = False
+    for line in raw_lines:
+        if not line.strip():
+            salvage_needed = True       # drop blank padding too
+            continue
+        try:
+            rec = json.loads(line)
+            completed.add(rec["task_id"])
+            good_lines.append(line)
+        except (json.JSONDecodeError, KeyError, TypeError):
+            # Only a trailing partial line is expected; anything after it
+            # is unreachable in the append-only write pattern, but drop
+            # defensively either way.
+            salvage_needed = True
+    if salvage_needed:
+        tmp = out_path.with_suffix(out_path.suffix + ".tmp")
+        tmp.write_text("".join(l + "\n" for l in good_lines))
+        os.replace(tmp, out_path)
+    return completed
+
+
 def write_pool_for_seed(seed: int, tasks: list[dict],
                         pools_dir: pathlib.Path = POOLS_DIR,
                         n_max: int = N_MAX,
@@ -233,12 +265,20 @@ def write_pool_for_seed(seed: int, tasks: list[dict],
                         model: str = MODEL,
                         model_slug: str = MODEL_SLUG) -> pathlib.Path:
     """Generate and write one seed's worth (100 tasks × n_max completions).
-    Wall time is ~2-3 h on a Mac Studio with qwen2.5:7b warm."""
+    Wall time is ~2-3 h on a Mac Studio with qwen2.5:7b warm.
+
+    L69: resumable + idempotent. Completed (task, seed) records on disk are
+    byte-preserved and skipped (append mode, never ``"w"``); a trailing
+    partial line from a crash is salvaged out before appending.
+    """
     pools_dir.mkdir(parents=True, exist_ok=True)
     out_path = pool_path(seed, pools_dir, model_slug=model_slug)
+    completed = _salvage_completed_task_ids(out_path)
     t0 = time.time()
-    with out_path.open("w") as f:
+    with out_path.open("a") as f:
         for j, task in enumerate(tasks):
+            if task["id"] in completed:
+                continue
             t_task = time.time()
             rec = generate_pool_record_for_task(task=task, seed=seed,
                                                 n_max=n_max, model=model)
