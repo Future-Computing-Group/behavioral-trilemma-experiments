@@ -203,10 +203,29 @@ def iter_full_grid() -> Iterator[tuple[int, float, float, int]]:
                     yield N, w_ratio, r_min, seed
 
 
-def _load_pool(seed: int, pools_dir: pathlib.Path = POOLS_DIR) -> list[dict]:
-    path = pools_dir / f"pool_{MODEL_SLUG}_seed{seed}_N32.jsonl"
+def _read_pool_file(path: pathlib.Path) -> list[dict]:
+    """Uncached inner reader (the L97 counting seam for tests)."""
     with path.open() as f:
         return [json.loads(line) for line in f if line.strip()]
+
+
+# L97: a 540-config sweep calls _load_pool once per config; without a memo
+# that is 108 redundant re-parses of each ~3,200-record pool file. The memo
+# is per-process and keyed on the resolved pool path (which encodes seed,
+# pools_dir and model slug).
+_POOL_CACHE: dict[pathlib.Path, list[dict]] = {}
+
+
+def clear_pool_cache() -> None:
+    """Empty the per-process pool memo (tests; long-lived processes)."""
+    _POOL_CACHE.clear()
+
+
+def _load_pool(seed: int, pools_dir: pathlib.Path = POOLS_DIR) -> list[dict]:
+    path = (pools_dir / f"pool_{MODEL_SLUG}_seed{seed}_N32.jsonl").resolve()
+    if path not in _POOL_CACHE:
+        _POOL_CACHE[path] = _read_pool_file(path)
+    return _POOL_CACHE[path]
 
 
 def write_config_csv(N: int, w_ratio: float, r_min: float, seed: int,
