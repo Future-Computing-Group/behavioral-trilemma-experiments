@@ -101,6 +101,34 @@ def comonotone_payoff(r: float, y: int, w_C: float, w_A: float,
 _SELECTORS = {"oracle": _oracle_payoff, "comonotone": comonotone_payoff}
 
 
+def rearrangement_scores(completions: list[dict], *, w_C: float, w_A: float,
+                         r_min: float) -> list[float]:
+    """EXPERIMENT-PLAN §11 E-A amendment 1 (E-A.1b): comonotone rearrangement.
+
+    Per pool: compute the ORACLE Eq.-11 scores; on the gate-cleared set
+    {r >= r_min}, sort the candidates by r (ascending, ties by original
+    index) and reassign the SAME multiset of scores, sorted ascending,
+    rank-to-rank. Uncleared candidates keep their oracle scores. This is
+    the comonotone coupling of the cleared-set score multiset with the
+    report ordering, so prop:bon hypothesis (c) holds by construction
+    while the score DISTRIBUTION of the pool is preserved exactly.
+    """
+    scores = [_oracle_payoff(c["r"], c["y"], w_C, w_A, r_min)
+              for c in completions]
+    cleared = [i for i, c in enumerate(completions) if c["r"] >= r_min]
+    by_r = sorted(cleared, key=lambda i: (completions[i]["r"], i))
+    sorted_scores = sorted(scores[i] for i in cleared)
+    out = list(scores)
+    for i, s in zip(by_r, sorted_scores):
+        out[i] = s
+    return out
+
+
+# Pool-level selectors compute all candidate scores jointly (the
+# rearrangement transform is not expressible as a per-completion payoff).
+SELECTOR_CHOICES = sorted([*_SELECTORS, "rearrangement"])
+
+
 def select_for_config(pool_record: dict, *, N: int, w_C: float, w_A: float,
                       r_min: float, w_ratio: float,
                       selector: str = "oracle") -> dict:
@@ -123,20 +151,21 @@ def select_for_config(pool_record: dict, *, N: int, w_C: float, w_A: float,
     # ``a_selected=''``).
     n_parsed = sum(1 for c in completions if c.get("r") is not None)
 
-    payoff = _SELECTORS[selector]
+    if selector == "rearrangement":
+        scores = rearrangement_scores(completions, w_C=w_C, w_A=w_A,
+                                      r_min=r_min)
+    else:
+        payoff = _SELECTORS[selector]
+        scores = [payoff(c["r"], c["y"], w_C, w_A, r_min)
+                  for c in completions]
 
-    # argmax V with first-index tie-breaking (Python's ``max`` keeps the
+    # argmax with first-index tie-breaking (strict ``>`` keeps the
     # earlier element on equality).
     best_i = 0
-    best_V = payoff(
-        completions[0]["r"], completions[0]["y"], w_C, w_A, r_min,
-    )
+    best_V = scores[0]
     for i in range(1, n_candidates):
-        v = payoff(
-            completions[i]["r"], completions[i]["y"], w_C, w_A, r_min,
-        )
-        if v > best_V:
-            best_V = v
+        if scores[i] > best_V:
+            best_V = scores[i]
             best_i = i
 
     chosen = completions[best_i]
@@ -336,10 +365,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--verify-against-shipped", action="store_true",
                    help="After writing, diff each CSV vs the shipped one. "
                         "Exits non-zero on any divergence.")
-    p.add_argument("--selector", choices=sorted(_SELECTORS),
+    p.add_argument("--selector", choices=SELECTOR_CHOICES,
                    default="oracle",
-                   help="Selection payoff: 'oracle' (Eq. 11, default) or "
-                        "'comonotone' (EXPERIMENT-PLAN §11.E-A.1 V_c).")
+                   help="Selection payoff: 'oracle' (Eq. 11, default), "
+                        "'comonotone' (EXPERIMENT-PLAN §11.E-A.1 V_c), or "
+                        "'rearrangement' (§11 E-A amendment 1, E-A.1b).")
     args = p.parse_args(argv)
 
     if not args.config and not args.all:
