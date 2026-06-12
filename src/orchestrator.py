@@ -1,10 +1,12 @@
 """Experiment orchestrator: config sweep, per-config execution, Phase 0 calibration."""
 import csv
 import pathlib
+import time
 
 from src.ollama_client import generate_completions
 from src.parser import parse_response
 from src.scorer import oracle_payoff, brier_score
+from src.status import write_status
 
 
 def config_filename(cfg: dict, model: str = "qwen2.5:7b") -> str:
@@ -153,9 +155,14 @@ def run_phase0_calibration(
 
     results_dir.mkdir(parents=True, exist_ok=True)
     outfile = results_dir / "phase0_calibration.csv"
+    # L63: unconditional per-task status emission (§11.E-B.5).
+    status_path = results_dir / "STATUS.json"
+    completions_done = 0
+    parse_fail_count = 0
+    t0 = time.time()
 
     rows = []
-    for task in tasks:
+    for j, task in enumerate(tasks):
         correct_count = 0
         for seed in seeds:
             completions = generate_completions(
@@ -167,6 +174,9 @@ def run_phase0_calibration(
             )
             if completions:
                 _, a = parse_response(completions[0])
+                completions_done += 1
+                if a is None:
+                    parse_fail_count += 1
                 correct_count += _verify_answer(task, a)
 
         p_hat = correct_count / len(seeds) if seeds else 0.0
@@ -175,6 +185,14 @@ def run_phase0_calibration(
         for t in thresholds:
             row[f"binding_{t}"] = 1 if p_hat < t else 0
         rows.append(row)
+
+        elapsed = time.time() - t0
+        eta = (elapsed / (j + 1)) * (len(tasks) - j - 1)
+        write_status(status_path, stage="phase0", model=model, seed=None,
+                     task_idx=j + 1, total_tasks=len(tasks),
+                     completions_done=completions_done,
+                     parse_fail_count=parse_fail_count,
+                     elapsed_s=round(elapsed, 1), eta_s=round(eta, 1))
 
     fieldnames = ["task_id", "p_hat"] + [f"binding_{t}" for t in thresholds]
     with open(outfile, "w", newline="") as f:

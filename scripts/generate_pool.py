@@ -59,6 +59,7 @@ from analysis.logprob_confidence import logprob_confidence  # noqa: E402
 from src.ollama_logprob_client import generate_with_logprobs  # noqa: E402
 from src.orchestrator import _verify_answer  # noqa: E402
 from src.parser import parse_response  # noqa: E402
+from src.status import write_status  # noqa: E402
 from src.tasks import load_tasks  # noqa: E402
 
 # Pool record / completion schemas — verified against the shipped pool
@@ -273,7 +274,12 @@ def write_pool_for_seed(seed: int, tasks: list[dict],
     """
     pools_dir.mkdir(parents=True, exist_ok=True)
     out_path = pool_path(seed, pools_dir, model_slug=model_slug)
+    # L63: STATUS.json at the per-model output root (§11.E-B.5), i.e. the
+    # parent of the pools dir; unconditional per-task emission.
+    status_path = pools_dir.parent / "STATUS.json"
     completed = _salvage_completed_task_ids(out_path)
+    completions_done = 0
+    parse_fail_count = 0
     t0 = time.time()
     with out_path.open("a") as f:
         for j, task in enumerate(tasks):
@@ -284,10 +290,18 @@ def write_pool_for_seed(seed: int, tasks: list[dict],
                                                 n_max=n_max, model=model)
             f.write(json.dumps(rec) + "\n")
             f.flush()
+            completions_done += len(rec["completions"])
+            parse_fail_count += sum(
+                1 for c in rec["completions"] if c["a"] is None)
+            dt = time.time() - t_task
+            total = time.time() - t0
+            eta = (total / (j + 1)) * (len(tasks) - j - 1)
+            write_status(status_path, stage="stageA", model=model,
+                         seed=seed, task_idx=j + 1, total_tasks=len(tasks),
+                         completions_done=completions_done,
+                         parse_fail_count=parse_fail_count,
+                         elapsed_s=round(total, 1), eta_s=round(eta, 1))
             if progress:
-                dt = time.time() - t_task
-                total = time.time() - t0
-                eta = (total / (j + 1)) * (len(tasks) - j - 1)
                 print(
                     f"[seed={seed}] task {j+1}/{len(tasks)} {task['id']}: "
                     f"{n_max} completions in {dt:.1f}s "
