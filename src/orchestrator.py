@@ -135,6 +135,14 @@ def run_single_config(
     return outfile
 
 
+def _phase0_completed_task_ids(out_path: pathlib.Path) -> set[str]:
+    """L69 resume: task_ids already present in an existing Phase-0 CSV."""
+    if not out_path.exists() or out_path.stat().st_size == 0:
+        return set()
+    with out_path.open(newline="") as f:
+        return {row["task_id"] for row in csv.DictReader(f)}
+
+
 def run_phase0_calibration(
     tasks: list[dict],
     results_dir: pathlib.Path,
@@ -142,11 +150,19 @@ def run_phase0_calibration(
     seeds: list[int] | None = None,
     thresholds: list[float] | None = None,
     temperature: float = 0.8,
+    out_path: pathlib.Path | None = None,
 ) -> pathlib.Path:
     """Run Phase 0: estimate p_hat per task using held-out seeds.
 
     For each task, run len(seeds) times (N=1, w_A=0), check correctness,
     compute p_hat = fraction correct. Classify binding sets per threshold.
+
+    L69: each task's row is appended + flushed as soon as it is computed
+    (worst-case crash loss = one in-flight task), and a rerun resumes by
+    skipping task_ids already present in ``out_path`` (idempotent: never
+    truncates, never duplicates). ``out_path=None`` keeps the legacy
+    ``results_dir / "phase0_calibration.csv"`` (byte-stable for Qwen);
+    E-B passes a per-model path (§11.E-B.5) to avoid cross-model collision.
     """
     if seeds is None:
         seeds = list(range(1000, 1020))
@@ -154,50 +170,56 @@ def run_phase0_calibration(
         thresholds = [0.5, 0.7, 0.9]
 
     results_dir.mkdir(parents=True, exist_ok=True)
-    outfile = results_dir / "phase0_calibration.csv"
+    outfile = out_path if out_path is not None \
+        else results_dir / "phase0_calibration.csv"
     # L63: unconditional per-task status emission (§11.E-B.5).
     status_path = results_dir / "STATUS.json"
     completions_done = 0
     parse_fail_count = 0
     t0 = time.time()
 
-    rows = []
-    for j, task in enumerate(tasks):
-        correct_count = 0
-        for seed in seeds:
-            completions = generate_completions(
-                prompt=task["prompt"],
-                n=1,
-                model=model,
-                temperature=temperature,
-                seed=seed,
-            )
-            if completions:
-                _, a = parse_response(completions[0])
-                completions_done += 1
-                if a is None:
-                    parse_fail_count += 1
-                correct_count += _verify_answer(task, a)
-
-        p_hat = correct_count / len(seeds) if seeds else 0.0
-
-        row = {"task_id": task["id"], "p_hat": round(p_hat, 4)}
-        for t in thresholds:
-            row[f"binding_{t}"] = 1 if p_hat < t else 0
-        rows.append(row)
-
-        elapsed = time.time() - t0
-        eta = (elapsed / (j + 1)) * (len(tasks) - j - 1)
-        write_status(status_path, stage="phase0", model=model, seed=None,
-                     task_idx=j + 1, total_tasks=len(tasks),
-                     completions_done=completions_done,
-                     parse_fail_count=parse_fail_count,
-                     elapsed_s=round(elapsed, 1), eta_s=round(eta, 1))
-
+    completed = _phase0_completed_task_ids(outfile)
     fieldnames = ["task_id", "p_hat"] + [f"binding_{t}" for t in thresholds]
-    with open(outfile, "w", newline="") as f:
+    write_header = not completed and (not outfile.exists()
+                                      or outfile.stat().st_size == 0)
+    with outfile.open("a", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
+        if write_header:
+            writer.writeheader()
+            f.flush()
+        for j, task in enumerate(tasks):
+            if task["id"] in completed:
+                continue
+            correct_count = 0
+            for seed in seeds:
+                completions = generate_completions(
+                    prompt=task["prompt"],
+                    n=1,
+                    model=model,
+                    temperature=temperature,
+                    seed=seed,
+                )
+                if completions:
+                    _, a = parse_response(completions[0])
+                    completions_done += 1
+                    if a is None:
+                        parse_fail_count += 1
+                    correct_count += _verify_answer(task, a)
+
+            p_hat = correct_count / len(seeds) if seeds else 0.0
+
+            row = {"task_id": task["id"], "p_hat": round(p_hat, 4)}
+            for t in thresholds:
+                row[f"binding_{t}"] = 1 if p_hat < t else 0
+            writer.writerow(row)
+            f.flush()
+
+            elapsed = time.time() - t0
+            eta = (elapsed / (j + 1)) * (len(tasks) - j - 1)
+            write_status(status_path, stage="phase0", model=model, seed=None,
+                         task_idx=j + 1, total_tasks=len(tasks),
+                         completions_done=completions_done,
+                         parse_fail_count=parse_fail_count,
+                         elapsed_s=round(elapsed, 1), eta_s=round(eta, 1))
 
     return outfile
