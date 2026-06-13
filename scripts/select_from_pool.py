@@ -62,6 +62,17 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 POOLS_DIR = ROOT / "experiment_output" / "raw_runs" / "logprob" / "pools"
 RESULTS_DIR = ROOT / "experiment_output" / "raw_runs" / "logprob" / "results"
 
+
+def pools_dir_for(model_slug: str) -> pathlib.Path:
+    """Per-model pools directory, mirroring ``generate_pool.py``'s rule
+    (§11.E-B.5): the default qwen slug keeps the legacy ``logprob/pools``
+    path (byte-stable); any other model reads ``logprob-<slug>/pools``.
+    Without this, a ``--model-slug`` run silently looked for its pools in
+    the qwen dir (FileNotFoundError; 2026-06-13 cross-model regression)."""
+    if model_slug == MODEL_SLUG:
+        return POOLS_DIR
+    return ROOT / "experiment_output" / "raw_runs" / f"logprob-{model_slug}" / "pools"
+
 # The full 540-config grid (matches ``configs/params.yaml`` ``experiment``
 # section, also pinned to the manuscript's §exp-iv).
 N_VALUES = [1, 2, 4, 8, 16, 32]
@@ -360,6 +371,10 @@ def main(argv: list[str] | None = None) -> int:
                         "descriptor prefix (§11.E-B.5).")
     p.add_argument("--all", action="store_true",
                    help="Regenerate the full 540-config grid.")
+    p.add_argument("--pools-dir", type=pathlib.Path, default=None,
+                   help="Pool jsonl directory (default: derived from "
+                        "--model-slug via pools_dir_for; legacy logprob/pools "
+                        "for qwen, logprob-<slug>/pools otherwise).")
     p.add_argument("--out-dir", type=pathlib.Path, default=RESULTS_DIR,
                    help=f"Output dir (default: {RESULTS_DIR}).")
     p.add_argument("--verify-against-shipped", action="store_true",
@@ -395,6 +410,9 @@ def main(argv: list[str] | None = None) -> int:
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
+    pools_dir = (args.pools_dir if args.pools_dir is not None
+                 else pools_dir_for(args.model_slug))
+
     written = []
     if args.config:
         try:
@@ -403,12 +421,14 @@ def main(argv: list[str] | None = None) -> int:
         except ValueError as e:
             p.error(str(e))
         written.append(write_config_csv(N, w_ratio, r_min, seed, args.out_dir,
+                                        pools_dir=pools_dir,
                                         selector=args.selector,
                                         model_slug=args.model_slug))
     else:
         for N, w_ratio, r_min, seed in iter_full_grid():
             written.append(write_config_csv(N, w_ratio, r_min, seed,
                                             args.out_dir,
+                                            pools_dir=pools_dir,
                                             selector=args.selector,
                                             model_slug=args.model_slug))
 

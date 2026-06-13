@@ -229,3 +229,50 @@ def test_regenerated_row_byte_equal_to_shipped(csv_name, task_id, N, w_ratio, w_
             rv_s = str(rv)
         assert rv_s == sv, \
             f"{csv_name}:{task_id} field {k!r}: regen={rv_s!r} shipped={sv!r}"
+
+
+# ---------------------------------------------------------------------------
+# Cross-model pool-dir resolution (§11 E-B; regression for the 2026-06-13
+# bug where main() loaded non-default models' pools from the qwen dir)
+# ---------------------------------------------------------------------------
+
+def test_pools_dir_for_default_model_is_legacy_path():
+    from scripts.select_from_pool import pools_dir_for, POOLS_DIR
+    assert pools_dir_for("qwen2.5_7b") == POOLS_DIR
+
+
+def test_pools_dir_for_other_model_is_per_model_dir():
+    from scripts.select_from_pool import pools_dir_for, ROOT
+    got = pools_dir_for("gemma2_9b")
+    expected = ROOT / "experiment_output" / "raw_runs" / "logprob-gemma2_9b" / "pools"
+    assert got == expected, f"{got} != {expected}"
+
+
+def test_cross_model_config_run_loads_per_model_pool(tmp_path):
+    """End-to-end: a non-default --model-slug run resolves and loads the
+    per-model pool (not the qwen dir). Exercises the production load path
+    the 2026-06-13 regression bypassed (L79)."""
+    import subprocess
+    import sys as _sys
+    slug = "testmodel_1b"
+    pools = ROOT / "experiment_output" / "raw_runs" / f"logprob-{slug}" / "pools"
+    pools.mkdir(parents=True, exist_ok=True)
+    rec = _mk_pool(task_id="t1", seed=42,
+                   completions=[_mk_completion(0, 0.9, 1, a="A"),
+                                _mk_completion(1, 0.6, 0, a="B"),
+                                _mk_completion(2, 0.8, 1, a="C"),
+                                _mk_completion(3, 0.7, 0, a="D")])
+    pf = pools / f"pool_{slug}_seed42_N32.jsonl"
+    try:
+        pf.write_text(json.dumps(rec) + "\n")
+        r = subprocess.run(
+            [_sys.executable, "scripts/select_from_pool.py",
+             "--config", f"{slug}_N4_w1.0_r0.7_s42",
+             "--model-slug", slug, "--out-dir", str(tmp_path)],
+            cwd=ROOT, capture_output=True, text=True)
+        assert r.returncode == 0, r.stderr
+        out = list(tmp_path.glob("*.csv"))
+        assert len(out) == 1 and out[0].read_text().count("\n") >= 2
+    finally:
+        import shutil
+        shutil.rmtree(pools.parent, ignore_errors=True)
