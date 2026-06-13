@@ -1,0 +1,375 @@
+{
+  "H1": {
+    "statistic": 7.63687947357327,
+    "p_value": 7.1339042889177764e-12,
+    "effect_size": 0.7636879473573269,
+    "ci_lo": 0.04113238202191724,
+    "ci_hi": 0.0686609440036839,
+    "mean_diff": 0.054303240887729774,
+    "percent_degradation": 0.19171416972707886,
+    "n": 100,
+    "fixed_n": 32,
+    "w_ratio_treated": 4.0
+  },
+  "H2": {
+    "jt_statistic": 182.5,
+    "z": 2.760618447806223,
+    "p_value": 0.00288460167293203,
+    "rho": 0.8944271909999157,
+    "rho_p_value": 0.04051932635383408,
+    "means_by_weight": {
+      "0.25": 0.7233609742833338,
+      "0.5": 0.7539955373182179,
+      "1.0": 0.755267393632257,
+      "2.0": 0.755267393632257,
+      "4.0": 0.755267393632257
+    },
+    "n_obs": 25,
+    "n_groups": 5,
+    "fixed_n": 32,
+    "r_min": 0.7,
+    "include_control": false
+  },
+  "H3": {
+    "violations": 0,
+    "total_tests": 60,
+    "violation_rate": 0.0,
+    "tolerance": 0.15,
+    "criterion_met": true,
+    "p_value": 5.822849199347189e-05,
+    "ci_lo": 0.0,
+    "ci_hi": 0.05962949228616691,
+    "statistically_supported": true
+  },
+  "H4": {
+    "0.5": {
+      "p_base": 0.02711864406779661,
+      "p_treat": 0.16610169491525423,
+      "diff": 0.13898305084745763,
+      "z": 13.754976346361511,
+      "p_value": 0.0,
+      "n_base": 1770,
+      "n_treat": 1475,
+      "ci_lo": 0.07457627118644067,
+      "ci_hi": 0.21016949152542375,
+      "effect_size": 0.13898305084745763
+    },
+    "0.7": {
+      "p_base": 0.2,
+      "p_treat": 0.6498360655737705,
+      "diff": 0.4498360655737705,
+      "z": 26.434636035291913,
+      "p_value": 0.0,
+      "n_base": 1830,
+      "n_treat": 1525,
+      "ci_lo": 0.34622950819672127,
+      "ci_hi": 0.5527868852459017,
+      "effect_size": 0.4498360655737705
+    },
+    "0.9": {
+      "p_base": 0.29846153846153844,
+      "p_treat": 0.6812307692307692,
+      "diff": 0.38276923076923075,
+      "z": 22.826186524977857,
+      "p_value": 0.0,
+      "n_base": 1950,
+      "n_treat": 1625,
+      "ci_lo": 0.30030769230769233,
+      "ci_hi": 0.464,
+      "effect_size": 0.38276923076923075
+    },
+    "z": 26.434636035291913,
+    "p_value": 0.0,
+    "ci_lo": 0.34622950819672127,
+    "ci_hi": 0.5527868852459017,
+    "effect_size": 0.4498360655737705
+  },
+  "H5": {
+    "mean_bind": 0.7508191658166323,
+    "mean_nonbind": 0.012489125807957795,
+    "ratio": 60.117831893264054,
+    "statistic": 269.0907375467193,
+    "p_value": 0.0,
+    "effect_size": 6.3704615137556155,
+    "ci_lo": 0.7337921141664931,
+    "ci_hi": 0.7428951205154216,
+    "n_bind": 4575,
+    "n_nonbind": 2925
+  },
+  "H5_by_rmin": {
+    "0.5": {
+      "mean_bind": 0.762474601463495,
+      "mean_nonbind": 0.031732769145822536,
+      "ratio": 24.027988164527113,
+      "statistic": 263.5385457892623,
+      "p_value": 0.0,
+      "effect_size": 6.187220295058911,
+      "ci_lo": 0.7255883571242765,
+      "ci_hi": 0.7358164173467556,
+      "n_bind": 4425,
+      "n_nonbind": 3075
+    },
+    "0.7": {
+      "mean_bind": 0.7508191658166323,
+      "mean_nonbind": 0.012489125807957795,
+      "ratio": 60.117831893264054,
+      "statistic": 269.0907375467193,
+      "p_value": 0.0,
+      "effect_size": 6.3704615137556155,
+      "ci_lo": 0.7337921141664931,
+      "ci_hi": 0.7428951205154216,
+      "n_bind": 4575,
+      "n_nonbind": 2925
+    },
+    "0.9": {
+      "mean_bind": 0.713382939747418,
+      "mean_nonbind": -0.0023670303502068882,
+      "ratio": -301.38309789102,
+      "statistic": 181.36187550563795,
+      "p_value": 0.0,
+      "effect_size": 4.39060801729855,
+      "ci_lo": 0.7099801493603013,
+      "ci_hi": 0.7214028091842188,
+      "n_bind": 4875,
+      "n_nonbind": 2625
+    }
+  },
+  "H6": {
+    "statistic": -10.940606827129475,
+    "p_value": 4.910458116265714e-19,
+    "effect_size": 1.0940606827129475,
+    "ci_lo": -0.18878168540619952,
+    "ci_hi": -0.1324036412376788,
+    "mean_diff": -0.15933721097687528,
+    "n": 100
+  },
+  "correction": {
+    "H1": {
+      "rank": 4,
+      "original_p": 7.1339042889177764e-12,
+      "adjusted_p": 1.4267808577835553e-11,
+      "rejected": true
+    },
+    "H2": {
+      "rank": 5,
+      "original_p": 0.00288460167293203,
+      "adjusted_p": 0.00288460167293203,
+      "rejected": true
+    },
+    "H4": {
+      "rank": 1,
+      "original_p": 0.0,
+      "adjusted_p": 0.0,
+      "rejected": true
+    },
+    "H5": {
+      "rank": 2,
+      "original_p": 0.0,
+      "adjusted_p": 0.0,
+      "rejected": true
+    },
+    "H6": {
+      "rank": 3,
+      "original_p": 4.910458116265714e-19,
+      "adjusted_p": 1.4731374348797142e-18,
+      "rejected": true
+    }
+  },
+  "original_prereg_spec": {
+    "H1": {
+      "statistic": -9.05060468080174,
+      "p_value": 0.9999999999999936,
+      "effect_size": -0.9050604680801742,
+      "ci_lo": -0.1406975875384722,
+      "ci_hi": -0.09127663144580883,
+      "mean_diff": -0.11429775425777469,
+      "n": 100
+    },
+    "H2": {
+      "slope": 0.006346251440655857,
+      "intercept": 0.7409824760836158,
+      "p_value": 0.2989738430926551,
+      "r_squared": 0.3435503776289422,
+      "ci_lo": 0.005167085758339399,
+      "ci_hi": 0.0074764990808496214
+    },
+    "H3": {
+      "violations": 0,
+      "total_tests": 60,
+      "violation_rate": 0.0,
+      "convex": true
+    }
+  },
+  "paper_h2_spearman": {
+    "rho": -0.9839099642416426,
+    "p_value": 1.7304469748133154e-22,
+    "n_points": 30,
+    "r_min": 0.7,
+    "w_ratio_min": 0.25,
+    "per_weight": {
+      "0.25": {
+        "rho": -1.0,
+        "p_value": 0.0,
+        "n_points": 6
+      },
+      "0.5": {
+        "rho": -1.0,
+        "p_value": 0.0,
+        "n_points": 6
+      },
+      "1.0": {
+        "rho": -1.0,
+        "p_value": 0.0,
+        "n_points": 6
+      },
+      "2.0": {
+        "rho": -1.0,
+        "p_value": 0.0,
+        "n_points": 6
+      },
+      "4.0": {
+        "rho": -1.0,
+        "p_value": 0.0,
+        "n_points": 6
+      }
+    }
+  },
+  "H3_convexity_by_N": {
+    "slack": 0.05,
+    "by_N": {
+      "1": {
+        "N": 1,
+        "violations": 0,
+        "total_tests": 60,
+        "violation_rate": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.05962949228616691
+      },
+      "2": {
+        "N": 2,
+        "violations": 0,
+        "total_tests": 60,
+        "violation_rate": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.05962949228616691
+      },
+      "4": {
+        "N": 4,
+        "violations": 0,
+        "total_tests": 60,
+        "violation_rate": 0.0,
+        "ci_lo": 0.0,
+        "ci_hi": 0.05962949228616691
+      },
+      "8": {
+        "N": 8,
+        "violations": 1,
+        "total_tests": 60,
+        "violation_rate": 0.016666666666666666,
+        "ci_lo": 0.00042187445234200915,
+        "ci_hi": 0.08939905005748702
+      },
+      "16": {
+        "N": 16,
+        "violations": 3,
+        "total_tests": 60,
+        "violation_rate": 0.05,
+        "ci_lo": 0.010432329644348228,
+        "ci_hi": 0.13924324672107277
+      },
+      "32": {
+        "N": 32,
+        "violations": 6,
+        "total_tests": 60,
+        "violation_rate": 0.1,
+        "ci_lo": 0.03759126910856604,
+        "ci_hi": 0.20505773670806393
+      }
+    },
+    "trend": {
+      "spearman_rho": 0.9411239481143202,
+      "p_value_two_sided": 0.005097540564861477,
+      "interpretation": "Increasing trend: consistent with H2's saturation plateau becoming more pronounced at larger N (the Pareto frontier exposes a flat face, not curvature) --- compatible with convexity of the achievable region in Proposition 3."
+    }
+  },
+  "reconciliation": {
+    "supplementary_old_paper_h2": {
+      "rho": -0.9839099642416426,
+      "p_value": 1.7304469748133154e-22,
+      "n_points": 30,
+      "r_min": 0.7,
+      "w_ratio_min": 0.25,
+      "per_weight": {
+        "0.25": {
+          "rho": -1.0,
+          "p_value": 0.0,
+          "n_points": 6
+        },
+        "0.5": {
+          "rho": -1.0,
+          "p_value": 0.0,
+          "n_points": 6
+        },
+        "1.0": {
+          "rho": -1.0,
+          "p_value": 0.0,
+          "n_points": 6
+        },
+        "2.0": {
+          "rho": -1.0,
+          "p_value": 0.0,
+          "n_points": 6
+        },
+        "4.0": {
+          "rho": -1.0,
+          "p_value": 0.0,
+          "n_points": 6
+        }
+      }
+    },
+    "post_hoc": {
+      "H1_prime": {
+        "statistic": 7.63687947357327,
+        "p_value": 7.1339042889177764e-12,
+        "effect_size": 0.7636879473573269,
+        "ci_lo": 0.04113238202191724,
+        "ci_hi": 0.0686609440036839,
+        "mean_diff": 0.054303240887729774,
+        "percent_degradation": 0.19171416972707886,
+        "n": 100,
+        "fixed_n": 32,
+        "w_ratio_treated": 4.0
+      },
+      "H2_prime": {
+        "jt_statistic": 182.5,
+        "z": 2.760618447806223,
+        "p_value": 0.00288460167293203,
+        "rho": 0.8944271909999157,
+        "rho_p_value": 0.04051932635383408,
+        "means_by_weight": {
+          "0.25": 0.7233609742833338,
+          "0.5": 0.7539955373182179,
+          "1.0": 0.755267393632257,
+          "2.0": 0.755267393632257,
+          "4.0": 0.755267393632257
+        },
+        "n_obs": 25,
+        "n_groups": 5,
+        "fixed_n": 32,
+        "r_min": 0.7,
+        "include_control": false
+      },
+      "H3_prime": {
+        "violations": 0,
+        "total_tests": 60,
+        "violation_rate": 0.0,
+        "tolerance": 0.15,
+        "criterion_met": true,
+        "p_value": 5.822849199347189e-05,
+        "ci_lo": 0.0,
+        "ci_hi": 0.05962949228616691,
+        "statistically_supported": true
+      }
+    }
+  }
+}
