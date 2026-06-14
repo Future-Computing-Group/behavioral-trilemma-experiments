@@ -17,8 +17,8 @@ authors:
     given-names: "Sasu"
     affiliation: "University of Helsinki"
 title: "The Behavioral Credibility Trilemma: When Calibrated Autonomy Becomes Impossible"
-version: 1.1-jmlr-submission
-date-released: 2026-06-11
+version: 1.2-jmlr-submission
+date-released: 2026-06-14
 url: "https://github.com/Future-Computing-Group/behavioral-trilemma-experiments"
 preferred-citation:
   type: article
