@@ -143,7 +143,9 @@ analysis/
 configs/
   params.yaml                                # weight grid, seeds, r_min
 scripts/
-  run.py                                     # legacy single-stage orchestrator (Phase 0)
+  run.py                                     # --phase0 branch: load-bearing Stage-0 driver;
+                                             #   non-phase0 branch: LEGACY verbalized-era
+                                             #   pipeline, NOT the manuscript's experiment
   generate_pool.py                           # Stage A: 32-completion pool jsonl per (task, seed)
   select_from_pool.py                        # Stage B: Best-of-N argmax → 540 per-config CSVs
   regenerate_hypothesis_results.py           # rebuild JSON from per-config CSVs + Phase 0

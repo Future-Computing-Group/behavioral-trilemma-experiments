@@ -1,10 +1,29 @@
 #!/usr/bin/env python3
-"""Entry point for the behavioral trilemma experiment.
+"""Entry point for Phase-0 calibration (load-bearing) and the LEGACY
+verbalized-confidence experiment path (superseded).
+
+Two branches:
+
+* ``--phase0`` (LOAD-BEARING): runs the Phase-0 held-out calibration
+  (20 seeds {1000..1019}, N=1, w_A=0) that produces
+  ``phase0_calibration.csv`` — the binding-set identification the
+  manuscript's H2/H4/H5 tests depend on. This branch remains the
+  documented Stage-0 entry point.
+
+* the non-``--phase0`` experiment branch (LEGACY, verbalized-era): drives
+  the single-stage VERBALIZED-confidence pipeline
+  (``src.orchestrator.run_single_config`` -> CONFIDENCE-regex parsing via
+  ``/api/generate``, no logprobs). The manuscript abandoned verbalized
+  confidence as degenerate (93% of selections at r = 1.0); the
+  manuscript-described experiment is the two-stage logprob pipeline
+  ``scripts/generate_pool.py`` (Stage A) + ``scripts/select_from_pool.py``
+  (Stage B). This branch is retained for provenance of the archived
+  verbalised run only — do NOT use it to reproduce the paper.
 
 Usage:
-    python -m scripts.run --mode unit_smoke
-    python -m scripts.run --mode unit_smoke --phase0
-    python -m scripts.run --mode full --model secondary
+    python -m scripts.run --phase0                  # load-bearing Stage 0
+    python -m scripts.run --mode unit_smoke         # LEGACY verbalized path
+    python -m scripts.run --mode full --model secondary   # LEGACY
 """
 import argparse
 import json
