@@ -773,3 +773,102 @@ weights. Site-specific values (project/account, scratch paths) are
 deliberately absent from this plan and from all tracked files; they
 live in the gitignored `configs/csc/site.env` (tracked example:
 `configs/csc/site.env.example`) and in the remote operations log.
+
+### §11 amendment 3 (2026-07-19): E-C — materialization of the declared random-selection and no-oracle-proxy controls
+
+**Provenance and honesty statement.** Written 2026-07-19, BEFORE either
+control was implemented or run, in response to the 2026-07-19
+pre-submission audit (findings LB-1/C-1a and LB-2/C-1b): the manuscript
+declares "uniform random selection among the $N$ completions" as the
+third control (§`sec:exp-controls`) and states that the no-oracle proxy
+$V^{\text{proxy}}$ "is included only as a control quantifying the
+oracle/no-oracle gap" (§`sec:exp-protocol`), and this plan declared both
+(§7 controls table, "Random selection, all N"; §5.2 NOTE on
+$V_{\text{proxy}}$) — but neither was ever wired into Stage B or run.
+E-C materializes both as **post-hoc Stage-B re-analyses of the frozen
+archived Qwen pools** (which predate the audit and are not touched):
+zero new model calls, analysis-design on fixed data, expectations
+pre-stated below before any result exists. These are *controls*, not
+robustness checks: no all-five matching criterion is imposed; per-
+hypothesis outcomes are reported as-is.
+
+#### E-C.1 Random selector (the §7 "Random selection, all N" control)
+
+For each (cell, task) pool with candidate set = first $N$ completions
+(identical to §5.2/Stage B), the selected index is drawn **uniformly at
+random among the $N$ candidates**; no payoff enters the selection. This
+preserves the τ = 0.8 sampling distribution of the completion law while
+removing the optimization pressure — the manuscript's stated semantics.
+
+**Deterministic seeding (byte-stable re-runs).** The per-(config, task)
+draw is seeded from the existing config/seed fields only, never from
+wall-clock or process state: stream seed = the first 8 bytes (big-endian)
+of SHA-256 over the descriptor string
+`random|<task_id>|s<seed>|N<N>|w<w_ratio>|r<r_min>` (w/r formatted by the
+Stage-B filename convention); index = `random.Random(seed64).randrange(N)`.
+The full config is in the key **deliberately**, so different $w$-levels
+draw independently and the weight-contrast hypotheses remain well-defined
+*noisy nulls* rather than structurally degenerate 0/0 contrasts (the V_c
+lesson of amendment 1). Recorded schema: `payoff_mode = "random"`,
+`selection_mode = "uniform_random"`; `V_selected` records the ORACLE
+(eq. (eq:selection-payoff)) score of the drawn completion for
+comparability — it plays no role in selection.
+
+#### E-C.2 Proxy selector (the §5.2 no-oracle control)
+
+Argmax over the first-$N$ candidates of the agent-perceived payoff of
+§5.2, exactly `src/scorer.py::proxy_payoff`:
+$V^{\text{proxy}} = -w_C\,r(1-r) + w_A\,\mathbf{1}\{r \ge r_{\min}\}$
+(Bernoulli variance, NOT a proper scoring rule; $y$-independent).
+First-index tie-breaking, `payoff_mode = "proxy"`,
+`selection_mode = "argmax"`, 19-column schema unchanged.
+
+#### E-C.3 Protocol
+
+Identical to §11.E-A.3 with selector ∈ {random, proxy}: same 540-config
+grid (§5.1), same archived pools, same Phase-0 inputs (binding sets
+71/72/74; selector-independent), same Holm-5 family {H1, H2, H4, H5, H6}
+via `analysis/hypothesis_tests.py::run_all_tests`, H3 descriptive
+alongside. Smoke ladder (L23): (i) unit tests RED→GREEN; (ii) one-cell
+integration on `N32_w1.0_r0.7_s42` with content checks (rows = 100,
+payoff_mode correct, selection differs from shipped oracle on ≥ 1 task,
+L30/L88); (iii) full 540 + `N_BOOT=2000` regenerate; (iv) `N_BOOT=10000`
+canonical.
+
+#### E-C.4 Pre-stated expectations (fixed now, before any result)
+
+- **Random:** the selected completion is distributed as a single τ = 0.8
+  draw in EVERY cell, so the optimization-pressure signatures should
+  attenuate or vanish: H1 ≈ zero weight contrast, H2 no trend in $w$,
+  H4 no excess threshold-window mass, H6 no improvement at $w_A = 0$
+  (selection is payoff-blind, so the control's own prediction is a null,
+  which under the H6 test spec reads "not significant"). **H5 is not a
+  selector contrast** — it compares binding vs non-binding *task classes*
+  at fixed arm — so it can stay significant under random selection purely
+  from base-model overconfidence on hard tasks; if it does, that is
+  disclosed as a property of the completion law, not evidence of
+  selection-driven inflation. Any wildly degenerate outcome (all-zero,
+  NaN, empty) is treated as a harness bug and investigated (L91), not
+  accepted.
+- **Proxy:** expected broadly oracle-like modulo verification noise
+  ($V^{\text{proxy}}$ keeps the gate bonus and prefers extreme high
+  reports; the pools' $r$–$y$ correlation couples max-$r$ selection with
+  correctness). The **oracle/no-oracle gap** is quantified at the
+  headline threshold $r_{\min} = 0.7$, $N = 32$: selected-completion mean
+  Brier (at $w_A = 0$ and pooled over $w > 0$) and binding-task
+  threshold-window mass $P(r \in [0.7, 0.8])$, oracle vs proxy, plus the
+  per-hypothesis table.
+
+#### E-C.5 Artifacts (siblings; nothing overwritten)
+
+| Artifact | Path |
+|---|---|
+| Stage-B CSVs, random (540) | `experiment_output/raw_runs/logprob/results-random/qwen2.5_7b_N{N}_w{W}_r{R}_s{S}.csv` (gitignored, L73) |
+| Stage-B CSVs, proxy (540) | `experiment_output/raw_runs/logprob/results-proxy/…` (gitignored, L73) |
+| Hypothesis results, random | `experiment_output/analysis/hypothesis_results-random.json` (tracked) |
+| Hypothesis results, proxy | `experiment_output/analysis/hypothesis_results-proxy.json` (tracked) |
+| Controls comparison + gap | `experiment_output/analysis/controls-comparison.md` (tracked) |
+
+`hypothesis_results.json` (Table-1 source) is not touched;
+`scripts/regenerate_hypothesis_results.py` defaults stay pointed at the
+primary artifacts.
