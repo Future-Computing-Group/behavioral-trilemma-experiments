@@ -180,6 +180,24 @@ docs/
   REPRODUCING.md                             # step-by-step reproduction guide
 ```
 
+### Supplementary analyses not used in the manuscript
+
+The repository contains development/robustness machinery that no
+manuscript claim rests on; it is listed here so the inventory is
+complete (none of it contradicts the paper):
+
+- `analysis/conditional_metrics.py` — decoupled (H_conditional, C, A)
+  triple; exploratory, unreported.
+- `analysis/difficulty_strat.py` — task-difficulty tertile
+  stratification; exploratory, unreported.
+- Spare model-registry slots in `configs/params.yaml` (`qwen14b`,
+  `qwen32b`, `mistral7b`, `gemma2_9b` convenience keys) — probing
+  candidates; the run models are `primary`/`secondary`/`tertiary`/
+  `fallback*` per EXPERIMENT-PLAN §11.E-B.1.
+- `levels:` smoke modes in `configs/params.yaml` (`unit_smoke`,
+  `integration_smoke`) — reduced grids for pipeline testing only; all
+  reported numbers come from the full 540-config grid.
+
 ## Dependencies
 
 - Python 3.10 or newer (tested on 3.11)
