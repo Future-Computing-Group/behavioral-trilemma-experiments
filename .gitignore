@@ -47,6 +47,11 @@ experiment_output/competence_probe/_runs/
 !experiment_output/analysis/hypothesis_results-rearrangement.json
 !experiment_output/analysis/hypothesis_results-gemma2_9b.json
 !experiment_output/analysis/hypothesis_results-yi_9b.json
+# §11 amendment 3 (E-C) control artifacts: the uniform-random and
+# no-oracle-proxy hypothesis suites (per-config CSVs under raw_runs/
+# stay ignored).
+!experiment_output/analysis/hypothesis_results-random.json
+!experiment_output/analysis/hypothesis_results-proxy.json
 !experiment_output/analysis/comonotone_violation.json
 !experiment_output/analysis/figures/h3_convexity_by_N.pdf
 !experiment_output/analysis/figures/h3_convexity_by_N.png
