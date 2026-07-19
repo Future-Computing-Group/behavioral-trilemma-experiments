@@ -1,9 +1,9 @@
 {
   "title": "The Behavioral Credibility Trilemma: When Calibrated Autonomy Becomes Impossible",
-  "description": "Code and experiment data for the empirical validation of the Behavioral Credibility Trilemma via Best-of-N selection. Accompanies the manuscript (arXiv:2605.25739), prepared for submission to the Journal of Machine Learning Research (JMLR). v1.2 adds the pre-registered cross-model replication (Gemma-2-9B, Yi-9B; all five hypotheses replicate 5/5 under per-model binding sets) and the comonotone-selector robustness re-analysis.",
+  "description": "Code and experiment data for the empirical validation of the Behavioral Credibility Trilemma via Best-of-N selection. Accompanies the manuscript (arXiv:2605.25739), prepared for submission to the Journal of Machine Learning Research (JMLR). v1.3 completes the public artifact set: per-model held-out calibration CSVs underlying the binding sets, the pre-specified cross-model replication (Gemma-2-9B, Yi-9B; all five hypotheses replicate 5/5 under per-model binding sets), the comonotone-selector robustness re-analysis, and the uniform-random and no-oracle-proxy control suites (plan amendment E-C).",
   "creators": [
     {
-      "name": "Lovén, Lauri",
+      "name": "Lov\u00e9n, Lauri",
       "affiliation": "University of Oulu"
     },
     {
