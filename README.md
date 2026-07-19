@@ -124,8 +124,8 @@ confirmed test:
 | H1 Fixed-axis gating degradation                  | $4.67 \times 10^{-19}$   | $d = 1.10$    |
 | H2 Monotone inflation trend (Jonckheere–Terpstra) | $8.49 \times 10^{-5}$    | $\rho = 0.89$ |
 | H3 Achievable-region convexity (descriptive)      | binomial test, 10% < 15% | —             |
-| H4 Threshold clustering                           | $< 10^{-3}$              | $z = 30.02$   |
-| H5 Binding-state specificity                      | $< 10^{-3}$              | $d = 5.32$    |
+| H4 Threshold clustering                           | $< 10^{-3}$              | $z = 30.16$   |
+| H5 Binding-state specificity                      | $< 10^{-3}$              | $d = 5.35$    |
 | H6 Control ($w_A = 0$)                            | $1.35 \times 10^{-23}$   | $d = 1.31$    |
 
 ## Repository structure
@@ -223,8 +223,12 @@ The per-config CSVs from that earlier verbalised run are retained in the authors
 
 Archival snapshots are deposited at Zenodo: concept DOI
 [10.5281/zenodo.20392749](https://doi.org/10.5281/zenodo.20392749) (always resolves
-to the latest version); this release (v1.1-jmlr-submission) is
-[10.5281/zenodo.20646964](https://doi.org/10.5281/zenodo.20646964).
+to the latest version). This release is **v1.2-jmlr-submission**
+(see `CITATION.cff`); its Zenodo version deposit is **pending** — the
+latest deposited version is v1.1-jmlr-submission,
+[10.5281/zenodo.20646964](https://doi.org/10.5281/zenodo.20646964), which
+predates the v1.2 artifacts (cross-model replication, comonotone/
+rearrangement robustness, Phase-0 CSVs, E-C controls).
 
 
 ```bibtex
