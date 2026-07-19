@@ -115,7 +115,23 @@ def comonotone_payoff(r: float, y: int, w_C: float, w_A: float,
     return -w_C * (r - y) ** 2
 
 
-_SELECTORS = {"oracle": _oracle_payoff, "comonotone": comonotone_payoff}
+def _proxy_payoff(r: float, y: int, w_C: float, w_A: float,
+                  r_min: float) -> float:
+    """EXPERIMENT-PLAN §11 amendment 3 (E-C.2): no-oracle proxy payoff.
+
+    V_proxy = -w_C * r * (1 - r) + w_A * 1{r >= r_min} — the manuscript's
+    declared oracle/no-oracle-gap control (§exp-protocol): Bernoulli
+    variance instead of the Brier term, NOT a proper scoring rule, and
+    y-independent (the ``y`` parameter is accepted for registry-signature
+    uniformity and ignored). Duplicates ``src.scorer.proxy_payoff``; the
+    drift test in ``tests/test_proxy_selector.py`` locks the two together.
+    """
+    del y  # no-oracle: ground truth is unavailable to this selector
+    return -w_C * r * (1.0 - r) + (w_A if r >= r_min else 0.0)
+
+
+_SELECTORS = {"oracle": _oracle_payoff, "comonotone": comonotone_payoff,
+              "proxy": _proxy_payoff}
 
 
 def rearrangement_scores(completions: list[dict], *, w_C: float, w_A: float,
@@ -432,9 +448,11 @@ def main(argv: list[str] | None = None) -> int:
                         "selection payoff, eq. (eq:selection-payoff); "
                         "default), 'comonotone' (EXPERIMENT-PLAN §11.E-A.1 "
                         "V_c), 'rearrangement' (§11 E-A amendment 1, "
-                        "E-A.1b), or 'random' (§11 amendment 3 E-C.1, the "
+                        "E-A.1b), 'random' (§11 amendment 3 E-C.1, the "
                         "manuscript's uniform-random control; seeded "
-                        "deterministically, payoff-blind).")
+                        "deterministically, payoff-blind), or 'proxy' "
+                        "(§11 amendment 3 E-C.2, the no-oracle "
+                        "V_proxy control).")
     args = p.parse_args(argv)
 
     if not args.config and not args.all:
