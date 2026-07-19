@@ -44,8 +44,10 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import pathlib
+import random
 import re
 import sys
 from typing import Iterator
@@ -139,9 +141,32 @@ def rearrangement_scores(completions: list[dict], *, w_C: float, w_A: float,
     return out
 
 
-# Pool-level selectors compute all candidate scores jointly (the
-# rearrangement transform is not expressible as a per-completion payoff).
-SELECTOR_CHOICES = sorted([*_SELECTORS, "rearrangement"])
+def random_index(*, task_id: str, seed: int, N: int, w_ratio: float,
+                 r_min: float, n_candidates: int) -> int:
+    """EXPERIMENT-PLAN §11 amendment 3 (E-C.1): uniform-random control draw.
+
+    The manuscript's third control (§exp-controls): uniform random
+    selection among the first-N candidates, payoff-blind. Deterministic
+    (byte-stable re-runs): the RNG stream is seeded from the config/seed
+    fields ONLY — the first 8 bytes (big-endian) of SHA-256 over the
+    descriptor ``random|<task_id>|s<seed>|N<N>|w<w>|r<r>`` (w/r in the
+    Stage-B filename convention) — never from wall-clock or process
+    state. The full config is in the key deliberately, so different
+    w-levels draw independent streams and the weight-contrast hypotheses
+    stay well-defined noisy nulls, not degenerate 0/0 contrasts (the V_c
+    lesson of §11 E-A amendment 1).
+    """
+    key = (f"random|{task_id}|s{seed}|N{N}"
+           f"|w{_format_w_ratio(w_ratio)}|r{_format_r_min(r_min)}")
+    seed64 = int.from_bytes(
+        hashlib.sha256(key.encode("utf-8")).digest()[:8], "big")
+    return random.Random(seed64).randrange(n_candidates)
+
+
+# Pool-level selectors compute all candidate scores jointly, or draw the
+# index directly (the rearrangement transform and the uniform-random
+# control are not expressible as a per-completion payoff).
+SELECTOR_CHOICES = sorted([*_SELECTORS, "rearrangement", "random"])
 
 
 def select_for_config(pool_record: dict, *, N: int, w_C: float, w_A: float,
@@ -169,19 +194,35 @@ def select_for_config(pool_record: dict, *, N: int, w_C: float, w_A: float,
     if selector == "rearrangement":
         scores = rearrangement_scores(completions, w_C=w_C, w_A=w_A,
                                       r_min=r_min)
+    elif selector == "random":
+        # E-C.1 control: payoff-blind. The oracle scores are computed
+        # ONLY so V_selected records a comparable quantity in the CSV;
+        # they play no role in the selection below.
+        scores = [_oracle_payoff(c["r"], c["y"], w_C, w_A, r_min)
+                  for c in completions]
     else:
         payoff = _SELECTORS[selector]
         scores = [payoff(c["r"], c["y"], w_C, w_A, r_min)
                   for c in completions]
 
-    # argmax with first-index tie-breaking (strict ``>`` keeps the
-    # earlier element on equality).
-    best_i = 0
-    best_V = scores[0]
-    for i in range(1, n_candidates):
-        if scores[i] > best_V:
-            best_V = scores[i]
-            best_i = i
+    if selector == "random":
+        # Uniform draw over the first-N candidate set, deterministically
+        # seeded from (task_id, seed, N, w_ratio, r_min) — see
+        # ``random_index``. No argmax anywhere.
+        best_i = random_index(task_id=pool_record["task_id"],
+                              seed=pool_record["seed"], N=N,
+                              w_ratio=w_ratio, r_min=r_min,
+                              n_candidates=n_candidates)
+        best_V = scores[best_i]
+    else:
+        # argmax with first-index tie-breaking (strict ``>`` keeps the
+        # earlier element on equality).
+        best_i = 0
+        best_V = scores[0]
+        for i in range(1, n_candidates):
+            if scores[i] > best_V:
+                best_V = scores[i]
+                best_i = i
 
     chosen = completions[best_i]
     r_sel = chosen["r"]
@@ -200,7 +241,8 @@ def select_for_config(pool_record: dict, *, N: int, w_C: float, w_A: float,
         "r_min": r_min,
         "seed": pool_record["seed"],
         "payoff_mode": selector,
-        "selection_mode": "argmax",
+        "selection_mode": "uniform_random" if selector == "random"
+        else "argmax",
         "n_candidates": n_candidates,
         "n_parsed": n_parsed,
         "selected_index": best_i,
@@ -386,11 +428,13 @@ def main(argv: list[str] | None = None) -> int:
                         "Exits non-zero on any divergence.")
     p.add_argument("--selector", choices=SELECTOR_CHOICES,
                    default="oracle",
-                   help="Selection payoff: 'oracle' (the manuscript's "
+                   help="Selection rule: 'oracle' (the manuscript's "
                         "selection payoff, eq. (eq:selection-payoff); "
                         "default), 'comonotone' (EXPERIMENT-PLAN §11.E-A.1 "
-                        "V_c), or 'rearrangement' (§11 E-A amendment 1, "
-                        "E-A.1b).")
+                        "V_c), 'rearrangement' (§11 E-A amendment 1, "
+                        "E-A.1b), or 'random' (§11 amendment 3 E-C.1, the "
+                        "manuscript's uniform-random control; seeded "
+                        "deterministically, payoff-blind).")
     args = p.parse_args(argv)
 
     if not args.config and not args.all:
