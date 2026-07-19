@@ -2,7 +2,9 @@
 
 
 def oracle_payoff(r: float, y: int, w_C: float, w_A: float, r_min: float) -> float:
-    """Oracle selection payoff (manuscript Eq. 11).
+    """Oracle selection payoff (the selection payoff, eq.
+    (eq:selection-payoff) in the manuscript; cited by label because
+    equation numbers shift between builds).
 
     V = -w_C * (r - y)^2 + w_A * 1{r >= r_min}
     """

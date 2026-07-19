@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Compute the §11.E-A.2 violation rates from the archived Stage-A pools.
 
-Iterates the §5.1 grid over the pool jsonls with the ORIGINAL Eq. 11
-oracle payoff and aggregates the prop:bon hypothesis-(c) violation
+Iterates the §5.1 grid over the pool jsonls with the ORIGINAL oracle
+selection payoff (eq. (eq:selection-payoff) in the manuscript) and aggregates the prop:bon hypothesis-(c) violation
 metric (``analysis.comonotone_violation.violation_counts``) at two
 granularities:
 
@@ -79,7 +79,7 @@ def compute_violation_summary(*, pools_dir: pathlib.Path = POOLS_DIR,
                     full.extend([out] * len(w_ratios))
     return {
         "metric": "EXPERIMENT-PLAN §11.E-A.2 prop:bon(c) violation rate "
-                  "(original Eq. 11 oracle selector)",
+                  "(original oracle selector, manuscript eq. (eq:selection-payoff))",
         "w_A_invariance_note": (
             "Within the gate-cleared set the w_A bonus is constant, so the "
             "metric is identical across the w-levels; the 540-cell view "

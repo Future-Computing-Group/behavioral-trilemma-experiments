@@ -1,7 +1,7 @@
 """Tests for analysis/comonotone_violation.py (EXPERIMENT-PLAN §11.E-A.2).
 
-Pair-level violation of prop:bon hypothesis (c) under the ORIGINAL Eq. 11
-oracle payoff: among gate-cleared candidates, a pair with strictly higher
+Pair-level violation of prop:bon hypothesis (c) under the ORIGINAL
+oracle selection payoff (manuscript eq. (eq:selection-payoff)): among gate-cleared candidates, a pair with strictly higher
 report and strictly lower score.
 """
 import pathlib
@@ -72,7 +72,8 @@ def test_known_counts_on_handbuilt_three_cleared():
 
 
 def test_randomized_never_violates_when_all_y_equal():
-    # With identical y across the cleared set, Eq. 11 ranks by |r - y|;
+    # With identical y across the cleared set, the selection payoff
+    # (eq. (eq:selection-payoff)) ranks by |r - y|;
     # for y=1 that is increasing in r, so violations are impossible.
     rng = random.Random(20260612)
     for _ in range(200):

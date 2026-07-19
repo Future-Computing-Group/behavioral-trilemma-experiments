@@ -1,6 +1,7 @@
 """Tests for the EXPERIMENT-PLAN §11.E-A.1 comonotone-compliant selector.
 
-V_c equals the Eq. 11 oracle payoff below the gate, and replaces the
+V_c equals the oracle selection payoff (manuscript eq.
+(eq:selection-payoff)) below the gate, and replaces the
 realized outcome y with the constant 1 on {r >= r_min}, making the score
 strictly increasing in r on the cleared region regardless of y — so
 prop:bon hypothesis (c) holds surely.

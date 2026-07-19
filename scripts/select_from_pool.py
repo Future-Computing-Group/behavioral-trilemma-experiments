@@ -16,7 +16,8 @@ Stage B (this module) is purely deterministic: for each of the 540 configs
 (N, w_ratio, r_min, seed), subset the FIRST N completions from the pool
 record, compute the oracle payoff
 ::
-    V_i = -w_C (r_i - y_i)^2 + w_A * 1{r_i >= r_min}            # main.tex Eq. 11
+    V_i = -w_C (r_i - y_i)^2 + w_A * 1{r_i >= r_min}
+        # the selection payoff, eq. (eq:selection-payoff) in the manuscript
 and select i* = argmax V (first-index tie-breaking). The selected row is
 written to ``experiment_output/raw_runs/logprob/results/qwen2.5_7b_N{N}_w{W}_r{R}_s{S}.csv``
 in the 19-column schema the analysis pipeline (``analysis/hypothesis_tests.py``
@@ -90,7 +91,8 @@ MODEL_SLUG = "qwen2.5_7b"  # filesystem slug for ``qwen2.5:7b``.
 # ---------------------------------------------------------------------------
 
 def _oracle_payoff(r: float, y: int, w_C: float, w_A: float, r_min: float) -> float:
-    """Per-completion oracle payoff (main.tex Eq. 11).
+    """Per-completion oracle payoff (the selection payoff, eq.
+    (eq:selection-payoff) in the manuscript).
 
     Duplicates ``src.scorer.oracle_payoff`` to keep this module self-contained
     and to make the formula visible at the call site below. Tests will catch
@@ -101,9 +103,11 @@ def _oracle_payoff(r: float, y: int, w_C: float, w_A: float, r_min: float) -> fl
 
 def comonotone_payoff(r: float, y: int, w_C: float, w_A: float,
                       r_min: float) -> float:
-    """EXPERIMENT-PLAN §11.E-A.1: Eq. 11 with y -> 1 on {r >= r_min} only.
-    Strictly increasing in r on [r_min, 1) regardless of y, so prop:bon
-    hypothesis (c) holds surely. Below the gate, identical to Eq. 11."""
+    """EXPERIMENT-PLAN §11.E-A.1: the selection payoff (manuscript eq.
+    (eq:selection-payoff)) with y -> 1 on {r >= r_min} only. Strictly
+    increasing in r on [r_min, 1) regardless of y, so prop:bon
+    hypothesis (c) holds surely. Below the gate, identical to the
+    selection payoff."""
     if r >= r_min:
         return -w_C * (1.0 - r) ** 2 + w_A
     return -w_C * (r - y) ** 2
@@ -382,9 +386,11 @@ def main(argv: list[str] | None = None) -> int:
                         "Exits non-zero on any divergence.")
     p.add_argument("--selector", choices=SELECTOR_CHOICES,
                    default="oracle",
-                   help="Selection payoff: 'oracle' (Eq. 11, default), "
-                        "'comonotone' (EXPERIMENT-PLAN §11.E-A.1 V_c), or "
-                        "'rearrangement' (§11 E-A amendment 1, E-A.1b).")
+                   help="Selection payoff: 'oracle' (the manuscript's "
+                        "selection payoff, eq. (eq:selection-payoff); "
+                        "default), 'comonotone' (EXPERIMENT-PLAN §11.E-A.1 "
+                        "V_c), or 'rearrangement' (§11 E-A amendment 1, "
+                        "E-A.1b).")
     args = p.parse_args(argv)
 
     if not args.config and not args.all:

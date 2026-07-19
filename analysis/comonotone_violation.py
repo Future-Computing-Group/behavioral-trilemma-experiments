@@ -1,6 +1,7 @@
 """EXPERIMENT-PLAN §11.E-A.2 violation metric for prop:bon hypothesis (c).
 
-Computed with the ORIGINAL Eq. 11 oracle payoff over the gate-cleared
+Computed with the ORIGINAL oracle selection payoff (eq.
+(eq:selection-payoff) in the manuscript) over the gate-cleared
 candidates G = {i <= N : r_i >= r_min} of one (task, seed) pool record.
 A comparable pair is (i, j) in G x G with r_i > r_j (strict); it is a
 violation iff V_i < V_j (strict) — the literal negation of hypothesis (c):

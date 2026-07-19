@@ -7,7 +7,7 @@ expects.
 
 These tests pin the selector's contract:
   - subset = first N completions (not random)
-  - V = -w_C*(r-y)^2 + w_A*1{r >= r_min}, oracle payoff matching Eq. 11
+  - V = -w_C*(r-y)^2 + w_A*1{r >= r_min}, the manuscript's selection payoff (eq. (eq:selection-payoff))
   - argmax with first-index tie-breaking
   - n_parsed counts completions[:N] where `a is not None`
   - a_selected = "" when a is None

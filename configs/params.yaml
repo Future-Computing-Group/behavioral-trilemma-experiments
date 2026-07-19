@@ -78,7 +78,8 @@ scoring:
   # Oracle selection payoff (primary, used for Best-of-N selection):
   # V_oracle = -w_C * (r - y)^2 + w_A * 1{r >= r_min}
   # where y ∈ {0,1} is ground-truth correctness (Brier score + gating).
-  # Matches manuscript Eq. 11.
+  # Matches the manuscript's selection payoff, eq. (eq:selection-payoff)
+  # (cited by label; equation numbers shift between builds).
   #
   # No-oracle proxy (control condition only):
   # V_proxy = -w_C * r * (1-r) + w_A * 1{r >= r_min}
