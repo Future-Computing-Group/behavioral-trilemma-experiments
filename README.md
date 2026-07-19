@@ -165,7 +165,8 @@ experiment_output/
   analysis/                                  # canonical results (paper's Table 1)
     hypothesis_results.json                  #   shipped; rewritten by Stage 3
     figures/h3_convexity_by_N.{pdf,png}      #   shipped; manuscript Figure 2
-    (aggregate metric CSVs regenerated here by Stage 3)
+    README.md                                #   flags this dir's untracked aggregate CSVs
+                                             #   as verbalised-era (superseded; provenance only)
   competence_probe/figures/model_points.*    # shipped; cross-model figure
   raw_runs/                                  # pools + per-config CSVs NOT shipped (gitignored,
                                              #   L73); ONLY the three phase0_calibration.csv
