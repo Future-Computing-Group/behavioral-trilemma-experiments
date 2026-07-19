@@ -104,3 +104,49 @@ def compute_brier_decomposition(
         "resolution": float(resolution),
         "uncertainty": float(uncertainty),
     }
+
+
+def compute_brier_decomposition_by_config(df: pd.DataFrame) -> pd.DataFrame:
+    """Brier decomposition for each (N, w_ratio, r_min) group, seeds pooled.
+
+    Ported verbatim from the frozen snapshot
+    ``experiment_output/analysis/metrics.py`` (audit LB-19) so the archived
+    ``brier_decomposition.csv`` is regenerable from the maintained module:
+
+        df = load_results(results_dir)
+        compute_brier_decomposition_by_config(df).to_csv(..., index=False)
+
+    Returns one row per group with reliability / resolution / uncertainty,
+    the recomposed Brier (reliability - resolution + uncertainty), the
+    direct mean Brier, and the observation count.
+    """
+    df = df.copy()
+    df["r_selected"] = pd.to_numeric(df["r_selected"], errors="coerce")
+    df["y"] = pd.to_numeric(df["y"], errors="coerce")
+
+    group_cols = ["N", "w_ratio", "r_min"]
+    rows = []
+
+    for keys, grp in df.groupby(group_cols):
+        grp_clean = grp.dropna(subset=["r_selected", "y"])
+        if len(grp_clean) == 0:
+            continue
+        decomp = compute_brier_decomposition(
+            grp_clean["r_selected"].tolist(),
+            grp_clean["y"].astype(int).tolist(),
+        )
+        rows.append({
+            "N": keys[0],
+            "w_ratio": keys[1],
+            "r_min": keys[2],
+            "reliability": decomp["reliability"],
+            "resolution": decomp["resolution"],
+            "uncertainty": decomp["uncertainty"],
+            "brier_from_decomp": decomp["reliability"] - decomp["resolution"]
+            + decomp["uncertainty"],
+            "brier_direct": pd.to_numeric(
+                grp_clean["brier"], errors="coerce").mean(),
+            "n_obs": len(grp_clean),
+        })
+
+    return pd.DataFrame(rows)

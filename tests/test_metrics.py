@@ -8,6 +8,7 @@ from analysis.metrics import (
     load_results,
     compute_per_config_metrics,
     compute_brier_decomposition,
+    compute_brier_decomposition_by_config,
 )
 from analysis.hypothesis_tests import run_all_tests
 
@@ -82,6 +83,36 @@ def test_brier_decomposition():
     bs = sum((r - y) ** 2 for r, y in zip(r_values, y_values)) / 4
     # Binned decomposition is approximate; tolerance reflects bin-boundary effects
     assert abs(decomp["reliability"] - decomp["resolution"] + decomp["uncertainty"] - bs) < 0.01
+
+
+def test_brier_decomposition_by_config(sample_results):
+    """LB-19: the by-config wrapper (generator of the archived
+    brier_decomposition.csv) must live in the maintained module and
+    reproduce the per-list helper on each (N, w_ratio, r_min) group,
+    averaged over seeds."""
+    df = load_results(sample_results)
+    out = compute_brier_decomposition_by_config(df)
+    # Two configs in the fixture -> two (N, w_ratio, r_min) groups.
+    assert len(out) == 2
+    for col in ("N", "w_ratio", "r_min", "reliability", "resolution",
+                "uncertainty", "brier_from_decomp", "brier_direct", "n_obs"):
+        assert col in out.columns, col
+    # Each row must agree with the per-list helper on the same group.
+    for _, row in out.iterrows():
+        grp = df[(df["N"] == row["N"]) & (df["w_ratio"] == row["w_ratio"])
+                 & (df["r_min"] == row["r_min"])]
+        ref = compute_brier_decomposition(
+            grp["r_selected"].astype(float).tolist(),
+            grp["y"].astype(int).tolist(),
+        )
+        assert row["reliability"] == pytest.approx(ref["reliability"])
+        assert row["resolution"] == pytest.approx(ref["resolution"])
+        assert row["uncertainty"] == pytest.approx(ref["uncertainty"])
+        assert row["brier_from_decomp"] == pytest.approx(
+            ref["reliability"] - ref["resolution"] + ref["uncertainty"])
+        assert row["brier_direct"] == pytest.approx(
+            grp["brier"].astype(float).mean())
+        assert row["n_obs"] == len(grp)
 
 
 def _first_existing(paths: list[pathlib.Path]) -> pathlib.Path:
