@@ -241,12 +241,13 @@ The per-config CSVs from that earlier verbalised run are retained in the authors
 
 Archival snapshots are deposited at Zenodo: concept DOI
 [10.5281/zenodo.20392749](https://doi.org/10.5281/zenodo.20392749) (always resolves
-to the latest version). This release is **v1.2-jmlr-submission**
-(see `CITATION.cff`); its Zenodo version deposit is **pending** — the
-latest deposited version is v1.1-jmlr-submission,
-[10.5281/zenodo.20646964](https://doi.org/10.5281/zenodo.20646964), which
-predates the v1.2 artifacts (cross-model replication, comonotone/
-rearrangement robustness, Phase-0 CSVs, E-C controls).
+to the latest version). This release is **v1.3-jmlr-submission**
+(see `CITATION.cff`), the first version whose Zenodo deposit contains the
+complete artifact set (cross-model replication, comonotone/rearrangement
+robustness, Phase-0 calibration CSVs, E-C random/proxy control suites);
+earlier deposited versions are v1.1-jmlr-submission
+[10.5281/zenodo.20646964](https://doi.org/10.5281/zenodo.20646964) and
+v1.0.
 
 
 ```bibtex
